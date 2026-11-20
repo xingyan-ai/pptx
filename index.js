@@ -734,6 +734,28 @@ async function snapFontSizes(project, ladder) {
   return touched
 }
 
+/** 页面上单个文本框最多这么多字，超了直接截断（页面容量是硬边界）。 */
+async function trimLongText(project, limit) {
+  const dir = join(project, 'svg_output')
+  let files = []
+  try { files = await readdir(dir) } catch (error) { return 0 }
+  let touched = 0
+  for (const name of files) {
+    if (!name.endsWith('.svg')) continue
+    const file = join(dir, name)
+    const svg = await readFile(file, 'utf8')
+    let changed = false
+    const next = svg.replace(/<text\b([^>]*)>([^<]{2,})<\/text>/g, function (all, attrs, body) {
+      const text = body.trim()
+      if (text.length <= limit) return all
+      changed = true
+      return '<text' + attrs + '>' + text.slice(0, limit - 1) + '…</text>'
+    })
+    if (changed) { await writeFile(file, next); touched += 1 }
+  }
+  return touched
+}
+
 async function buildDeck(ctx, skillDir, workDir, body) {
   const script = function (name) { return join(skillDir, 'scripts', name) }
   const project = join(workDir, 'deck-' + Date.now() + '-' + randomUUID().slice(0, 8))
@@ -825,6 +847,7 @@ async function buildDeck(ctx, skillDir, workDir, body) {
     if (!built.pages) return { ok: false, failedAt: 'draw-pages', project: project, steps: steps }
     // 字号吸附到已声明的阶梯
     try {
+      await trimLongText(project, 34)
       const snapped = await snapFontSizes(project, [15, 21, 27, 32, 36, 42, 54])
       steps.push({ ok: true, label: 'snap-fonts', out: snapped + ' 页字号归一', err: '' })
     } catch (error) {}
@@ -1174,8 +1197,8 @@ function tokensFor(slide, theme) {
     CONTENT_AREA: [
       points.map(function (point) { return '· ' + point }).join('\n'),
       slide.evidence ? '证据：' + (Array.isArray(slide.evidence) ? slide.evidence.join('；') : slide.evidence) : '',
-      slide.soWhat ? '含义：' + slide.soWhat : '',
-      slide.action ? '动作：' + slide.action : '',
+      capped.soWhat ? '含义：' + capped.soWhat : '',
+      capped.action ? '动作：' + capped.action : '',
     ].filter(Boolean).join('\n'),
     SOURCE: clip(slide.source || '', 40),
     CAPTION: clip(slide.coreMessage, 40),
@@ -1254,18 +1277,37 @@ function layoutBrief(svg) {
 }
 
 /** 一页的模型输入。 */
+/** 内容预算：一页放多少字是硬上限，超了页面上一定会被裁。 */
+function budget(slide) {
+  const clip = function (v, n) {
+    const text = String(v || '').replace(/\s+/g, ' ').trim()
+    return text.length > n ? text.slice(0, n - 1) + '…' : text
+  }
+  const points = (slide.points || []).slice(0, 4).map(function (p) { return clip(p, 30) })
+  const evidence = (Array.isArray(slide.evidence) ? slide.evidence : (slide.evidence ? [slide.evidence] : []))
+    .slice(0, 2).map(function (e) { return clip(e, 40) })
+  return {
+    points: points,
+    evidence: evidence,
+    coreMessage: clip(slide.coreMessage, 28),
+    soWhat: clip(slide.soWhat, 30),
+    action: clip(slide.action, 30),
+  }
+}
+
 function pagePrompt(slide, brief, colors, index, total) {
-  const points = slide.points || []
-  const evidence = Array.isArray(slide.evidence) ? slide.evidence.join('；') : (slide.evidence || '')
+  const capped = budget(slide)
+  const points = capped.points
+  const evidence = capped.evidence.join('；')
   const lines = [
     '版式区域：',
     brief,
     '',
     '调色板：背景 ' + colors.bg + '，正文 ' + colors.text + '，强调 ' + colors.accent,
     '',
-    '内容：',
+    '内容（已按页面容量裁剪，不要自行扩写）：',
     '标题：' + (slide.title || ''),
-    '一句话结论：' + (slide.coreMessage || ''),
+    '一句话结论：' + capped.coreMessage,
     points.length ? '要点：\n' + points.map(function (p) { return '  · ' + p }).join('\n') : '',
     evidence ? '证据：' + evidence : '',
     slide.soWhat ? '含义：' + slide.soWhat : '',
