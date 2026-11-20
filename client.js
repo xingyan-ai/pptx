@@ -59,6 +59,36 @@ window.__ModuleLoader__.load({
 .env-btn:disabled{opacity:.55;cursor:default}
 .env-warn code{font-family:ui-monospace,Menlo,monospace;font-size:11px;background:var(--dsw-alias-bg-base,#fff);
   padding:3px 7px;border-radius:6px;color:var(--dsw-alias-label-primary,#16181c);word-break:break-all}
+
+.wk{padding:26px 4px 8px}
+.wk-back{margin-bottom:18px}
+.wk-title{font-size:34px;letter-spacing:-.02em;margin:2px 0 6px}
+.wk-sub{color:var(--dsw-alias-label-secondary,#5f6672);font-size:13px;margin:0 0 20px}
+.wk-tools{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+.wk-search{flex:1;min-width:240px;display:flex;align-items:center;gap:8px;padding:9px 13px;border-radius:10px;
+  border:1px solid var(--dsw-alias-border-l2,#e6e8ec);background:var(--dsw-alias-bg-base,#fff)}
+.wk-search input{flex:1;border:0;outline:0;background:transparent;font:inherit;font-size:13px;color:var(--dsw-alias-label-primary,#16181c)}
+.wk-search-icon{color:var(--dsw-alias-label-tertiary,#8b929c);font-size:15px}
+.wk-chips{display:flex;gap:8px}
+.wk-chip{font:inherit;font-size:12.5px;padding:9px 15px;border-radius:9px;cursor:pointer;
+  border:1px solid var(--dsw-alias-border-l2,#e6e8ec);background:var(--dsw-alias-bg-base,#fff);color:var(--dsw-alias-label-secondary,#5f6672)}
+.wk-chip.is-on{background:var(--dsw-alias-label-primary,#16181c);color:var(--dsw-alias-bg-base,#fff);border-color:transparent}
+.wk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.wk-card{border:1px solid var(--dsw-alias-border-l2,#e6e8ec);border-radius:14px;overflow:hidden;
+  background:var(--dsw-alias-bg-base,#fff);display:flex;flex-direction:column}
+.wk-shot{display:block;padding:0;border:0;cursor:pointer;background:var(--dsw-alias-bg-layer-2,#eceeed);aspect-ratio:16/9;width:100%;overflow:hidden}
+.wk-shot img{width:100%;height:100%;object-fit:cover;display:block}
+.wk-meta{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--dsw-alias-label-secondary,#5f6672);padding:12px 14px 0}
+.wk-dot{width:8px;height:8px;border-radius:2px;background:var(--accent)}
+.wk-name{font-size:15px;font-weight:600;line-height:1.4;margin:6px 14px 0;color:var(--dsw-alias-label-primary,#16181c)}
+.wk-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px;margin-top:auto}
+.wk-date{font-size:12px;color:var(--dsw-alias-label-tertiary,#8b929c);font-variant-numeric:tabular-nums}
+.wk-actions{display:flex;gap:6px}
+.wk-btn{font:inherit;font-size:12.5px;padding:7px 13px;border-radius:8px;cursor:pointer;border:0;
+  background:var(--dsw-alias-label-primary,#16181c);color:var(--dsw-alias-bg-base,#fff)}
+.wk-btn-ghost{background:transparent;color:var(--dsw-alias-label-secondary,#5f6672);border:1px solid var(--dsw-alias-border-l2,#e6e8ec)}
+.wk-btn.is-danger{border-color:var(--dsw-alias-state-error-primary,#d63c3c);color:var(--dsw-alias-state-error-primary,#d63c3c)}
+.wk-empty{padding:60px 0;text-align:center;color:var(--dsw-alias-label-tertiary,#8b929c);font-size:13px}
 .wall-loading{display:flex;align-items:center;justify-content:center;height:46vh}
 .wall-shimmer{font-size:14px;font-weight:500;background:linear-gradient(100deg,
   var(--dsw-alias-label-tertiary,#8b929c) 30%, var(--dsw-alias-label-primary,#16181c) 50%, var(--dsw-alias-label-tertiary,#8b929c) 70%);
@@ -379,6 +409,79 @@ window.__ModuleLoader__.load({
           ? h('img', { src: IMG + theme.cover, alt: theme.name, draggable: 'false' })
           : h('span', { className: 'bento-fallback' }, theme.name),
         h('span', { className: 'bento-label' }, theme.name))
+    }
+
+    function fmtTime(ms) {
+      const d = new Date(ms)
+      const pad = function (n) { return (n < 10 ? '0' : '') + n }
+      return d.getFullYear() + '.' + pad(d.getMonth() + 1) + '.' + pad(d.getDate())
+    }
+
+    /** 我的作品：整页列表，搜索 + 打开 / 做同款 / 删除。 */
+    function WorksPage(props) {
+      const items = props.items || []
+      const [query, setQuery] = useState('')
+      const [filter, setFilter] = useState('all')
+      const [confirming, setConfirming] = useState('')
+
+      const shown = items.filter(function (item) {
+        if (filter === 'exported' && !item.pptx && !item.pdf) return false
+        if (filter === 'draft' && (item.pptx || item.pdf)) return false
+        if (!query.trim()) return true
+        const key = (item.title + ' ' + (item.themeId || '')).toLowerCase()
+        return key.indexOf(query.trim().toLowerCase()) >= 0
+      })
+      const chip = function (key, label, count) {
+        return h('button', {
+          type: 'button',
+          className: 'wk-chip' + (filter === key ? ' is-on' : ''),
+          onClick: function () { setFilter(key) },
+        }, label + ' (' + count + ')')
+      }
+
+      return h('div', { className: 'wk' },
+        h('button', { type: 'button', className: 'pk-btn pk-btn-ghost pk-btn-sm wk-back', onClick: props.onBack }, '← 返回主题墙'),
+        h('div', { className: 'pk-eyebrow' }, 'MY WORKS'),
+        h('h1', { className: 'pk-title wk-title' }, '我的作品'),
+        h('p', { className: 'pk-sub wk-sub' }, '点卡片打开；「做同款」用这份的主题再做一份新内容。'),
+        h('div', { className: 'wk-tools' },
+          h('div', { className: 'wk-search' },
+            h('span', { className: 'wk-search-icon', 'aria-hidden': 'true' }, '⌕'),
+            h('input', {
+              type: 'search', value: query, placeholder: '搜索标题、主题',
+              onChange: function (event) { setQuery(event.target.value) },
+            })),
+          h('div', { className: 'wk-chips' },
+            chip('all', '全部', items.length),
+            chip('exported', '已导出', items.filter(function (i) { return i.pptx || i.pdf }).length),
+            chip('draft', '未导出', items.filter(function (i) { return !i.pptx && !i.pdf }).length))),
+        props.loading
+          ? h('div', { className: 'wall-loading' }, h('div', { className: 'spinner' }))
+          : shown.length
+            ? h('div', { className: 'wk-grid' }, shown.map(function (item) {
+                const deleting = confirming === item.project
+                return h('article', { className: 'wk-card', key: item.project },
+                  h('button', {
+                    type: 'button', className: 'wk-shot',
+                    onClick: function () { props.onOpen(item) },
+                  }, h('img', { src: IMG + 'slide?project=' + encodeURIComponent(item.project) + '&n=1', alt: '', loading: 'lazy' })),
+                  h('div', { className: 'wk-meta' },
+                    h('span', { className: 'wk-dot' }),
+                    (item.themeId ? '主题 ' + item.themeId + ' · ' : '') + item.pages + ' 页' + (item.pptx ? ' · 已导 PPTX' : '')),
+                  h('h3', { className: 'wk-name' }, item.title),
+                  h('div', { className: 'wk-foot' },
+                    h('span', { className: 'wk-date' }, fmtTime(item.at)),
+                    h('div', { className: 'wk-actions' },
+                      h('button', { type: 'button', className: 'wk-btn', onClick: function () { props.onOpen(item) } }, '打开'),
+                      h('button', { type: 'button', className: 'wk-btn wk-btn-ghost', onClick: function () { props.onRemix(item) } }, '做同款'),
+                      h('button', {
+                        type: 'button', className: 'wk-btn wk-btn-ghost' + (deleting ? ' is-danger' : ''),
+                        onClick: function () {
+                          if (deleting) { props.onDelete(item); setConfirming('') } else setConfirming(item.project)
+                        },
+                      }, deleting ? '确认删除' : '删除')))) 
+              }))
+            : h('div', { className: 'wk-empty' }, query ? '没有匹配的作品' : '出一次稿之后，这里会保留每一份的封面、页数和导出记录。'))
     }
 
     function ThemeWall(props) {
@@ -732,6 +835,8 @@ window.__ModuleLoader__.load({
       const [toast, setToast] = useState('')
       const [toastKey, setToastKey] = useState(0)
       const [env, setEnv] = useState(null)
+      const [works, setWorks] = useState([])
+      const [worksBusy, setWorksBusy] = useState(false)
       const [fixing, setFixing] = useState(false)
       const notify = useCallback(function (text) { setToast(text); setToastKey(function (k) { return k + 1 }) }, [])
       const [issues, setIssues] = useState([])
@@ -874,7 +979,7 @@ window.__ModuleLoader__.load({
           })
           if (payload.contract) payload.contract.themeId = theme ? theme.id : payload.contract.themeId
           setIssues([])
-          const data = await post('build', { outline: payload })
+          const data = await post('build', { outline: payload, themeId: theme ? theme.id : '' })
           setResult(data)
           if (data.ok && data.project) {
             setBuilt(payload)
@@ -924,13 +1029,62 @@ window.__ModuleLoader__.load({
             h('code', null, 'python3 -m venv ~/.venv-pptx && ~/.venv-pptx/bin/pip install PyYAML python-pptx Pillow'))
         : null
 
+      const loadWorks = function () {
+        setWorksBusy(true)
+        get('history').then(function (data) {
+          setWorks((data && data.items) || [])
+        }).catch(function (error) {
+          notify('历史读取失败：' + String(error.message || error).slice(0, 40))
+        }).finally(function () { setWorksBusy(false) })
+      }
+
+      const openWorks = function () { loadWorks(); setPhase('works') }
+
+      const openHistoryItem = function (item) {
+        const slides = item.slides || []
+        STORE.built = { slides: slides }
+        STORE.result = { ok: true, project: item.project }
+        STORE.phase = 'result'
+        setBuilt({ slides: slides })
+        setResult({ ok: true, project: item.project })
+        setPhase('result')
+      }
+
+      const remixHistoryItem = function (item) {
+        const found = (themes || []).filter(function (t) { return t.id === item.themeId })[0] || null
+        if (found) setTheme(found)
+        setOutline(null)
+        setResult(null)
+        setBuilt(null)
+        STORE.outline = null; STORE.built = null; STORE.result = null
+        setPhase('editor')
+      }
+
+      const deleteHistoryItem = function (item) {
+        post('history/delete', { project: item.project }).then(function (data) {
+          if (data && data.ok) { setWorks(function (list) { return list.filter(function (x) { return x.project !== item.project }) }); notify('已删除') }
+          else notify('删除失败：' + ((data && data.reason) || '未知'))
+        })
+      }
+
+      const worksPhase = h(WorksPage, {
+        items: works, loading: worksBusy,
+        onBack: function () { setPhase('wall') },
+        onOpen: openHistoryItem,
+        onRemix: remixHistoryItem,
+        onDelete: deleteHistoryItem,
+      })
+
       const wallPhase = h(React.Fragment, null,
         h('div', { className: 'pk-bar' },
           h('div', { className: 'pk-bar-txt' },
             h('div', { className: 'pk-eyebrow' }, 'XINGYAN PPT'),
             h('h1', { className: 'pk-title' }, '星彦 PPT'),
             h('p', { className: 'pk-sub' }, '点一下看样张 · 共 ' + (themes ? themes.length : '…') + ' 套')),
-          h('span', { className: 'pk-eyebrow', style: { margin: 0 } }, themes ? themes.length + ' 套' : '')),
+          h('button', {
+            type: 'button', className: 'pk-btn pk-btn-ghost pk-btn-sm pk-works',
+            onClick: openWorks,
+          }, '我的作品')),
         h(ThemeWall, { themes: themes, onPick: setPreview }))
 
       const editorLeft = h('aside', { className: 'ed-left' },
@@ -1058,7 +1212,7 @@ window.__ModuleLoader__.load({
           steps: result ? result.steps : null,
         }))
 
-      const body = phase === 'wall' ? wallPhase : phase === 'result' ? resultPhase : editorPhase
+      const body = phase === 'works' ? worksPhase : phase === 'wall' ? wallPhase : phase === 'result' ? resultPhase : editorPhase
 
       return h('div', { className: 'pk-root' },
         h('style', null, CSS),

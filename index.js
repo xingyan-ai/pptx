@@ -10,9 +10,9 @@
  * 把 stderr 原样带回界面，方便定位。
  */
 import { execFile } from 'node:child_process'
-import { readFile, mkdir, writeFile, readdir, rename, rm } from 'node:fs/promises'
+import { readFile, mkdir, writeFile, readdir, rename, rm, stat } from 'node:fs/promises'
 import { readFileSync, readdirSync } from 'node:fs'
-import { join, resolve } from 'node:path'
+import { join, resolve, basename } from 'node:path'
 import { homedir } from 'node:os'
 import { existsSync } from 'node:fs'
 import { pathToFileURL, fileURLToPath } from 'node:url'
@@ -495,6 +495,12 @@ async function buildDeck(ctx, skillDir, workDir, body) {
   steps.push(init)
   if (!init.ok) return { ok: false, failedAt: 'init-project', steps: steps }
   await writeFile(join(project, 'outline.json'), JSON.stringify(outline, null, 2) + '\n')
+  try {
+    await writeFile(join(project, 'meta.json'), JSON.stringify({
+      themeId: body.themeId || outline.themeId || '',
+      at: Date.now(),
+    }, null, 2) + '\n')
+  } catch (error) {}
 
   // 装中性版式（presentation_core，20 类，无品牌）
   const install = await runIn(engine, python, [
@@ -547,6 +553,60 @@ async function buildDeck(ctx, skillDir, workDir, body) {
   const files = await readdir(join(project, 'exports')).catch(function () { return [] })
   const pick = files.filter(function (name) { return /\.html$/.test(name) }).sort().pop()
   return { ok: Boolean(pick), project: project, html: pick ? join(project, 'exports', pick) : null, steps: steps, failedAt: pick ? null : 'html-export' }
+}
+
+/**
+ * 列历史稿：只读产物目录，不碰正在生成的。
+ * @returns {{ items: Array, truncated: boolean }}
+ */
+async function listHistory(workDir, limit) {
+  let names = []
+  try { names = await readdir(workDir) } catch (error) { return { items: [], truncated: false } }
+  const dirs = names.filter(function (name) { return /^deck-\d+/.test(name) })
+  const items = []
+  for (const name of dirs) {
+    const dir = join(workDir, name)
+    try {
+      const info = await stat(dir)
+      if (!info.isDirectory()) continue
+      const exportsDir = join(dir, 'exports')
+      const files = await readdir(exportsDir).catch(function () { return [] })
+      const slides = await readdir(join(dir, 'svg_final')).catch(function () { return [] })
+      let title = name
+      let pageCount = slides.filter(function (n) { return /^P\d+\.svg$/.test(n) }).length
+      let outlineSlides = []
+      let themeId = ''
+      try { themeId = JSON.parse(await readFile(join(dir, 'meta.json'), 'utf8')).themeId || '' } catch (error) {}
+      try {
+        const outline = JSON.parse(await readFile(join(dir, 'outline.json'), 'utf8'))
+        title = (outline.contract && outline.contract.projectName) || (outline.slides && outline.slides[0] && outline.slides[0].title) || title
+        outlineSlides = outline.slides || []
+        if (!pageCount) pageCount = outlineSlides.length
+      } catch (error) {}
+      items.push({
+        project: dir,
+        title: String(title).slice(0, 60),
+        themeId: themeId,
+        pages: pageCount,
+        at: info.mtimeMs,
+        pptx: files.filter(function (f) { return /\.pptx$/.test(f) }).pop() || null,
+        pdf: files.filter(function (f) { return /\.pdf$/.test(f) }).pop() || null,
+        html: files.filter(function (f) { return /\.html$/.test(f) }).pop() || null,
+        slides: outlineSlides,
+      })
+    } catch (error) {}
+  }
+  items.sort(function (a, b) { return b.at - a.at })
+  return { items: items.slice(0, limit || 60), truncated: items.length > (limit || 60) }
+}
+
+/** 删掉一份历史稿（只允许产物目录内的子目录）。 */
+async function deleteHistory(workDir, project) {
+  if (!project || !insideWorkDir(workDir, project)) return { ok: false, reason: '路径不合法' }
+  const base = basename(project)
+  if (!/^deck-\d+/.test(base)) return { ok: false, reason: '只能删产物目录里的稿' }
+  await rm(project, { recursive: true, force: true })
+  return { ok: true }
 }
 
 /** 导出：筛页 → 走中性链路出稿 → 按格式转产物。 */
@@ -1094,6 +1154,13 @@ export default {
           await writeFile(join(workDir, '.requests.log'), new Date().toISOString() + ' ' + req.method + ' ' + path + '\n', { flag: 'a' })
         } catch (error) {}
 
+        if (path === '/history' && req.method === 'GET') {
+          return json(res, 200, Object.assign({ ok: true }, await listHistory(workDir, 60)))
+        }
+        if (path === '/history/delete' && req.method === 'POST') {
+          const body = await readBody(req)
+          return json(res, 200, await deleteHistory(workDir, body.project))
+        }
         if (path === '/doctor' && req.method === 'GET') {
           return json(res, 200, await doctor(skillDir, workDir))
         }
