@@ -417,7 +417,7 @@ window.__ModuleLoader__.load({
       return d.getFullYear() + '.' + pad(d.getMonth() + 1) + '.' + pad(d.getDate())
     }
 
-    /** 我的作品：整页列表，搜索 + 打开 / 做同款 / 删除。 */
+    /** 我的作品：整页列表，搜索 + 打开 / 删除。 */
     function WorksPage(props) {
       const items = props.items || []
       const [query, setQuery] = useState('')
@@ -443,7 +443,7 @@ window.__ModuleLoader__.load({
         h('button', { type: 'button', className: 'pk-btn pk-btn-ghost pk-btn-sm wk-back', onClick: props.onBack }, '← 返回主题墙'),
         h('div', { className: 'pk-eyebrow' }, 'MY WORKS'),
         h('h1', { className: 'pk-title wk-title' }, '我的作品'),
-        h('p', { className: 'pk-sub wk-sub' }, '点卡片打开；「做同款」用这份的主题再做一份新内容。'),
+        h('p', { className: 'pk-sub wk-sub' }, '点卡片打开；也可以直接导出或删除。'),
         h('div', { className: 'wk-tools' },
           h('div', { className: 'wk-search' },
             h('span', { className: 'wk-search-icon', 'aria-hidden': 'true' }, '⌕'),
@@ -473,7 +473,6 @@ window.__ModuleLoader__.load({
                     h('span', { className: 'wk-date' }, fmtTime(item.at)),
                     h('div', { className: 'wk-actions' },
                       h('button', { type: 'button', className: 'wk-btn', onClick: function () { props.onOpen(item) } }, '打开'),
-                      h('button', { type: 'button', className: 'wk-btn wk-btn-ghost', onClick: function () { props.onRemix(item) } }, '做同款'),
                       h('button', {
                         type: 'button', className: 'wk-btn wk-btn-ghost' + (deleting ? ' is-danger' : ''),
                         onClick: function () {
@@ -836,6 +835,7 @@ window.__ModuleLoader__.load({
       const [toastKey, setToastKey] = useState(0)
       const [env, setEnv] = useState(null)
       const [works, setWorks] = useState([])
+      const [resultFrom, setResultFrom] = useState('editor')
       const [worksBusy, setWorksBusy] = useState(false)
       const [fixing, setFixing] = useState(false)
       const notify = useCallback(function (text) { setToast(text); setToastKey(function (k) { return k + 1 }) }, [])
@@ -982,6 +982,7 @@ window.__ModuleLoader__.load({
           const data = await post('build', { outline: payload, themeId: theme ? theme.id : '' })
           setResult(data)
           if (data.ok && data.project) {
+            setResultFrom('editor')
             setBuilt(payload)
             STORE.built = payload
             STORE.result = data
@@ -1045,19 +1046,10 @@ window.__ModuleLoader__.load({
         STORE.built = { slides: slides }
         STORE.result = { ok: true, project: item.project }
         STORE.phase = 'result'
+        setResultFrom('works')
         setBuilt({ slides: slides })
         setResult({ ok: true, project: item.project })
         setPhase('result')
-      }
-
-      const remixHistoryItem = function (item) {
-        const found = (themes || []).filter(function (t) { return t.id === item.themeId })[0] || null
-        if (found) setTheme(found)
-        setOutline(null)
-        setResult(null)
-        setBuilt(null)
-        STORE.outline = null; STORE.built = null; STORE.result = null
-        setPhase('editor')
       }
 
       const deleteHistoryItem = function (item) {
@@ -1071,7 +1063,6 @@ window.__ModuleLoader__.load({
         items: works, loading: worksBusy,
         onBack: function () { setPhase('wall') },
         onOpen: openHistoryItem,
-        onRemix: remixHistoryItem,
         onDelete: deleteHistoryItem,
       })
 
@@ -1192,8 +1183,8 @@ window.__ModuleLoader__.load({
         h('div', { className: 'pk-bar' },
           h('button', {
             type: 'button', className: 'pk-btn pk-btn-ghost pk-btn-sm',
-            onClick: function () { setPhase('editor') },
-          }, '‹ 返回大纲'),
+            onClick: function () { setPhase(resultFrom === 'works' ? 'works' : 'editor') },
+          }, resultFrom === 'works' ? '‹ 返回我的作品' : '‹ 返回大纲'),
           h('div', { className: 'pk-bar-txt' },
             h('div', { className: 'pk-eyebrow' }, 'XINGYAN PPT'),
             h('h1', { className: 'pk-title' }, '星彦 PPT'),
