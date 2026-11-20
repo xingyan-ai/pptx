@@ -705,7 +705,7 @@ async function fillTypography(project, card) {
   const block = function (heading, value) {
     if (!value) return
     const body = '```json\n' + JSON.stringify(value, null, 2) + '\n```'
-    const re = new RegExp('^## ' + heading + '$[\\s\\S]*?(?=^## |\\Z)', 'm')
+    const re = new RegExp('^## ' + heading + '$[\\s\\S]*?(?=^## |$(?![\\s\\S]))', 'm')
     const section = '## ' + heading + '\n' + body + '\n'
     text = re.test(text) ? text.replace(re, section) : text.replace(/\n## forbidden/, '\n' + section + '\n## forbidden')
   }
@@ -957,6 +957,7 @@ async function deleteHistory(workDir, project) {
 
 /** 导出：筛页 → 走中性链路出稿 → 按格式转产物。 */
 async function exportDeck(ctx, skillDir, workDir, body) {
+  const engine = join(skillDir, 'runtime', 'engine', 'scripts')
   const format = body.format === 'pptx' ? 'pptx' : body.format === 'pdf' ? 'pdf' : 'html'
   const steps = []
   const scope = insideWorkDir(workDir, body.project)
@@ -1019,10 +1020,18 @@ async function exportDeck(ctx, skillDir, workDir, body) {
       const name = 'deck-' + Date.now() + '.pptx'
       const out = join(exportsDir, name)
       const made = await step(skillDir, [
-        join(skillDir, 'scripts', 'pptx-export.mjs'), project, '--python', python, '--out', out,
-      ], 'pptx-export')
+        join(engine, 'svg_quality_checker.py'), project, '--canonical-authoring', '--stage', 'final', '--json',
+      ], 'quality-final')
       steps.push(made)
-      if (!made.ok) return { ok: false, reason: 'PPTX 导出失败：' + String(made.err || '').split('\n').filter(Boolean).slice(-2).join(' ').slice(0, 160), steps: steps }
+      const convert = await step(skillDir, [join(engine, 'svg_to_pptx.py'), project], 'pptx-export')
+      steps.push(convert)
+      const producedFile = (await readdir(project).catch(function () { return [] })).filter(function (n) { return /\.pptx$/.test(n) }).sort().pop()
+      if (convert.ok && producedFile) {
+        await rename(join(project, producedFile), join(exportsDir, name)).catch(function () {})
+      } else {
+        return { ok: false, reason: 'PPTX 导出失败：' + String(convert.err || '').split('\n').filter(Boolean).slice(-2).join(' ').slice(0, 160), steps: steps }
+      }
+      const skipped = made
       return { ok: true, project: project, file: name, format: 'pptx', pages: partial ? indices.length : all.length, size: (await readFile(out)).length, steps: steps }
     }
 
@@ -1192,6 +1201,7 @@ function clip(text, max) {
 
 /** 把一节的内容摊成模板 token。 */
 function tokensFor(slide, theme) {
+  const capped = budget(slide)
   const points = (slide.points || []).slice(0, 4)
   const cards = slide.cards || []
   const metrics = slide.metrics || []
@@ -1319,6 +1329,11 @@ function pagePrompt(slide, brief, colors, index, total) {
     evidence ? '证据：' + evidence : '',
     slide.soWhat ? '含义：' + slide.soWhat : '',
     slide.action ? '动作：' + slide.action : '',
+    slide.table ? '表格：' + JSON.stringify(slide.table) : '',
+    slide.compare ? '对比：' + JSON.stringify(slide.compare) : '',
+    slide.layers && slide.layers.length ? '层级：' + JSON.stringify(slide.layers) : '',
+    slide.takeaway ? '结论条：' + String(slide.takeaway).slice(0, 40) : '',
+    slide.source ? '来源：' + String(slide.source).slice(0, 60) : '',
     slide.cards && slide.cards.length
       ? '卡片：\n' + slide.cards.map(function (c) { return '  · ' + (c.title || '') + ' — ' + (c.body || '') }).join('\n')
       : '',
