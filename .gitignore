@@ -2,3 +2,6 @@ node_modules/
 decks/
 .DS_Store
 *.log
+
+# 本地测试截图
+*.png
