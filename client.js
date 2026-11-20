@@ -723,7 +723,7 @@ window.__ModuleLoader__.load({
             })),
           h('div', null,
             h('div', { className: 'res-frame' }, h('img', { src: src, alt: '', style: { width: '100%', display: 'block' } })),
-            h('div', { className: 'res-tip' }, '左侧点页码翻页。')))
+            h('div', { className: 'res-tip' }, '左侧点页码翻页。'))))
     }
 
     function ExportModal(props) {
