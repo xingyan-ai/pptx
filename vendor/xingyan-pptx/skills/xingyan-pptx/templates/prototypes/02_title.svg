@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif"
+  width="1280" height="720" viewBox="0 0 1280 720"
+  data-pptx-master="zt_title_master" data-pptx-master-name="Zhongtai Title"
+  data-pptx-layout="title" data-pptx-layout-name="Project Title">
+  
+  <rect id="title-red-bar" x="78" y="216" width="6" height="124" fill="#B20017"
+    data-pptx-layer="layout" data-pptx-editable="false"/>
+  <g id="title-slot" data-pptx-placeholder="title" data-pptx-bounds="100 235 940 80">
+    <text id="title-slot-carrier" data-pptx-carrier="true" x="100" y="290"
+      fill="#000000" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif" font-size="60" font-weight="700">{{PROJECT_NAME}}</text>
+  </g>
+  <g id="projectno-slot" data-pptx-placeholder="body" data-pptx-bounds="100 327 660 32">
+    <text id="projectno-slot-carrier" data-pptx-carrier="true" x="100" y="348"
+      fill="#595959" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif" font-size="20" font-weight="400">{{PROJECT_NO}}</text>
+  </g>
+  <g id="dept-slot" data-pptx-placeholder="body" data-pptx-idx="2" data-pptx-bounds="100 389 660 32">
+    <text id="dept-slot-carrier" data-pptx-carrier="true" x="100" y="410"
+      fill="#595959" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif" font-size="20" font-weight="400">{{DEPARTMENT}}</text>
+  </g>
+  <g id="date-slot" data-pptx-placeholder="body" data-pptx-idx="3" data-pptx-bounds="100 423 660 32">
+    <text id="date-slot-carrier" data-pptx-carrier="true" x="100" y="444"
+      fill="#595959" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif" font-size="20" font-weight="400">{{DATE}}</text>
+  </g>
+</svg>

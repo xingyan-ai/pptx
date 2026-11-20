@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif"
+  width="1280" height="720" viewBox="0 0 1280 720"
+  data-pptx-master="zt_ending_master" data-pptx-master-name="Zhongtai Ending"
+  data-pptx-layout="closing" data-pptx-layout-name="Closing">
+  
+  <g id="closing-text-slot" data-pptx-placeholder="title" data-pptx-bounds="200 150 880 80">
+    <text id="closing-text-slot-carrier" data-pptx-carrier="true" x="640" y="205" text-anchor="middle"
+      fill="#FFFFFF" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif" font-size="60" font-weight="400">{{CLOSING_TEXT}}</text>
+  </g>
+</svg>

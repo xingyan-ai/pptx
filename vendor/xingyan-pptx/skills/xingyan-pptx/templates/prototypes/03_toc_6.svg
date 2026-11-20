@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif"
+  width="1280" height="720" viewBox="0 0 1280 720"
+  data-pptx-master="zt_content_master" data-pptx-master-name="Zhongtai Content"
+  data-pptx-layout="toc-6" data-pptx-layout-name="Contents (6)">
+  
+  <text id="toc-label" x="150" y="330" fill="#B20017" font-size="60" font-weight="700" data-pptx-layer="layout" data-pptx-editable="false">目录</text>
+  <text id="toc-label-en" x="150" y="392" fill="#000000" font-size="36" data-pptx-layer="layout" data-pptx-editable="false">CONTENTS</text>
+  <text id="toc-num-1" x="560" y="163" fill="#000000" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif" font-size="32" data-pptx-layer="layout" data-pptx-editable="false">一、</text>
+  <text id="toc-num-2" x="560" y="239" fill="#000000" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif" font-size="32" data-pptx-layer="layout" data-pptx-editable="false">二、</text>
+  <text id="toc-num-3" x="560" y="315" fill="#000000" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif" font-size="32" data-pptx-layer="layout" data-pptx-editable="false">三、</text>
+  <text id="toc-num-4" x="560" y="391" fill="#000000" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif" font-size="32" data-pptx-layer="layout" data-pptx-editable="false">四、</text>
+  <text id="toc-num-5" x="560" y="467" fill="#000000" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif" font-size="32" data-pptx-layer="layout" data-pptx-editable="false">五、</text>
+  <text id="toc-num-6" x="560" y="543" fill="#000000" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif" font-size="32" data-pptx-layer="layout" data-pptx-editable="false">六、</text>
+  <g id="toc-item-1-slot" data-pptx-placeholder="body" data-pptx-idx="1" data-pptx-bounds="640 131 552 48">
+    <text id="toc-item-1-slot-carrier" data-pptx-carrier="true" x="640" y="163"
+      fill="#000000" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif" font-size="32">{{TOC_ITEM_1}}</text>
+  </g>
+  <g id="toc-item-2-slot" data-pptx-placeholder="body" data-pptx-idx="2" data-pptx-bounds="640 207 552 48">
+    <text id="toc-item-2-slot-carrier" data-pptx-carrier="true" x="640" y="239"
+      fill="#000000" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif" font-size="32">{{TOC_ITEM_2}}</text>
+  </g>
+  <g id="toc-item-3-slot" data-pptx-placeholder="body" data-pptx-idx="3" data-pptx-bounds="640 283 552 48">
+    <text id="toc-item-3-slot-carrier" data-pptx-carrier="true" x="640" y="315"
+      fill="#000000" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif" font-size="32">{{TOC_ITEM_3}}</text>
+  </g>
+  <g id="toc-item-4-slot" data-pptx-placeholder="body" data-pptx-idx="4" data-pptx-bounds="640 359 552 48">
+    <text id="toc-item-4-slot-carrier" data-pptx-carrier="true" x="640" y="391"
+      fill="#000000" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif" font-size="32">{{TOC_ITEM_4}}</text>
+  </g>
+  <g id="toc-item-5-slot" data-pptx-placeholder="body" data-pptx-idx="5" data-pptx-bounds="640 435 552 48">
+    <text id="toc-item-5-slot-carrier" data-pptx-carrier="true" x="640" y="467"
+      fill="#000000" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif" font-size="32">{{TOC_ITEM_5}}</text>
+  </g>
+  <g id="toc-item-6-slot" data-pptx-placeholder="body" data-pptx-idx="6" data-pptx-bounds="640 511 552 48">
+    <text id="toc-item-6-slot-carrier" data-pptx-carrier="true" x="640" y="543"
+      fill="#000000" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif" font-size="32">{{TOC_ITEM_6}}</text>
+  </g>
+  <g id="content-page-slot" data-pptx-placeholder="slide-number" data-pptx-idx="7" data-pptx-bounds="1180 656 40 32">
+    <text id="content-page-slot-carrier" data-pptx-carrier="true" x="1212" y="672" text-anchor="end" fill="#FFFFFF" font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif" font-size="20">{{PAGE_NUM}}</text>
+  </g>
+</svg>

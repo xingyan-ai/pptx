@@ -10,7 +10,7 @@
  * 把 stderr 原样带回界面，方便定位。
  */
 import { execFile } from 'node:child_process'
-import { readFile, mkdir, writeFile, readdir, rename, rm, stat } from 'node:fs/promises'
+import { readFile, mkdir, writeFile, readdir, rename, rm, stat, copyFile } from 'node:fs/promises'
 import { readFileSync, readdirSync } from 'node:fs'
 import { join, resolve, basename } from 'node:path'
 import { homedir } from 'node:os'
@@ -189,35 +189,36 @@ const OUTLINE_SYSTEM = `你是一名演示稿策划。根据用户给定的主�
 7. hero / section 页建议也写 1–4 条 points。
 8. cover 与 ending 页 points 可为空。
 9. 尽量写具体（数字、对象、动作），避免“提高认识”“加强管理”这类空话。
-10. **每页都要填 template，并按版式补齐对应结构（cards / metrics / table / compare / layers）。只写 points 的页面会大片留白。**
+10. **每页都要填 template，并按版式补齐对应结构（cards / metrics / table / compare / layers）。只写 points 的页面会被构图门禁拦下。**
 11. content 页必须写满四层：points（论点）、evidence（证据/数字）、soWhat（含义）、action（动作）。四层加起来 ≥180 字，少于 80 字会被校验器拦下。有数字必须写 source。
 12. 一套 deck 至少用 3 种不同版式，连续两页不要用同一种。
 `
 
-/** 中性版式清单（presentation_core），喂给模型让它按版式产内容。 */
+/** 合成器支持的版式，以及每种版式必须补齐的字段。 */
+const COMPOSE_MENU = [
+  ['cover', '封面：title + coreMessage'],
+  ['toc', '目录：points 写 3–6 条章节名'],
+  ['section', '章节过渡：title + coreMessage'],
+  ['cards-3', '卡片：cards [{title, body}]，2–4 条，body 30–50 字'],
+  ['metrics-4', '指标：metrics [{value, label, note}]，3–4 条，value 带数字和单位'],
+  ['table', '表格：table {columns:[{label}], rows:[[...]]}，3–5 列 3–6 行'],
+  ['two-content', '双栏对比：compare {left:{head,lines[]}, right:{head,lines[]}}'],
+  ['metrics-compare', '指标对比：compare 两侧各带 head 和 2–3 条 lines'],
+  ['structure', '层级结构：layers [{name, text}]，2–4 层'],
+  ['summary', '小结：points + takeaway 一句话'],
+  ['content', '常规内容：points 3–4 条（少用，优先上面几种）'],
+  ['content-rich', '信息密集：points + cards'],
+  ['ending', '结尾：title + coreMessage'],
+]
+
 async function readTemplateMenu(skillDir) {
-  try {
-    const file = join(skillDir, 'runtime', 'engine', 'templates', 'layouts', 'layouts_index.json')
-    const data = JSON.parse(await readFile(file, 'utf8'))
-    const core = data.presentation_core || {}
-    const types = core.page_types || []
-    if (!types.length) return ''
-    return [
-      '可用版式（每页必须从下面选一个填进 slide.template）：',
-      types.map(function (id) { return '- ' + id }).join('\n'),
-      '',
-      '版式与内容的对应：',
-      '- three_card：填 slide.cards，2–3 条 {title, body}',
-      '- kpi_dashboard：填 slide.metrics，3–4 条 {value, label, note}',
-      '- table_summary：填 slide.table，{columns, rows}',
-      '- comparison / two_content：填 slide.compare，{left, right}',
-      '- process_timeline：填 slide.points（按步骤顺序）',
-      '- data_story / chart_insight：填 slide.metrics 或 points + evidence',
-      '- title_content / editorial_split：填 points + evidence + soWhat',
-    ].join('\n')
-  } catch (error) {
-    return ''
-  }
+  return [
+    '可用版式（每页必须从下面选一个填进 slide.template）：',
+    COMPOSE_MENU.map(function (row) { return '- ' + row[0] + '：' + row[1] }).join('\n'),
+    '',
+    '内容页优先用 cards-3 / metrics-4 / table / two-content / structure，',
+    '只有确实无法结构化时才用 content。数据类内容必须给出数字和口径。',
+  ].join('\n')
 }
 
 async function generateOutline(ctx, input, skillDir) {
@@ -225,7 +226,9 @@ async function generateOutline(ctx, input, skillDir) {
   const selection = ctx.get && ctx.get('agentDefaultModel')
   const route = selection && selection.currentSelection ? selection.currentSelection() : null
   if (!llm || !route || !route.provider || !route.model) {
-    return { ok: false, reason: 'no-model', outline: ruleOutline(input) }
+    const fallback = ruleOutline(input)
+    ;(fallback.slides || []).forEach(normalizeLayout)
+    return { ok: false, reason: 'no-model', outline: fallback }
   }
   const brief = [
     '主题：' + (input.topic || '未填'),
@@ -255,9 +258,12 @@ async function generateOutline(ctx, input, skillDir) {
       }
     }
     const outline = extractJson(text)
-    return { ok: true, outline, model: route.model }
+    ;(outline.slides || []).forEach(normalizeLayout)
+    return { ok: true, outline: outline, model: route.model }
   } catch (error) {
-    return { ok: false, reason: String(error.message || error), outline: ruleOutline(input) }
+    const fallback = ruleOutline(input)
+    ;(fallback.slides || []).forEach(normalizeLayout)
+    return { ok: false, reason: String(error.message || error), outline: fallback }
   }
 }
 
@@ -481,7 +487,111 @@ async function runIn(cwd, command, args, label) {
   }
 }
 
+/** 门禁拦下的页：让模型只改这几页的结构，不重写整份大纲。 */
+/** 合成器真正认识的版式 key；其他写法统一归一到最接近的一个。 */
+const LAYOUT_KEYS = new Set(['cover', 'toc', 'section', 'ending', 'content', 'two-content', 'summary', 'structure', 'cards-3', 'table', 'metrics-4', 'metrics-compare', 'table-metrics', 'content-rich'])
+const LAYOUT_ALIASES = {
+  compare: 'two-content', comparison: 'two-content', two_content: 'two-content',
+  cards: 'cards-3', three_card: 'cards-3', cards3: 'cards-3',
+  metrics: 'metrics-4', kpi: 'metrics-4', kpi_dashboard: 'metrics-4', metrics4: 'metrics-4',
+  tables: 'table', table_summary: 'table', chart: 'metrics-4',
+  layers: 'structure', structure_list: 'structure',
+  title: 'content', hero: 'content', content_caption: 'content',
+}
+
+function normalizeLayout(slide) {
+  if (!slide) return slide
+  const raw = String(slide.template || '').trim().toLowerCase().replace(/\s+/g, '-')
+  const key = LAYOUT_KEYS.has(raw) ? raw : (LAYOUT_ALIASES[raw] || 'content')
+  slide.template = key
+  // 有结构数据就选能承载它的版式
+  if (Array.isArray(slide.cards) && slide.cards.length && key === 'content') slide.template = 'cards-3'
+  if (Array.isArray(slide.metrics) && slide.metrics.length && (key === 'content' || key === 'metrics-4')) slide.template = 'metrics-4'
+  if (slide.table && !slide.table.columns && Array.isArray(slide.table.rows)) slide.template = 'content'
+  if (slide.compare && key === 'content') slide.template = 'two-content'
+  if (Array.isArray(slide.layers) && slide.layers.length && key === 'content') slide.template = 'structure'
+  return slide
+}
+
+async function repairPages(ctx, outline, blocked, feedback) {
+  // 门禁报的是页码（P04），大纲里是 slide id，按顺序换算
+  const slides = outline.slides || []
+  const targets = blocked.map(function (page) {
+    const index = Number(String(page).replace(/[^0-9]/g, '')) - 1
+    return slides[index]
+  }).filter(Boolean)
+  if (!targets.length) return { changed: 0 }
+  const system = [
+    '你是版式修订器。下面这些页只有文字、没有视觉构件，被构图门禁拦下了。',
+    '只输出 JSON 数组，每项形如 {"id":"原id","template":"cards-3|metrics-4|table|two-content|structure","cards":[{"title":"","body":""}],"metrics":[{"value":"","label":"","note":""}],"table":{"columns":[{"label":""}],"rows":[[""]]},"compare":{"left":{"head":"","lines":[]},"right":{"head":"","lines":[]}},"takeaway":""}。',
+    '要求：内容必须来自原页的 points / evidence / soWhat / action，不许编新事实；数字保留原有口径。',
+  ].join('\n')
+  const user = targets.map(function (slide) {
+    return 'id: ' + slide.id + '\n标题: ' + (slide.title || '') + '\n结论: ' + (slide.coreMessage || '') +
+      '\n要点: ' + (slide.points || []).join(' / ') + '\n证据: ' + (slide.evidence || []).join(' / ') +
+      '\n含义: ' + (slide.soWhat || '') + '\n动作: ' + (slide.action || '')
+  }).join('\n\n') + '\n\n门禁反馈：\n' + feedback.slice(0, 600)
+
+  let text = ''
+  try {
+    text = await callPageModel(ctx, system, user, sessionFor())
+    const start = text.indexOf('[')
+    const end = text.lastIndexOf(']')
+    if (start < 0 || end <= start) return { changed: 0 }
+    const fixes = JSON.parse(text.slice(start, end + 1))
+    let changed = 0
+    for (const fix of fixes) {
+      const target = outline.slides.find(function (slide) { return slide.id === fix.id })
+      if (!target) continue
+      for (const key of ['template', 'cards', 'metrics', 'table', 'compare', 'layers', 'takeaway']) {
+        if (fix[key] !== undefined) target[key] = fix[key]
+      }
+      normalizeLayout(target)
+      changed += 1
+    }
+    return { changed: changed }
+  } catch (error) {
+    return { changed: 0, error: String(error.message || error) }
+  }
+}
+
+/** 兜底：把只有文字的页确定性转成卡片/指标，保证构图门禁能过。 */
+function enforceVisuals(outline) {
+  const slides = outline.slides || []
+  let fixed = 0
+  for (const slide of slides) {
+    if (!slide || ['cover', 'toc', 'ending', 'section'].includes(slide.template)) continue
+    const hasVisual = (slide.cards && slide.cards.length) || (slide.metrics && slide.metrics.length) ||
+      (slide.table && slide.table.columns) || (slide.compare && slide.compare.left) ||
+      (slide.layers && slide.layers.length)
+    if (hasVisual) continue
+    const points = (slide.points || []).filter(Boolean)
+    const evidence = (slide.evidence || []).filter(Boolean)
+    if (points.length >= 2) {
+      slide.template = 'cards-3'
+      slide.cards = points.slice(0, 4).map(function (point, index) {
+        const cut = String(point).split(/[，。：；]/)
+        const head = (cut[0] || ('要点 ' + (index + 1))).slice(0, 14)
+        return { title: head, body: String(point).slice(0, 60) }
+      })
+      fixed += 1
+    } else if (evidence.length) {
+      slide.template = 'structure'
+      slide.layers = evidence.slice(0, 4).map(function (line, index) {
+        return { name: '第 ' + (index + 1) + ' 层', text: String(line).slice(0, 50) }
+      })
+      fixed += 1
+    } else if (points.length === 1) {
+      slide.template = 'content-rich'
+      slide.cards = [{ title: '核心判断', body: String(points[0]).slice(0, 60) }]
+      fixed += 1
+    }
+  }
+  return fixed
+}
+
 async function buildDeck(ctx, skillDir, workDir, body) {
+  const script = function (name) { return join(skillDir, 'scripts', name) }
   const project = join(workDir, 'deck-' + Date.now() + '-' + randomUUID().slice(0, 8))
   await mkdir(project, { recursive: true })
   const outline = body.outline || {}
@@ -512,7 +622,7 @@ async function buildDeck(ctx, skillDir, workDir, body) {
 
   // 主题
   let colors = { bg: '#ffffff', text: '#16181c', accent: '#2a78d6' }
-  const themeId = outline.contract && outline.contract.themeId
+  const themeId = body.themeId || (outline.contract && outline.contract.themeId)
   if (themeId) {
     try {
       const card = JSON.parse(await readFile(join(skillDir, 'themes', 'cards', themeId + '.json'), 'utf8'))
@@ -525,19 +635,91 @@ async function buildDeck(ctx, skillDir, workDir, body) {
     } catch (error) {}
   }
 
-  // 逐页生成：模型按版式画 SVG，失败的页退回模板填槽
+  // 与 ppt-master 一致：页面由确定性合成器生成，模型只负责结构化内容
   try {
-    const built = await authorPages(ctx, project, outline, colors, null, { sessionId: sessionFor() })
-    steps.push({
-      ok: built.pages > 0,
-      label: 'draw-pages',
-      out: built.pages + ' 页 · 模型画 ' + built.authored + ' 页 · 兜底 ' + built.fallback + ' 页' + (built.errors.length ? '（' + built.errors[0] + '）' : ''),
-      err: '',
-    })
-    if (!built.pages) return { ok: false, failedAt: 'draw-pages', steps: steps }
+    const protoSrc = join(skillDir, 'templates', 'prototypes')
+    if (existsSync(protoSrc)) {
+      // 原型只有三个字面色（底/字/强调），按主题替换即可换肤
+      const swap = function (svg) {
+        return svg
+          .replace(/#B20017/gi, colors.accent || '#B20017')
+          .replace(/#FFFFFF/gi, colors.bg || '#FFFFFF')
+          .replace(/#000000/gi, colors.text || '#000000')
+      }
+      for (const name of await readdir(protoSrc)) {
+        if (!name.endsWith('.svg')) continue
+        const raw = await readFile(join(protoSrc, name), 'utf8')
+        await writeFile(join(project, 'templates', name), swap(raw))
+      }
+    }
+    let checked = null
+    for (let round = 0; round < 3; round += 1) {
+      const composed = await runIn(skillDir, process.execPath, [script('compose-deck.mjs'), project], 'compose-deck')
+      if (round === 0) steps.push(composed)
+      if (!composed.ok) return { ok: false, failedAt: 'compose-deck', project: project, steps: steps }
+
+      checked = await runIn(skillDir, process.execPath, [script('check-pages.mjs'), project], 'check-pages')
+      if (checked.ok) break
+
+      const feedback = String(checked.err || '') + '\n' + String(checked.out || '')
+      const blocked = Array.from(new Set((feedback.match(/P\d+/g) || [])))
+      const fixed = await repairPages(ctx, outline, blocked, feedback)
+      steps.push({ ok: fixed.changed > 0, label: 'repair-pages', out: '第 ' + (round + 1) + ' 轮返修 ' + fixed.changed + ' 页' + (blocked.length ? '（' + blocked.join(' ') + '）' : ''), err: fixed.error || '' })
+      if (!fixed.changed) break
+      await writeFile(join(project, 'outline.json'), JSON.stringify(outline, null, 2) + '\n')
+    }
+    // 模型改不动就确定性兜底，不能让一份稿卡死在门禁上
+    // 合成器内部把品牌色写死了，产出后再统一换成本主题的强调色
+    // 强调色太亮时压暗，保证白字还压得住
+    const accentForFill = (function () {
+      const hex = String(colors.accent || '#B20017').replace('#', '')
+      if (hex.length !== 6) return colors.accent
+      const r = parseInt(hex.slice(0, 2), 16), g = parseInt(hex.slice(2, 4), 16), b = parseInt(hex.slice(4, 6), 16)
+      const lum = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
+      if (lum <= 0.55) return colors.accent
+      const k = 0.45
+      const mix = function (v) { return Math.round(v * k).toString(16).padStart(2, '0') }
+      return '#' + mix(r) + mix(g) + mix(b)
+    })()
+
+    const recolor = async function () {
+      const dir = join(project, 'svg_output')
+      let list = []
+      try { list = await readdir(dir) } catch (error) { return 0 }
+      let n = 0
+      for (const name of list) {
+        if (!name.endsWith('.svg')) continue
+        const file = join(dir, name)
+        const svg = await readFile(file, 'utf8')
+        const next = svg.replace(/#B20017/gi, accentForFill)
+        if (next !== svg) { await writeFile(file, next); n += 1 }
+      }
+      return n
+    }
+
+    if (checked && !checked.ok) {
+      const forced = enforceVisuals(outline)
+      if (forced) {
+        await writeFile(join(project, 'outline.json'), JSON.stringify(outline, null, 2) + '\n')
+        steps.push({ ok: true, label: 'enforce-visuals', out: '确定性补齐 ' + forced + ' 页构件', err: '' })
+        const again = await runIn(skillDir, process.execPath, [script('compose-deck.mjs'), project], 'compose-deck')
+        if (again.ok) checked = await runIn(skillDir, process.execPath, [script('check-pages.mjs'), project], 'check-pages')
+      }
+    }
+    const recolored = await recolor()
+    if (recolored) steps.push({ ok: true, label: 'recolor', out: recolored + ' 页换成主题色', err: '' })
+    if (checked && !checked.ok) {
+      steps.push(checked)
+      return {
+        ok: false, failedAt: 'check-pages', project: project,
+        reason: '页面构图门禁未通过：' + String(checked.err || checked.out || '').split('\n').filter(Boolean).slice(-2).join(' ').slice(0, 200),
+        steps: steps,
+      }
+    }
+    steps.push(checked)
   } catch (error) {
-    steps.push({ ok: false, label: 'draw-pages', out: '', err: String(error.message || error) })
-    return { ok: false, failedAt: 'draw-pages', steps: steps }
+    steps.push({ ok: false, label: 'compose-deck', out: '', err: String(error.message || error) })
+    return { ok: false, failedAt: 'compose-deck', project: project, steps: steps }
   }
 
   const fin = await runIn(join(skillDir, 'runtime', 'engine', 'scripts'), python, [
