@@ -11,7 +11,6 @@ window.__ModuleLoader__.load({
     const h = React.createElement
     const { useState, useEffect, useRef, useCallback } = React
 
-    let CLIENT_CTX = null
     const NS = 'xingyan-pptx'
     const PANEL_ID = 'xingyan-pptx'
     const API = 'xingyan-pptx/'
@@ -968,37 +967,6 @@ window.__ModuleLoader__.load({
         })
       }
 
-      /** 把参数拼成任务，交给一个带 PPT 大师 skill 的会话去做。 */
-      const launchSession = function () {
-        const skill = (env && env.skill && env.skill.dir) || ''
-        const chosen = theme ? theme.id : ''
-        const brief = [
-          '用 PPT 大师技能做一份演示稿，产出 PPTX（只要 PPTX，不要 HTML）。',
-          '',
-          '技能目录：' + skill,
-          '请按该目录下的 Agent.md 与 SKILL.md 执行，页面用 runtime/engine/references/executor-base.md 的规范写。',
-          '',
-          '参数：',
-          '- 主题 id：' + (chosen || '未指定'),
-          '- 页数：' + (pages || 10),
-          '- 场景：' + ((typeof scene !== 'undefined' && scene) || '通用汇报'),
-          '- 受众：' + ((typeof audience !== 'undefined' && audience) || '管理层'),
-          '- 主题（内容）：' + (topicOf() || '未填'),
-          '- 补充需求：' + (requirement || '无'),
-          '',
-          '大纲如下（已确认，直接据此执行）：',
-          JSON.stringify({ contract: (outline && outline.contract) || {}, slides: (outline && outline.slides) || [] }, null, 2),
-          '',
-          '产物请放在 ~/.dsh/xingyan-pptx/decks/<项目名>/exports/ 下。',
-        ].join('\n')
-        try {
-          CLIENT_CTX.uiWorkspace.startSession(undefined, { prompt: brief, whenDraftExists: 'replace' })
-          notify('已把任务交给 PPT 大师会话，切过去看进度')
-        } catch (error) {
-          notify('启动会话失败：' + String(error.message || error).slice(0, 40))
-        }
-      }
-
       const build = async function () {
         if (!outline || busy) return
         setBusy('build')
@@ -1182,8 +1150,8 @@ window.__ModuleLoader__.load({
           outline
             ? h(React.Fragment, null,
                 busy === 'build' ? h('span', { className: 'ed-timer' }, '已用时 ' + Math.floor(elapsed / 60) + ':' + String(elapsed % 60).padStart(2, '0')) : null,
-                h('button', { type: 'button', className: 'pk-btn pk-btn-primary', disabled: Boolean(busy) || !outline, onClick: launchSession },
-                  '交给 PPT 大师出稿'))
+                h('button', { type: 'button', className: 'pk-btn pk-btn-primary', disabled: Boolean(busy), onClick: build },
+                  busy === 'build' ? '出稿中…' : '确认并生成'))
             : null),
         issuePanel,
         busy === 'outline'
@@ -1286,9 +1254,8 @@ window.__ModuleLoader__.load({
     }
 
     return {
-      inject: ['slots', 'locale', 'uiWorkspace'],
+      inject: ['slots', 'locale'],
       apply(ctx) {
-        CLIENT_CTX = ctx
         const registerLocale = (locale, dict) => ctx.effect(() => ctx.locale.register(NS, locale, dict))
         registerLocale('zh', { panel: '星彦 PPT' })
         registerLocale('en', { panel: 'Xingyan PPT' })

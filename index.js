@@ -696,6 +696,16 @@ async function fillTypography(project, card) {
       return '- ' + key + ': ' + ladder[key]
     }).join('\n') + '\n')
   }
+  // 组件与装饰是页面的几何契约，apply-theme 不写，这里补进去
+  const block = function (heading, value) {
+    if (!value) return
+    const body = '```json\n' + JSON.stringify(value, null, 2) + '\n```'
+    const re = new RegExp('^## ' + heading + '$[\\s\\S]*?(?=^## |\\Z)', 'm')
+    const section = '## ' + heading + '\n' + body + '\n'
+    text = re.test(text) ? text.replace(re, section) : text.replace(/\n## forbidden/, '\n' + section + '\n## forbidden')
+  }
+  block('components', card && card.components)
+  block('decoration', card && card.decoration)
   await writeFile(file, text)
   return true
 }
@@ -777,7 +787,13 @@ async function buildDeck(ctx, skillDir, workDir, body) {
   }
   // 字体/字号：主题卡 → spec_lock（导出器要求数值）
   try {
-    const card = JSON.parse(await readFile(join(skillDir, 'themes', 'cards', String(themeId || 'brutalist-acid') + '.json'), 'utf8'))
+    // components / decoration 在 tokens 里；typography 两边都有
+    let card = null
+    try {
+      card = JSON.parse(await readFile(join(skillDir, 'themes', 'tokens', String(themeId || 'brutalist-acid') + '.json'), 'utf8'))
+    } catch (error) {
+      card = JSON.parse(await readFile(join(skillDir, 'themes', 'cards', String(themeId || 'brutalist-acid') + '.json'), 'utf8'))
+    }
     const filled = await fillTypography(project, card)
     if (filled) steps.push({ ok: true, label: 'fill-typography', out: '字号写入 spec_lock', err: '' })
   } catch (error) {
@@ -1334,6 +1350,19 @@ async function authorPages(ctx, project, outline, colors, onProgress, options) {
   await mkdir(outDir, { recursive: true })
   const available = await readdir(tplDir)
   const slides = outline.slides || []
+
+  // 把 spec_lock 里真正决定版式的两段喂给模型（组件几何 + 装饰）
+  let lockExcerpt = ''
+  try {
+    const lock = await readFile(join(project, 'spec_lock.md'), 'utf8')
+    const pick = function (heading) {
+      const start = lock.indexOf('## ' + heading)
+      if (start < 0) return ''
+      const next = lock.indexOf('\n## ', start + 3)
+      return lock.slice(start, next < 0 ? lock.length : next)
+    }
+    lockExcerpt = [pick('components'), pick('decoration'), pick('typography')].filter(Boolean).join('\n')
+  } catch (error) {}
   let authored = 0
   let fallback = 0
   const errors = []
@@ -1354,7 +1383,7 @@ async function authorPages(ctx, project, outline, colors, onProgress, options) {
     let svg = null
     try {
       onProgress && onProgress(index, slides.length, 'drawing')
-      const text = await callPageModel(ctx, PAGE_SYSTEM, pagePrompt(slide, layoutBrief(layoutSvg), colors, index, slides.length), options.sessionId)
+      const text = await callPageModel(ctx, PAGE_SYSTEM + (lockExcerpt ? '\n\n# 本项目的 spec_lock 契约\n' + lockExcerpt : ''), pagePrompt(slide, layoutBrief(layoutSvg), colors, index, slides.length), options.sessionId)
       svg = validSvg(text)
       if (svg) authored += 1
       else errors.push('P' + (index + 1) + ' 返回的不是合法 SVG')
