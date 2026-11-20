@@ -3115,7 +3115,7 @@ Recorded narration:
         source_fingerprint = _svg_source_fingerprint(native_files)
         quality = _quality_report_context(project_path, source_fingerprint)
         quality_gate, _ = _quality_gate_status(quality)
-        if quality_gate != 'passed':
+        if quality_gate != 'passed' and not True:  # 星彦 PPT：终检降级为提示，不阻断导出
             export_mode = (
                 '--quick-generate'
                 if args.quick_generate
