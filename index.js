@@ -533,7 +533,7 @@ function normalizeLayout(slide) {
     slide.cards = slide.cards.map(function (card) {
       if (!card) return card
       const head = card.head || card.title || ''
-      return { head: String(head).slice(0, 20), body: String(card.body || '').slice(0, 90) }
+      return { head: String(head).slice(0, 20), title: String(head).slice(0, 20), body: String(card.body || '').slice(0, 90) }
     })
   }
   if (Array.isArray(slide.cards) && slide.cards.length && key === 'content') slide.template = 'cards-3'
@@ -668,12 +668,13 @@ async function fillTypography(project, card) {
   const file = join(project, 'spec_lock.md')
   let text = ''
   try { text = await readFile(file, 'utf8') } catch (error) { return false }
-  const heading = (card && card.typography && card.typography.heading) || {}
-  const body = (card && card.typography && card.typography.body) || {}
-  const titleFamily = heading.family || 'PingFang SC'
-  const bodyFamily = body.family || 'PingFang SC'
-  const titlePx = Number(heading.sizePx) || 40
-  const bodyPx = Number(body.sizePx) || 20
+  const typo = (card && card.typography) || {}
+  const heading = typo.heading || {}
+  const body = typo.body || {}
+  const titleFamily = typo.title_family || heading.family || typo.font_family || 'PingFang SC'
+  const bodyFamily = typo.body_family || body.family || typo.font_family || 'PingFang SC'
+  const titlePx = Number(typo.title ?? heading.sizePx) || 40
+  const bodyPx = Number(typo.body ?? body.sizePx) || 20
   const set = function (key, value) {
     text = text.replace(new RegExp('^- ' + key + ':.*$', 'm'), '- ' + key + ': ' + value)
   }
@@ -750,8 +751,10 @@ async function trimLongText(project, limit) {
     const svg = await readFile(file, 'utf8')
     let changed = false
     const next = svg.replace(/<text\b([^>]*)>([^<]{2,})<\/text>/g, function (all, attrs, body) {
-      const text = body.trim()
+      const raw = body
+      const text = raw.trim()
       if (text.length <= limit) return all
+      if (/[&<>]/.test(raw)) return all
       changed = true
       return '<text' + attrs + '>' + text.slice(0, limit - 1) + '…</text>'
     })
