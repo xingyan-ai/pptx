@@ -304,6 +304,10 @@ function ruleOutline(input) {
   }
   slides.push({ id: 'ending', role: 'ending', title: '下一步', coreMessage: '需要决策的事项', points: ['事项一', '事项二'] })
   return {
+    schemaVersion: 1,
+    revision: 1,
+    status: 'confirmed',
+    source: 'rule',
     contract: {
       projectName: input.topic || '未命名演示',
       scene: input.scene || '通用汇报',
@@ -863,9 +867,20 @@ async function buildDeck(ctx, skillDir, workDir, body) {
     return { ok: false, failedAt: 'draw-pages', project: project, steps: steps }
   }
 
+  const gateIssues = []
   for (const gate of ['check-fonts.mjs', 'check-theme-fidelity.mjs']) {
-    const result = await runIn(skillDir, node, [script(gate), project], gate.replace('.mjs', ''))
-    steps.push({ ok: true, label: gate.replace('.mjs', ''), out: String(result.out || result.err || '').slice(-160), err: '' })
+    const label = gate.replace('.mjs', '')
+    const args = gate === 'check-fonts.mjs'
+      ? [script(gate), '--theme', String(themeId || 'brutalist-acid')]
+      : [script(gate), project]
+    const result = await runIn(skillDir, node, args, label)
+    steps.push({ ok: result.ok, label: label, out: String(result.out || '').slice(-160), err: String(result.err || '').slice(-160) })
+    if (!result.ok) {
+      const line = String(result.err || result.out || '').split('\n').filter(Boolean).slice(-1).join('').slice(0, 120)
+      // 主题保真先做提示：它要求的是成套版式家具，等页面骨架补齐再改成硬拦
+      if (label === 'check-theme-fidelity') gateIssues.push('主题保真提示：' + line)
+      else return { ok: false, failedAt: label, project: project, issues: [label + '：' + line], reason: line, steps: steps }
+    }
   }
 
   const fin = await runIn(join(skillDir, 'runtime', 'engine', 'scripts'), python, [
@@ -880,7 +895,11 @@ async function buildDeck(ctx, skillDir, workDir, body) {
   const quality = await runIn(engine, python, [
     join(engine, 'svg_quality_checker.py'), project, '--canonical-authoring', '--stage', 'final', '--json',
   ], 'quality-final')
-  steps.push({ ok: true, label: 'quality-final', out: String(quality.out || '').split('\n').slice(-2).join(' ').slice(0, 120), err: '' })
+  steps.push({ ok: quality.ok, label: 'quality-final', out: String(quality.out || '').split('\n').slice(-2).join(' ').slice(0, 120), err: String(quality.err || '').slice(-160) })
+  if (!quality.ok) {
+    const firstError = String(quality.out || quality.err || '').split('\n').filter(function (line) { return line.includes('ERROR') }).slice(0, 2).join(' ')
+    return { ok: false, failedAt: 'quality-final', project: project, issues: [firstError || '终检未通过'], reason: firstError || '终检未通过', steps: steps }
+  }
 
   // Python 直转 PPTX（新引擎没有 pptx-export.mjs，用内核的 svg_to_pptx.py）
   const made = await runIn(engine, python, [join(engine, 'svg_to_pptx.py'), project], 'pptx-export')
@@ -898,7 +917,7 @@ async function buildDeck(ctx, skillDir, workDir, body) {
   const pptxPath = pptxName ? join(exportsDir2, pptxName) : ''
   let size = 0
   try { size = (await stat(pptxPath)).size } catch (error) {}
-  return { ok: true, project: project, file: pptxName, size: size, pages: slides.length, steps: steps, failedAt: null }
+  return { ok: true, project: project, file: pptxName, size: size, pages: slides.length, steps: steps, issues: gateIssues, failedAt: null }
 }
 
 /**
@@ -1322,6 +1341,17 @@ function pagePrompt(slide, brief, colors, index, total) {
     '',
     '调色板：背景 ' + colors.bg + '，正文 ' + colors.text + '，强调 ' + colors.accent,
     '',
+    '构件要求（不满足会被主题保真门禁拦下）：',
+    '- 每个内容页必须至少有一个构件组：<g data-component="table"> | "chart" | "kpi" | "callout" | "list"',
+    '- 构件组内的描边宽度、圆角、阴影、配色一律用 spec_lock 的 components / decoration，不要自己发明',
+    '- 根节点写 data-pptx-page-role="' + (slide.role || 'content') + '"（小写 kebab-case，不要写中文）',
+    '- 一段话放在一个 <text> 里，多行用 tspan，不要拆成多个兄弟 text',
+    '- 标题下方必须有一条 rule 线：<rect> 高度 = decoration.rule.thickness，颜色 = decoration.rule.color',
+    '- 页眉左上角必须有 tag：<rect> + <text>，尺寸取 decoration.tag.height / fontSize',
+    '- 每个直接挂在根下的可见 <g> 必须带 data-pptx-bounds="x y w h"，数值必须是有限数字',
+    '- 所有 width/height 写成单一数字，不要写成算式（如 1104-0）',
+    '- 页脚必须有页码文字',
+    '',
     '内容（已按页面容量裁剪，不要自行扩写）：',
     '标题：' + (slide.title || ''),
     '一句话结论：' + capped.coreMessage,
@@ -1447,9 +1477,11 @@ async function authorPages(ctx, project, outline, colors, onProgress, options) {
       : slide.metrics && slide.metrics.length ? '13_kpi_dashboard'
       : slide.compare ? '05_comparison'
       : null
-    const wanted = LAYOUT_ALIAS[slide.template] || byShape || LAYOUT_BY_ROLE[slide.role] || '02_title_content'
-    const file = available.includes(wanted + '.svg')
-      ? wanted + '.svg'
+    const wanted = slide.layoutFile
+      || (LAYOUT_ALIAS[slide.template] ? LAYOUT_ALIAS[slide.template] + '.svg' : '')
+      || (byShape ? byShape + '.svg' : '')
+    const file = wanted && available.includes(wanted)
+      ? wanted
       : available.filter(function (name) { return /^\d\d_.*\.svg$/.test(name) })[0]
     if (!file) continue
 
