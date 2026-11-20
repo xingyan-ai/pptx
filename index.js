@@ -196,19 +196,18 @@ const OUTLINE_SYSTEM = `你是一名演示稿策划。根据用户给定的主�
 
 /** 合成器支持的版式，以及每种版式必须补齐的字段。 */
 const COMPOSE_MENU = [
-  ['cover', '封面：title + coreMessage'],
+  ['cover', '封面'],
   ['toc', '目录：points 写 3–6 条章节名'],
-  ['section', '章节过渡：title + coreMessage'],
-  ['cards-3', '卡片：cards [{title, body}]，2–4 条，body 30–50 字'],
-  ['metrics-4', '指标：metrics [{value, label, note}]，3–4 条，value 带数字和单位'],
-  ['table', '表格：table {columns:[{label}], rows:[[...]]}，3–5 列 3–6 行'],
-  ['two-content', '双栏对比：compare {left:{head,lines[]}, right:{head,lines[]}}'],
-  ['metrics-compare', '指标对比：compare 两侧各带 head 和 2–3 条 lines'],
-  ['structure', '层级结构：layers [{name, text}]，2–4 层'],
-  ['summary', '小结：points + takeaway 一句话'],
-  ['content', '常规内容：points 3–4 条（少用，优先上面几种）'],
-  ['content-rich', '信息密集：points + cards'],
-  ['ending', '结尾：title + coreMessage'],
+  ['section', '章节过渡：一件事一句话'],
+  ['hero', '冲击页：一句话判断或一个大数字，最多 3 条'],
+  ['content', '常规内容：4 个要点以内'],
+  ['cards-3', '卡片：cards [{title, body}]，2–4 条'],
+  ['metrics-4', '指标盘：metrics [{value, label, note}]，3–4 条'],
+  ['table', '表格：table {columns, rows}，3–5 列 3–6 行'],
+  ['metrics-compare', '指标对比：compare 两侧各 2–3 条'],
+  ['structure', '层级/流程：layers [{name, text}]，2–4 层'],
+  ['summary', '小结：points + takeaway'],
+  ['ending', '结尾'],
 ]
 
 async function readTemplateMenu(skillDir) {
@@ -216,8 +215,13 @@ async function readTemplateMenu(skillDir) {
     '可用版式（每页必须从下面选一个填进 slide.template）：',
     COMPOSE_MENU.map(function (row) { return '- ' + row[0] + '：' + row[1] }).join('\n'),
     '',
-    '内容页优先用 cards-3 / metrics-4 / table / two-content / structure，',
-    '只有确实无法结构化时才用 content。数据类内容必须给出数字和口径。',
+    '',
+    '节奏规则（和引擎一致）：',
+    '- 封面必备；目录和章节页按内容需要，不是每份都要',
+    '- 连续内容页不超过 3 页，中间插一页 hero（一句判断或一个大数字）或 section',
+    '- 有对比关系就用 metrics-compare，有多列数据就用 table，不要全写成要点',
+    '- hero 页最多 3 条内容，超过会告警',
+    '- 数据类内容必须给出数字和口径',
   ].join('\n')
 }
 
@@ -1339,8 +1343,18 @@ function wellFormed(svg) {
     const selfClosing = match[4] === '/'
     if (closing) {
       if (stack.pop() !== name) return false
-    } else if (!selfClosing) {
-      stack.push(name)
+    } else {
+      // 同一个标签里重复属性会让 finalize 直接失败
+      const attrs = match[3] || ''
+      const seen = new Set()
+      const nameRe = /([A-Za-z_:][\w:.-]*)\s*=/g
+      let attr = nameRe.exec(attrs)
+      while (attr) {
+        if (seen.has(attr[1])) return false
+        seen.add(attr[1])
+        attr = nameRe.exec(attrs)
+      }
+      if (!selfClosing) stack.push(name)
     }
     match = tagRe.exec(cleaned)
   }
