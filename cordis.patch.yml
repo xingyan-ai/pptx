@@ -2,4 +2,4 @@
 # 主题与版式随包内置在 vendor/xingyan-pptx/，不需要外部路径。
 - insert:
     - id: xingyan-pptx
-      name: 'dsh-xingyan-pptx'
+      name: 'dsh-plugin-xingyan-pptx'

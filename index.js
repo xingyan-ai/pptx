@@ -22,7 +22,7 @@ import { promisify } from 'node:util'
 import { randomUUID } from 'node:crypto'
 
 const run = promisify(execFile)
-const NS = 'dsh-xingyan-pptx'
+const NS = 'dsh-plugin-xingyan-pptx'
 const sessionFor = () => `dsh-xingyan-pptx-${randomUUID()}`
 
 const HERE = dirname(fileURLToPath(import.meta.url))

@@ -7,11 +7,12 @@ DeepSeek Harness 插件：**选主题 → 写需求 → 出大纲 → 逐页生�
 客户端「插件 → 添加插件」里填：
 
 ```
+dsh-plugin-xingyan-pptx         # 包名（npm 发布后）
 github:xingyan-ai/pptx          # GitHub（本仓库）
 /绝对路径/xingyan-pptx           # 本地目录
 ```
 
-npm 版本尚未发布。装完重启客户端，侧栏出现「星彦 PPT」。
+npm 版本尚未发布，当前请用 GitHub 或本地目录安装。装完重启客户端，侧栏出现「星彦 PPT」。
 
 ## 依赖
 
