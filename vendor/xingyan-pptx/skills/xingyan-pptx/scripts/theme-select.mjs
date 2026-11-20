@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import { readJsonFile } from './lib/json.mjs';
 /**
  * Theme selection for ClawHive Deck Studio.
  *
@@ -45,7 +44,7 @@ function parseArgs(argv) {
 function loadScenes() {
   if (!fs.existsSync(SCENARIOS)) return {};
   try {
-    return readJsonFile(SCENARIOS).scenes || {};
+    return JSON.parse(fs.readFileSync(SCENARIOS, 'utf8')).scenes || {};
   } catch (error) {
     console.warn(`[WARN] themes/scenarios.json unreadable: ${error.message}`);
     return {};
@@ -58,12 +57,12 @@ function loadTokens() {
     .sort()
     .map((name) => {
       const file = path.join(TOKENS_DIR, name);
-      return { ...readJsonFile(file), _file: file };
+      return { ...JSON.parse(fs.readFileSync(file, 'utf8')), _file: file };
     });
 }
 
 function loadBrief(args) {
-  if (args.brief) return readJsonFile(args.brief);
+  if (args.brief) return JSON.parse(fs.readFileSync(args.brief, 'utf8'));
   if (args['brief-json']) return JSON.parse(args['brief-json']);
   return {};
 }

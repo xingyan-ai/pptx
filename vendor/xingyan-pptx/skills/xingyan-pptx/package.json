@@ -1,6 +1,6 @@
 {
-  "name": "zhongtai-pptx",
-  "version": "1.0.38",
+  "name": "clawhive-pptx",
+  "version": "72.1.0",
   "private": true,
   "type": "module",
   "description": "Outline-first HTML / PPTX deck workflow for ClawHive: a user-editable outline drives the story, a bundled engine renders it, and theme overlays are visual-only. Supports create, beautify and edit.",
@@ -25,13 +25,6 @@
     "check:inputs": "node scripts/check-inputs.mjs",
     "init": "node scripts/init-project.mjs",
     "theme:components": "node scripts/build-components.mjs",
-    "fonts:check": "node scripts/check-fonts.mjs",
-    "compose": "node scripts/compose-deck.mjs",
-    "compose:check": "node scripts/compose-deck.mjs --check",
-    "source:extract": "node scripts/extract-source.mjs",
-    "build": "node scripts/build-deck.mjs",
-    "fill:brand": "node scripts/fill-brand-contract.mjs",
-    "core:prepare": "node scripts/prepare-core-project.mjs",
-    "core:compose": "node scripts/compose-core.mjs"
+    "fonts:check": "node scripts/check-fonts.mjs"
   }
 }

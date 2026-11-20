@@ -1,4 +1,3 @@
-import { readJsonFile } from './json.mjs';
 /**
  * Font handling for Deck Studio.
  *
@@ -27,7 +26,7 @@ const MAP_FILE = path.join(ROOT, 'themes', 'fonts.map.json');
 
 export function loadFontMap() {
   if (!fs.existsSync(MAP_FILE)) return { families: {} };
-  return readJsonFile(MAP_FILE);
+  return JSON.parse(fs.readFileSync(MAP_FILE, 'utf8'));
 }
 
 const QUOTES = /["']/g;

@@ -6,7 +6,7 @@
 
 `svg_final` 必须已经内嵌图标和图片，否则导出的单文件 HTML 会引用外部资源并失败。
 
-客户端不执行引擎的整条流水线。优先使用已经自包含的 `svg_output`；需要 `svg_final` 时由导出链路用宿主注入的 Python 生成，HTML 打包与外部引用检查仍在本地完成。
+客户端不运行 Python。优先使用已经自包含的 `svg_output`；需要 `svg_final` 时由后端或执行内核的导出链路生成，客户端只负责打包和外部引用检查。
 
 ## 2. 输出
 
@@ -47,7 +47,9 @@
 
 `@media print` 会隐藏导航，每页强制分页，适合导出 PDF：
 
-不要用命令行调浏览器（`chrome` 在 Windows 不在 PATH，也违反"不碰浏览器"的硬规则）。需要 PDF 时请用户在浏览器里用系统打印，或在宿主里导出。
+```bash
+chrome --headless --print-to-pdf=deck.pdf deck.html
+```
 
 ## 6. 校验
 

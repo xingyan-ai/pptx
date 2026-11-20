@@ -8,13 +8,13 @@
 |---|---|
 | 读 | 按 `references/engine-usage.md` 的允许清单读 `ENGINE_DIR/SKILL.md`、`references/`、`templates/`；`workflows/` 只作后端参考，客户端不按它执行 |
 | 写 | 只读。升级时整棵替换，不逐文件改 |
-| 执行 | 客户端用宿主注入的 Python 跑 `scripts/pptx-export.mjs`（需要能 import python-pptx / lxml / PIL） |
+| 执行 | 客户端不执行其中任何 `python3`；Python 工具链只在后端运行 |
 | 路径 | `ENGINE_DIR = runtime/engine/` |
 
 ## 客户端使用边界
 
 - 引擎 `SKILL.md` 的 Mandatory Load Order、`workflows/routing.md` 和 Step 1–7 是引擎/后端的执行流程，客户端不执行。
-- 不直接运行内核的 Python 命令；唯一入口是 `scripts/pptx-export.mjs`：它按 `--python` → `CLAWHIVE_PPTX_PYTHON` → `CLAWHIVE_PYTHON_EXECUTABLE` → ClawHive 运行时 → 本机 `python` 的顺序解析解释器，再按需调用 `svg_quality_checker.py` 与 `svg_to_pptx.py`。其余脚本（`project_manager.py`、`source_to_md.py`、`text_measure.py`、`finalize_svg.py`、`icon_sync.py`）仍不在客户端执行。
+- 不运行 `scripts/` 下的任何 Python 命令，包括 `project_manager.py`、`source_to_md.py`、`text_measure.py`、`svg_quality_checker.py`、`finalize_svg.py`、`svg_to_pptx.py` 和 `icon_sync.py`。
 - 引擎文档里提到的 `simple-icons`、`chunk-filled`、`templates/brands/`、`templates/sounds/` 已从包内裁掉；不要再引用，也不要因为引擎文档写了就用。
 - 引擎文档里写死的旧工作区路径（`skills/...`）视为过期；需要读文件时以 `ENGINE_DIR` 为准。
 - 完整加载/跳过清单和失效资产表见 `references/engine-usage.md`。外壳规则与引擎参考冲突时，以 `SKILL.md` 和 `references/` 为准。
@@ -28,10 +28,8 @@
 ## 完整性校验
 
 ```bash
-# 仅打包 / CI 执行；客户端不跑。
-# PowerShell 不支持 &&，分两行写；Windows 上通常只有 python，没有 python3。
-python runtime/engine/scripts/attribution_guard.py
-if ($LASTEXITCODE -eq 0) { "integrity ok" }
+# 打包 / CI 执行；客户端不跑
+python3 runtime/engine/scripts/attribution_guard.py && echo "integrity ok"
 ```
 
 校验不通过时，工具链以 `exit 78` 关闭。以下内容不得修改、删除或重命名：

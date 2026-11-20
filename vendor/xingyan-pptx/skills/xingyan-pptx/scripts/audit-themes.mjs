@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import { readJsonFile } from './lib/json.mjs';
 /** Audit theme tokens before packaging. Usage: node scripts/audit-themes.mjs */
 
 import fs from 'node:fs';
@@ -17,11 +16,11 @@ const REQUIRED_COLORS = ['background', 'surface', 'surfaceAlt', 'text', 'textMut
 const REQUIRED_TYPE = ['display', 'title', 'metric', 'subtitle', 'body', 'annotation', 'title_stack', 'body_stack', 'title_stack_ppt', 'body_stack_ppt'];
 const REQUIRED_SPACING = ['margin', 'gap', 'gutter', 'radius', 'leading'];
 
-const overrides = fs.existsSync(OVERRIDES) ? readJsonFile(OVERRIDES) : {};
+const overrides = fs.existsSync(OVERRIDES) ? JSON.parse(fs.readFileSync(OVERRIDES, 'utf8')) : {};
 const report = { count: 0, passed: 0, review: [], manualReviewed: [], themes: [] };
 
 for (const name of fs.readdirSync(TOKENS).filter((item) => item.endsWith('.json')).sort()) {
-  const tokens = readJsonFile(path.join(TOKENS, name));
+  const tokens = JSON.parse(fs.readFileSync(path.join(TOKENS, name), 'utf8'));
   const issues = [];
   for (const key of REQUIRED_COLORS) if (!(key in (tokens.colors || {}))) issues.push(`missing color ${key}`);
   for (const key of REQUIRED_TYPE) if (!(key in (tokens.typography || {}))) issues.push(`missing type ${key}`);

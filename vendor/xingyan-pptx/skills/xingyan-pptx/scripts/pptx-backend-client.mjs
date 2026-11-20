@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-import { expandUserPath } from './lib/paths.mjs';
-import { readJsonFile } from './lib/json.mjs';
 /**
  * PPTX backend client.
  *
@@ -51,7 +49,7 @@ function readTitle(project) {
 function readSelection(project) {
   const file = path.join(project, 'theme_selection.json');
   if (!fs.existsSync(file)) return null;
-  return readJsonFile(file);
+  return JSON.parse(fs.readFileSync(file, 'utf8'));
 }
 
 function readPages(project, lang) {
@@ -137,7 +135,7 @@ async function saveResponse(response, out) {
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
-  const project = path.resolve(expandUserPath(args._[0] || ''));
+  const project = path.resolve(args._[0] || '');
   if (!project || !fs.existsSync(project)) {
     console.error('Usage: pptx-backend-client.mjs <project> --endpoint URL [--token TOKEN] [--out file.pptx] [--dry-run]');
     process.exit(1);

@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-import { expandUserPath } from './lib/paths.mjs';
-import { readJsonFile } from './lib/json.mjs';
 /**
  * Create a Deck Studio project skeleton.
  *
@@ -41,7 +39,7 @@ function parseArgs(argv) {
 }
 
 const args = parseArgs(process.argv.slice(2));
-const project = path.resolve(expandUserPath(args._[0] || ''));
+const project = path.resolve(args._[0] || '');
 const theme = typeof args.theme === 'string' ? args.theme : '';
 if (!project) {
   console.error('Usage: init-project.mjs <project-dir> [--theme <theme-id>] [--name "Deck title"]');
@@ -75,9 +73,9 @@ if (theme) {
       'choose',
       '--theme', theme,
       '--out', selectionPath,
-    ], { stdio: 'ignore', windowsHide: true });
+    ], { stdio: 'ignore' });
   }
-  const selection = readJsonFile(selectionPath);
+  const selection = JSON.parse(fs.readFileSync(selectionPath, 'utf8'));
   selection.localTokensPath = 'tokens.json';
   selection.localThemeCss = 'theme.css';
   fs.writeFileSync(selectionPath, JSON.stringify(selection, null, 2) + '\n', 'utf8');

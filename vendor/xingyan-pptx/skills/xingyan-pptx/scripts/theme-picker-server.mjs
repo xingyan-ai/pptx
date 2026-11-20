@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import { expandUserPath } from './lib/paths.mjs';
 /**
  * Local theme picker for Stage 1.
  *
@@ -67,7 +66,7 @@ function safePath(urlPath) {
 
 function main() {
   const args = parseArgs(process.argv.slice(2));
-  const project = args.project ? path.resolve(expandUserPath(args.project)) : '';
+  const project = args.project ? path.resolve(args.project) : '';
   if (!project) {
     console.error('Usage: theme-picker-server.mjs --project <project-dir> [--port 5055]');
     process.exit(1);
@@ -95,7 +94,6 @@ function main() {
           const selectScript = path.join(HERE, 'theme-select.mjs');
           execFileSync(process.execPath, [selectScript, 'choose', '--theme', theme, '--source', 'user', '--out', selectionPath], {
             stdio: 'ignore',
-            windowsHide: true,
           });
           send(
             res,

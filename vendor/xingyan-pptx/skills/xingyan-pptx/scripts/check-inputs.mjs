@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import { expandUserPath } from './lib/paths.mjs';
 /**
  * Client input gate for Plan A.
  *
@@ -48,7 +47,7 @@ function collect(dir, out = []) {
 }
 
 const args = parseArgs(process.argv.slice(2));
-const target = path.resolve(expandUserPath(args._[0] || ''));
+const target = path.resolve(args._[0] || '');
 if (!target || !fs.existsSync(target)) {
   console.error('Usage: check-inputs.mjs <project-or-sources-dir>');
   process.exit(1);

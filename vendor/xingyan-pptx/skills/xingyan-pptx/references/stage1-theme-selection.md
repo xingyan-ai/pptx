@@ -30,17 +30,16 @@ node scripts/theme-select.mjs choose --theme scientific-atlas --source user \
 
 ### 用户想看大图再选
 
-不要把主题选择器服务开在会话里，也不要替用户打开浏览器。把候选清单和两个现成页面的路径给用户，由用户自己打开：
+```bash
+node scripts/theme-picker-server.mjs --project <project> --port 5055
+```
 
-- `theme-gallery.html`（21 套主题的总览）
-- `theme-furniture-gallery.html`（组件与装饰）
-
-用户看完告诉你选了哪套，用 `theme-select.mjs choose --theme <id> --source user` 落盘。agent 不能把"用户看过图"当成"用户选过"。
+浏览器打开 `http://127.0.0.1:5055/`，点一张主题卡；这条路径把 `source` 写成 `user`。
 
 ### agent 推荐
 
 ```bash
-node scripts/theme-select.mjs recommend --brief validation/brief.json --limit 5
+node scripts/theme-select.mjs recommend --brief-json '{"goal":"季度经营复盘","density":"dense"}' --limit 5
 ```
 
 推荐不是纯关键词打分，它读 `themes/scenarios.json`：

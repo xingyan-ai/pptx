@@ -1,0 +1,1750 @@
+<!doctype html>
+<html lang="zh-Hans">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClawHive PPTX · 21 套主题组件样本</title>
+<style>
+  :root { color-scheme: light; }
+  body { margin: 0; padding: 24px; background: #ecebe7; font: 14px/1.5 -apple-system, "PingFang SC", sans-serif; color: #222; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  p.note { margin: 0 0 24px; color: #666; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(520px, 1fr)); gap: 20px; }
+  figure { margin: 0; background: #fff; border: 1px solid #d6d4cd; border-radius: 6px; overflow: hidden; }
+  figcaption { display: flex; justify-content: space-between; gap: 12px; padding: 10px 12px; font-weight: 600; border-bottom: 1px solid #e6e4dd; }
+  figcaption span { font-weight: 400; color: #888; }
+  svg { display: block; width: 100%; height: auto; }
+</style>
+<h1>38 套主题装饰样本</h1>
+<p class="note">每张是同一份内容骨架，只换主题的 decoration 与 token。用 <code>--scope design</code> 应用后再写页面，效果以主题为准。</p>
+<div class="grid">
+  <figure>
+    <figcaption>8-Bit Orbit 像素轨道 <span>pixel-art</span></figcaption>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" data-theme-sample="8-bit-orbit">
+  <rect x="0" y="0" width="1280" height="720" fill="#090B26"/>
+  <g id="header">
+    <rect x="64" y="56" width="190" height="30" rx="0" fill="#FFCC31" stroke="#FFFFFF" stroke-width="2"/>
+    <text x="76" y="76" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="13" font-weight="700" fill="#000000">03 · COMPONENTS</text>
+    <text x="64" y="146" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="42" font-weight="800" fill="#FFFFFF">8-Bit Orbit 像素轨道</text>
+  </g>
+  <g id="rule"><rect x="64" y="166" width="1152" height="4" fill="#FFFFFF"/></g>
+  <g id="chart" data-component="chart">
+    <text x="64" y="196" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#A2A2AD">条形图</text>
+    <text x="64" y="228" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#FFFFFF">叙事</text>
+    <rect x="160" y="214" width="400" height="18" fill="#FFCC31" stroke="#FFFFFF" stroke-width="2"/>
+    <text x="568" y="228" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">92</text>
+    <text x="64" y="274" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#FFFFFF">证据</text>
+    <rect x="160" y="260" width="340" height="18" fill="#5B39FF" stroke="#FFFFFF" stroke-width="2"/>
+    <text x="508" y="274" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">78</text>
+    <text x="64" y="320" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#FFFFFF">数据</text>
+    <rect x="160" y="306" width="278" height="18" fill="#FFCC31" stroke="#FFFFFF" stroke-width="2"/>
+    <text x="446" y="320" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">64</text>
+    <text x="64" y="366" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#FFFFFF">节奏</text>
+    <rect x="160" y="352" width="218" height="18" fill="#5B39FF" stroke="#FFFFFF" stroke-width="2"/>
+    <text x="386" y="366" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">50</text>
+    <rect x="160" y="400" width="540" height="2" fill="#FFFFFF"/>
+  </g>
+  <g id="table" data-component="table">
+    <text x="740" y="186" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#A2A2AD">表格</text>
+    <rect x="740" y="200" width="476" height="44" rx="0" fill="#FFCC31"/>
+    <rect x="740" y="288" width="476" height="44" fill="#1B1556"/>
+    <text x="758" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">核心指标</text>
+    <text x="950" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">Q2</text>
+    <text x="1050" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">Q3</text>
+    <text x="1144" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">环比</text>
+    <rect x="740" y="244" width="476" height="2" fill="#FFFFFF"/>
+    <text x="758" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#FFFFFF">有效任务</text>
+    <text x="950" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#A2A2AD">1,284</text>
+    <text x="1050" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#A2A2AD">1,736</text>
+    <text x="1144" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#A2A2AD">+35%</text>
+    <rect x="740" y="288" width="476" height="2" fill="#FFFFFF"/>
+    <text x="758" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#FFFFFF">留存率</text>
+    <text x="950" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#A2A2AD">41%</text>
+    <text x="1050" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#A2A2AD">52%</text>
+    <text x="1144" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#A2A2AD">+11pt</text>
+    <rect x="740" y="332" width="476" height="2" fill="#FFFFFF"/>
+    <text x="758" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#FFFFFF">人均耗时</text>
+    <text x="950" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#A2A2AD">26min</text>
+    <text x="1050" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#A2A2AD">18min</text>
+    <text x="1144" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#A2A2AD">−31%</text>
+    <rect x="740" y="376" width="476" height="2" fill="#FFFFFF"/>
+    <rect x="741" y="201" width="474" height="174" rx="0" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+  </g>
+  <g id="kpi-1" data-component="kpi">
+    <rect x="68" y="474" width="286" height="112" rx="0" fill="#FFFFFF"/>
+    <rect x="64" y="470" width="286" height="112" rx="0" fill="#1D1F37" stroke="#FFFFFF" stroke-width="2"/>
+    <text x="86" y="532" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="36" font-weight="800" fill="#FFCC31">224</text>
+    <text x="86" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#A2A2AD">品牌提及</text>
+  </g>
+  <g id="kpi-2" data-component="kpi">
+    <rect x="376" y="474" width="286" height="112" rx="0" fill="#FFFFFF"/>
+    <rect x="372" y="470" width="286" height="112" rx="0" fill="#1D1F37" stroke="#FFFFFF" stroke-width="2"/>
+    <text x="394" y="532" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="36" font-weight="800" fill="#FFCC31">3.4×</text>
+    <text x="394" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#A2A2AD">心智差距</text>
+  </g>
+  <g id="callout" data-component="callout">
+    <rect x="704" y="474" width="516" height="112" rx="0" fill="#FFFFFF"/>
+    <rect x="700" y="470" width="516" height="112" rx="0" fill="#1B1556" stroke="#FFFFFF" stroke-width="2"/>
+    <text x="722" y="514" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="800" fill="#FFFFFF">判断先行，证据在后</text>
+    <text x="722" y="544" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#FFFFFF">一页只留一个主导对象，装饰不替代表达。</text>
+  </g>
+  <g id="list" data-component="list">
+    <rect x="64" y="600" width="10" height="10" fill="#FFCC31" stroke="#FFFFFF" stroke-width="2"/>
+    <text x="88" y="610" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#FFFFFF">判断先行，证据在后</text>
+    <rect x="64" y="624" width="10" height="10" fill="#FFCC31" stroke="#FFFFFF" stroke-width="2"/>
+    <text x="88" y="634" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#FFFFFF">一页只留一个主导对象</text>
+    <rect x="64" y="648" width="10" height="10" fill="#FFCC31" stroke="#FFFFFF" stroke-width="2"/>
+    <text x="88" y="658" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#FFFFFF">装饰不替代关系表达</text>
+  </g>
+  <g id="footer">
+    <line x1="64" y1="678" x2="1216" y2="678" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="64" y="702" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#A2A2AD">8-Bit Orbit 像素轨道 · components</text>
+  </g>
+</svg>
+
+  </figure>
+  <figure>
+    <figcaption>Brutalist Acid 酸性粗野主义 <span>brutalist</span></figcaption>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" data-theme-sample="brutalist-acid">
+  <rect x="0" y="0" width="1280" height="720" fill="#F4F1E8"/>
+  <g id="header">
+    <rect x="64" y="56" width="190" height="32" rx="0" fill="#D7FF00" stroke="#090909" stroke-width="3"/>
+    <text x="80" y="77" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="800" fill="#000000">03 · COMPONENTS</text>
+    <text x="64" y="146" font-family="&quot;Arial Black&quot;, Arial, &quot;PingFang SC&quot;, sans-serif" font-size="42" font-weight="800" fill="#090909">Brutalist Acid 酸性粗野主义</text>
+  </g>
+  <g id="rule"><rect x="64" y="166" width="1152" height="4" fill="#090909"/></g>
+  <g id="chart" data-component="chart">
+    <text x="64" y="196" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#62615E">条形图</text>
+    <text x="64" y="230" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="18" fill="#090909">叙事</text>
+    <rect x="160" y="214" width="400" height="22" fill="#D7FF00" stroke="#090909" stroke-width="3"/>
+    <text x="568" y="230" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="800" fill="#090909">92</text>
+    <text x="64" y="276" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="18" fill="#090909">证据</text>
+    <rect x="160" y="260" width="340" height="22" fill="#D1F1E7" stroke="#090909" stroke-width="3"/>
+    <text x="508" y="276" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="800" fill="#090909">78</text>
+    <text x="64" y="322" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="18" fill="#090909">数据</text>
+    <rect x="160" y="306" width="278" height="22" fill="#D7FF00" stroke="#090909" stroke-width="3"/>
+    <text x="446" y="322" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="800" fill="#090909">64</text>
+    <text x="64" y="368" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="18" fill="#090909">节奏</text>
+    <rect x="160" y="352" width="218" height="22" fill="#D1F1E7" stroke="#090909" stroke-width="3"/>
+    <text x="386" y="368" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="800" fill="#090909">50</text>
+    <rect x="160" y="400" width="540" height="2" fill="#090909"/>
+  </g>
+  <g id="table" data-component="table">
+    <text x="740" y="186" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#62615E">表格</text>
+    <rect x="740" y="200" width="476" height="44" rx="0" fill="#090909"/>
+    <text x="758" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#F4F1E8">核心指标</text>
+    <text x="950" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#F4F1E8">Q2</text>
+    <text x="1050" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#F4F1E8">Q3</text>
+    <text x="1144" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#F4F1E8">环比</text>
+    <rect x="740" y="244" width="476" height="3" fill="#090909"/>
+    <text x="758" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#090909">有效任务</text>
+    <text x="950" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#62615E">1,284</text>
+    <text x="1050" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#62615E">1,736</text>
+    <text x="1144" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#62615E">+35%</text>
+    <rect x="740" y="288" width="476" height="3" fill="#090909"/>
+    <text x="758" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#090909">留存率</text>
+    <text x="950" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#62615E">41%</text>
+    <text x="1050" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#62615E">52%</text>
+    <text x="1144" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#62615E">+11pt</text>
+    <rect x="740" y="332" width="476" height="3" fill="#090909"/>
+    <text x="758" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#090909">人均耗时</text>
+    <text x="950" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#62615E">26min</text>
+    <text x="1050" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#62615E">18min</text>
+    <text x="1144" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#62615E">−31%</text>
+    <rect x="740" y="376" width="476" height="3" fill="#090909"/>
+    <rect x="741.5" y="201.5" width="473" height="173" rx="0" fill="none" stroke="#090909" stroke-width="3"/>
+  </g>
+  <g id="kpi-1" data-component="kpi">
+    <rect x="72" y="478" width="286" height="112" rx="0" fill="#090909"/>
+    <rect x="64" y="470" width="286" height="112" rx="0" fill="#F8F6F1" stroke="#090909" stroke-width="3"/>
+    <text x="86" y="532" font-family="&quot;Arial Black&quot;, Arial, &quot;PingFang SC&quot;, sans-serif" font-size="38" font-weight="800" fill="#7A9004">224</text>
+    <text x="86" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#62615E">品牌提及</text>
+  </g>
+  <g id="kpi-2" data-component="kpi">
+    <rect x="380" y="478" width="286" height="112" rx="0" fill="#090909"/>
+    <rect x="372" y="470" width="286" height="112" rx="0" fill="#F8F6F1" stroke="#090909" stroke-width="3"/>
+    <text x="394" y="532" font-family="&quot;Arial Black&quot;, Arial, &quot;PingFang SC&quot;, sans-serif" font-size="38" font-weight="800" fill="#7A9004">3.4×</text>
+    <text x="394" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#62615E">心智差距</text>
+  </g>
+  <g id="callout" data-component="callout">
+    <rect x="708" y="478" width="516" height="112" rx="0" fill="#090909"/>
+    <rect x="700" y="470" width="516" height="112" rx="0" fill="#D7FF00" stroke="#090909" stroke-width="3"/>
+    <text x="722" y="514" font-family="&quot;Arial Black&quot;, Arial, &quot;PingFang SC&quot;, sans-serif" font-size="17" font-weight="800" fill="#000000">判断先行，证据在后</text>
+    <text x="722" y="544" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#000000">一页只留一个主导对象，装饰不替代表达。</text>
+  </g>
+  <g id="list" data-component="list">
+    <rect x="64" y="599" width="12" height="12" fill="#D7FF00" stroke="#090909" stroke-width="2"/>
+    <text x="90" y="610" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#090909">判断先行，证据在后</text>
+    <rect x="64" y="623" width="12" height="12" fill="#D7FF00" stroke="#090909" stroke-width="2"/>
+    <text x="90" y="634" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#090909">一页只留一个主导对象</text>
+    <rect x="64" y="647" width="12" height="12" fill="#D7FF00" stroke="#090909" stroke-width="2"/>
+    <text x="90" y="658" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#090909">装饰不替代关系表达</text>
+  </g>
+  <g id="footer">
+    <line x1="64" y1="678" x2="1216" y2="678" stroke="#090909" stroke-width="1"/>
+    <text x="64" y="702" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#62615E">Brutalist Acid 酸性粗野主义 · components</text>
+  </g>
+</svg>
+
+  </figure>
+  <figure>
+    <figcaption>Chrome Future 银铬未来 <span>glassmorphism</span></figcaption>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" data-theme-sample="chrome-future">
+  <rect x="0" y="0" width="1280" height="720" fill="#F7F9FA"/>
+  <g id="header">
+    <rect x="64" y="56" width="190" height="28" rx="16" fill="#E8FAD9" stroke="#C5C7C9" stroke-width="1"/>
+    <text x="76" y="74" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" font-weight="600" fill="#13171A">03 · COMPONENTS</text>
+    <text x="64" y="146" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="42" font-weight="700" fill="#13171A">Chrome Future 银铬未来</text>
+  </g>
+  <g id="rule"><rect x="64" y="166" width="1152" height="1" fill="#C5C7C9"/></g>
+  <g id="chart" data-component="chart">
+    <text x="64" y="196" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#6A6D6F">条形图</text>
+    <rect x="340" y="208" width="1" height="192" fill="#C5C7C9" opacity="0.55"/>
+    <rect x="520" y="208" width="1" height="192" fill="#C5C7C9" opacity="0.55"/>
+    <text x="64" y="226" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#13171A">叙事</text>
+    <rect x="160" y="214" width="400" height="14" fill="#2677FF"/>
+    <text x="568" y="226" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#13171A">92</text>
+    <text x="64" y="272" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#13171A">证据</text>
+    <rect x="160" y="260" width="340" height="14" fill="#A4FF42"/>
+    <text x="508" y="272" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#13171A">78</text>
+    <text x="64" y="318" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#13171A">数据</text>
+    <rect x="160" y="306" width="278" height="14" fill="#2677FF"/>
+    <text x="446" y="318" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#13171A">64</text>
+    <text x="64" y="364" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#13171A">节奏</text>
+    <rect x="160" y="352" width="218" height="14" fill="#A4FF42"/>
+    <text x="386" y="364" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#13171A">50</text>
+    <rect x="160" y="400" width="540" height="1" fill="#C5C7C9"/>
+  </g>
+  <g id="table" data-component="table">
+    <text x="740" y="186" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#6A6D6F">表格</text>
+    <rect x="740" y="200" width="476" height="44" rx="14" fill="#E8FAD9"/>
+    <text x="758" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#13171A">核心指标</text>
+    <text x="950" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#13171A">Q2</text>
+    <text x="1050" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#13171A">Q3</text>
+    <text x="1144" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#13171A">环比</text>
+    <rect x="740" y="244" width="476" height="1" fill="#C5C7C9"/>
+    <text x="758" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#13171A">有效任务</text>
+    <text x="950" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6A6D6F">1,284</text>
+    <text x="1050" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6A6D6F">1,736</text>
+    <text x="1144" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6A6D6F">+35%</text>
+    <rect x="740" y="288" width="476" height="1" fill="#C5C7C9"/>
+    <text x="758" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#13171A">留存率</text>
+    <text x="950" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6A6D6F">41%</text>
+    <text x="1050" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6A6D6F">52%</text>
+    <text x="1144" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6A6D6F">+11pt</text>
+    <rect x="740" y="332" width="476" height="1" fill="#C5C7C9"/>
+    <text x="758" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#13171A">人均耗时</text>
+    <text x="950" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6A6D6F">26min</text>
+    <text x="1050" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6A6D6F">18min</text>
+    <text x="1144" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6A6D6F">−31%</text>
+    <rect x="740" y="376" width="476" height="1" fill="#C5C7C9"/>
+    <rect x="740.5" y="200.5" width="475" height="175" rx="14" fill="none" stroke="#C5C7C9" stroke-width="1"/>
+  </g>
+  <g id="kpi-1" data-component="kpi">
+    <rect x="64" y="470" width="286" height="112" rx="16" fill="#FAFBFC" stroke="#C5C7C9" stroke-width="1"/>
+    <text x="86" y="532" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="36" font-weight="700" fill="#2677FF">224</text>
+    <text x="86" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#6A6D6F">品牌提及</text>
+  </g>
+  <g id="kpi-2" data-component="kpi">
+    <rect x="372" y="470" width="286" height="112" rx="16" fill="#FAFBFC" stroke="#C5C7C9" stroke-width="1"/>
+    <text x="394" y="532" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="36" font-weight="700" fill="#2677FF">3.4×</text>
+    <text x="394" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#6A6D6F">心智差距</text>
+  </g>
+  <g id="callout" data-component="callout">
+    <rect x="700" y="470" width="516" height="112" rx="12" fill="#E8FAD9" stroke="#C5C7C9" stroke-width="1"/>
+    <text x="722" y="514" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="700" fill="#13171A">判断先行，证据在后</text>
+    <text x="722" y="544" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#13171A">一页只留一个主导对象，装饰不替代表达。</text>
+  </g>
+  <g id="list" data-component="list">
+    <rect x="64" y="601.5" width="7" height="7" fill="#2677FF"/>
+    <text x="85" y="610" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#13171A">判断先行，证据在后</text>
+    <rect x="64" y="625.5" width="7" height="7" fill="#2677FF"/>
+    <text x="85" y="634" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#13171A">一页只留一个主导对象</text>
+    <rect x="64" y="649.5" width="7" height="7" fill="#2677FF"/>
+    <text x="85" y="658" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#13171A">装饰不替代关系表达</text>
+  </g>
+  <g id="footer">
+    <line x1="64" y1="678" x2="1216" y2="678" stroke="#C5C7C9" stroke-width="1"/>
+    <text x="64" y="702" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#6A6D6F">Chrome Future 银铬未来 · components</text>
+  </g>
+</svg>
+
+  </figure>
+  <figure>
+    <figcaption>珊瑚三维 <span>soft-rounded</span></figcaption>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" data-theme-sample="coral-3d">
+  <rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header">
+    <rect x="64" y="56" width="190" height="30" rx="20" fill="#3B3B3B"/>
+    <text x="78" y="76" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="13" font-weight="700" fill="#000000">03 · COMPONENTS</text>
+    <text x="64" y="146" font-family="Calibri, Arial, &quot;PingFang SC&quot;, sans-serif" font-size="44" font-weight="700" fill="#3B3B3B">珊瑚三维</text>
+  </g>
+  <g id="chart" data-component="chart">
+    <text x="64" y="196" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="13" fill="#858585">条形图</text>
+    <text x="64" y="226" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#3B3B3B">叙事</text>
+    <rect x="160" y="214" width="400" height="14" fill="#FAD0C4"/>
+    <text x="568" y="226" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#3B3B3B">92</text>
+    <text x="64" y="272" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#3B3B3B">证据</text>
+    <rect x="160" y="260" width="340" height="14" fill="#DCDCDC"/>
+    <text x="508" y="272" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#3B3B3B">78</text>
+    <text x="64" y="318" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#3B3B3B">数据</text>
+    <rect x="160" y="306" width="278" height="14" fill="#FAD0C4"/>
+    <text x="446" y="318" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#3B3B3B">64</text>
+    <text x="64" y="364" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#3B3B3B">节奏</text>
+    <rect x="160" y="352" width="218" height="14" fill="#DCDCDC"/>
+    <text x="386" y="364" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#3B3B3B">50</text>
+    <rect x="160" y="400" width="540" height="1" fill="#D4D4D4"/>
+  </g>
+  <g id="table" data-component="table">
+    <text x="740" y="186" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="13" fill="#858585">表格</text>
+    <rect x="740" y="200" width="476" height="44" rx="14" fill="#DCDCDC"/>
+    <text x="758" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="700" fill="#3B3B3B">核心指标</text>
+    <text x="950" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="700" fill="#3B3B3B">Q2</text>
+    <text x="1050" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="700" fill="#3B3B3B">Q3</text>
+    <text x="1144" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="700" fill="#3B3B3B">环比</text>
+    <rect x="740" y="244" width="476" height="1" fill="#D4D4D4"/>
+    <text x="758" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#3B3B3B">有效任务</text>
+    <text x="950" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#858585">1,284</text>
+    <text x="1050" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#858585">1,736</text>
+    <text x="1144" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#858585">+35%</text>
+    <rect x="740" y="288" width="476" height="1" fill="#D4D4D4"/>
+    <text x="758" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#3B3B3B">留存率</text>
+    <text x="950" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#858585">41%</text>
+    <text x="1050" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#858585">52%</text>
+    <text x="1144" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#858585">+11pt</text>
+    <rect x="740" y="332" width="476" height="1" fill="#D4D4D4"/>
+    <text x="758" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#3B3B3B">人均耗时</text>
+    <text x="950" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#858585">26min</text>
+    <text x="1050" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#858585">18min</text>
+    <text x="1144" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#858585">−31%</text>
+    <rect x="740" y="376" width="476" height="1" fill="#D4D4D4"/>
+  </g>
+  <g id="kpi-1" data-component="kpi">
+    <rect x="64" y="470" width="286" height="112" rx="16" fill="#FFFFFF"/>
+    <text x="86" y="532" font-family="Calibri, Arial, &quot;PingFang SC&quot;, sans-serif" font-size="37" font-weight="700" fill="#A48D86">224</text>
+    <text x="86" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#858585">品牌提及</text>
+  </g>
+  <g id="kpi-2" data-component="kpi">
+    <rect x="372" y="470" width="286" height="112" rx="16" fill="#FFFFFF"/>
+    <text x="394" y="532" font-family="Calibri, Arial, &quot;PingFang SC&quot;, sans-serif" font-size="37" font-weight="700" fill="#A48D86">3.4×</text>
+    <text x="394" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#858585">心智差距</text>
+  </g>
+  <g id="callout" data-component="callout">
+    <rect x="700" y="470" width="516" height="112" rx="16" fill="#FAD0C4"/>
+    <text x="722" y="514" font-family="Calibri, Arial, &quot;PingFang SC&quot;, sans-serif" font-size="18" font-weight="700" fill="#000000">判断先行，证据在后</text>
+    <text x="722" y="544" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#000000">一页只留一个主导对象，装饰不替代表达。</text>
+  </g>
+  <g id="list" data-component="list">
+    <circle cx="68" cy="605" r="4" fill="#FAD0C4"/>
+    <text x="86" y="610" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" fill="#3B3B3B">判断先行，证据在后</text>
+    <circle cx="68" cy="629" r="4" fill="#FAD0C4"/>
+    <text x="86" y="634" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" fill="#3B3B3B">一页只留一个主导对象</text>
+    <circle cx="68" cy="653" r="4" fill="#FAD0C4"/>
+    <text x="86" y="658" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" fill="#3B3B3B">装饰不替代关系表达</text>
+  </g>
+  <g id="footer">
+    <line x1="64" y1="678" x2="1216" y2="678" stroke="#D4D4D4" stroke-width="1"/>
+    <text x="64" y="702" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="13" fill="#858585">珊瑚三维 · components</text>
+  </g>
+</svg>
+
+  </figure>
+  <figure>
+    <figcaption>赛博紫青年 <span>dark-tech</span></figcaption>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" data-theme-sample="cyber-purple-genz">
+  <rect x="0" y="0" width="1280" height="720" fill="#FBFAFF"/>
+  <g id="header">
+    <rect x="64" y="56" width="190" height="28" rx="8" fill="#FF5DA2"/>
+    <text x="76" y="74" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" font-weight="700" fill="#000000">03 · COMPONENTS</text>
+    <text x="64" y="146" font-family="&quot;Noto Sans SC&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif" font-size="42" font-weight="700" fill="#23183A">赛博紫青年</text>
+  </g>
+  <g id="rule"><rect x="64" y="166" width="1152" height="2" fill="#FF5DA2"/></g>
+  <g id="chart" data-component="chart">
+    <text x="64" y="196" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#756E85">条形图</text>
+    <rect x="295" y="208" width="1" height="192" fill="#CBC8D4" opacity="0.55"/>
+    <rect x="430" y="208" width="1" height="192" fill="#CBC8D4" opacity="0.55"/>
+    <rect x="565" y="208" width="1" height="192" fill="#CBC8D4" opacity="0.55"/>
+    <text x="64" y="226" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#23183A">叙事</text>
+    <rect x="160" y="214" width="400" height="14" fill="#FF5DA2"/>
+    <text x="568" y="226" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#23183A">92</text>
+    <text x="64" y="272" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#23183A">证据</text>
+    <rect x="160" y="260" width="340" height="14" fill="#DAEFF0"/>
+    <text x="508" y="272" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#23183A">78</text>
+    <text x="64" y="318" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#23183A">数据</text>
+    <rect x="160" y="306" width="278" height="14" fill="#FF5DA2"/>
+    <text x="446" y="318" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#23183A">64</text>
+    <text x="64" y="364" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#23183A">节奏</text>
+    <rect x="160" y="352" width="218" height="14" fill="#DAEFF0"/>
+    <text x="386" y="364" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#23183A">50</text>
+    <rect x="160" y="400" width="540" height="1" fill="#DAEFF0"/>
+  </g>
+  <g id="table" data-component="table">
+    <text x="740" y="186" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#756E85">表格</text>
+    <rect x="740" y="200" width="476" height="44" rx="8" fill="#FF5DA2"/>
+    <rect x="740" y="288" width="476" height="44" fill="#FDFCFF"/>
+    <text x="758" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">核心指标</text>
+    <text x="950" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">Q2</text>
+    <text x="1050" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">Q3</text>
+    <text x="1144" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">环比</text>
+    <rect x="740" y="244" width="476" height="1" fill="#CBC8D4"/>
+    <text x="758" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#23183A">有效任务</text>
+    <text x="950" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#756E85">1,284</text>
+    <text x="1050" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#756E85">1,736</text>
+    <text x="1144" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#756E85">+35%</text>
+    <rect x="740" y="288" width="476" height="1" fill="#CBC8D4"/>
+    <text x="758" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#23183A">留存率</text>
+    <text x="950" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#756E85">41%</text>
+    <text x="1050" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#756E85">52%</text>
+    <text x="1144" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#756E85">+11pt</text>
+    <rect x="740" y="332" width="476" height="1" fill="#CBC8D4"/>
+    <text x="758" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#23183A">人均耗时</text>
+    <text x="950" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#756E85">26min</text>
+    <text x="1050" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#756E85">18min</text>
+    <text x="1144" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#756E85">−31%</text>
+    <rect x="740" y="376" width="476" height="1" fill="#CBC8D4"/>
+    <rect x="740.5" y="200.5" width="475" height="175" rx="8" fill="none" stroke="#DAEFF0" stroke-width="1"/>
+  </g>
+  <g id="kpi-1" data-component="kpi">
+    <rect x="64" y="470" width="286" height="112" rx="12" fill="#FDFCFF" stroke="#DAEFF0" stroke-width="1"/>
+    <text x="86" y="532" font-family="&quot;Noto Sans SC&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif" font-size="36" font-weight="700" fill="#6B4EFF">224</text>
+    <text x="86" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#756E85">品牌提及</text>
+  </g>
+  <g id="kpi-2" data-component="kpi">
+    <rect x="372" y="470" width="286" height="112" rx="12" fill="#FDFCFF" stroke="#DAEFF0" stroke-width="1"/>
+    <text x="394" y="532" font-family="&quot;Noto Sans SC&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif" font-size="36" font-weight="700" fill="#6B4EFF">3.4×</text>
+    <text x="394" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#756E85">心智差距</text>
+  </g>
+  <g id="callout" data-component="callout">
+    <rect x="700" y="470" width="516" height="112" rx="12" fill="#DAEFF0" stroke="#FF5DA2" stroke-width="1"/>
+    <rect x="700" y="470" width="4" height="112" fill="#FF5DA2"/>
+    <text x="724" y="514" font-family="&quot;Noto Sans SC&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif" font-size="17" font-weight="700" fill="#000000">判断先行，证据在后</text>
+    <text x="724" y="544" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#000000">一页只留一个主导对象，装饰不替代表达。</text>
+  </g>
+  <g id="list" data-component="list">
+    <rect x="64" y="602" width="6" height="6" fill="#DAEFF0"/>
+    <text x="84" y="610" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#23183A">判断先行，证据在后</text>
+    <rect x="64" y="626" width="6" height="6" fill="#DAEFF0"/>
+    <text x="84" y="634" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#23183A">一页只留一个主导对象</text>
+    <rect x="64" y="650" width="6" height="6" fill="#DAEFF0"/>
+    <text x="84" y="658" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#23183A">装饰不替代关系表达</text>
+  </g>
+  <g id="footer">
+    <rect x="0" y="678" width="1280" height="42" fill="#FDFCFF"/>
+    <text x="64" y="705" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#23183A">赛博紫青年 · components</text>
+  </g>
+</svg>
+
+  </figure>
+  <figure>
+    <figcaption>Electric Studio 电气工作室 <span>swiss-minimal</span></figcaption>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" data-theme-sample="electric-studio">
+  <rect x="0" y="0" width="1280" height="720" fill="#F4F1E8"/>
+  <g id="header">
+    <text x="64" y="146" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="42" font-weight="700" fill="#101113">Electric Studio 电气工作室</text>
+  </g>
+  <g id="rule"><rect x="64" y="166" width="1152" height="2" fill="#101113"/></g>
+  <g id="chart" data-component="chart">
+    <text x="64" y="196" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#676664">条形图</text>
+    <text x="64" y="226" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#101113">叙事</text>
+    <rect x="160" y="214" width="400" height="13" fill="#93493A"/>
+    <text x="568" y="226" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="500" fill="#101113">92</text>
+    <text x="64" y="272" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#101113">证据</text>
+    <rect x="160" y="260" width="340" height="13" fill="#93493A"/>
+    <text x="508" y="272" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="500" fill="#101113">78</text>
+    <text x="64" y="318" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#101113">数据</text>
+    <rect x="160" y="306" width="278" height="13" fill="#93493A"/>
+    <text x="446" y="318" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="500" fill="#101113">64</text>
+    <text x="64" y="364" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#101113">节奏</text>
+    <rect x="160" y="352" width="218" height="13" fill="#93493A"/>
+    <text x="386" y="364" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="500" fill="#101113">50</text>
+    <rect x="160" y="400" width="540" height="1" fill="#C2C0B9"/>
+  </g>
+  <g id="table" data-component="table">
+    <text x="740" y="186" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#676664">表格</text>
+    <text x="758" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#101113">核心指标</text>
+    <text x="950" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#101113">Q2</text>
+    <text x="1050" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#101113">Q3</text>
+    <text x="1144" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#101113">环比</text>
+    <rect x="740" y="244" width="476" height="1" fill="#101113"/>
+    <text x="758" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#101113">有效任务</text>
+    <text x="950" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#676664">1,284</text>
+    <text x="1050" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#676664">1,736</text>
+    <text x="1144" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#676664">+35%</text>
+    <rect x="740" y="288" width="476" height="1" fill="#C2C0B9"/>
+    <text x="758" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#101113">留存率</text>
+    <text x="950" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#676664">41%</text>
+    <text x="1050" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#676664">52%</text>
+    <text x="1144" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#676664">+11pt</text>
+    <rect x="740" y="332" width="476" height="1" fill="#C2C0B9"/>
+    <text x="758" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#101113">人均耗时</text>
+    <text x="950" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#676664">26min</text>
+    <text x="1050" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#676664">18min</text>
+    <text x="1144" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#676664">−31%</text>
+    <rect x="740" y="376" width="476" height="1" fill="#C2C0B9"/>
+  </g>
+  <g id="kpi-1" data-component="kpi">
+    <rect x="64" y="470" width="286" height="112" rx="0" fill="#F4F1E8"/>
+    <text x="86" y="532" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="36" font-weight="700" fill="#93493A">224</text>
+    <text x="86" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#676664">品牌提及</text>
+  </g>
+  <g id="kpi-2" data-component="kpi">
+    <rect x="372" y="470" width="286" height="112" rx="0" fill="#F4F1E8"/>
+    <text x="394" y="532" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="36" font-weight="700" fill="#93493A">3.4×</text>
+    <text x="394" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#676664">心智差距</text>
+  </g>
+  <g id="callout" data-component="callout">
+    <rect x="700" y="470" width="516" height="112" rx="0" fill="none"/>
+    <rect x="700" y="470" width="4" height="112" fill="#93493A"/>
+    <text x="724" y="514" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="700" fill="#101113">判断先行，证据在后</text>
+    <text x="724" y="544" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#676664">一页只留一个主导对象，装饰不替代表达。</text>
+  </g>
+  <g id="list" data-component="list">
+    <rect x="64" y="602" width="6" height="6" fill="#93493A"/>
+    <text x="84" y="610" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#101113">判断先行，证据在后</text>
+    <rect x="64" y="626" width="6" height="6" fill="#93493A"/>
+    <text x="84" y="634" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#101113">一页只留一个主导对象</text>
+    <rect x="64" y="650" width="6" height="6" fill="#93493A"/>
+    <text x="84" y="658" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#101113">装饰不替代关系表达</text>
+  </g>
+  <g id="footer">
+    <line x1="64" y1="678" x2="1216" y2="678" stroke="#101113" stroke-width="1"/>
+    <text x="64" y="702" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#676664">Electric Studio 电气工作室 · components</text>
+  </g>
+</svg>
+
+  </figure>
+  <figure>
+    <figcaption>冷蓝青绿月报 <span>data-journalism</span></figcaption>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" data-theme-sample="financial-bluegreen-modern">
+  <rect x="0" y="0" width="1280" height="720" fill="#F5F7FB"/>
+  <g id="header">
+    <rect x="64" y="56" width="190" height="28" rx="0" fill="#4A66AC"/>
+    <text x="76" y="75" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">03 · COMPONENTS</text>
+    <text x="64" y="146" font-family="&quot;Microsoft YaHei&quot;, &quot;PingFang SC&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="38" font-weight="700" fill="#08194A">冷蓝青绿月报</text>
+  </g>
+  <g id="rule"><rect x="64" y="166" width="1152" height="2" fill="#08194A"/></g>
+  <g id="chart" data-component="chart">
+    <text x="64" y="196" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#626D8D">条形图</text>
+    <rect x="295" y="208" width="1" height="192" fill="#D8DEE8" opacity="0.55"/>
+    <rect x="430" y="208" width="1" height="192" fill="#D8DEE8" opacity="0.55"/>
+    <rect x="565" y="208" width="1" height="192" fill="#D8DEE8" opacity="0.55"/>
+    <text x="64" y="226" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#08194A">叙事</text>
+    <rect x="160" y="214" width="400" height="14" fill="#4A66AC"/>
+    <text x="568" y="226" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#08194A">92</text>
+    <text x="64" y="272" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#08194A">证据</text>
+    <rect x="160" y="260" width="340" height="14" fill="#4A66AC"/>
+    <text x="508" y="272" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#08194A">78</text>
+    <text x="64" y="318" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#08194A">数据</text>
+    <rect x="160" y="306" width="278" height="14" fill="#4A66AC"/>
+    <text x="446" y="318" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#08194A">64</text>
+    <text x="64" y="364" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#08194A">节奏</text>
+    <rect x="160" y="352" width="218" height="14" fill="#4A66AC"/>
+    <text x="386" y="364" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#08194A">50</text>
+    <rect x="160" y="400" width="540" height="1" fill="#08194A"/>
+  </g>
+  <g id="table" data-component="table">
+    <text x="740" y="186" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#626D8D">表格</text>
+    <rect x="740" y="200" width="476" height="44" rx="0" fill="#4A66AC"/>
+    <rect x="740" y="288" width="476" height="44" fill="#E1ECD3"/>
+    <text x="758" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">核心指标</text>
+    <text x="950" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">Q2</text>
+    <text x="1050" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">Q3</text>
+    <text x="1144" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">环比</text>
+    <rect x="740" y="244" width="476" height="1" fill="#D8DEE8"/>
+    <text x="758" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#08194A">有效任务</text>
+    <text x="950" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#626D8D">1,284</text>
+    <text x="1050" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#626D8D">1,736</text>
+    <text x="1144" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#626D8D">+35%</text>
+    <rect x="740" y="288" width="476" height="1" fill="#D8DEE8"/>
+    <text x="758" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#08194A">留存率</text>
+    <text x="950" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#626D8D">41%</text>
+    <text x="1050" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#626D8D">52%</text>
+    <text x="1144" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#626D8D">+11pt</text>
+    <rect x="740" y="332" width="476" height="1" fill="#D8DEE8"/>
+    <text x="758" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#08194A">人均耗时</text>
+    <text x="950" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#626D8D">26min</text>
+    <text x="1050" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#626D8D">18min</text>
+    <text x="1144" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#626D8D">−31%</text>
+    <rect x="740" y="376" width="476" height="1" fill="#D8DEE8"/>
+    <rect x="740.5" y="200.5" width="475" height="175" rx="0" fill="none" stroke="#D8DEE8" stroke-width="1"/>
+  </g>
+  <g id="kpi-1" data-component="kpi">
+    <rect x="64" y="470" width="286" height="112" rx="0" fill="#F9FAFD"/>
+    <text x="86" y="532" font-family="&quot;Microsoft YaHei&quot;, &quot;PingFang SC&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="34" font-weight="700" fill="#4A66AC">224</text>
+    <text x="86" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#626D8D">品牌提及</text>
+  </g>
+  <g id="kpi-2" data-component="kpi">
+    <rect x="372" y="470" width="286" height="112" rx="0" fill="#F9FAFD"/>
+    <text x="394" y="532" font-family="&quot;Microsoft YaHei&quot;, &quot;PingFang SC&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="34" font-weight="700" fill="#4A66AC">3.4×</text>
+    <text x="394" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#626D8D">心智差距</text>
+  </g>
+  <g id="callout" data-component="callout">
+    <rect x="700" y="470" width="516" height="112" rx="0" fill="#E1ECD3"/>
+    <rect x="700" y="470" width="4" height="112" fill="#4A66AC"/>
+    <text x="724" y="514" font-family="&quot;Microsoft YaHei&quot;, &quot;PingFang SC&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="700" fill="#08194A">判断先行，证据在后</text>
+    <text x="724" y="544" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#08194A">一页只留一个主导对象，装饰不替代表达。</text>
+  </g>
+  <g id="list" data-component="list">
+    <rect x="64" y="601" width="8" height="8" fill="#4A66AC"/>
+    <text x="86" y="610" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#08194A">判断先行，证据在后</text>
+    <rect x="64" y="625" width="8" height="8" fill="#4A66AC"/>
+    <text x="86" y="634" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#08194A">一页只留一个主导对象</text>
+    <rect x="64" y="649" width="8" height="8" fill="#4A66AC"/>
+    <text x="86" y="658" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#08194A">装饰不替代关系表达</text>
+  </g>
+  <g id="footer">
+    <line x1="64" y1="678" x2="1216" y2="678" stroke="#08194A" stroke-width="1"/>
+    <text x="64" y="702" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#626D8D">冷蓝青绿月报 · components</text>
+  </g>
+</svg>
+
+  </figure>
+  <figure>
+    <figcaption>Glass Tech System 玻璃科技 <span>glassmorphism</span></figcaption>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" data-theme-sample="glass-tech-system">
+  <rect x="0" y="0" width="1280" height="720" fill="#000000"/>
+  <g id="header">
+    <rect x="64" y="56" width="190" height="28" rx="16" fill="#002E26" stroke="#383838" stroke-width="1"/>
+    <text x="76" y="74" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" font-weight="600" fill="#FFFFFF">03 · COMPONENTS</text>
+    <text x="64" y="146" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="42" font-weight="700" fill="#FFFFFF">Glass Tech System 玻璃科技</text>
+  </g>
+  <g id="rule"><rect x="64" y="166" width="1152" height="1" fill="#383838"/></g>
+  <g id="chart" data-component="chart">
+    <text x="64" y="196" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#9E9E9E">条形图</text>
+    <rect x="340" y="208" width="1" height="192" fill="#383838" opacity="0.55"/>
+    <rect x="520" y="208" width="1" height="192" fill="#383838" opacity="0.55"/>
+    <text x="64" y="226" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#FFFFFF">叙事</text>
+    <rect x="160" y="214" width="400" height="14" fill="#E8A715"/>
+    <text x="568" y="226" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">92</text>
+    <text x="64" y="272" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#FFFFFF">证据</text>
+    <rect x="160" y="260" width="340" height="14" fill="#00D2AE"/>
+    <text x="508" y="272" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">78</text>
+    <text x="64" y="318" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#FFFFFF">数据</text>
+    <rect x="160" y="306" width="278" height="14" fill="#E8A715"/>
+    <text x="446" y="318" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">64</text>
+    <text x="64" y="364" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#FFFFFF">节奏</text>
+    <rect x="160" y="352" width="218" height="14" fill="#00D2AE"/>
+    <text x="386" y="364" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">50</text>
+    <rect x="160" y="400" width="540" height="1" fill="#383838"/>
+  </g>
+  <g id="table" data-component="table">
+    <text x="740" y="186" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#9E9E9E">表格</text>
+    <rect x="740" y="200" width="476" height="44" rx="14" fill="#002E26"/>
+    <text x="758" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">核心指标</text>
+    <text x="950" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">Q2</text>
+    <text x="1050" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">Q3</text>
+    <text x="1144" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">环比</text>
+    <rect x="740" y="244" width="476" height="1" fill="#383838"/>
+    <text x="758" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#FFFFFF">有效任务</text>
+    <text x="950" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#9E9E9E">1,284</text>
+    <text x="1050" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#9E9E9E">1,736</text>
+    <text x="1144" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#9E9E9E">+35%</text>
+    <rect x="740" y="288" width="476" height="1" fill="#383838"/>
+    <text x="758" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#FFFFFF">留存率</text>
+    <text x="950" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#9E9E9E">41%</text>
+    <text x="1050" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#9E9E9E">52%</text>
+    <text x="1144" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#9E9E9E">+11pt</text>
+    <rect x="740" y="332" width="476" height="1" fill="#383838"/>
+    <text x="758" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#FFFFFF">人均耗时</text>
+    <text x="950" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#9E9E9E">26min</text>
+    <text x="1050" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#9E9E9E">18min</text>
+    <text x="1144" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#9E9E9E">−31%</text>
+    <rect x="740" y="376" width="476" height="1" fill="#383838"/>
+    <rect x="740.5" y="200.5" width="475" height="175" rx="14" fill="none" stroke="#383838" stroke-width="1"/>
+  </g>
+  <g id="kpi-1" data-component="kpi">
+    <rect x="64" y="470" width="286" height="112" rx="16" fill="#141414" stroke="#00D2AE" stroke-width="1"/>
+    <text x="86" y="532" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="36" font-weight="700" fill="#E8A715">224</text>
+    <text x="86" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#9E9E9E">品牌提及</text>
+  </g>
+  <g id="kpi-2" data-component="kpi">
+    <rect x="372" y="470" width="286" height="112" rx="16" fill="#141414" stroke="#00D2AE" stroke-width="1"/>
+    <text x="394" y="532" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="36" font-weight="700" fill="#E8A715">3.4×</text>
+    <text x="394" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#9E9E9E">心智差距</text>
+  </g>
+  <g id="callout" data-component="callout">
+    <rect x="700" y="470" width="516" height="112" rx="12" fill="#002E26" stroke="#383838" stroke-width="1"/>
+    <text x="722" y="514" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="700" fill="#FFFFFF">判断先行，证据在后</text>
+    <text x="722" y="544" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#FFFFFF">一页只留一个主导对象，装饰不替代表达。</text>
+  </g>
+  <g id="list" data-component="list">
+    <rect x="64" y="601.5" width="7" height="7" fill="#E8A715"/>
+    <text x="85" y="610" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#FFFFFF">判断先行，证据在后</text>
+    <rect x="64" y="625.5" width="7" height="7" fill="#E8A715"/>
+    <text x="85" y="634" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#FFFFFF">一页只留一个主导对象</text>
+    <rect x="64" y="649.5" width="7" height="7" fill="#E8A715"/>
+    <text x="85" y="658" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#FFFFFF">装饰不替代关系表达</text>
+  </g>
+  <g id="footer">
+    <line x1="64" y1="678" x2="1216" y2="678" stroke="#383838" stroke-width="1"/>
+    <text x="64" y="702" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#9E9E9E">Glass Tech System 玻璃科技 · components</text>
+  </g>
+</svg>
+
+  </figure>
+  <figure>
+    <figcaption>Capital Journal 全球资本新闻 <span>data-journalism</span></figcaption>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" data-theme-sample="global-capital-data-journalism">
+  <rect x="0" y="0" width="1280" height="720" fill="#EFE9D8"/>
+  <g id="header">
+    <rect x="64" y="56" width="190" height="28" rx="0" fill="#224E75"/>
+    <text x="76" y="75" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="13" font-weight="700" fill="#FFFFFF">03 · COMPONENTS</text>
+    <text x="64" y="146" font-family="Georgia, &quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, serif" font-size="38" font-weight="700" fill="#181B1D">Capital Journal 全球资本新闻</text>
+  </g>
+  <g id="rule"><rect x="64" y="166" width="1152" height="2" fill="#181B1D"/></g>
+  <g id="chart" data-component="chart">
+    <text x="64" y="196" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="12" fill="#6A6964">条形图</text>
+    <rect x="268" y="208" width="1" height="192" fill="#C0BCAF" opacity="0.55"/>
+    <rect x="376" y="208" width="1" height="192" fill="#C0BCAF" opacity="0.55"/>
+    <rect x="484" y="208" width="1" height="192" fill="#C0BCAF" opacity="0.55"/>
+    <rect x="592" y="208" width="1" height="192" fill="#C0BCAF" opacity="0.55"/>
+    <text x="64" y="226" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="17" fill="#181B1D">叙事</text>
+    <rect x="160" y="214" width="400" height="14" fill="#224E75"/>
+    <text x="568" y="226" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="14" font-weight="700" fill="#181B1D">92</text>
+    <text x="64" y="272" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="17" fill="#181B1D">证据</text>
+    <rect x="160" y="260" width="340" height="14" fill="#B52326"/>
+    <text x="508" y="272" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="14" font-weight="700" fill="#181B1D">78</text>
+    <text x="64" y="318" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="17" fill="#181B1D">数据</text>
+    <rect x="160" y="306" width="278" height="14" fill="#224E75"/>
+    <text x="446" y="318" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="14" font-weight="700" fill="#181B1D">64</text>
+    <text x="64" y="364" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="17" fill="#181B1D">节奏</text>
+    <rect x="160" y="352" width="218" height="14" fill="#B52326"/>
+    <text x="386" y="364" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="14" font-weight="700" fill="#181B1D">50</text>
+    <rect x="160" y="400" width="540" height="1" fill="#181B1D"/>
+  </g>
+  <g id="table" data-component="table">
+    <text x="740" y="186" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="12" fill="#6A6964">表格</text>
+    <rect x="740" y="200" width="476" height="44" rx="0" fill="#181B1D"/>
+    <text x="758" y="227" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="15" font-weight="700" fill="#EFE9D8">核心指标</text>
+    <text x="950" y="227" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="15" font-weight="700" fill="#EFE9D8">Q2</text>
+    <text x="1050" y="227" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="15" font-weight="700" fill="#EFE9D8">Q3</text>
+    <text x="1144" y="227" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="15" font-weight="700" fill="#EFE9D8">环比</text>
+    <rect x="740" y="244" width="476" height="1" fill="#C0BCAF"/>
+    <text x="758" y="271" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="16" font-weight="400" fill="#181B1D">有效任务</text>
+    <text x="950" y="271" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="16" font-weight="400" fill="#6A6964">1,284</text>
+    <text x="1050" y="271" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="16" font-weight="400" fill="#6A6964">1,736</text>
+    <text x="1144" y="271" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="16" font-weight="400" fill="#6A6964">+35%</text>
+    <rect x="740" y="288" width="476" height="1" fill="#C0BCAF"/>
+    <text x="758" y="315" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="16" font-weight="400" fill="#181B1D">留存率</text>
+    <text x="950" y="315" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="16" font-weight="400" fill="#6A6964">41%</text>
+    <text x="1050" y="315" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="16" font-weight="400" fill="#6A6964">52%</text>
+    <text x="1144" y="315" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="16" font-weight="400" fill="#6A6964">+11pt</text>
+    <rect x="740" y="332" width="476" height="1" fill="#C0BCAF"/>
+    <text x="758" y="359" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="16" font-weight="400" fill="#181B1D">人均耗时</text>
+    <text x="950" y="359" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="16" font-weight="400" fill="#6A6964">26min</text>
+    <text x="1050" y="359" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="16" font-weight="400" fill="#6A6964">18min</text>
+    <text x="1144" y="359" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="16" font-weight="400" fill="#6A6964">−31%</text>
+    <rect x="740" y="376" width="476" height="1" fill="#C0BCAF"/>
+    <rect x="740.5" y="200.5" width="475" height="175" rx="0" fill="none" stroke="#C0BCAF" stroke-width="1"/>
+  </g>
+  <g id="kpi-1" data-component="kpi">
+    <rect x="64" y="470" width="286" height="112" rx="0" fill="#F5F1E7"/>
+    <text x="86" y="532" font-family="Georgia, &quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, serif" font-size="34" font-weight="700" fill="#224E75">224</text>
+    <text x="86" y="560" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="14" fill="#6A6964">品牌提及</text>
+  </g>
+  <g id="kpi-2" data-component="kpi">
+    <rect x="372" y="470" width="286" height="112" rx="0" fill="#F5F1E7"/>
+    <text x="394" y="532" font-family="Georgia, &quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, serif" font-size="34" font-weight="700" fill="#224E75">3.4×</text>
+    <text x="394" y="560" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="14" fill="#6A6964">心智差距</text>
+  </g>
+  <g id="callout" data-component="callout">
+    <rect x="700" y="470" width="516" height="112" rx="0" fill="none"/>
+    <rect x="700" y="470" width="4" height="112" fill="#224E75"/>
+    <text x="724" y="514" font-family="Georgia, &quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, serif" font-size="16" font-weight="700" fill="#181B1D">判断先行，证据在后</text>
+    <text x="724" y="544" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="14" fill="#6A6964">一页只留一个主导对象，装饰不替代表达。</text>
+  </g>
+  <g id="list" data-component="list">
+    <rect x="64" y="601" width="8" height="8" fill="#224E75"/>
+    <text x="86" y="610" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="15" fill="#181B1D">判断先行，证据在后</text>
+    <rect x="64" y="625" width="8" height="8" fill="#224E75"/>
+    <text x="86" y="634" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="15" fill="#181B1D">一页只留一个主导对象</text>
+    <rect x="64" y="649" width="8" height="8" fill="#224E75"/>
+    <text x="86" y="658" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="15" fill="#181B1D">装饰不替代关系表达</text>
+  </g>
+  <g id="footer">
+    <line x1="64" y1="678" x2="1216" y2="678" stroke="#181B1D" stroke-width="1"/>
+    <text x="64" y="702" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="12" fill="#6A6964">Capital Journal 全球资本新闻 · components</text>
+  </g>
+</svg>
+
+  </figure>
+  <figure>
+    <figcaption>Ink Bamboo 青绿水墨竹韵 <span>ink-wash</span></figcaption>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" data-theme-sample="ink-bamboo">
+  <rect x="0" y="0" width="1280" height="720" fill="#EEF0E7"/>
+  <g id="header">
+    <text x="64" y="146" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="44" font-weight="700" fill="#18352D">Ink Bamboo 青绿水墨竹韵</text>
+  </g>
+  <g id="rule"><rect x="64" y="166" width="1152" height="1" fill="#18352D"/></g>
+  <g id="chart" data-component="chart">
+    <text x="64" y="196" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="13" fill="#697C74">条形图</text>
+    <text x="64" y="225" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="17" fill="#18352D">叙事</text>
+    <rect x="160" y="214" width="400" height="12" fill="#2C6654"/>
+    <text x="568" y="225" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="14" font-weight="400" fill="#18352D">92</text>
+    <text x="64" y="271" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="17" fill="#18352D">证据</text>
+    <rect x="160" y="260" width="340" height="12" fill="#697C74"/>
+    <text x="508" y="271" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="14" font-weight="400" fill="#18352D">78</text>
+    <text x="64" y="317" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="17" fill="#18352D">数据</text>
+    <rect x="160" y="306" width="278" height="12" fill="#2C6654"/>
+    <text x="446" y="317" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="14" font-weight="400" fill="#18352D">64</text>
+    <text x="64" y="363" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="17" fill="#18352D">节奏</text>
+    <rect x="160" y="352" width="218" height="12" fill="#697C74"/>
+    <text x="386" y="363" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="14" font-weight="400" fill="#18352D">50</text>
+    <rect x="160" y="400" width="540" height="1" fill="#BFC7BE"/>
+  </g>
+  <g id="table" data-component="table">
+    <text x="740" y="186" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="13" fill="#697C74">表格</text>
+    <text x="758" y="227" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="16" font-weight="700" fill="#18352D">核心指标</text>
+    <text x="950" y="227" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="16" font-weight="700" fill="#18352D">Q2</text>
+    <text x="1050" y="227" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="16" font-weight="700" fill="#18352D">Q3</text>
+    <text x="1144" y="227" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="16" font-weight="700" fill="#18352D">环比</text>
+    <rect x="740" y="244" width="476" height="1" fill="#18352D"/>
+    <text x="758" y="271" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="17" font-weight="400" fill="#18352D">有效任务</text>
+    <text x="950" y="271" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="17" font-weight="400" fill="#697C74">1,284</text>
+    <text x="1050" y="271" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="17" font-weight="400" fill="#697C74">1,736</text>
+    <text x="1144" y="271" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="17" font-weight="400" fill="#697C74">+35%</text>
+    <rect x="740" y="288" width="476" height="1" fill="#BFC7BE"/>
+    <text x="758" y="315" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="17" font-weight="400" fill="#18352D">留存率</text>
+    <text x="950" y="315" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="17" font-weight="400" fill="#697C74">41%</text>
+    <text x="1050" y="315" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="17" font-weight="400" fill="#697C74">52%</text>
+    <text x="1144" y="315" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="17" font-weight="400" fill="#697C74">+11pt</text>
+    <rect x="740" y="332" width="476" height="1" fill="#BFC7BE"/>
+    <text x="758" y="359" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="17" font-weight="400" fill="#18352D">人均耗时</text>
+    <text x="950" y="359" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="17" font-weight="400" fill="#697C74">26min</text>
+    <text x="1050" y="359" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="17" font-weight="400" fill="#697C74">18min</text>
+    <text x="1144" y="359" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="17" font-weight="400" fill="#697C74">−31%</text>
+    <rect x="740" y="376" width="476" height="1" fill="#BFC7BE"/>
+  </g>
+  <g id="kpi-1" data-component="kpi">
+    <rect x="64" y="470" width="286" height="112" rx="0" fill="#EEF0E7"/>
+    <text x="86" y="532" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="37" font-weight="700" fill="#2C6654">224</text>
+    <text x="86" y="560" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="15" fill="#697C74">品牌提及</text>
+  </g>
+  <g id="kpi-2" data-component="kpi">
+    <rect x="372" y="470" width="286" height="112" rx="0" fill="#EEF0E7"/>
+    <text x="394" y="532" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="37" font-weight="700" fill="#2C6654">3.4×</text>
+    <text x="394" y="560" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="15" fill="#697C74">心智差距</text>
+  </g>
+  <g id="callout" data-component="callout">
+    <rect x="700" y="470" width="516" height="112" rx="0" fill="none"/>
+    <rect x="700" y="470" width="2" height="112" fill="#2C6654"/>
+    <text x="722" y="514" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="18" font-weight="700" fill="#18352D">判断先行，证据在后</text>
+    <text x="722" y="544" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="15" fill="#697C74">一页只留一个主导对象，装饰不替代表达。</text>
+  </g>
+  <g id="list" data-component="list">
+    <rect x="64" y="602" width="6" height="6" fill="#2C6654"/>
+    <text x="84" y="610" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="16" fill="#18352D">判断先行，证据在后</text>
+    <rect x="64" y="626" width="6" height="6" fill="#2C6654"/>
+    <text x="84" y="634" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="16" fill="#18352D">一页只留一个主导对象</text>
+    <rect x="64" y="650" width="6" height="6" fill="#2C6654"/>
+    <text x="84" y="658" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="16" fill="#18352D">装饰不替代关系表达</text>
+  </g>
+  <g id="footer">
+    <line x1="64" y1="678" x2="1216" y2="678" stroke="#18352D" stroke-width="1"/>
+    <text x="64" y="702" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="13" fill="#697C74">Ink Bamboo 青绿水墨竹韵 · components</text>
+  </g>
+</svg>
+
+  </figure>
+  <figure>
+    <figcaption>Japanese Paper 和纸秩序 <span>ink-notes</span></figcaption>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" data-theme-sample="japanese-paper">
+  <rect x="0" y="0" width="1280" height="720" fill="#F5F1E7"/>
+  <g id="header">
+    <text x="64" y="146" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="44" font-weight="700" fill="#1E1C19">Japanese Paper 和纸秩序</text>
+  </g>
+  <g id="rule"><rect x="64" y="166" width="1152" height="1" fill="#C6C2BA"/></g>
+  <g id="chart" data-component="chart">
+    <text x="64" y="196" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="13" fill="#706D67">条形图</text>
+    <text x="64" y="225" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#1E1C19">叙事</text>
+    <rect x="160" y="214" width="400" height="12" fill="#B8322B"/>
+    <text x="568" y="225" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="400" fill="#1E1C19">92</text>
+    <text x="64" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#1E1C19">证据</text>
+    <rect x="160" y="260" width="340" height="12" fill="#706D67"/>
+    <text x="508" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="400" fill="#1E1C19">78</text>
+    <text x="64" y="317" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#1E1C19">数据</text>
+    <rect x="160" y="306" width="278" height="12" fill="#B8322B"/>
+    <text x="446" y="317" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="400" fill="#1E1C19">64</text>
+    <text x="64" y="363" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#1E1C19">节奏</text>
+    <rect x="160" y="352" width="218" height="12" fill="#706D67"/>
+    <text x="386" y="363" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="400" fill="#1E1C19">50</text>
+    <rect x="160" y="400" width="540" height="1" fill="#C6C2BA"/>
+  </g>
+  <g id="table" data-component="table">
+    <text x="740" y="186" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="13" fill="#706D67">表格</text>
+    <text x="758" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="700" fill="#1E1C19">核心指标</text>
+    <text x="950" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="700" fill="#1E1C19">Q2</text>
+    <text x="1050" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="700" fill="#1E1C19">Q3</text>
+    <text x="1144" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="700" fill="#1E1C19">环比</text>
+    <rect x="740" y="244" width="476" height="1" fill="#1E1C19"/>
+    <text x="758" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#1E1C19">有效任务</text>
+    <text x="950" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#706D67">1,284</text>
+    <text x="1050" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#706D67">1,736</text>
+    <text x="1144" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#706D67">+35%</text>
+    <rect x="740" y="288" width="476" height="1" fill="#C6C2BA"/>
+    <text x="758" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#1E1C19">留存率</text>
+    <text x="950" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#706D67">41%</text>
+    <text x="1050" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#706D67">52%</text>
+    <text x="1144" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#706D67">+11pt</text>
+    <rect x="740" y="332" width="476" height="1" fill="#C6C2BA"/>
+    <text x="758" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#1E1C19">人均耗时</text>
+    <text x="950" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#706D67">26min</text>
+    <text x="1050" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#706D67">18min</text>
+    <text x="1144" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#706D67">−31%</text>
+    <rect x="740" y="376" width="476" height="1" fill="#C6C2BA"/>
+  </g>
+  <g id="kpi-1" data-component="kpi">
+    <rect x="64" y="470" width="286" height="112" rx="0" fill="#F5F1E7"/>
+    <text x="86" y="532" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="37" font-weight="700" fill="#B8322B">224</text>
+    <text x="86" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#706D67">品牌提及</text>
+  </g>
+  <g id="kpi-2" data-component="kpi">
+    <rect x="372" y="470" width="286" height="112" rx="0" fill="#F5F1E7"/>
+    <text x="394" y="532" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="37" font-weight="700" fill="#B8322B">3.4×</text>
+    <text x="394" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#706D67">心智差距</text>
+  </g>
+  <g id="callout" data-component="callout">
+    <rect x="700" y="470" width="516" height="112" rx="0" fill="none"/>
+    <rect x="700" y="470" width="2" height="112" fill="#B8322B"/>
+    <text x="722" y="514" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="18" font-weight="700" fill="#1E1C19">判断先行，证据在后</text>
+    <text x="722" y="544" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#706D67">一页只留一个主导对象，装饰不替代表达。</text>
+  </g>
+  <g id="list" data-component="list">
+    <circle cx="67" cy="605" r="3" fill="#B8322B" stroke="#C6C2BA" stroke-width="1"/>
+    <text x="84" y="610" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" fill="#1E1C19">判断先行，证据在后</text>
+    <circle cx="67" cy="629" r="3" fill="#B8322B" stroke="#C6C2BA" stroke-width="1"/>
+    <text x="84" y="634" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" fill="#1E1C19">一页只留一个主导对象</text>
+    <circle cx="67" cy="653" r="3" fill="#B8322B" stroke="#C6C2BA" stroke-width="1"/>
+    <text x="84" y="658" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" fill="#1E1C19">装饰不替代关系表达</text>
+  </g>
+  <g id="footer">
+    <line x1="64" y1="678" x2="1216" y2="678" stroke="#C6C2BA" stroke-width="1"/>
+    <text x="64" y="702" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="13" fill="#706D67">Japanese Paper 和纸秩序 · components</text>
+  </g>
+</svg>
+
+  </figure>
+  <figure>
+    <figcaption>Memphis Motion 孟菲斯节奏 <span>memphis</span></figcaption>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" data-theme-sample="memphis-motion">
+  <rect x="0" y="0" width="1280" height="720" fill="#FFF4D8"/>
+  <g id="header">
+    <rect x="64" y="56" width="190" height="30" rx="0" fill="#FF4F70" stroke="#1E1B35" stroke-width="3"/>
+    <text x="78" y="76" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="13" font-weight="700" fill="#000000">03 · COMPONENTS</text>
+    <text x="64" y="146" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="42" font-weight="700" fill="#1E1B35">Memphis Motion 孟菲斯节奏</text>
+  </g>
+  <g id="rule"><rect x="64" y="166" width="1152" height="4" fill="#1E1B35"/></g>
+  <g id="chart" data-component="chart">
+    <text x="64" y="196" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#746D73">条形图</text>
+    <text x="64" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#1E1B35">叙事</text>
+    <rect x="160" y="214" width="400" height="16" fill="#FF4F70" stroke="#1E1B35" stroke-width="2"/>
+    <text x="568" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#1E1B35">92</text>
+    <text x="64" y="273" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#1E1B35">证据</text>
+    <rect x="160" y="260" width="340" height="16" fill="#2DB9B0" stroke="#1E1B35" stroke-width="2"/>
+    <text x="508" y="273" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#1E1B35">78</text>
+    <text x="64" y="319" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#1E1B35">数据</text>
+    <rect x="160" y="306" width="278" height="16" fill="#FF4F70" stroke="#1E1B35" stroke-width="2"/>
+    <text x="446" y="319" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#1E1B35">64</text>
+    <text x="64" y="365" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#1E1B35">节奏</text>
+    <rect x="160" y="352" width="218" height="16" fill="#2DB9B0" stroke="#1E1B35" stroke-width="2"/>
+    <text x="386" y="365" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#1E1B35">50</text>
+    <rect x="160" y="400" width="540" height="2" fill="#1E1B35"/>
+  </g>
+  <g id="table" data-component="table">
+    <text x="740" y="186" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#746D73">表格</text>
+    <rect x="740" y="200" width="476" height="44" rx="8" fill="#FF4F70"/>
+    <text x="758" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">核心指标</text>
+    <text x="950" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">Q2</text>
+    <text x="1050" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">Q3</text>
+    <text x="1144" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">环比</text>
+    <rect x="740" y="244" width="476" height="2" fill="#1E1B35"/>
+    <text x="758" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#1E1B35">有效任务</text>
+    <text x="950" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#746D73">1,284</text>
+    <text x="1050" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#746D73">1,736</text>
+    <text x="1144" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#746D73">+35%</text>
+    <rect x="740" y="288" width="476" height="2" fill="#1E1B35"/>
+    <text x="758" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#1E1B35">留存率</text>
+    <text x="950" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#746D73">41%</text>
+    <text x="1050" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#746D73">52%</text>
+    <text x="1144" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#746D73">+11pt</text>
+    <rect x="740" y="332" width="476" height="2" fill="#1E1B35"/>
+    <text x="758" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#1E1B35">人均耗时</text>
+    <text x="950" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#746D73">26min</text>
+    <text x="1050" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#746D73">18min</text>
+    <text x="1144" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#746D73">−31%</text>
+    <rect x="740" y="376" width="476" height="2" fill="#1E1B35"/>
+    <rect x="741" y="201" width="474" height="174" rx="8" fill="none" stroke="#1E1B35" stroke-width="2"/>
+  </g>
+  <g id="kpi-1" data-component="kpi">
+    <rect x="72" y="478" width="286" height="112" rx="12" fill="#1E1B35"/>
+    <rect x="64" y="470" width="286" height="112" rx="12" fill="#FFF8E7" stroke="#1E1B35" stroke-width="3"/>
+    <text x="86" y="532" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="36" font-weight="700" fill="#9A3855">224</text>
+    <text x="86" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#746D73">品牌提及</text>
+  </g>
+  <g id="kpi-2" data-component="kpi">
+    <rect x="380" y="478" width="286" height="112" rx="12" fill="#1E1B35"/>
+    <rect x="372" y="470" width="286" height="112" rx="12" fill="#FFF8E7" stroke="#1E1B35" stroke-width="3"/>
+    <text x="394" y="532" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="36" font-weight="700" fill="#9A3855">3.4×</text>
+    <text x="394" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#746D73">心智差距</text>
+  </g>
+  <g id="callout" data-component="callout">
+    <rect x="708" y="478" width="516" height="112" rx="10" fill="#1E1B35"/>
+    <rect x="700" y="470" width="516" height="112" rx="10" fill="#2DB9B0" stroke="#1E1B35" stroke-width="2"/>
+    <text x="722" y="514" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="700" fill="#000000">判断先行，证据在后</text>
+    <text x="722" y="544" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#000000">一页只留一个主导对象，装饰不替代表达。</text>
+  </g>
+  <g id="list" data-component="list">
+    <circle cx="68.5" cy="605" r="4.5" fill="#FF4F70" stroke="#1E1B35" stroke-width="2"/>
+    <text x="87" y="610" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#1E1B35">判断先行，证据在后</text>
+    <circle cx="68.5" cy="629" r="4.5" fill="#FF4F70" stroke="#1E1B35" stroke-width="2"/>
+    <text x="87" y="634" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#1E1B35">一页只留一个主导对象</text>
+    <circle cx="68.5" cy="653" r="4.5" fill="#FF4F70" stroke="#1E1B35" stroke-width="2"/>
+    <text x="87" y="658" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#1E1B35">装饰不替代关系表达</text>
+  </g>
+  <g id="footer">
+    <line x1="64" y1="678" x2="1216" y2="678" stroke="#1E1B35" stroke-width="1"/>
+    <text x="64" y="702" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#746D73">Memphis Motion 孟菲斯节奏 · components</text>
+  </g>
+</svg>
+
+  </figure>
+  <figure>
+    <figcaption>极简水墨 <span>ink-wash</span></figcaption>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" data-theme-sample="minimal-ink">
+  <rect x="0" y="0" width="1280" height="720" fill="#F5F5F5"/>
+  <g id="header">
+    <text x="64" y="146" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="44" font-weight="700" fill="#111111">极简水墨</text>
+  </g>
+  <g id="rule"><rect x="64" y="166" width="1152" height="1" fill="#111111"/></g>
+  <g id="chart" data-component="chart">
+    <text x="64" y="196" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="13" fill="#686868">条形图</text>
+    <text x="64" y="225" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="17" fill="#111111">叙事</text>
+    <rect x="160" y="214" width="400" height="12" fill="#244842"/>
+    <text x="568" y="225" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="14" font-weight="400" fill="#111111">92</text>
+    <text x="64" y="271" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="17" fill="#111111">证据</text>
+    <rect x="160" y="260" width="340" height="12" fill="#686868"/>
+    <text x="508" y="271" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="14" font-weight="400" fill="#111111">78</text>
+    <text x="64" y="317" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="17" fill="#111111">数据</text>
+    <rect x="160" y="306" width="278" height="12" fill="#244842"/>
+    <text x="446" y="317" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="14" font-weight="400" fill="#111111">64</text>
+    <text x="64" y="363" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="17" fill="#111111">节奏</text>
+    <rect x="160" y="352" width="218" height="12" fill="#686868"/>
+    <text x="386" y="363" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="14" font-weight="400" fill="#111111">50</text>
+    <rect x="160" y="400" width="540" height="1" fill="#C3C3C3"/>
+  </g>
+  <g id="table" data-component="table">
+    <text x="740" y="186" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="13" fill="#686868">表格</text>
+    <text x="758" y="227" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="16" font-weight="700" fill="#111111">核心指标</text>
+    <text x="950" y="227" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="16" font-weight="700" fill="#111111">Q2</text>
+    <text x="1050" y="227" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="16" font-weight="700" fill="#111111">Q3</text>
+    <text x="1144" y="227" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="16" font-weight="700" fill="#111111">环比</text>
+    <rect x="740" y="244" width="476" height="1" fill="#111111"/>
+    <text x="758" y="271" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="17" font-weight="400" fill="#111111">有效任务</text>
+    <text x="950" y="271" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="17" font-weight="400" fill="#686868">1,284</text>
+    <text x="1050" y="271" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="17" font-weight="400" fill="#686868">1,736</text>
+    <text x="1144" y="271" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="17" font-weight="400" fill="#686868">+35%</text>
+    <rect x="740" y="288" width="476" height="1" fill="#C3C3C3"/>
+    <text x="758" y="315" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="17" font-weight="400" fill="#111111">留存率</text>
+    <text x="950" y="315" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="17" font-weight="400" fill="#686868">41%</text>
+    <text x="1050" y="315" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="17" font-weight="400" fill="#686868">52%</text>
+    <text x="1144" y="315" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="17" font-weight="400" fill="#686868">+11pt</text>
+    <rect x="740" y="332" width="476" height="1" fill="#C3C3C3"/>
+    <text x="758" y="359" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="17" font-weight="400" fill="#111111">人均耗时</text>
+    <text x="950" y="359" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="17" font-weight="400" fill="#686868">26min</text>
+    <text x="1050" y="359" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="17" font-weight="400" fill="#686868">18min</text>
+    <text x="1144" y="359" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="17" font-weight="400" fill="#686868">−31%</text>
+    <rect x="740" y="376" width="476" height="1" fill="#C3C3C3"/>
+  </g>
+  <g id="kpi-1" data-component="kpi">
+    <rect x="64" y="470" width="286" height="112" rx="0" fill="#F5F5F5"/>
+    <text x="86" y="532" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="37" font-weight="700" fill="#244842">224</text>
+    <text x="86" y="560" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="15" fill="#686868">品牌提及</text>
+  </g>
+  <g id="kpi-2" data-component="kpi">
+    <rect x="372" y="470" width="286" height="112" rx="0" fill="#F5F5F5"/>
+    <text x="394" y="532" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="37" font-weight="700" fill="#244842">3.4×</text>
+    <text x="394" y="560" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="15" fill="#686868">心智差距</text>
+  </g>
+  <g id="callout" data-component="callout">
+    <rect x="700" y="470" width="516" height="112" rx="0" fill="none"/>
+    <rect x="700" y="470" width="2" height="112" fill="#244842"/>
+    <text x="722" y="514" font-family="&quot;Noto Serif SC&quot;, &quot;Songti SC&quot;, &quot;SimSun&quot;, serif" font-size="18" font-weight="700" fill="#111111">判断先行，证据在后</text>
+    <text x="722" y="544" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="15" fill="#686868">一页只留一个主导对象，装饰不替代表达。</text>
+  </g>
+  <g id="list" data-component="list">
+    <rect x="64" y="602.5" width="5" height="5" fill="#244842"/>
+    <text x="83" y="610" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="16" fill="#111111">判断先行，证据在后</text>
+    <rect x="64" y="626.5" width="5" height="5" fill="#244842"/>
+    <text x="83" y="634" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="16" fill="#111111">一页只留一个主导对象</text>
+    <rect x="64" y="650.5" width="5" height="5" fill="#244842"/>
+    <text x="83" y="658" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="16" fill="#111111">装饰不替代关系表达</text>
+  </g>
+  <g id="footer">
+    <line x1="64" y1="678" x2="1216" y2="678" stroke="#111111" stroke-width="1"/>
+    <text x="64" y="702" font-family="&quot;Songti SC&quot;, &quot;Noto Serif SC&quot;, &quot;SimSun&quot;, serif" font-size="13" fill="#686868">极简水墨 · components</text>
+  </g>
+</svg>
+
+  </figure>
+  <figure>
+    <figcaption>Neon 3D 霓虹立体 <span>dark-tech</span></figcaption>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" data-theme-sample="neon-3d">
+  <rect x="0" y="0" width="1280" height="720" fill="#050507"/>
+  <g id="header">
+    <rect x="64" y="56" width="190" height="28" rx="8" fill="#31F7E5"/>
+    <text x="76" y="74" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" font-weight="700" fill="#000000">03 · COMPONENTS</text>
+    <text x="64" y="146" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="42" font-weight="800" fill="#FFFFFF">Neon 3D 霓虹立体</text>
+  </g>
+  <g id="rule"><rect x="64" y="166" width="1152" height="2" fill="#31F7E5"/></g>
+  <g id="chart" data-component="chart">
+    <text x="64" y="196" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#A0A0A1">条形图</text>
+    <rect x="295" y="208" width="1" height="192" fill="#3C3C3E" opacity="0.55"/>
+    <rect x="430" y="208" width="1" height="192" fill="#3C3C3E" opacity="0.55"/>
+    <rect x="565" y="208" width="1" height="192" fill="#3C3C3E" opacity="0.55"/>
+    <text x="64" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#FFFFFF">叙事</text>
+    <rect x="160" y="214" width="400" height="16" fill="#31F7E5"/>
+    <text x="568" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">92</text>
+    <text x="64" y="273" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#FFFFFF">证据</text>
+    <rect x="160" y="260" width="340" height="16" fill="#FF4F78"/>
+    <text x="508" y="273" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">78</text>
+    <text x="64" y="319" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#FFFFFF">数据</text>
+    <rect x="160" y="306" width="278" height="16" fill="#31F7E5"/>
+    <text x="446" y="319" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">64</text>
+    <text x="64" y="365" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#FFFFFF">节奏</text>
+    <rect x="160" y="352" width="218" height="16" fill="#FF4F78"/>
+    <text x="386" y="365" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">50</text>
+    <rect x="160" y="400" width="540" height="1" fill="#FF4F78"/>
+  </g>
+  <g id="table" data-component="table">
+    <text x="740" y="186" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#A0A0A1">表格</text>
+    <rect x="740" y="200" width="476" height="44" rx="8" fill="#31F7E5"/>
+    <rect x="740" y="288" width="476" height="44" fill="#19191B"/>
+    <text x="758" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">核心指标</text>
+    <text x="950" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">Q2</text>
+    <text x="1050" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">Q3</text>
+    <text x="1144" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">环比</text>
+    <rect x="740" y="244" width="476" height="1" fill="#3C3C3E"/>
+    <text x="758" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#FFFFFF">有效任务</text>
+    <text x="950" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#A0A0A1">1,284</text>
+    <text x="1050" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#A0A0A1">1,736</text>
+    <text x="1144" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#A0A0A1">+35%</text>
+    <rect x="740" y="288" width="476" height="1" fill="#3C3C3E"/>
+    <text x="758" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#FFFFFF">留存率</text>
+    <text x="950" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#A0A0A1">41%</text>
+    <text x="1050" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#A0A0A1">52%</text>
+    <text x="1144" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#A0A0A1">+11pt</text>
+    <rect x="740" y="332" width="476" height="1" fill="#3C3C3E"/>
+    <text x="758" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#FFFFFF">人均耗时</text>
+    <text x="950" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#A0A0A1">26min</text>
+    <text x="1050" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#A0A0A1">18min</text>
+    <text x="1144" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#A0A0A1">−31%</text>
+    <rect x="740" y="376" width="476" height="1" fill="#3C3C3E"/>
+    <rect x="740.5" y="200.5" width="475" height="175" rx="8" fill="none" stroke="#FF4F78" stroke-width="1"/>
+  </g>
+  <g id="kpi-1" data-component="kpi">
+    <rect x="64" y="470" width="286" height="112" rx="10" fill="#19191B" stroke="#31F7E5" stroke-width="1"/>
+    <text x="86" y="532" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="36" font-weight="800" fill="#31F7E5">224</text>
+    <text x="86" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#A0A0A1">品牌提及</text>
+  </g>
+  <g id="kpi-2" data-component="kpi">
+    <rect x="372" y="470" width="286" height="112" rx="10" fill="#19191B" stroke="#31F7E5" stroke-width="1"/>
+    <text x="394" y="532" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="36" font-weight="800" fill="#31F7E5">3.4×</text>
+    <text x="394" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#A0A0A1">心智差距</text>
+  </g>
+  <g id="callout" data-component="callout">
+    <rect x="700" y="470" width="516" height="112" rx="8" fill="#3C1520" stroke="#FF4F78" stroke-width="1"/>
+    <rect x="700" y="470" width="4" height="112" fill="#31F7E5"/>
+    <text x="724" y="514" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="800" fill="#FFFFFF">判断先行，证据在后</text>
+    <text x="724" y="544" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#FFFFFF">一页只留一个主导对象，装饰不替代表达。</text>
+  </g>
+  <g id="list" data-component="list">
+    <rect x="64" y="602" width="6" height="6" fill="#FF4F78"/>
+    <text x="84" y="610" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#FFFFFF">判断先行，证据在后</text>
+    <rect x="64" y="626" width="6" height="6" fill="#FF4F78"/>
+    <text x="84" y="634" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#FFFFFF">一页只留一个主导对象</text>
+    <rect x="64" y="650" width="6" height="6" fill="#FF4F78"/>
+    <text x="84" y="658" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#FFFFFF">装饰不替代关系表达</text>
+  </g>
+  <g id="footer">
+    <rect x="0" y="678" width="1280" height="42" fill="#19191B"/>
+    <text x="64" y="705" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#FFFFFF">Neon 3D 霓虹立体 · components</text>
+  </g>
+</svg>
+
+  </figure>
+  <figure>
+    <figcaption>荧光绿线框 <span>blueprint</span></figcaption>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" data-theme-sample="neon-green-wireframe">
+  <rect x="0" y="0" width="1280" height="720" fill="#F8F9FB"/>
+  <g id="header">
+    <rect x="64" y="56" width="190" height="26" rx="0" fill="#7A5CFF"/>
+    <text x="74" y="73" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" font-weight="600" fill="#F8F9FB">03 · COMPONENTS</text>
+    <text x="64" y="146" font-family="&quot;Noto Sans SC&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif" font-size="44" font-weight="700" fill="#0A1020">荧光绿线框</text>
+  </g>
+  <g id="rule"><rect x="64" y="166" width="1152" height="1" fill="#7A5CFF"/></g>
+  <g id="chart" data-component="chart">
+    <text x="64" y="196" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="13" fill="#646973">条形图</text>
+    <rect x="268" y="208" width="1" height="192" fill="#BAC2CE" opacity="0.55"/>
+    <rect x="376" y="208" width="1" height="192" fill="#BAC2CE" opacity="0.55"/>
+    <rect x="484" y="208" width="1" height="192" fill="#BAC2CE" opacity="0.55"/>
+    <rect x="592" y="208" width="1" height="192" fill="#BAC2CE" opacity="0.55"/>
+    <text x="64" y="226" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#0A1020">叙事</text>
+    <rect x="160" y="214" width="400" height="14" fill="#02BF31" stroke="#02BF31" stroke-width="1"/>
+    <text x="568" y="226" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#0A1020">92</text>
+    <text x="64" y="272" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#0A1020">证据</text>
+    <rect x="160" y="260" width="340" height="14" fill="#7A5CFF" stroke="#02BF31" stroke-width="1"/>
+    <text x="508" y="272" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#0A1020">78</text>
+    <text x="64" y="318" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#0A1020">数据</text>
+    <rect x="160" y="306" width="278" height="14" fill="#02BF31" stroke="#02BF31" stroke-width="1"/>
+    <text x="446" y="318" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#0A1020">64</text>
+    <text x="64" y="364" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#0A1020">节奏</text>
+    <rect x="160" y="352" width="218" height="14" fill="#7A5CFF" stroke="#02BF31" stroke-width="1"/>
+    <text x="386" y="364" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#0A1020">50</text>
+    <rect x="160" y="400" width="540" height="1" fill="#02BF31"/>
+  </g>
+  <g id="table" data-component="table">
+    <text x="740" y="186" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="13" fill="#646973">表格</text>
+    <rect x="740" y="200" width="476" height="44" rx="4" fill="#02BF31"/>
+    <text x="758" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="700" fill="#000000">核心指标</text>
+    <text x="950" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="700" fill="#000000">Q2</text>
+    <text x="1050" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="700" fill="#000000">Q3</text>
+    <text x="1144" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="700" fill="#000000">环比</text>
+    <rect x="740" y="244" width="476" height="1" fill="#BAC2CE"/>
+    <text x="758" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#0A1020">有效任务</text>
+    <text x="950" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#646973">1,284</text>
+    <text x="1050" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#646973">1,736</text>
+    <text x="1144" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#646973">+35%</text>
+    <rect x="740" y="288" width="476" height="1" fill="#BAC2CE"/>
+    <text x="758" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#0A1020">留存率</text>
+    <text x="950" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#646973">41%</text>
+    <text x="1050" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#646973">52%</text>
+    <text x="1144" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#646973">+11pt</text>
+    <rect x="740" y="332" width="476" height="1" fill="#BAC2CE"/>
+    <text x="758" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#0A1020">人均耗时</text>
+    <text x="950" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#646973">26min</text>
+    <text x="1050" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#646973">18min</text>
+    <text x="1144" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#646973">−31%</text>
+    <rect x="740" y="376" width="476" height="1" fill="#BAC2CE"/>
+    <rect x="740.5" y="200.5" width="475" height="175" rx="4" fill="none" stroke="#02BF31" stroke-width="1"/>
+  </g>
+  <g id="kpi-1" data-component="kpi">
+    <rect x="64" y="470" width="286" height="112" rx="2" fill="#FBFBFD" stroke="#02BF31" stroke-width="1"/>
+    <text x="86" y="532" font-family="&quot;Noto Sans SC&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif" font-size="37" font-weight="700" fill="#067029">224</text>
+    <text x="86" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#646973">品牌提及</text>
+  </g>
+  <g id="kpi-2" data-component="kpi">
+    <rect x="372" y="470" width="286" height="112" rx="2" fill="#FBFBFD" stroke="#02BF31" stroke-width="1"/>
+    <text x="394" y="532" font-family="&quot;Noto Sans SC&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif" font-size="37" font-weight="700" fill="#067029">3.4×</text>
+    <text x="394" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#646973">心智差距</text>
+  </g>
+  <g id="callout" data-component="callout">
+    <rect x="700" y="470" width="516" height="112" rx="4" fill="none" stroke="#02BF31" stroke-width="1"/>
+    <text x="722" y="514" font-family="&quot;Noto Sans SC&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif" font-size="18" font-weight="700" fill="#0A1020">判断先行，证据在后</text>
+    <text x="722" y="544" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#646973">一页只留一个主导对象，装饰不替代表达。</text>
+  </g>
+  <g id="list" data-component="list">
+    <rect x="64" y="601.5" width="7" height="7" fill="#02BF31" stroke="#7A5CFF" stroke-width="1"/>
+    <text x="85" y="610" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" fill="#0A1020">判断先行，证据在后</text>
+    <rect x="64" y="625.5" width="7" height="7" fill="#02BF31" stroke="#7A5CFF" stroke-width="1"/>
+    <text x="85" y="634" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" fill="#0A1020">一页只留一个主导对象</text>
+    <rect x="64" y="649.5" width="7" height="7" fill="#02BF31" stroke="#7A5CFF" stroke-width="1"/>
+    <text x="85" y="658" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" fill="#0A1020">装饰不替代关系表达</text>
+  </g>
+  <g id="footer">
+    <line x1="64" y1="678" x2="1216" y2="678" stroke="#7A5CFF" stroke-width="1"/>
+    <text x="64" y="702" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="13" fill="#646973">荧光绿线框 · components</text>
+  </g>
+</svg>
+
+  </figure>
+  <figure>
+    <figcaption>Pixel Pop 像素波普 <span>pixel-art</span></figcaption>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" data-theme-sample="pixel-pop">
+  <rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header">
+    <rect x="64" y="56" width="190" height="30" rx="0" fill="#E8A715" stroke="#000000" stroke-width="2"/>
+    <text x="76" y="76" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="13" font-weight="700" fill="#000000">03 · COMPONENTS</text>
+    <text x="64" y="146" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="42" font-weight="800" fill="#000000">Pixel Pop 像素波普</text>
+  </g>
+  <g id="rule"><rect x="64" y="166" width="1152" height="4" fill="#000000"/></g>
+  <g id="chart" data-component="chart">
+    <text x="64" y="196" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#616161">条形图</text>
+    <text x="64" y="228" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#000000">叙事</text>
+    <rect x="160" y="214" width="400" height="18" fill="#E8A715" stroke="#000000" stroke-width="2"/>
+    <text x="568" y="228" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">92</text>
+    <text x="64" y="274" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#000000">证据</text>
+    <rect x="160" y="260" width="340" height="18" fill="#00D2AE" stroke="#000000" stroke-width="2"/>
+    <text x="508" y="274" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">78</text>
+    <text x="64" y="320" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#000000">数据</text>
+    <rect x="160" y="306" width="278" height="18" fill="#E8A715" stroke="#000000" stroke-width="2"/>
+    <text x="446" y="320" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">64</text>
+    <text x="64" y="366" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#000000">节奏</text>
+    <rect x="160" y="352" width="218" height="18" fill="#00D2AE" stroke="#000000" stroke-width="2"/>
+    <text x="386" y="366" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">50</text>
+    <rect x="160" y="400" width="540" height="2" fill="#000000"/>
+  </g>
+  <g id="table" data-component="table">
+    <text x="740" y="186" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#616161">表格</text>
+    <rect x="740" y="200" width="476" height="44" rx="0" fill="#E8A715"/>
+    <text x="758" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">核心指标</text>
+    <text x="950" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">Q2</text>
+    <text x="1050" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">Q3</text>
+    <text x="1144" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">环比</text>
+    <rect x="740" y="244" width="476" height="2" fill="#000000"/>
+    <text x="758" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#000000">有效任务</text>
+    <text x="950" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#616161">1,284</text>
+    <text x="1050" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#616161">1,736</text>
+    <text x="1144" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#616161">+35%</text>
+    <rect x="740" y="288" width="476" height="2" fill="#000000"/>
+    <text x="758" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#000000">留存率</text>
+    <text x="950" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#616161">41%</text>
+    <text x="1050" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#616161">52%</text>
+    <text x="1144" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#616161">+11pt</text>
+    <rect x="740" y="332" width="476" height="2" fill="#000000"/>
+    <text x="758" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#000000">人均耗时</text>
+    <text x="950" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#616161">26min</text>
+    <text x="1050" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#616161">18min</text>
+    <text x="1144" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#616161">−31%</text>
+    <rect x="740" y="376" width="476" height="2" fill="#000000"/>
+    <rect x="741" y="201" width="474" height="174" rx="0" fill="none" stroke="#000000" stroke-width="2"/>
+  </g>
+  <g id="kpi-1" data-component="kpi">
+    <rect x="68" y="474" width="286" height="112" rx="0" fill="#000000"/>
+    <rect x="64" y="470" width="286" height="112" rx="0" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+    <text x="86" y="532" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="36" font-weight="800" fill="#805C0C">224</text>
+    <text x="86" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#616161">品牌提及</text>
+  </g>
+  <g id="kpi-2" data-component="kpi">
+    <rect x="376" y="474" width="286" height="112" rx="0" fill="#000000"/>
+    <rect x="372" y="470" width="286" height="112" rx="0" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+    <text x="394" y="532" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="36" font-weight="800" fill="#805C0C">3.4×</text>
+    <text x="394" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#616161">心智差距</text>
+  </g>
+  <g id="callout" data-component="callout">
+    <rect x="704" y="474" width="516" height="112" rx="0" fill="#000000"/>
+    <rect x="700" y="470" width="516" height="112" rx="0" fill="#D1F7F0" stroke="#000000" stroke-width="2"/>
+    <text x="722" y="514" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="800" fill="#000000">判断先行，证据在后</text>
+    <text x="722" y="544" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#000000">一页只留一个主导对象，装饰不替代表达。</text>
+  </g>
+  <g id="list" data-component="list">
+    <rect x="64" y="600" width="10" height="10" fill="#E8A715" stroke="#000000" stroke-width="2"/>
+    <text x="88" y="610" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#000000">判断先行，证据在后</text>
+    <rect x="64" y="624" width="10" height="10" fill="#E8A715" stroke="#000000" stroke-width="2"/>
+    <text x="88" y="634" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#000000">一页只留一个主导对象</text>
+    <rect x="64" y="648" width="10" height="10" fill="#E8A715" stroke="#000000" stroke-width="2"/>
+    <text x="88" y="658" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#000000">装饰不替代关系表达</text>
+  </g>
+  <g id="footer">
+    <line x1="64" y1="678" x2="1216" y2="678" stroke="#000000" stroke-width="1"/>
+    <text x="64" y="702" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#616161">Pixel Pop 像素波普 · components</text>
+  </g>
+</svg>
+
+  </figure>
+  <figure>
+    <figcaption>红绿创意作品集 <span>editorial</span></figcaption>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" data-theme-sample="portfolio-redgreen">
+  <rect x="0" y="0" width="1280" height="720" fill="#F7F5F0"/>
+  <g id="header">
+    <text x="64" y="146" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="44" font-weight="700" fill="#23251F">红绿创意作品集</text>
+  </g>
+  <g id="rule"><rect x="64" y="166" width="1152" height="1" fill="#C8C7C2"/></g>
+  <g id="chart" data-component="chart">
+    <text x="64" y="196" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="13" fill="#74746E">条形图</text>
+    <text x="64" y="225" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#23251F">叙事</text>
+    <rect x="160" y="214" width="400" height="12" fill="#CE544D"/>
+    <text x="568" y="225" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="400" fill="#23251F">92</text>
+    <text x="64" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#23251F">证据</text>
+    <rect x="160" y="260" width="340" height="12" fill="#74746E"/>
+    <text x="508" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="400" fill="#23251F">78</text>
+    <text x="64" y="317" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#23251F">数据</text>
+    <rect x="160" y="306" width="278" height="12" fill="#CE544D"/>
+    <text x="446" y="317" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="400" fill="#23251F">64</text>
+    <text x="64" y="363" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#23251F">节奏</text>
+    <rect x="160" y="352" width="218" height="12" fill="#74746E"/>
+    <text x="386" y="363" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="400" fill="#23251F">50</text>
+    <rect x="160" y="400" width="540" height="1" fill="#C8C7C2"/>
+  </g>
+  <g id="table" data-component="table">
+    <text x="740" y="186" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="13" fill="#74746E">表格</text>
+    <text x="758" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="700" fill="#23251F">核心指标</text>
+    <text x="950" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="700" fill="#23251F">Q2</text>
+    <text x="1050" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="700" fill="#23251F">Q3</text>
+    <text x="1144" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="700" fill="#23251F">环比</text>
+    <rect x="740" y="244" width="476" height="1" fill="#23251F"/>
+    <text x="758" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#23251F">有效任务</text>
+    <text x="950" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#74746E">1,284</text>
+    <text x="1050" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#74746E">1,736</text>
+    <text x="1144" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#74746E">+35%</text>
+    <rect x="740" y="288" width="476" height="1" fill="#C8C7C2"/>
+    <text x="758" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#23251F">留存率</text>
+    <text x="950" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#74746E">41%</text>
+    <text x="1050" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#74746E">52%</text>
+    <text x="1144" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#74746E">+11pt</text>
+    <rect x="740" y="332" width="476" height="1" fill="#C8C7C2"/>
+    <text x="758" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#23251F">人均耗时</text>
+    <text x="950" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#74746E">26min</text>
+    <text x="1050" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#74746E">18min</text>
+    <text x="1144" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#74746E">−31%</text>
+    <rect x="740" y="376" width="476" height="1" fill="#C8C7C2"/>
+  </g>
+  <g id="kpi-1" data-component="kpi">
+    <rect x="64" y="470" width="286" height="112" rx="0" fill="#F7F5F0"/>
+    <text x="86" y="532" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="37" font-weight="700" fill="#CE544D">224</text>
+    <text x="86" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#74746E">品牌提及</text>
+  </g>
+  <g id="kpi-2" data-component="kpi">
+    <rect x="372" y="470" width="286" height="112" rx="0" fill="#F7F5F0"/>
+    <text x="394" y="532" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="37" font-weight="700" fill="#CE544D">3.4×</text>
+    <text x="394" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#74746E">心智差距</text>
+  </g>
+  <g id="callout" data-component="callout">
+    <rect x="700" y="470" width="516" height="112" rx="0" fill="none"/>
+    <rect x="700" y="470" width="3" height="112" fill="#CE544D"/>
+    <text x="723" y="514" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="18" font-weight="700" fill="#23251F">判断先行，证据在后</text>
+    <text x="723" y="544" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#74746E">一页只留一个主导对象，装饰不替代表达。</text>
+  </g>
+  <g id="list" data-component="list">
+    <rect x="64" y="602" width="6" height="6" fill="#CE544D"/>
+    <text x="84" y="610" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" fill="#23251F">判断先行，证据在后</text>
+    <rect x="64" y="626" width="6" height="6" fill="#CE544D"/>
+    <text x="84" y="634" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" fill="#23251F">一页只留一个主导对象</text>
+    <rect x="64" y="650" width="6" height="6" fill="#CE544D"/>
+    <text x="84" y="658" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" fill="#23251F">装饰不替代关系表达</text>
+  </g>
+  <g id="footer">
+    <line x1="64" y1="678" x2="1216" y2="678" stroke="#C8C7C2" stroke-width="1"/>
+    <text x="64" y="702" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="13" fill="#74746E">红绿创意作品集 · components</text>
+  </g>
+</svg>
+
+  </figure>
+  <figure>
+    <figcaption>田园政企绿色 <span>editorial</span></figcaption>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" data-theme-sample="rural-green">
+  <rect x="0" y="0" width="1280" height="720" fill="#F7FAF7"/>
+  <g id="header">
+    <text x="64" y="146" font-family="&quot;Noto Sans SC&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif" font-size="42" font-weight="700" fill="#173F2A">田园政企绿色</text>
+  </g>
+  <g id="rule"><rect x="64" y="166" width="1152" height="1" fill="#C6D1CA"/></g>
+  <g id="chart" data-component="chart">
+    <text x="64" y="196" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#6C8678">条形图</text>
+    <text x="64" y="225" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#173F2A">叙事</text>
+    <rect x="160" y="214" width="400" height="12" fill="#DE0000"/>
+    <text x="568" y="225" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="400" fill="#173F2A">92</text>
+    <text x="64" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#173F2A">证据</text>
+    <rect x="160" y="260" width="340" height="12" fill="#6C8678"/>
+    <text x="508" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="400" fill="#173F2A">78</text>
+    <text x="64" y="317" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#173F2A">数据</text>
+    <rect x="160" y="306" width="278" height="12" fill="#DE0000"/>
+    <text x="446" y="317" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="400" fill="#173F2A">64</text>
+    <text x="64" y="363" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#173F2A">节奏</text>
+    <rect x="160" y="352" width="218" height="12" fill="#6C8678"/>
+    <text x="386" y="363" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="400" fill="#173F2A">50</text>
+    <rect x="160" y="400" width="540" height="1" fill="#C6D1CA"/>
+  </g>
+  <g id="table" data-component="table">
+    <text x="740" y="186" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#6C8678">表格</text>
+    <text x="758" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#173F2A">核心指标</text>
+    <text x="950" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#173F2A">Q2</text>
+    <text x="1050" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#173F2A">Q3</text>
+    <text x="1144" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#173F2A">环比</text>
+    <rect x="740" y="244" width="476" height="1" fill="#173F2A"/>
+    <text x="758" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#173F2A">有效任务</text>
+    <text x="950" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6C8678">1,284</text>
+    <text x="1050" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6C8678">1,736</text>
+    <text x="1144" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6C8678">+35%</text>
+    <rect x="740" y="288" width="476" height="1" fill="#C6D1CA"/>
+    <text x="758" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#173F2A">留存率</text>
+    <text x="950" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6C8678">41%</text>
+    <text x="1050" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6C8678">52%</text>
+    <text x="1144" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6C8678">+11pt</text>
+    <rect x="740" y="332" width="476" height="1" fill="#C6D1CA"/>
+    <text x="758" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#173F2A">人均耗时</text>
+    <text x="950" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6C8678">26min</text>
+    <text x="1050" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6C8678">18min</text>
+    <text x="1144" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6C8678">−31%</text>
+    <rect x="740" y="376" width="476" height="1" fill="#C6D1CA"/>
+  </g>
+  <g id="kpi-1" data-component="kpi">
+    <rect x="64" y="470" width="286" height="112" rx="0" fill="#FAFCFA"/>
+    <text x="86" y="532" font-family="&quot;Noto Sans SC&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif" font-size="36" font-weight="700" fill="#DE0000">224</text>
+    <text x="86" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#6C8678">品牌提及</text>
+  </g>
+  <g id="kpi-2" data-component="kpi">
+    <rect x="372" y="470" width="286" height="112" rx="0" fill="#FAFCFA"/>
+    <text x="394" y="532" font-family="&quot;Noto Sans SC&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif" font-size="36" font-weight="700" fill="#DE0000">3.4×</text>
+    <text x="394" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#6C8678">心智差距</text>
+  </g>
+  <g id="callout" data-component="callout">
+    <rect x="700" y="470" width="516" height="112" rx="0" fill="none"/>
+    <rect x="700" y="470" width="3" height="112" fill="#DE0000"/>
+    <text x="723" y="514" font-family="&quot;Noto Sans SC&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif" font-size="17" font-weight="700" fill="#173F2A">判断先行，证据在后</text>
+    <text x="723" y="544" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#6C8678">一页只留一个主导对象，装饰不替代表达。</text>
+  </g>
+  <g id="list" data-component="list">
+    <rect x="64" y="602" width="6" height="6" fill="#DE0000"/>
+    <text x="84" y="610" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#173F2A">判断先行，证据在后</text>
+    <rect x="64" y="626" width="6" height="6" fill="#DE0000"/>
+    <text x="84" y="634" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#173F2A">一页只留一个主导对象</text>
+    <rect x="64" y="650" width="6" height="6" fill="#DE0000"/>
+    <text x="84" y="658" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#173F2A">装饰不替代关系表达</text>
+  </g>
+  <g id="footer">
+    <line x1="64" y1="678" x2="1216" y2="678" stroke="#C6D1CA" stroke-width="1"/>
+    <text x="64" y="702" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#6C8678">田园政企绿色 · components</text>
+  </g>
+</svg>
+
+  </figure>
+  <figure>
+    <figcaption>Scatterbrain 便利贴工作坊 <span>zine</span></figcaption>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" data-theme-sample="scatterbrain">
+  <rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header">
+    <rect x="64" y="56" width="190" height="30" rx="0" fill="#00D2AE" stroke="#000000" stroke-width="2"/>
+    <text x="76" y="76" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="13" font-weight="700" fill="#000000">03 · COMPONENTS</text>
+    <text x="64" y="146" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="42" font-weight="700" fill="#000000">Scatterbrain 便利贴工作坊</text>
+  </g>
+  <g id="rule"><rect x="64" y="166" width="1152" height="3" fill="#000000"/></g>
+  <g id="chart" data-component="chart">
+    <text x="64" y="196" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#616161">条形图</text>
+    <text x="64" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#000000">叙事</text>
+    <rect x="160" y="214" width="400" height="16" fill="#E8A715" stroke="#000000" stroke-width="2"/>
+    <text x="568" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">92</text>
+    <text x="64" y="273" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#000000">证据</text>
+    <rect x="160" y="260" width="340" height="16" fill="#00D2AE" stroke="#000000" stroke-width="2"/>
+    <text x="508" y="273" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">78</text>
+    <text x="64" y="319" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#000000">数据</text>
+    <rect x="160" y="306" width="278" height="16" fill="#E8A715" stroke="#000000" stroke-width="2"/>
+    <text x="446" y="319" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">64</text>
+    <text x="64" y="365" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#000000">节奏</text>
+    <rect x="160" y="352" width="218" height="16" fill="#00D2AE" stroke="#000000" stroke-width="2"/>
+    <text x="386" y="365" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">50</text>
+    <rect x="160" y="400" width="540" height="2" fill="#000000"/>
+  </g>
+  <g id="table" data-component="table">
+    <text x="740" y="186" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#616161">表格</text>
+    <rect x="740" y="200" width="476" height="44" rx="0" fill="#E8A715"/>
+    <text x="758" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">核心指标</text>
+    <text x="950" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">Q2</text>
+    <text x="1050" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">Q3</text>
+    <text x="1144" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#000000">环比</text>
+    <rect x="740" y="244" width="476" height="1" fill="#000000"/>
+    <text x="758" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#000000">有效任务</text>
+    <text x="950" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#616161">1,284</text>
+    <text x="1050" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#616161">1,736</text>
+    <text x="1144" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#616161">+35%</text>
+    <rect x="740" y="288" width="476" height="1" fill="#000000"/>
+    <text x="758" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#000000">留存率</text>
+    <text x="950" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#616161">41%</text>
+    <text x="1050" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#616161">52%</text>
+    <text x="1144" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#616161">+11pt</text>
+    <rect x="740" y="332" width="476" height="1" fill="#000000"/>
+    <text x="758" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#000000">人均耗时</text>
+    <text x="950" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#616161">26min</text>
+    <text x="1050" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#616161">18min</text>
+    <text x="1144" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#616161">−31%</text>
+    <rect x="740" y="376" width="476" height="1" fill="#000000"/>
+    <rect x="741" y="201" width="474" height="174" rx="0" fill="none" stroke="#000000" stroke-width="2"/>
+  </g>
+  <g id="kpi-1" data-component="kpi">
+    <rect x="70" y="476" width="286" height="112" rx="0" fill="#000000"/>
+    <rect x="64" y="470" width="286" height="112" rx="0" fill="#D1F7F0" stroke="#000000" stroke-width="2"/>
+    <text x="86" y="532" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="38" font-weight="700" fill="#805C0C">224</text>
+    <text x="86" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#616161">品牌提及</text>
+  </g>
+  <g id="kpi-2" data-component="kpi">
+    <rect x="378" y="476" width="286" height="112" rx="0" fill="#000000"/>
+    <rect x="372" y="470" width="286" height="112" rx="0" fill="#D1F7F0" stroke="#000000" stroke-width="2"/>
+    <text x="394" y="532" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="38" font-weight="700" fill="#805C0C">3.4×</text>
+    <text x="394" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#616161">心智差距</text>
+  </g>
+  <g id="callout" data-component="callout">
+    <rect x="706" y="476" width="516" height="112" rx="0" fill="#000000"/>
+    <rect x="700" y="470" width="516" height="112" rx="0" fill="#00D2AE" stroke="#000000" stroke-width="2"/>
+    <text x="722" y="514" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="700" fill="#000000">判断先行，证据在后</text>
+    <text x="722" y="544" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#000000">一页只留一个主导对象，装饰不替代表达。</text>
+  </g>
+  <g id="list" data-component="list">
+    <rect x="64" y="600" width="10" height="10" fill="#00D2AE" stroke="#000000" stroke-width="2"/>
+    <text x="88" y="610" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#000000">判断先行，证据在后</text>
+    <rect x="64" y="624" width="10" height="10" fill="#00D2AE" stroke="#000000" stroke-width="2"/>
+    <text x="88" y="634" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#000000">一页只留一个主导对象</text>
+    <rect x="64" y="648" width="10" height="10" fill="#00D2AE" stroke="#000000" stroke-width="2"/>
+    <text x="88" y="658" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#000000">装饰不替代关系表达</text>
+  </g>
+  <g id="footer">
+    <line x1="64" y1="678" x2="1216" y2="678" stroke="#000000" stroke-width="1"/>
+    <text x="64" y="702" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#616161">Scatterbrain 便利贴工作坊 · components</text>
+  </g>
+</svg>
+
+  </figure>
+  <figure>
+    <figcaption>Scientific Atlas 科学图谱 <span>data-journalism</span></figcaption>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" data-theme-sample="scientific-atlas">
+  <rect x="0" y="0" width="1280" height="720" fill="#F4F6F3"/>
+  <g id="header">
+    <rect x="64" y="56" width="190" height="28" rx="0" fill="#166D59"/>
+    <text x="76" y="75" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">03 · COMPONENTS</text>
+    <text x="64" y="146" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="38" font-weight="700" fill="#172A31">Scientific Atlas 科学图谱</text>
+  </g>
+  <g id="rule"><rect x="64" y="166" width="1152" height="2" fill="#172A31"/></g>
+  <g id="chart" data-component="chart">
+    <text x="64" y="196" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#6B787B">条形图</text>
+    <rect x="268" y="208" width="1" height="192" fill="#C3C9C8" opacity="0.55"/>
+    <rect x="376" y="208" width="1" height="192" fill="#C3C9C8" opacity="0.55"/>
+    <rect x="484" y="208" width="1" height="192" fill="#C3C9C8" opacity="0.55"/>
+    <rect x="592" y="208" width="1" height="192" fill="#C3C9C8" opacity="0.55"/>
+    <text x="64" y="226" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#172A31">叙事</text>
+    <rect x="160" y="214" width="400" height="14" fill="#166D59"/>
+    <text x="568" y="226" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#172A31">92</text>
+    <text x="64" y="272" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#172A31">证据</text>
+    <rect x="160" y="260" width="340" height="14" fill="#4978D1"/>
+    <text x="508" y="272" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#172A31">78</text>
+    <text x="64" y="318" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#172A31">数据</text>
+    <rect x="160" y="306" width="278" height="14" fill="#166D59"/>
+    <text x="446" y="318" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#172A31">64</text>
+    <text x="64" y="364" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#172A31">节奏</text>
+    <rect x="160" y="352" width="218" height="14" fill="#4978D1"/>
+    <text x="386" y="364" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#172A31">50</text>
+    <rect x="160" y="400" width="540" height="1" fill="#172A31"/>
+  </g>
+  <g id="table" data-component="table">
+    <text x="740" y="186" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#6B787B">表格</text>
+    <rect x="740" y="200" width="476" height="44" rx="0" fill="#166D59"/>
+    <rect x="740" y="288" width="476" height="44" fill="#D5DFED"/>
+    <text x="758" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">核心指标</text>
+    <text x="950" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">Q2</text>
+    <text x="1050" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">Q3</text>
+    <text x="1144" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">环比</text>
+    <rect x="740" y="244" width="476" height="1" fill="#C3C9C8"/>
+    <text x="758" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#172A31">有效任务</text>
+    <text x="950" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6B787B">1,284</text>
+    <text x="1050" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6B787B">1,736</text>
+    <text x="1144" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6B787B">+35%</text>
+    <rect x="740" y="288" width="476" height="1" fill="#C3C9C8"/>
+    <text x="758" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#172A31">留存率</text>
+    <text x="950" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6B787B">41%</text>
+    <text x="1050" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6B787B">52%</text>
+    <text x="1144" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6B787B">+11pt</text>
+    <rect x="740" y="332" width="476" height="1" fill="#C3C9C8"/>
+    <text x="758" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#172A31">人均耗时</text>
+    <text x="950" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6B787B">26min</text>
+    <text x="1050" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6B787B">18min</text>
+    <text x="1144" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="400" fill="#6B787B">−31%</text>
+    <rect x="740" y="376" width="476" height="1" fill="#C3C9C8"/>
+    <rect x="740.5" y="200.5" width="475" height="175" rx="0" fill="none" stroke="#C3C9C8" stroke-width="1"/>
+  </g>
+  <g id="kpi-1" data-component="kpi">
+    <rect x="64" y="470" width="286" height="112" rx="0" fill="#F8F9F8"/>
+    <text x="86" y="532" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="34" font-weight="700" fill="#166D59">224</text>
+    <text x="86" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#6B787B">品牌提及</text>
+  </g>
+  <g id="kpi-2" data-component="kpi">
+    <rect x="372" y="470" width="286" height="112" rx="0" fill="#F8F9F8"/>
+    <text x="394" y="532" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="34" font-weight="700" fill="#166D59">3.4×</text>
+    <text x="394" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#6B787B">心智差距</text>
+  </g>
+  <g id="callout" data-component="callout">
+    <rect x="700" y="470" width="516" height="112" rx="0" fill="#D5DFED"/>
+    <rect x="700" y="470" width="4" height="112" fill="#166D59"/>
+    <text x="724" y="514" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="700" fill="#172A31">判断先行，证据在后</text>
+    <text x="724" y="544" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" fill="#172A31">一页只留一个主导对象，装饰不替代表达。</text>
+  </g>
+  <g id="list" data-component="list">
+    <rect x="64" y="601.5" width="7" height="7" fill="#166D59"/>
+    <text x="85" y="610" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#172A31">判断先行，证据在后</text>
+    <rect x="64" y="625.5" width="7" height="7" fill="#166D59"/>
+    <text x="85" y="634" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#172A31">一页只留一个主导对象</text>
+    <rect x="64" y="649.5" width="7" height="7" fill="#166D59"/>
+    <text x="85" y="658" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#172A31">装饰不替代关系表达</text>
+  </g>
+  <g id="footer">
+    <line x1="64" y1="678" x2="1216" y2="678" stroke="#172A31" stroke-width="1"/>
+    <text x="64" y="702" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="12" fill="#6B787B">Scientific Atlas 科学图谱 · components</text>
+  </g>
+</svg>
+
+  </figure>
+  <figure>
+    <figcaption>Zen Stone 静石留白空间 <span>soft-rounded</span></figcaption>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" data-theme-sample="zen-stone">
+  <rect x="0" y="0" width="1280" height="720" fill="#292825"/>
+  <g id="header">
+    <rect x="64" y="56" width="190" height="30" rx="20" fill="#766C5C"/>
+    <text x="78" y="76" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="13" font-weight="700" fill="#000000">03 · COMPONENTS</text>
+    <text x="64" y="146" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="44" font-weight="700" fill="#F3F1EC">Zen Stone 静石留白空间</text>
+  </g>
+  <g id="chart" data-component="chart">
+    <text x="64" y="196" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="13" fill="#A6A5A0">条形图</text>
+    <text x="64" y="225" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#F3F1EC">叙事</text>
+    <rect x="160" y="214" width="400" height="12" fill="#9E927F"/>
+    <text x="568" y="225" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#F3F1EC">92</text>
+    <text x="64" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#F3F1EC">证据</text>
+    <rect x="160" y="260" width="340" height="12" fill="#A6A5A0"/>
+    <text x="508" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#F3F1EC">78</text>
+    <text x="64" y="317" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#F3F1EC">数据</text>
+    <rect x="160" y="306" width="278" height="12" fill="#9E927F"/>
+    <text x="446" y="317" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#F3F1EC">64</text>
+    <text x="64" y="363" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" fill="#F3F1EC">节奏</text>
+    <rect x="160" y="352" width="218" height="12" fill="#A6A5A0"/>
+    <text x="386" y="363" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="14" font-weight="600" fill="#F3F1EC">50</text>
+    <rect x="160" y="400" width="540" height="1" fill="#555451"/>
+  </g>
+  <g id="table" data-component="table">
+    <text x="740" y="186" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="13" fill="#A6A5A0">表格</text>
+    <rect x="740" y="200" width="476" height="44" rx="8" fill="#3A3731"/>
+    <text x="758" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="700" fill="#F3F1EC">核心指标</text>
+    <text x="950" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="700" fill="#F3F1EC">Q2</text>
+    <text x="1050" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="700" fill="#F3F1EC">Q3</text>
+    <text x="1144" y="227" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" font-weight="700" fill="#F3F1EC">环比</text>
+    <rect x="740" y="244" width="476" height="1" fill="#555451"/>
+    <text x="758" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#F3F1EC">有效任务</text>
+    <text x="950" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#A6A5A0">1,284</text>
+    <text x="1050" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#A6A5A0">1,736</text>
+    <text x="1144" y="271" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#A6A5A0">+35%</text>
+    <rect x="740" y="288" width="476" height="1" fill="#555451"/>
+    <text x="758" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#F3F1EC">留存率</text>
+    <text x="950" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#A6A5A0">41%</text>
+    <text x="1050" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#A6A5A0">52%</text>
+    <text x="1144" y="315" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#A6A5A0">+11pt</text>
+    <rect x="740" y="332" width="476" height="1" fill="#555451"/>
+    <text x="758" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#F3F1EC">人均耗时</text>
+    <text x="950" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#A6A5A0">26min</text>
+    <text x="1050" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#A6A5A0">18min</text>
+    <text x="1144" y="359" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="17" font-weight="400" fill="#A6A5A0">−31%</text>
+    <rect x="740" y="376" width="476" height="1" fill="#555451"/>
+  </g>
+  <g id="kpi-1" data-component="kpi">
+    <rect x="64" y="470" width="286" height="112" rx="8" fill="#3A3936"/>
+    <text x="86" y="532" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="37" font-weight="700" fill="#9E927F">224</text>
+    <text x="86" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#A6A5A0">品牌提及</text>
+  </g>
+  <g id="kpi-2" data-component="kpi">
+    <rect x="372" y="470" width="286" height="112" rx="8" fill="#3A3936"/>
+    <text x="394" y="532" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="37" font-weight="700" fill="#9E927F">3.4×</text>
+    <text x="394" y="560" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#A6A5A0">心智差距</text>
+  </g>
+  <g id="callout" data-component="callout">
+    <rect x="700" y="470" width="516" height="112" rx="14" fill="#9E927F"/>
+    <text x="722" y="514" font-family="Inter, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="18" font-weight="700" fill="#000000">判断先行，证据在后</text>
+    <text x="722" y="544" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="15" fill="#000000">一页只留一个主导对象，装饰不替代表达。</text>
+  </g>
+  <g id="list" data-component="list">
+    <circle cx="68" cy="605" r="4" fill="#9E927F"/>
+    <text x="86" y="610" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" fill="#F3F1EC">判断先行，证据在后</text>
+    <circle cx="68" cy="629" r="4" fill="#9E927F"/>
+    <text x="86" y="634" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" fill="#F3F1EC">一页只留一个主导对象</text>
+    <circle cx="68" cy="653" r="4" fill="#9E927F"/>
+    <text x="86" y="658" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="16" fill="#F3F1EC">装饰不替代关系表达</text>
+  </g>
+  <g id="footer">
+    <line x1="64" y1="678" x2="1216" y2="678" stroke="#555451" stroke-width="1"/>
+    <text x="64" y="702" font-family="&quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans SC&quot;, sans-serif" font-size="13" fill="#A6A5A0">Zen Stone 静石留白空间 · components</text>
+  </g>
+</svg>
+
+  </figure>
+</div>
+</html>

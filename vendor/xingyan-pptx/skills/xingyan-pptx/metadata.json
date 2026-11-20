@@ -1,19 +1,18 @@
 {
   "schemaVersion": "2.0",
-  "id": "zhongtai-pptx",
-  "name": "zhongtai-pptx",
-  "version": "1.0.26",
+  "id": "clawhive-pptx",
+  "name": "clawhive-pptx",
+  "version": "72.1.0",
   "type": "skill",
   "source": "embedded",
   "ownership": "general",
-  "displayName": "中泰PPT大师演示稿制作",
-  "description": "大纲优先的演示稿制作：用户确认大纲后投影成设计契约，按主题生成页面，导出单文件 HTML 或可编辑 PPTX。",
+  "displayName": "PPT 大师演示稿制作",
+  "description": "大纲优先的演示稿制作：用户确认大纲后投影成设计契约，按主题生成页面并导出 HTML。",
   "tags": [
     "PPT",
     "演示稿",
     "大纲",
     "HTML",
-    "主题",
-    "PPTX"
+    "主题"
   ]
 }

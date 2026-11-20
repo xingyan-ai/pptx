@@ -85,7 +85,6 @@ from .utils import (
     quantize_ooxml_alpha,
     project_definition_index,
     svg_hidden_reason,
-    is_stroked_zero_axis_shape,
     matrix_multiply, parse_transform_matrix, parse_transform_operations,
     transform_point, _xml_escape,
 )
@@ -808,7 +807,6 @@ _PPTX_GUIDE_NAME_RE = re.compile(r'[A-Za-z_][A-Za-z0-9_.-]{0,63}')
 _PPTX_VAL_FORMULA_RE = re.compile(r'val[\t ]+([+-]?\d+)')
 def _parse_preset_geometry_metadata(
     elem: ET.Element,
-    ctx: ConvertContext | None = None,
 ) -> tuple[str | None, list[tuple[str, str]], tuple[float, float, float, float] | None]:
     """Parse and validate rendering-neutral preset geometry metadata."""
     status = (elem.get('data-pptx-geometry-status') or '').strip()
@@ -950,15 +948,10 @@ def _parse_preset_geometry_metadata(
             elem.get('data-pptx-object') == 'connector'
             or prst in CONNECTOR_PRESET_TYPES
         )
-        is_native_group = (
-            elem.tag.rsplit('}', 1)[-1] == 'g'
-            and elem.get('data-pptx-object') == 'group'
-        )
-        if is_connector or is_native_group or is_stroked_zero_axis_shape(elem, ctx):
+        if is_connector:
             if frame[2] < 0 or frame[3] < 0 or (frame[2] == 0 and frame[3] == 0):
-                kind = 'Connector' if is_connector else 'Group'
                 raise ValueError(
-                    f'{kind} data-pptx-frame dimensions must be non-negative '
+                    'Connector data-pptx-frame dimensions must be non-negative '
                     f'and not both zero, got {raw_frame!r}'
                 )
         elif frame[2] <= 0 or frame[3] <= 0:
@@ -975,14 +968,11 @@ def _parse_preset_geometry_metadata(
     return prst, guides, frame
 
 
-def validate_preset_geometry_metadata(
-    elem: ET.Element,
-    ctx: ConvertContext | None = None,
-) -> list[str]:
+def validate_preset_geometry_metadata(elem: ET.Element) -> list[str]:
     """Return native shape metadata errors for authoring-time validation."""
     errors: list[str] = []
     try:
-        _parse_preset_geometry_metadata(elem, ctx)
+        _parse_preset_geometry_metadata(elem)
     except ValueError as exc:
         errors.append(str(exc))
     if elem.get('data-pptx-custgeom') is not None:
@@ -1045,9 +1035,9 @@ def complete_preset_adjustments(
     ]
 
 
-def _build_preset_geom_from_meta(elem: ET.Element, ctx: ConvertContext) -> str | None:
+def _build_preset_geom_from_meta(elem: ET.Element) -> str | None:
     """Build validated native DrawingML preset geometry from SVG metadata."""
-    prst, guides, _frame = _parse_preset_geometry_metadata(elem, ctx)
+    prst, guides, _frame = _parse_preset_geometry_metadata(elem)
     if prst is None:
         return None
     if not guides:
@@ -1104,7 +1094,7 @@ def _shape_xfrm_from_preset_frame(
     transform: str | None,
 ) -> tuple[str, int, int, int, int, tuple[int, int, int, int]]:
     """Use the preserved logical frame for native preset size when present."""
-    prst, _guides, frame = _parse_preset_geometry_metadata(elem, ctx)
+    prst, _guides, frame = _parse_preset_geometry_metadata(elem)
     if frame is None:
         raw_x, raw_y, raw_w, raw_h = fallback_raw_rect
         x, y, w, h = fallback_resolved_rect
@@ -1117,7 +1107,6 @@ def _shape_xfrm_from_preset_frame(
     preserves_zero_axis = (
         elem.get('data-pptx-object') == 'connector'
         or prst in CONNECTOR_PRESET_TYPES
-        or is_stroked_zero_axis_shape(elem, ctx)
     )
     xfrm_attr, off_x, off_y, ext_cx, ext_cy, bounds_emu = _shape_xfrm_from_svg_rect(
         ctx,
@@ -1154,7 +1143,7 @@ def _pathlike_preset_xfrm(
     height: float,
 ) -> tuple[str, int, int, int, int, tuple[int, int, int, int]]:
     """Resolve a path-like preset xfrm from its logical frame or visual bounds."""
-    _prst, _guides, frame = _parse_preset_geometry_metadata(elem, ctx)
+    _prst, _guides, frame = _parse_preset_geometry_metadata(elem)
     if frame is None:
         if _uses_full_transform(ctx, transform):
             tag = elem.tag.rsplit('}', 1)[-1]
@@ -1293,11 +1282,9 @@ def convert_rect(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
     y = ctx_y(raw_y, ctx)
     w = ctx_w(raw_w, ctx)
     h = ctx_h(raw_h, ctx)
-    preset_geom = _build_preset_geom_from_meta(elem, ctx)
+    preset_geom = _build_preset_geom_from_meta(elem)
 
-    if (w <= 0 or h <= 0) and not (
-        preset_geom is not None and is_stroked_zero_axis_shape(elem, ctx)
-    ):
+    if w <= 0 or h <= 0:
         return None
 
     # SVG spec: when only one of rx/ry is specified, the other inherits its
@@ -1442,7 +1429,7 @@ def _build_arc_ring_path(
     width = max_x - min_x
     height = max_y - min_y
 
-    if width <= 0 or height <= 0:
+    if width < 0.5 or height < 0.5:
         return '', 0, 0, 0, 0
 
     w_emu = px_to_emu(width)
@@ -1485,7 +1472,7 @@ def convert_circle(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
     cx_ = svg_length_x(elem.get('cx'), ctx)
     cy_ = svg_length_y(elem.get('cy'), ctx)
     r = svg_length_size(elem.get('r'), ctx)
-    preset_geom = _build_preset_geom_from_meta(elem, ctx)
+    preset_geom = _build_preset_geom_from_meta(elem)
 
     if r <= 0:
         return None
@@ -1649,7 +1636,7 @@ def convert_line(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
     heads (headEnd / tailEnd) correctly.  Plain lines (no markers) continue to
     use custom geometry which is sufficient and avoids flipH/flipV complexity.
     """
-    preset_geom = _build_preset_geom_from_meta(elem, ctx)
+    preset_geom = _build_preset_geom_from_meta(elem)
     transform = elem.get('transform')
     raw_x1 = svg_length_x(elem.get('x1'), ctx)
     raw_y1 = svg_length_y(elem.get('y1'), ctx)
@@ -1810,7 +1797,7 @@ def convert_line(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
 
 def convert_path(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
     """Convert SVG <path> to DrawingML custom geometry shape."""
-    preset_geom = _build_preset_geom_from_meta(elem, ctx)
+    preset_geom = _build_preset_geom_from_meta(elem)
     preserved_custom_geom = _build_preserved_custom_geom(elem)
     native_geom = preset_geom or preserved_custom_geom
     d = elem.get('d', '')
@@ -1898,7 +1885,7 @@ def convert_path(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
 
 def convert_polygon(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
     """Convert SVG <polygon> to DrawingML custom geometry shape."""
-    preset_geom = _build_preset_geom_from_meta(elem, ctx)
+    preset_geom = _build_preset_geom_from_meta(elem)
     points = parse_svg_points(elem.get('points', ''), min_points=3)
 
     commands = [PathCommand('M', [points[0][0], points[0][1]])]
@@ -1975,7 +1962,7 @@ def convert_polygon(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None
 
 def convert_polyline(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
     """Convert SVG <polyline> to DrawingML custom geometry shape."""
-    preset_geom = _build_preset_geom_from_meta(elem, ctx)
+    preset_geom = _build_preset_geom_from_meta(elem)
     points = parse_svg_points(elem.get('points', ''), min_points=2)
 
     commands = [PathCommand('M', [points[0][0], points[0][1]])]
@@ -3098,15 +3085,6 @@ def _text_axis_transform(ctx: ConvertContext) -> tuple[bool, bool, bool]:
     return True, a < 0, d < 0
 
 
-def _inline_formula_preview_run(run: dict[str, Any]) -> dict[str, Any]:
-    """Return an inline formula run as its ordinary SVG preview-text run."""
-    if run.get(_INLINE_FORMULA_KEY) is None:
-        return run
-    preview = dict(run)
-    del preview[_INLINE_FORMULA_KEY]
-    return preview
-
-
 def _build_run_xml(
     run: dict[str, Any],
     default_fonts: dict[str, str],
@@ -3612,61 +3590,47 @@ def convert_text(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
     shape_id = _claim_element_shape_id(elem, ctx)
     rot_attr = f' rot="{text_rot}"' if text_rot else ''
 
-    def _paragraphs_xml(formula_previews: bool) -> str:
-        # The MCE Fallback copy writes each inline formula as its SVG preview
-        # text so a reader without a14 math still shows the formula.
-        def _runs_xml(line_runs: list[dict[str, Any]]) -> str:
-            return '\n'.join(
-                _build_run_xml(
-                    _inline_formula_preview_run(r) if formula_previews else r,
-                    fonts,
-                    ctx,
-                    text_effect_xml,
-                )
-                for r in line_runs
+    if paragraph_runs is not None:
+        # SVG dy(px) -> hundredths-of-a-point: dy_pt = dy_px * 0.75, then x100.
+        line_spc_val = round(line_height_px * FONT_PX_TO_HUNDREDTHS_PT)
+        ln_spc_xml = f'<a:lnSpc><a:spcPts val="{line_spc_val}"/></a:lnSpc>'
+        paragraph_xml_chunks = []
+        for line, extra_px, bullet in zip(paragraph_runs, paragraph_space_before, paragraph_bullets):
+            spc_bef_xml = ''
+            if extra_px > 0:
+                spc_bef_val = round(extra_px * FONT_PX_TO_HUNDREDTHS_PT)
+                spc_bef_xml = f'<a:spcBef><a:spcPts val="{spc_bef_val}"/></a:spcBef>'
+            runs_inner = '\n'.join(_build_run_xml(r, fonts, ctx, text_effect_xml) for r in line)
+            first_text_run = next(
+                (run for run in line if not run.get('_line_break')),
+                None,
             )
-
-        if paragraph_runs is not None:
-            # SVG dy(px) -> hundredths-of-a-point: dy_pt = dy_px * 0.75, then x100.
-            line_spc_val = round(line_height_px * FONT_PX_TO_HUNDREDTHS_PT)
-            ln_spc_xml = f'<a:lnSpc><a:spcPts val="{line_spc_val}"/></a:lnSpc>'
-            paragraph_xml_chunks = []
-            for line, extra_px, bullet in zip(paragraph_runs, paragraph_space_before, paragraph_bullets):
-                spc_bef_xml = ''
-                if extra_px > 0:
-                    spc_bef_val = round(extra_px * FONT_PX_TO_HUNDREDTHS_PT)
-                    spc_bef_xml = f'<a:spcBef><a:spcPts val="{spc_bef_val}"/></a:spcBef>'
-                runs_inner = _runs_xml(line)
-                first_text_run = next(
-                    (run for run in line if not run.get('_line_break')),
-                    None,
-                )
-                effective_line_spacing = (
-                    ''
-                    if any(run.get(_INLINE_FORMULA_KEY) is not None for run in line)
-                    else ln_spc_xml
-                )
-                p_pr_xml = _paragraph_pr_xml(
-                    algn=algn,
-                    font_size=(
-                        float(first_text_run.get('font_size', font_size))
-                        if first_text_run is not None
-                        else font_size
-                    ),
-                    body_xml=f'{effective_line_spacing}{spc_bef_xml}',
-                    bullet=bullet,
-                    ctx=ctx,
-                    rtl=text_uses_rtl(
-                        ''.join(str(run.get('text', '')) for run in line),
-                        ctx.primary_language,
-                    ),
-                )
-                paragraph_xml_chunks.append(
-                    f'<a:p>\n{p_pr_xml}\n{runs_inner}\n</a:p>'
-                )
-            return '\n'.join(paragraph_xml_chunks)
-
-        runs_xml = _runs_xml(runs)
+            effective_line_spacing = (
+                ''
+                if any(run.get(_INLINE_FORMULA_KEY) is not None for run in line)
+                else ln_spc_xml
+            )
+            p_pr_xml = _paragraph_pr_xml(
+                algn=algn,
+                font_size=(
+                    float(first_text_run.get('font_size', font_size))
+                    if first_text_run is not None
+                    else font_size
+                ),
+                body_xml=f'{effective_line_spacing}{spc_bef_xml}',
+                bullet=bullet,
+                ctx=ctx,
+                rtl=text_uses_rtl(
+                    ''.join(str(run.get('text', '')) for run in line),
+                    ctx.primary_language,
+                ),
+            )
+            paragraph_xml_chunks.append(
+                f'<a:p>\n{p_pr_xml}\n{runs_inner}\n</a:p>'
+            )
+        paragraphs_xml = '\n'.join(paragraph_xml_chunks)
+    else:
+        runs_xml = '\n'.join(_build_run_xml(r, fonts, ctx, text_effect_xml) for r in runs)
         p_pr_xml = _paragraph_pr_xml(
             algn=algn,
             font_size=float(runs[0].get('font_size', font_size)) if runs else font_size,
@@ -3674,9 +3638,7 @@ def convert_text(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
             ctx=ctx,
             rtl=text_uses_rtl(full_text, ctx.primary_language),
         )
-        return f'<a:p>\n{p_pr_xml}\n{runs_xml}\n</a:p>'
-
-    paragraphs_xml = _paragraphs_xml(False)
+        paragraphs_xml = f'<a:p>\n{p_pr_xml}\n{runs_xml}\n</a:p>'
 
     off_x = px_to_emu(box_x)
     off_y = px_to_emu(box_y)
@@ -3740,10 +3702,9 @@ def convert_text(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
             'anchor="t" anchorCtr="0">\n<a:spAutoFit/>\n</a:bodyPr>'
         )
 
-    def _shape_xml(sp_id: int, sp_paragraphs_xml: str) -> str:
-        return f'''<p:sp>
+    shape_xml = f'''<p:sp>
 <p:nvSpPr>
-<p:cNvPr id="{sp_id}" name="{_xml_escape(shape_display_name(elem, f'TextBox {sp_id}'))}"/>
+<p:cNvPr id="{shape_id}" name="{_xml_escape(shape_display_name(elem, f'TextBox {shape_id}'))}"/>
 <p:cNvSpPr txBox="1"/><p:nvPr/>
 </p:nvSpPr>
 <p:spPr>
@@ -3757,17 +3718,12 @@ def convert_text(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
 <p:txBody>
 {body_pr_xml}
 <a:lstStyle/>
-{sp_paragraphs_xml}
+{paragraphs_xml}
 </p:txBody>
 </p:sp>'''
-
-    shape_xml = _shape_xml(shape_id, paragraphs_xml)
     if any(run.get(_INLINE_FORMULA_KEY) is not None for run in runs):
         from ..native_objects.inline_formula import wrap_inline_formula_shape
-        shape_xml = wrap_inline_formula_shape(
-            shape_xml,
-            _shape_xml(ctx.next_id(), _paragraphs_xml(True)),
-        )
+        shape_xml = wrap_inline_formula_shape(shape_xml)
     return ShapeResult(
         xml=shape_xml,
         bounds_emu=(off_x, off_y, off_x + ext_cx, off_y + ext_cy),
@@ -5122,7 +5078,7 @@ def convert_image(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
 
 def convert_ellipse(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
     """Convert SVG <ellipse> to DrawingML ellipse shape."""
-    preset_geom = _build_preset_geom_from_meta(elem, ctx)
+    preset_geom = _build_preset_geom_from_meta(elem)
     raw_cx = svg_length_x(elem.get('cx'), ctx)
     raw_cy = svg_length_y(elem.get('cy'), ctx)
     rx_attr = elem.get('rx')
@@ -5138,9 +5094,7 @@ def convert_ellipse(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None
     rx = raw_rx * ctx.scale_x
     ry = raw_ry * ctx.scale_y
 
-    if (rx <= 0 or ry <= 0) and not (
-        preset_geom is not None and is_stroked_zero_axis_shape(elem, ctx)
-    ):
+    if rx <= 0 or ry <= 0:
         return None
 
     x = cx_ - rx

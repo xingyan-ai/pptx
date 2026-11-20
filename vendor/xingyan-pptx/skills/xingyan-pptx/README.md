@@ -1,6 +1,6 @@
 # ClawHive PPTX
 
-大纲优先的 16:9 演示稿 skill：用户先编辑并确认 `outline.json`，脚本把它确定性投影成 `design_spec.md` §IX，之后由执行内核写设计与页面。大纲支持「结论 → 证据 → 含义 → 动作」四层（`points` / `evidence` / `soWhat` / `action`），内容页默认按下限和占位词门禁起草，不再是标题清单。9 个场景（通用汇报 / 竞品调研 / 销售汇报 / 客户方案 / 行业洞察 / 经营复盘 / 培训赋能 / 产品发布 / 客户案例）只填合同默认值，不锁 `mode` / `readingMode`；页数用 `pageBudget` 提示，不做硬门禁。主题是可选覆盖，且只覆盖视觉——配色、字体字号、组件系统、装饰系统；页边距、块间距、构图倾向和内容量不跟主题走。品牌母版稿用 `compose-deck.mjs` 确定性合成：15 种页面版式、页面生成 0 次模型调用；大纲确认后一条 `build-deck.mjs` 跑完投影、品牌契约、门禁和 HTML/PPTX 导出。PDF/DOCX 先用 `extract-source.mjs` 转文本。本地导出 HTML，PPTX 走本地引擎或后端接口。执行内核内置，作为设计参考，不执行它的路由与 Python 流水线。
+大纲优先的 16:9 演示稿 skill：用户先编辑并确认 `outline.json`，脚本把它确定性投影成 `design_spec.md` §IX，之后由执行内核写设计与页面。大纲支持「结论 → 证据 → 含义 → 动作」四层（`points` / `evidence` / `soWhat` / `action`），内容页默认按下限和占位词门禁起草，不再是标题清单。9 个场景（通用汇报 / 竞品调研 / 销售汇报 / 客户方案 / 行业洞察 / 经营复盘 / 培训赋能 / 产品发布 / 客户案例）只填合同默认值，不锁 `mode` / `readingMode`；页数用 `pageBudget` 提示，不做硬门禁。主题是可选覆盖，且只覆盖视觉——配色、字体字号、组件系统、装饰系统；页边距、块间距、构图倾向和内容量不跟主题走。本地导出 HTML，PPTX 走后端。执行内核内置，作为设计参考，不执行它的路由与 Python 流水线。
 
 ## 自包含
 
@@ -23,10 +23,10 @@ node scripts/self-check.mjs --smoke
 安装：把包解压到技能的扫描目录即可，不经过市场，也不需要 `openclaw` CLI。
 
 ```bash
-unzip -q zhongtai-pptx-<版本>.skill -d <skills-root>/
+unzip -q clawhive-pptx-72.0.0.skill -d <skills-root>/
 ```
 
-PPTX 用宿主注入的 Python（`CLAWHIVE_PYTHON_EXECUTABLE`）跑 `scripts/pptx-export.mjs`，依赖由客户端提供（python-pptx / lxml / Pillow，不要求 PyYAML）；版式补不齐会自动降级 flat，再失败就只交付 HTML。
+唯一不随包的是 PPTX 导出：按产品架构走后端接口，客户端不执行 Python。
 
 ## 状态
 
@@ -34,7 +34,7 @@ PPTX 用宿主注入的 Python（`CLAWHIVE_PYTHON_EXECUTABLE`）跑 `scripts/ppt
 |---|---|
 | 执行内核 | 6.7.2 内置在 `runtime/engine/`，只读，完整性门禁通过 |
 | 故事事实源 | `outline.json`：用户增删改序并确认 |
-| 页面类型 | 15 种：cover / title / toc / section / content / two_content / summary / structure / ending + cards-3 / table / metrics-4 / metrics-compare / table-metrics / content-rich；页面由 compose-deck 确定性合成 |
+| 页面类型 | 封面 / 目录 / 章节 / hero / 内容 / 结尾，投影为内核的页面角色 |
 | 目录与 hero | 21 套主题各自定义 `tocStructure` / `heroStructure`，未指定构图时作为非绑定建议 |
 | 故事契约 | `design_spec.md` §IX 由 `outline-to-spec.mjs` 投影；`check-design-spec.mjs` 校验漂移 |
 | 默认流程 | 大纲 → 投影 → 执行内核设计契约 → 视觉主题 → Executor |
@@ -67,23 +67,17 @@ node scripts/outline-to-spec.mjs ./demo
 node scripts/outline-to-spec.mjs ./demo --check
 node scripts/check-design-spec.mjs ./demo
 
-# 3. 页面：品牌母版确定性合成（目录单独生成）
-node scripts/compose-deck.mjs ./demo --check
-node scripts/compose-deck.mjs ./demo
-node scripts/build-toc.mjs ./demo
-
-# 4. 应用视觉主题（不改版式）
-node scripts/theme-select.mjs recommend --brief validation/brief.json --limit 5
+# 3. 应用视觉主题（不改版式）
+node scripts/theme-select.mjs recommend --brief-json '{"goal":"经营复盘","density":"dense"}' --limit 5
 node scripts/theme-select.mjs choose --theme scientific-atlas --source user --out ./demo/theme_selection.json
 node scripts/apply-theme.mjs ./demo --theme scientific-atlas --scope visual
 
-# 5. 页面写完后校验
+# 4. 页面写完后校验
 node scripts/check-theme-fidelity.mjs ./demo
 node scripts/check-fonts.mjs --theme scientific-atlas
 
-# 6. 导出
+# 5. 导出
 node scripts/svg-deck-to-html.mjs ./demo
-# 客户端不调用后端；下面是服务端部署联调示例
 node scripts/pptx-backend-client.mjs ./demo \
   --endpoint "$DECK_STUDIO_PPTX_ENDPOINT" \
   --token "$DECK_STUDIO_TOKEN"
@@ -96,7 +90,7 @@ node scripts/pptx-backend-client.mjs ./demo \
 ## 目录
 
 ```text
-zhongtai-pptx/
+clawhive-pptx/
 ├── SKILL.md
 ├── ENGINE.md             # 内核版本、只读边界、完整性校验与升级
 ├── THIRD_PARTY_NOTICES.md

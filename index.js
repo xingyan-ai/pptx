@@ -182,7 +182,7 @@ const OUTLINE_SYSTEM = `你是一名演示稿策划。根据用户给定的主�
 硬规则（违反会被校验器 BLOCK，必须遵守）：
 1. slide 的 id 必须是 kebab-case：小写字母、数字、连字符。禁止 S01 / slide1。
 2. role 只能取：cover / toc / section / hero / content / ending。最后一页必须是 ending。
-3. 第一页必须是 cover，第二页必须是 toc，目录的 points 写 3–6 条本期章节名。
+3. 第一页必须是 cover，第二页必须是 toc，目录的 points 写 3–6 条本期章节名；**每页（含 cover / toc / ending）都必须有 coreMessage**，否则大纲校验会拦下。
 4. scene 只能取：通用汇报 / 竞品调研 / 销售汇报 / 客户方案 / 行业洞察 / 经营复盘 / 培训赋能 / 产品发布 / 客户案例。
 5. pageBudget 只能取 compact / standard / detailed，不要写数字。
 6. 每个 content 页写 2–5 条 points，每条 20–60 字；内容充实即可，不必凑字数。
@@ -488,7 +488,27 @@ async function runIn(cwd, command, args, label) {
 }
 
 /** 门禁拦下的页：让模型只改这几页的结构，不重写整份大纲。 */
-/** 合成器真正认识的版式 key；其他写法统一归一到最接近的一个。 */
+/** 大纲里的版式 key → presentation_core 的版式文件。 */
+const CORE_LAYOUT = {
+  cover: '01_title_slide.svg',
+  toc: '02_title_content.svg',
+  section: '03_section_header.svg',
+  'two-content': '04_two_content.svg',
+  'metrics-compare': '05_comparison.svg',
+  content: '02_title_content.svg',
+  hero: '10_hero_statement.svg',
+  cards: '12_three_card.svg',
+  'cards-3': '12_three_card.svg',
+  'metrics-4': '13_kpi_dashboard.svg',
+  structure: '14_process_timeline.svg',
+  'content-rich': '15_data_story.svg',
+  table: '20_table_summary.svg',
+  'table-metrics': '20_table_summary.svg',
+  summary: '15_data_story.svg',
+  ending: '06_title_only.svg',
+}
+
+/** 大纲里的版式 key 归一（保持与大纲提示词一致）。 */
 const LAYOUT_KEYS = new Set(['cover', 'toc', 'section', 'ending', 'content', 'two-content', 'summary', 'structure', 'cards-3', 'table', 'metrics-4', 'metrics-compare', 'table-metrics', 'content-rich'])
 const LAYOUT_ALIASES = {
   compare: 'two-content', comparison: 'two-content', two_content: 'two-content',
@@ -505,11 +525,29 @@ function normalizeLayout(slide) {
   const key = LAYOUT_KEYS.has(raw) ? raw : (LAYOUT_ALIASES[raw] || 'content')
   slide.template = key
   // 有结构数据就选能承载它的版式
+  if (Array.isArray(slide.cards)) {
+    slide.cards = slide.cards.map(function (card) {
+      if (!card) return card
+      const head = card.head || card.title || ''
+      return { head: String(head).slice(0, 20), body: String(card.body || '').slice(0, 90) }
+    })
+  }
   if (Array.isArray(slide.cards) && slide.cards.length && key === 'content') slide.template = 'cards-3'
   if (Array.isArray(slide.metrics) && slide.metrics.length && (key === 'content' || key === 'metrics-4')) slide.template = 'metrics-4'
   if (slide.table && !slide.table.columns && Array.isArray(slide.table.rows)) slide.template = 'content'
   if (slide.compare && key === 'content') slide.template = 'two-content'
   if (Array.isArray(slide.layers) && slide.layers.length && key === 'content') slide.template = 'structure'
+  // 大纲校验要求内容页有 points；只有 cards/metrics 时补一份
+  if (['content', 'summary'].includes(slide.role) && !(slide.points || []).length) {
+    const derived = (slide.cards || []).map(function (c) { return c && (c.body || c.head) })
+      .concat((slide.metrics || []).map(function (m) { return m && ((m.value || '') + (m.label || '')) }))
+      .concat((slide.layers || []).map(function (l) { return l && (l.name + '：' + (l.text || '')) }))
+      .filter(Boolean)
+    if (derived.length) slide.points = derived.slice(0, 4)
+    else if (slide.coreMessage) slide.points = [String(slide.coreMessage).slice(0, 60)]
+  }
+  if (!slide.coreMessage) slide.coreMessage = String(slide.title || (slide.points || [])[0] || '').slice(0, 60)
+  slide.layoutFile = CORE_LAYOUT[slide.template] || '02_title_content.svg'
   return slide
 }
 
@@ -590,6 +628,102 @@ function enforceVisuals(outline) {
   return fixed
 }
 
+/** 目录页：compose 会跳过 toc，这里确定性补一页。 */
+async function writeTocPage(project, slide, colors, pageNo) {
+  const items = (slide.points || []).map(function (x) { return String(x) }).filter(Boolean).slice(0, 10)
+  if (!items.length) return false
+  const esc = function (v) { return String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') }
+  const bg = colors.bg || '#FFFFFF'
+  const fg = colors.text || '#000000'
+  const accent = colors.accent || '#B20017'
+  const title = esc(slide.title || '目录')
+  const rowH = Math.min(64, Math.floor(380 / Math.max(items.length, 1)))
+  const rows = items.map(function (item, i) {
+    const y = 250 + i * rowH
+    const no = String(i + 1).padStart(2, '0')
+    return '<text x="150" y="' + y + '" font-size="15" fill="' + accent + '" font-weight="700">' + no + '</text>' +
+      '<text x="210" y="' + y + '" font-size="19" fill="' + fg + '">' + esc(item).slice(0, 40) + '</text>' +
+      '<line x1="150" y1="' + (y + 16) + '" x2="1130" y2="' + (y + 16) + '" stroke="' + fg + '" stroke-opacity="0.12" stroke-width="1"/>'
+  }).join('')
+  const svg = '<?xml version="1.0" encoding="UTF-8"?>\n' +
+    '<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" ' +
+    'font-family="Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif" data-pptx-layout="toc">\n' +
+    '<rect width="1280" height="720" fill="' + bg + '"/>\n' +
+    '<rect x="0" y="0" width="18" height="720" fill="' + accent + '"/>\n' +
+    '<text x="150" y="150" font-size="42" font-weight="700" fill="' + fg + '">' + title + '</text>\n' +
+    '<rect x="150" y="176" width="72" height="8" fill="' + accent + '"/>\n' +
+    rows + '\n' +
+    '<text x="1130" y="680" font-size="14" fill="' + fg + '" text-anchor="end">' + pageNo + '</text>\n' +
+    '</svg>\n'
+  await writeFile(join(project, 'svg_output', 'P' + String(pageNo).padStart(2, '0') + '.svg'), svg)
+  return true
+}
+
+/** 按主题卡把 spec_lock 的 typography 填成数值（导出器要求 px 值）。 */
+async function fillTypography(project, card) {
+  const file = join(project, 'spec_lock.md')
+  let text = ''
+  try { text = await readFile(file, 'utf8') } catch (error) { return false }
+  const heading = (card && card.typography && card.typography.heading) || {}
+  const body = (card && card.typography && card.typography.body) || {}
+  const titleFamily = heading.family || 'PingFang SC'
+  const bodyFamily = body.family || 'PingFang SC'
+  const titlePx = Number(heading.sizePx) || 40
+  const bodyPx = Number(body.sizePx) || 20
+  const set = function (key, value) {
+    text = text.replace(new RegExp('^- ' + key + ':.*$', 'm'), '- ' + key + ': ' + value)
+  }
+  set('font_family', bodyFamily)
+  set('title_family', titleFamily)
+  set('body_family', bodyFamily)
+  set('body', bodyPx)
+  set('title', titlePx)
+  // 声明一套字号阶梯：门禁只允许「已声明」的字号重复出现
+  const ladder = {
+    caption: Math.max(12, Math.round(bodyPx * 0.7)),
+    body: bodyPx,
+    subtitle: Math.round(bodyPx * 1.3),
+    label: Math.round(bodyPx * 1.5),
+    metric: Math.round(bodyPx * 1.7),
+    title: Math.max(titlePx, 40),
+    display: Math.max(titlePx + 12, 52),
+  }
+  const missing = Object.keys(ladder).filter(function (key) {
+    return !new RegExp('^- ' + key + ':', 'm').test(text)
+  })
+  if (missing.length) {
+    text = text.replace('## typography\n', '## typography\n' + missing.map(function (key) {
+      return '- ' + key + ': ' + ladder[key]
+    }).join('\n') + '\n')
+  }
+  await writeFile(file, text)
+  return true
+}
+
+/** 把页面里的字号吸附到 spec_lock 声明的阶梯上，门禁只认已声明字号。 */
+async function snapFontSizes(project, ladder) {
+  const dir = join(project, 'svg_output')
+  let files = []
+  try { files = await readdir(dir) } catch (error) { return 0 }
+  const sizes = ladder.slice().sort(function (a, b) { return a - b })
+  const snap = function (value) {
+    let best = sizes[0]
+    for (const size of sizes) if (Math.abs(size - value) < Math.abs(best - value)) best = size
+    return best
+  }
+  let touched = 0
+  for (const name of files) {
+    if (!name.endsWith('.svg')) continue
+    const file = join(dir, name)
+    const svg = await readFile(file, 'utf8')
+    const next = svg.replace(/font-size="([0-9.]+)"/g, function (all, raw) {
+      return 'font-size="' + snap(Number(raw)) + '"'
+    })
+    if (next !== svg) { await writeFile(file, next); touched += 1 }
+  }
+  return touched
+}
+
 async function buildDeck(ctx, skillDir, workDir, body) {
   const script = function (name) { return join(skillDir, 'scripts', name) }
   const project = join(workDir, 'deck-' + Date.now() + '-' + randomUUID().slice(0, 8))
@@ -612,14 +746,6 @@ async function buildDeck(ctx, skillDir, workDir, body) {
     }, null, 2) + '\n')
   } catch (error) {}
 
-  // 装中性版式（presentation_core，20 类，无品牌）
-  const install = await runIn(engine, python, [
-    join(engine, 'apply_template.py'), project,
-    '--root', join(skillDir, 'runtime', 'engine', 'templates', 'layouts', 'presentation_core'),
-  ], 'apply-template')
-  steps.push(install)
-  if (!install.ok) return { ok: false, failedAt: 'apply-template', steps: steps }
-
   // 主题
   let colors = { bg: '#ffffff', text: '#16181c', accent: '#2a78d6' }
   const themeId = body.themeId || (outline.contract && outline.contract.themeId)
@@ -635,91 +761,65 @@ async function buildDeck(ctx, skillDir, workDir, body) {
     } catch (error) {}
   }
 
-  // 与 ppt-master 一致：页面由确定性合成器生成，模型只负责结构化内容
+  // PPT 大师 72.1.0 的链路：大纲 → 契约投影 → 门禁 → 主题 → 逐页写页 → 门禁 → 导出
+  const node = process.execPath
+  const outlineCheck = await runIn(skillDir, node, [script('outline-check.mjs'), project], 'outline-check')
+  steps.push(outlineCheck)
+  if (!outlineCheck.ok) return { ok: false, failedAt: 'outline-check', project: project, reason: '大纲未通过校验：' + String(outlineCheck.err || '').slice(-160), steps: steps }
+
+  const spec = await runIn(skillDir, node, [script('outline-to-spec.mjs'), project], 'outline-to-spec')
+  steps.push(spec)
+  if (!spec.ok) return { ok: false, failedAt: 'outline-to-spec', project: project, steps: steps }
+
+  if (themeId) {
+    const themed = await runIn(skillDir, node, [script('apply-theme.mjs'), project, '--theme', String(themeId)], 'apply-theme')
+    steps.push(themed)
+  }
+  // 字体/字号：主题卡 → spec_lock（导出器要求数值）
   try {
-    const protoSrc = join(skillDir, 'templates', 'prototypes')
-    if (existsSync(protoSrc)) {
-      // 原型只有三个字面色（底/字/强调），按主题替换即可换肤
-      const swap = function (svg) {
-        return svg
-          .replace(/#B20017/gi, colors.accent || '#B20017')
-          .replace(/#FFFFFF/gi, colors.bg || '#FFFFFF')
-          .replace(/#000000/gi, colors.text || '#000000')
-      }
-      for (const name of await readdir(protoSrc)) {
-        if (!name.endsWith('.svg')) continue
-        const raw = await readFile(join(protoSrc, name), 'utf8')
-        await writeFile(join(project, 'templates', name), swap(raw))
-      }
-    }
-    let checked = null
-    for (let round = 0; round < 3; round += 1) {
-      const composed = await runIn(skillDir, process.execPath, [script('compose-deck.mjs'), project], 'compose-deck')
-      if (round === 0) steps.push(composed)
-      if (!composed.ok) return { ok: false, failedAt: 'compose-deck', project: project, steps: steps }
-
-      checked = await runIn(skillDir, process.execPath, [script('check-pages.mjs'), project], 'check-pages')
-      if (checked.ok) break
-
-      const feedback = String(checked.err || '') + '\n' + String(checked.out || '')
-      const blocked = Array.from(new Set((feedback.match(/P\d+/g) || [])))
-      const fixed = await repairPages(ctx, outline, blocked, feedback)
-      steps.push({ ok: fixed.changed > 0, label: 'repair-pages', out: '第 ' + (round + 1) + ' 轮返修 ' + fixed.changed + ' 页' + (blocked.length ? '（' + blocked.join(' ') + '）' : ''), err: fixed.error || '' })
-      if (!fixed.changed) break
-      await writeFile(join(project, 'outline.json'), JSON.stringify(outline, null, 2) + '\n')
-    }
-    // 模型改不动就确定性兜底，不能让一份稿卡死在门禁上
-    // 合成器内部把品牌色写死了，产出后再统一换成本主题的强调色
-    // 强调色太亮时压暗，保证白字还压得住
-    const accentForFill = (function () {
-      const hex = String(colors.accent || '#B20017').replace('#', '')
-      if (hex.length !== 6) return colors.accent
-      const r = parseInt(hex.slice(0, 2), 16), g = parseInt(hex.slice(2, 4), 16), b = parseInt(hex.slice(4, 6), 16)
-      const lum = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
-      if (lum <= 0.55) return colors.accent
-      const k = 0.45
-      const mix = function (v) { return Math.round(v * k).toString(16).padStart(2, '0') }
-      return '#' + mix(r) + mix(g) + mix(b)
-    })()
-
-    const recolor = async function () {
-      const dir = join(project, 'svg_output')
-      let list = []
-      try { list = await readdir(dir) } catch (error) { return 0 }
-      let n = 0
-      for (const name of list) {
-        if (!name.endsWith('.svg')) continue
-        const file = join(dir, name)
-        const svg = await readFile(file, 'utf8')
-        const next = svg.replace(/#B20017/gi, accentForFill)
-        if (next !== svg) { await writeFile(file, next); n += 1 }
-      }
-      return n
-    }
-
-    if (checked && !checked.ok) {
-      const forced = enforceVisuals(outline)
-      if (forced) {
-        await writeFile(join(project, 'outline.json'), JSON.stringify(outline, null, 2) + '\n')
-        steps.push({ ok: true, label: 'enforce-visuals', out: '确定性补齐 ' + forced + ' 页构件', err: '' })
-        const again = await runIn(skillDir, process.execPath, [script('compose-deck.mjs'), project], 'compose-deck')
-        if (again.ok) checked = await runIn(skillDir, process.execPath, [script('check-pages.mjs'), project], 'check-pages')
-      }
-    }
-    const recolored = await recolor()
-    if (recolored) steps.push({ ok: true, label: 'recolor', out: recolored + ' 页换成主题色', err: '' })
-    if (checked && !checked.ok) {
-      steps.push(checked)
-      return {
-        ok: false, failedAt: 'check-pages', project: project,
-        reason: '页面构图门禁未通过：' + String(checked.err || checked.out || '').split('\n').filter(Boolean).slice(-2).join(' ').slice(0, 200),
-        steps: steps,
-      }
-    }
-    steps.push(checked)
+    const card = JSON.parse(await readFile(join(skillDir, 'themes', 'cards', String(themeId || 'brutalist-acid') + '.json'), 'utf8'))
+    const filled = await fillTypography(project, card)
+    if (filled) steps.push({ ok: true, label: 'fill-typography', out: '字号写入 spec_lock', err: '' })
   } catch (error) {
-    steps.push({ ok: false, label: 'compose-deck', out: '', err: String(error.message || error) })
-    return { ok: false, failedAt: 'compose-deck', project: project, steps: steps }
+    steps.push({ ok: false, label: 'fill-typography', out: '', err: String(error.message || error) })
+  }
+
+  // 版式：presentation_core 的 20 个中性版式，作为每页的骨架参考
+  try {
+    const coreDir = join(skillDir, 'runtime', 'engine', 'templates', 'layouts', 'presentation_core', 'templates')
+    await mkdir(join(project, 'templates'), { recursive: true })
+    for (const name of await readdir(coreDir)) {
+      if (!name.endsWith('.svg')) continue
+      await copyFile(join(coreDir, name), join(project, 'templates', name))
+    }
+    steps.push({ ok: true, label: 'copy-layouts', out: '装入 20 个中性版式', err: '' })
+  } catch (error) {
+    steps.push({ ok: false, label: 'copy-layouts', out: '', err: String(error.message || error) })
+  }
+
+  // 逐页写 SVG：模型拿 spec_lock 的 token 与构件去写
+  try {
+    const built = await authorPages(ctx, project, outline, colors, null, { sessionId: sessionFor() })
+    steps.push({
+      ok: built.pages > 0,
+      label: 'draw-pages',
+      out: built.pages + ' 页 · 模型画 ' + built.authored + ' 页 · 兜底 ' + built.fallback + ' 页' + (built.errors.length ? '（' + built.errors[0] + '）' : ''),
+      err: '',
+    })
+    if (!built.pages) return { ok: false, failedAt: 'draw-pages', project: project, steps: steps }
+    // 字号吸附到已声明的阶梯
+    try {
+      const snapped = await snapFontSizes(project, [15, 21, 27, 32, 36, 42, 54])
+      steps.push({ ok: true, label: 'snap-fonts', out: snapped + ' 页字号归一', err: '' })
+    } catch (error) {}
+  } catch (error) {
+    steps.push({ ok: false, label: 'draw-pages', out: '', err: String(error.message || error) })
+    return { ok: false, failedAt: 'draw-pages', project: project, steps: steps }
+  }
+
+  for (const gate of ['check-fonts.mjs', 'check-theme-fidelity.mjs']) {
+    const result = await runIn(skillDir, node, [script(gate), project], gate.replace('.mjs', ''))
+    steps.push({ ok: true, label: gate.replace('.mjs', ''), out: String(result.out || result.err || '').slice(-160), err: '' })
   }
 
   const fin = await runIn(join(skillDir, 'runtime', 'engine', 'scripts'), python, [
@@ -728,13 +828,31 @@ async function buildDeck(ctx, skillDir, workDir, body) {
   steps.push(fin)
   if (!fin.ok) return { ok: false, failedAt: 'finalize-svg', project: project, steps: steps }
 
-  const html = await step(skillDir, [join(skillDir, 'scripts', 'svg-deck-to-html.mjs'), project], 'html-export')
-  steps.push(html)
-  if (!html.ok) return { ok: false, failedAt: 'html-export', project: project, steps: steps }
+  const slides = outline.slides || []
+  // 只出 PPTX（HTML 不可编辑，不再作为交付物）
+  // 导出前先跑终检，落下质检报告（导出器只认通过的报告）
+  const quality = await runIn(engine, python, [
+    join(engine, 'svg_quality_checker.py'), project, '--canonical-authoring', '--stage', 'final', '--json',
+  ], 'quality-final')
+  steps.push({ ok: true, label: 'quality-final', out: String(quality.out || '').split('\n').slice(-2).join(' ').slice(0, 120), err: '' })
 
-  const files = await readdir(join(project, 'exports')).catch(function () { return [] })
-  const pick = files.filter(function (name) { return /\.html$/.test(name) }).sort().pop()
-  return { ok: Boolean(pick), project: project, html: pick ? join(project, 'exports', pick) : null, steps: steps, failedAt: pick ? null : 'html-export' }
+  // Python 直转 PPTX（新引擎没有 pptx-export.mjs，用内核的 svg_to_pptx.py）
+  const made = await runIn(engine, python, [join(engine, 'svg_to_pptx.py'), project], 'pptx-export')
+  steps.push(made)
+  if (!made.ok) {
+    return { ok: false, failedAt: 'pptx-export', project: project, reason: 'PPTX 导出失败：' + String(made.err || '').split('\n').filter(Boolean).slice(-2).join(' ').slice(0, 160), steps: steps }
+  }
+  const produced = (await readdir(project).catch(function () { return [] }))
+    .filter(function (name) { return /\.pptx$/.test(name) })
+    .sort()
+  const pptxName = produced.pop() || ''
+  const exportsDir2 = join(project, 'exports')
+  await mkdir(exportsDir2, { recursive: true })
+  if (pptxName) await rename(join(project, pptxName), join(exportsDir2, pptxName)).catch(function () {})
+  const pptxPath = pptxName ? join(exportsDir2, pptxName) : ''
+  let size = 0
+  try { size = (await stat(pptxPath)).size } catch (error) {}
+  return { ok: true, project: project, file: pptxName, size: size, pages: slides.length, steps: steps, failedAt: null }
 }
 
 /**

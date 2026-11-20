@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-import { readJsonFile } from './lib/json.mjs';
-import { pythonEnv } from './lib/python-runtime.mjs';
 /**
  * Prove this package is self-contained.
  *
@@ -62,45 +60,9 @@ for (const rel of [
   requireFile(rel);
 }
 
-// --- 1b. Brand template layouts + deterministic composer ------------------
-
-requireFile('scripts/compose-deck.mjs');
-requireFile('scripts/compose-core.mjs');
-requireFile('scripts/prepare-core-project.mjs');
-requireFile('scripts/prepare-brand-project.mjs');
-requireFile('scripts/build-deck.mjs');
-requireFile('scripts/fill-brand-contract.mjs');
-requireFile('scripts/extract-source.mjs');
-requireFile('scripts/extract_source.py');
-requireFile('templates/brand/zhongtai-v5/template.json');
-const brandMetaPath = path.join(ROOT, 'templates/brand/zhongtai-v5/template.json');
-if (fs.existsSync(brandMetaPath)) {
-  const brand = readJsonFile(brandMetaPath);
-  const proxyLayouts = {
-    'cards-3': '04c_cards3.svg',
-    table: '04c_table.svg',
-    'metrics-4': '04c_metrics4.svg',
-    'metrics-compare': '04c_metricscompare.svg',
-    'table-metrics': '04c_tablemetrics.svg',
-    'content-rich': '04c_contentrich.svg',
-  };
-  const declared = new Set(brand?.structure?.pages || []);
-  let brandOk = true;
-  for (const [key, file] of Object.entries(proxyLayouts)) {
-    if (!declared.has(key)) { fail(`template.json structure.pages missing proxy layout ${key}`); brandOk = false; }
-    if (!exists(`templates/brand/zhongtai-v5/templates/${file}`)) {
-      fail(`missing brand prototype templates/brand/zhongtai-v5/templates/${file}`);
-      brandOk = false;
-    }
-    if (!brand?.compose?.layouts?.[key]) { fail(`template.json compose mapping missing ${key}`); brandOk = false; }
-  }
-  if (!brand?.density?.capacity?.['cards-3']) { fail('template.json density.capacity missing cards-3'); brandOk = false; }
-  if (brandOk) ok('brand template: 6 proxy layouts + compose metadata');
-}
-
 // --- 2. Theme and skill manifests ----------------------------------------
 
-const meta = readJsonFile(path.join(ROOT, 'metadata.json'));
+const meta = JSON.parse(fs.readFileSync(path.join(ROOT, 'metadata.json'), 'utf8'));
 if (meta.schemaVersion !== '2.0' || meta.type !== 'skill') fail('metadata.json must be schemaVersion 2.0 / type skill');
 if (meta.id !== meta.name) fail('metadata.json id and name must match');
 if (!/^\d+\.\d+\.\d+$/.test(meta.version || '')) fail(`metadata.json version must be SemVer, got ${meta.version}`);
@@ -117,7 +79,7 @@ if (tokens.length !== 21) fail(`expected 21 theme tokens, found ${tokens.length}
 else ok('21 theme tokens');
 
 for (const name of tokens) {
-  const token = readJsonFile(path.join(tokenDir, name));
+  const token = JSON.parse(fs.readFileSync(path.join(tokenDir, name), 'utf8'));
   for (const key of ['colors', 'typography', 'decoration', 'components']) {
     if (!token[key]) fail(`theme ${name} has no ${key} block`);
   }
@@ -168,13 +130,13 @@ if (!errors.some((error) => error.includes('does not list scene(s)') || error.st
 
 const scenariosPath = path.join(ROOT, 'themes', 'scenarios.json');
 if (fs.existsSync(scenariosPath)) {
-  const sceneText = JSON.stringify(readJsonFile(scenariosPath));
+  const sceneText = JSON.stringify(JSON.parse(fs.readFileSync(scenariosPath, 'utf8')));
   const missing = SCENE_NAMES.filter((name) => !sceneText.includes(name));
   if (missing.length) warnings.push(`themes/scenarios.json has no theme signal for scene(s): ${missing.join(', ')}`);
   else ok('every scene label is represented in themes/scenarios.json');
 }
 
-const fontMap = readJsonFile(path.join(ROOT, 'themes', 'fonts.map.json'));
+const fontMap = JSON.parse(fs.readFileSync(path.join(ROOT, 'themes', 'fonts.map.json'), 'utf8'));
 let fontCount = 0;
 for (const [family, entry] of Object.entries(fontMap.families || {})) {
   for (const file of entry.files || []) {
@@ -209,11 +171,7 @@ for (const rel of scriptFiles) {
   const absolute = source.match(/['"](?:\/Users\/|~\/)/);
   if (absolute) fail(`scripts/${rel} contains an absolute path: ${absolute[0].slice(1, -1)}`);
   // This checker names the commands it forbids, so it skips its own scan.
-  // pptx-export.mjs is the sanctioned local-runtime bridge: it probes for an
-  // interpreter and is the only script allowed to name one.
-  const externalBridge = rel === 'pptx-export.mjs' || rel === 'extract-source.mjs'
-    || rel === 'build-deck.mjs' || rel === 'lib/python-runtime.mjs';
-  if (rel !== 'self-check.mjs' && !externalBridge) {
+  if (rel !== 'self-check.mjs') {
     for (const command of ['python3', 'openclaw', 'npx ', 'playwright', 'ffmpeg', 'curl ', 'wget ']) {
       if (source.includes(command)) fail(`scripts/${rel} references external command "${command.trim()}"`);
     }
@@ -225,14 +183,14 @@ ok(`${scriptFiles.length} scripts import only Node built-ins and local libs`);
 
 let hasPython = false;
 try {
-  execFileSync('python3', ['--version'], { stdio: 'ignore', windowsHide: true, env: pythonEnv() });
+  execFileSync('python3', ['--version'], { stdio: 'ignore' });
   hasPython = true;
 } catch {
   warnings.push('python3 not found; skipped engine integrity check (the client never runs it anyway)');
 }
 if (hasPython) {
   try {
-    execFileSync('python3', [path.join(ROOT, 'runtime', 'engine', 'scripts', 'attribution_guard.py')], { stdio: 'ignore', windowsHide: true, env: pythonEnv() });
+    execFileSync('python3', [path.join(ROOT, 'runtime', 'engine', 'scripts', 'attribution_guard.py')], { stdio: 'ignore' });
     ok('engine integrity');
   } catch {
     fail('engine integrity check failed (runtime/engine was modified)');
@@ -244,7 +202,7 @@ if (hasPython) {
 function run(args, cwd) {
   const env = { HOME: path.join(cwd, '.home'), PATH: process.env.PATH };
   try {
-    return execFileSync(process.execPath, args, { cwd, env, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true });
+    return execFileSync(process.execPath, args, { cwd, env, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
   } catch (error) {
     const detail = [error.stdout, error.stderr].filter(Boolean).join('\n').trim();
     fail(`smoke step failed: ${path.basename(args[0])} ${args.slice(1).join(' ')}\n${detail}`);

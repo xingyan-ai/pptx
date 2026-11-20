@@ -37,11 +37,7 @@ from image_backends.backend_common import (
     http_error,
     is_permanent_error,
     is_rate_limit_error,
-    TIER_PIXELS,
-    fit_size,
-    match_aspect_ratio,
     normalize_image_size,
-    note_aspect_ratio,
     require_api_key,
     resolve_output_path,
     retry_delay,
@@ -124,25 +120,20 @@ def _resolve_dimensions(aspect_ratio: str, image_size: str) -> tuple[int, int]:
     """Resolve width and height from the unified aspect_ratio/image_size pair."""
     normalized = normalize_image_size(image_size)
     sizes = ASPECT_RATIO_SIZE_MAP.get(normalized)
-    if sizes is None and normalized not in TIER_PIXELS:
+    if sizes is None:
         supported_sizes = ", ".join(ASPECT_RATIO_SIZE_MAP)
         raise ValueError(
             f"Unsupported image size '{image_size}' for MiniMax backend. "
             f"image-01 supports these logical sizes: {supported_sizes}."
         )
-    listed = match_aspect_ratio(aspect_ratio, sizes or {})
-    if listed:
-        return sizes[listed]
-    # Any other ratio or tier is fitted to the model's size rules.
-    budget = sizes["1:1"][0] * sizes["1:1"][1] if sizes else TIER_PIXELS[normalized]
-    width, height = fit_size(
-        aspect_ratio,
-        pixels=budget,
-        step=8,
-        min_edge=512,
-        max_edge=2048,
-    )
-    return width, height
+    dimensions = sizes.get(aspect_ratio)
+    if not dimensions:
+        supported = sorted(sizes)
+        raise ValueError(
+            f"Unsupported aspect ratio '{aspect_ratio}' for MiniMax backend. "
+            f"Supported: {supported}"
+        )
+    return dimensions
 
 
 def _extract_image_bytes(payload: dict) -> bytes | None:
@@ -170,7 +161,6 @@ def _generate_image(api_key: str, prompt: str,
     """Generate one image with the MiniMax backend."""
     model = _validate_model(model)
     width, height = _resolve_dimensions(aspect_ratio, image_size)
-    note_aspect_ratio(aspect_ratio, f"{width}:{height}")
     url = _resolve_url(base_url)
 
     headers = {
@@ -257,9 +247,9 @@ def generate(prompt: str,
             if attempt >= max_retries:
                 break
             limited = is_rate_limit_error(exc)
-            delay = retry_delay(attempt, rate_limited=limited, exc=last_error)
+            delay = retry_delay(attempt, rate_limited=limited)
             label = "Rate limit hit" if limited else f"Error: {exc}"
             print(f"\n  [WARN] {label}. Retrying in {delay}s...")
             time.sleep(delay)
 
-    raise RuntimeError(f"Failed after {max_retries + 1} attempts. Last error: {last_error}") from last_error
+    raise RuntimeError(f"Failed after {max_retries + 1} attempts. Last error: {last_error}")

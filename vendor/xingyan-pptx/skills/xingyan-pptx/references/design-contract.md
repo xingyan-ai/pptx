@@ -159,6 +159,6 @@ node scripts/check-design-spec.mjs <project>
 ## 8. HTML 与 PPTX 的关系
 
 - `svg_output` 是唯一页面源
-- `svg_final` 是自包含预览，供 HTML 和导出链路使用
+- `svg_final` 是自包含预览，供 HTML 和后端使用
 - HTML 是本地单文件产物，不重新设计页面
-- PPTX 是编译产物（客户端或后端同一份引擎），不在导出时重新排版
+- PPTX 是后端编译产物，不在后端重新排版

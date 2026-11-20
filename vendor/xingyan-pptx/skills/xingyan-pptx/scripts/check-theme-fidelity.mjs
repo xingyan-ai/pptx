@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-import { expandUserPath } from './lib/paths.mjs';
-import { readJsonFile } from './lib/json.mjs';
 /**
  * Verify authored SVG pages actually follow the selected theme.
  *
@@ -50,7 +48,7 @@ function parseArgs(argv) {
 }
 
 const args = parseArgs(process.argv.slice(2));
-const project = path.resolve(expandUserPath(args._[0] || ''));
+const project = path.resolve(args._[0] || '');
 if (!project || !fs.existsSync(project)) {
   console.error('[BLOCK] usage: node scripts/check-theme-fidelity.mjs <project> [--theme <id>] [--json]');
   process.exit(64);
@@ -66,7 +64,7 @@ let themeId = typeof args.theme === 'string' ? args.theme : '';
 if (!themeId) {
   const overlayPath = path.join(project, 'theme_overlay.json');
   if (fs.existsSync(overlayPath)) {
-    themeId = readJsonFile(overlayPath).themeId || '';
+    themeId = JSON.parse(fs.readFileSync(overlayPath, 'utf8')).themeId || '';
   }
 }
 if (!themeId) {
@@ -79,7 +77,7 @@ if (!fs.existsSync(tokenPath)) {
   console.error(`[BLOCK] unknown theme: ${themeId}`);
   process.exit(1);
 }
-const token = readJsonFile(tokenPath);
+const token = JSON.parse(fs.readFileSync(tokenPath, 'utf8'));
 const colors = token.colors || {};
 const dec = token.decoration || {};
 const comp = token.components || null;

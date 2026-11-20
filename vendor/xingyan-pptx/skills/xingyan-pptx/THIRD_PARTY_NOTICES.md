@@ -62,15 +62,6 @@ The vendored PPT Master `scripts/` tree is Python source that ships for backend
 deployment parity. It is never executed by the desktop client, and no Python
 interpreter or PyPI package is distributed with this Skill.
 
-## Source extraction (PDF)
-
-`runtime/engine/scripts/source_to_md/pdf_to_md.py` is part of PPT Master (MIT).
-It imports **PyMuPDF**, which is **AGPL-3.0** (or Artifex commercial). PyMuPDF is
-not bundled and must not enter the distributed client. The client default is
-`pypdf` (BSD-3-Clause); `pdfplumber` (MIT) is an optional commercial-safe
-structured backend. The PyMuPDF path is backend/self-hosted only and requires
-the explicit `--allow-agpl` flag.
-
 ## Backend dependencies
 
 The recommended PPTX backend uses only permissively licensed packages:

@@ -67,7 +67,7 @@
 执行后的校验：
 
 ```bash
-node scripts/theme-furniture.mjs <theme-id> --out <project>/validation/sample.svg   # 看装饰长什么样
+node scripts/theme-furniture.mjs <theme-id> --out /tmp/sample.svg   # 看装饰长什么样
 node scripts/check-theme-fidelity.mjs <project>                     # 页面是否真的用了这套装饰
 ```
 

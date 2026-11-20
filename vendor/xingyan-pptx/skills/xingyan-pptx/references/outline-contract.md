@@ -1,7 +1,6 @@
 # 大纲契约
-> 字段以本文为准。**不要读完整 `schemas/outline.schema.json`**（体积大）；只有本文没覆盖的边界字段，再按需读 schema 的相关片段。
 
-`outline.json` 是一份演示稿的故事事实源。用户在宿主产品的大纲页编辑它；zhongtai-pptx 把它投影成 `design_spec.md` §IX；执行内核只负责投影之后的设计与页面。
+`outline.json` 是一份演示稿的故事事实源。用户在宿主产品的大纲页编辑它；clawhive-pptx 把它投影成 `design_spec.md` §IX；执行内核只负责投影之后的设计与页面。
 
 机器可读的版本在 `schemas/outline.schema.json`。本文写给客户端和 agent 看。
 
@@ -113,13 +112,6 @@
 | `density` | 否 | `rich` / `standard` / `lean`；缺省用 `densityDefault` |
 | `relationships` | 否 | 语义单元及其关系；缺省 `none` |
 | `composition` | 否 | 宏观构图方向，**非绑定**；执行层可调整或替换 |
-| `template` | 否 | `compose-deck.mjs` 用的版式 key：`cards-3` / `table` / `metrics-4` / `metrics-compare` / `table-metrics` / `content-rich` / `summary` / `structure` / `two-content` 等；缺省按 role 与内容形态推断 |
-| `cards` | 否 | `cards-3` / `content-rich` 的卡片数据：`head` / `body` / `footer`，2–4 张；缺省从 `points` 推导 |
-| `metrics` | 否 | `metrics-4` / `metrics-compare` / `table-metrics` 的指标：`value` / `unit` / `label` / `note`；缺省从数字中推导 |
-| `table` | 否 | `table` / `table-metrics` 的表格：`columns[{label,width}]` + `rows[[...]]` |
-| `compare` | 否 | `metrics-compare` / `two-content` 的双栏对比：`left` / `right` 各含 `head` 与 `lines` |
-| `layers` | 否 | `structure` 的分层结构：`name` / `text`；缺省沿用原型的 3 层 |
-| `takeaway` | 否 | 卡片 / 表格 / 指标下方的结论条 |
 | `draftState` | 否 | `ready` / `needs-draft`；确认时不得还有 `needs-draft` |
 | `changed` | 否 | `edit` 模式：这一页是否重写 |
 | `changeNote` | 否 | `edit` 模式：改动页必填，说明改什么、为什么 |

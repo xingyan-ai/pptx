@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-import { expandUserPath } from './lib/paths.mjs';
-import { readJsonFile } from './lib/json.mjs';
 /**
  * Gate the story contract before any page is authored.
  *
@@ -85,7 +83,7 @@ function pageFiles(project) {
 }
 
 const args = parseArgs(process.argv.slice(2));
-const project = path.resolve(expandUserPath(args._[0] || ''));
+const project = path.resolve(args._[0] || '');
 if (!project) {
   console.error('Usage: check-design-spec.mjs <project>');
   process.exit(2);
@@ -172,7 +170,7 @@ const outlinePath = path.join(project, 'outline.json');
 if (fs.existsSync(outlinePath)) {
   let outline = null;
   try {
-    outline = readJsonFile(outlinePath);
+    outline = JSON.parse(fs.readFileSync(outlinePath, 'utf8'));
   } catch (error) {
     errors.push(`outline.json is not valid JSON: ${error.message}`);
   }
@@ -212,7 +210,7 @@ if (fs.existsSync(outlinePath)) {
 const overlayPath = path.join(project, 'theme_overlay.json');
 if (fs.existsSync(overlayPath)) {
   try {
-    const overlay = readJsonFile(overlayPath);
+    const overlay = JSON.parse(fs.readFileSync(overlayPath, 'utf8'));
     if (!SCOPES.includes(overlay.scope)) {
       errors.push(`theme_overlay.json has unknown scope: ${overlay.scope}`);
     } else {

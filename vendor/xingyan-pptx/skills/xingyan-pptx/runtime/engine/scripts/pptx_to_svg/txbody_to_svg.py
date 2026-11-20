@@ -37,7 +37,6 @@ from .emu_units import (
     hundredths_pt_to_px, ooxml_bool,
 )
 from .fill_to_svg import resolve_fill
-from .formula_import import FormulaImport
 
 
 # ---------------------------------------------------------------------------
@@ -76,7 +75,7 @@ class TextRun:
 
 
 HyperlinkResolver = Callable[[str, str], str | None]
-InlineFormulaResolver = Callable[[ET.Element], tuple[FormulaImport | None, str]]
+InlineFormulaResolver = Callable[[ET.Element], tuple[str | None, str]]
 TextDiagnosticSink = Callable[[str, str, str], None]
 
 
@@ -109,13 +108,11 @@ class TextResult:
 
     `svg` is one or more <text> elements, already absolutely positioned
     inside the slide coordinate system. `defs` holds text gradient fills.
-    `frame` carries the source box used by separately positioned vertical text.
     """
 
     svg: str = ""
     defs: list[str] = field(default_factory=list)
     contains_inline_formula: bool = False
-    frame: tuple[float, float, float, float] | None = None
 
 
 VERTICAL_TEXT_MODES = {"eaVert", "vert", "wordArtVert", "wordArtVertRtl"}
@@ -331,10 +328,6 @@ def convert_vertical_txbody(
 
     box_x, box_y, box_w, box_h = _rotated_bbox(xfrm)
     center_x = box_x + box_w / 2.0
-    clip_vertical = (
-        body_pr is not None
-        and body_pr.attrib.get("vertOverflow") in {"clip", "ellipsis"}
-    )
 
     glyphs: list[tuple[str, TextRun]] = []
     for run in runs:
@@ -355,7 +348,7 @@ def convert_vertical_txbody(
     first_baseline: float | None = None
     previous_baseline: float | None = None
     for (char, run), advance in zip(glyphs, advances):
-        if clip_vertical and cursor_y + advance > bottom_y:
+        if cursor_y + advance > bottom_y:
             break
         baseline_y = cursor_y + run.font_size_px * 0.85
         tspan_attrs = _run_tspan_attrs(run)
@@ -383,7 +376,6 @@ def convert_vertical_txbody(
         svg=f"<text{attrs}>{''.join(spans)}</text>",
         defs=_collect_text_defs(paragraphs),
         contains_inline_formula=False,
-        frame=(box_x, box_y, box_w, box_h),
     )
 
 
@@ -441,7 +433,6 @@ def _convert_east_asian_vertical(
         right_x -= width
 
     anchor = body_pr.attrib.get("anchor", "t")
-    clip_vertical = body_pr.attrib.get("vertOverflow") in {"clip", "ellipsis"}
     bottom_y = inner_y + inner_h
     text_blocks: list[str] = []
     for column, center_x in zip(columns, column_centers):
@@ -458,14 +449,11 @@ def _convert_east_asian_vertical(
 
         for upright, text, run in column:
             available = bottom_y - cursor_y
-            if clip_vertical and available <= 0:
+            if available <= 0:
                 break
             if upright:
                 advance = run.font_size_px * 1.05
-                visible_count = (
-                    min(len(text), int(available // advance))
-                    if clip_vertical else len(text)
-                )
+                visible_count = min(len(text), int(available // advance))
                 visible = text[:visible_count]
                 if not visible:
                     break
@@ -483,10 +471,7 @@ def _convert_east_asian_vertical(
                     break
                 continue
 
-            visible = (
-                _fit_sideways_vertical_text(text, run, available)
-                if clip_vertical else text
-            )
+            visible = _fit_sideways_vertical_text(text, run, available)
             if not visible:
                 break
             text_blocks.append(
@@ -505,7 +490,6 @@ def _convert_east_asian_vertical(
         svg="\n".join(text_blocks),
         defs=_collect_text_defs(paragraphs),
         contains_inline_formula=False,
-        frame=(box_x, box_y, box_w, box_h),
     )
 
 
@@ -798,17 +782,14 @@ def _parse_paragraph(
             == "{http://schemas.microsoft.com/office/drawing/2010/main}m"
             and inline_formula_resolver is not None
         ):
-            formula, preview = inline_formula_resolver(child)
+            latex, preview = inline_formula_resolver(child)
             if preview:
                 formula_rpr = next(
                     child.iter(f"{{{NS['a']}}}rPr"),
                     None,
                 )
                 run = resolved_run(preview, formula_rpr)
-                if formula is not None:
-                    run.formula_latex = formula.latex
-                    run.fill = formula.color
-                    run.fill_opacity = formula.opacity
+                run.formula_latex = latex
                 para.runs.append(run)
 
     return para
@@ -1719,19 +1700,14 @@ def _emit_paragraph(
             else:
                 spans.append(_run_tspan_markup(run))
 
-    # Formula paragraphs carry alpha per run, so a translucent first run must
-    # not make opaque formulas or surrounding text inherit that alpha.
-    base_attrs = _text_base_attrs(
-        first_run, anchor_x, first_baseline, text_anchor,
-        inherit_opacity=not any(run.formula_latex is not None for line in visible_lines for run in line),
-    )
+    base_attrs = _text_base_attrs(first_run, anchor_x, first_baseline, text_anchor)
     if metrics_baseline:
         base_attrs += ' data-pptx-text-baseline="metrics-v1"'
     return f"<text{base_attrs}>{''.join(spans)}</text>"
 
 
 def _text_base_attrs(run: TextRun | None, x: float, y: float,
-                     text_anchor: str, *, inherit_opacity: bool = True) -> str:
+                     text_anchor: str) -> str:
     parts = [
         f'x="{fmt_num(x)}"',
         f'y="{fmt_num(y, 8)}"',
@@ -1743,7 +1719,7 @@ def _text_base_attrs(run: TextRun | None, x: float, y: float,
     parts.append(f'font-family="{run.font_family}"')
     parts.append(f'font-size="{fmt_num(run.font_size_px)}"')
     parts.append(f'fill="{run.fill}"')
-    if inherit_opacity and run.fill_opacity < 1.0:
+    if run.fill_opacity < 1.0:
         parts.append(
             f'fill-opacity="{format_ooxml_alpha(run.fill_opacity)}"'
         )

@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import { readJsonFile } from './lib/json.mjs';
 /**
  * Report what each theme's fonts will actually render as.
  *
@@ -57,7 +56,7 @@ if (typeof args.theme === 'string' && !ids.includes(args.theme)) {
 }
 
 const rows = wanted.map((id) => {
-  const token = readJsonFile(path.join(TOKENS, `${id}.json`));
+  const token = JSON.parse(fs.readFileSync(path.join(TOKENS, `${id}.json`), 'utf8'));
   const report = themeFontReport(token, map);
   return {
     id,

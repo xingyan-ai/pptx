@@ -1,4 +1,4 @@
 interface:
   display_name: "ClawHive PPTX"
-  short_description: "执行内核流程，主题可选，HTML / PPTX 均可导出"
-  default_prompt: "使用 $zhongtai-pptx：先按用户提交的主题、场景、语言和密度出大纲；内容页按结论、证据、含义、动作写深，不用关键词和占位词，再让用户在大纲页增删改序并确认，投影成设计契约由执行内核写页面；主题只应用 visual scope，不改版式和内容量。"
+  short_description: "执行内核流程，主题可选，HTML 本地输出，PPTX 走后端"
+  default_prompt: "使用 $clawhive-pptx：先按用户提交的主题、场景、语言和密度出大纲；内容页按结论、证据、含义、动作写深，不用关键词和占位词，再让用户在大纲页增删改序并确认，投影成设计契约由执行内核写页面；主题只应用 visual scope，不改版式和内容量。"

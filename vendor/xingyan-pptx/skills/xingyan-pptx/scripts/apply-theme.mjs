@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-import { expandUserPath } from './lib/paths.mjs';
-import { readJsonFile } from './lib/json.mjs';
 /**
  * Apply a theme to an existing engine design contract.
  *
@@ -341,7 +339,7 @@ function lockDecoration(token) {
 }
 
 const args = parseArgs(process.argv.slice(2));
-const project = path.resolve(expandUserPath(args._[0] || ''));
+const project = path.resolve(args._[0] || '');
 const themeId = typeof args.theme === 'string' ? args.theme : '';
 const scope = typeof args.scope === 'string' ? args.scope : 'colors';
 
@@ -357,7 +355,7 @@ if (DEPRECATED_SCOPES[scope]) {
 
 const tokenPath = path.join(ROOT, 'themes', 'tokens', `${themeId}.json`);
 if (!fs.existsSync(tokenPath)) fail(`Unknown theme: ${themeId}`);
-const token = readJsonFile(tokenPath);
+const token = JSON.parse(fs.readFileSync(tokenPath, 'utf8'));
 
 const specPath = path.join(project, 'design_spec.md');
 const lockPath = path.join(project, 'spec_lock.md');
@@ -517,7 +515,7 @@ fs.writeFileSync(lockPath, lock, 'utf8');
 
 const selectionPath = path.join(project, 'theme_selection.json');
 const source = fs.existsSync(selectionPath)
-  ? (readJsonFile(selectionPath).source || 'auto')
+  ? (JSON.parse(fs.readFileSync(selectionPath, 'utf8')).source || 'auto')
   : 'auto';
 
 const overlay = {

@@ -2,10 +2,6 @@
 
 ## 1. 方案 A：客户端不做 PDF / EPUB
 
-> 1.0.22 补充：`extract-source` 的商业默认是 **pypdf（BSD-3）**；可选 **pdfplumber（MIT）**。
-> 引擎的 `pdf_to_md.py` 本身是 MIT，但依赖 **PyMuPDF（AGPL-3.0）**，只能在后端/自托管
-> 显式 `--allow-agpl` 时启用。分发给客户的客户端不得默认或静默使用 PyMuPDF。
-
 帝王蟹客户端里的这个 skill 只接受：
 
 - Markdown
@@ -62,9 +58,9 @@ PPT 侧使用 `*_stack_ppt`，Inter / Poppins 自动落到 Arial。不要从系�
 ## 5. 执行内核
 
 - 执行内核本体 MIT，允许商用、修改、分发
-- 0.3.0 起随包内置在 `runtime/engine/`，客户端只读设计参考和模板；导出时只调用 `svg_quality_checker.py` 与 `svg_to_pptx.py` 两步
+- 0.3.0 起随包内置在 `runtime/engine/`，客户端只读设计参考和模板，不执行其中的 Python
 - 客户端加载边界见 `references/engine-usage.md`；引擎自带的路由、Step 1–7 和 Python 命令不适用于客户端
-- PPTX 由客户端用宿主注入的 Python（随包 wheels：python-pptx / XlsxWriter / lxml / Pillow）导出；后端部署同一份 `runtime/engine/`，两边不维护第二份代码
+- PPTX 仍由后端导出；后端部署同一份 `runtime/engine/`，不维护第二份代码
 - 必须原样保留 `LICENSE`、`SPONSORS.md`、`SPONSORS_CN.md` 和 `scripts/attribution_guard.py`；改动会导致 `exit 78`
 - 不要删除原作者的版权声明；白标时在第三方声明页保留
 - 裁剪清单（simple-icons、chunk-filled、brands、sounds 等）见 `ENGINE.md`，排除项不影响完整性门禁

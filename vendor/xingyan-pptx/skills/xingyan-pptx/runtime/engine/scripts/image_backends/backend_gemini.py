@@ -39,9 +39,7 @@ from image_backends.backend_common import (
     MAX_RETRIES,
     is_permanent_error,
     is_rate_limit_error,
-    nearest_aspect_ratio,
     normalize_image_size,
-    note_aspect_ratio,
     resolve_output_path,
     retry_delay,
     save_image_bytes,
@@ -303,14 +301,8 @@ def generate(prompt: str,
 
     image_size = normalize_image_size(image_size)
 
-    requested_ratio = aspect_ratio
-    ratios = (
-        GEMINI_2_5_VALID_ASPECT_RATIOS
-        if _model_id(model) in GEMINI_2_5_FLASH_IMAGE_MODELS
-        else VALID_ASPECT_RATIOS
-    )
-    aspect_ratio = nearest_aspect_ratio(aspect_ratio, ratios)
-    note_aspect_ratio(requested_ratio, aspect_ratio)
+    if aspect_ratio not in VALID_ASPECT_RATIOS:
+        raise ValueError(f"Invalid aspect ratio '{aspect_ratio}'. Valid: {VALID_ASPECT_RATIOS}")
 
     if image_size not in VALID_IMAGE_SIZES:
         raise ValueError(f"Invalid image size '{image_size}'. Valid: {VALID_IMAGE_SIZES}")
@@ -334,16 +326,16 @@ def generate(prompt: str,
             if is_permanent_error(e):
                 raise
             if attempt < max_retries and is_rate_limit_error(e):
-                delay = retry_delay(attempt, rate_limited=True, exc=last_error)
+                delay = retry_delay(attempt, rate_limited=True)
                 print(f"\n  [WARN] Rate limit hit (attempt {attempt + 1}/{max_retries + 1}). "
                       f"Waiting {delay}s before retry...")
                 time.sleep(delay)
             elif attempt < max_retries:
-                delay = retry_delay(attempt, rate_limited=False, exc=last_error)
+                delay = retry_delay(attempt, rate_limited=False)
                 print(f"\n  [WARN] Error (attempt {attempt + 1}/{max_retries + 1}): {e}. "
                       f"Retrying in {delay}s...")
                 time.sleep(delay)
             else:
                 break
 
-    raise RuntimeError(f"Failed after {max_retries + 1} attempts. Last error: {last_error}") from last_error
+    raise RuntimeError(f"Failed after {max_retries + 1} attempts. Last error: {last_error}")

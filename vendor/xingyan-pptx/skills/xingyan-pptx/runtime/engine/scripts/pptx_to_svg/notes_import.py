@@ -6,8 +6,7 @@ import hashlib
 from dataclasses import dataclass
 from xml.etree import ElementTree as ET
 
-from .emu_units import NS, ooxml_bool
-from .import_diagnostics import ImportDiagnostic, append_diagnostic
+from .emu_units import NS
 from .ooxml_loader import OoxmlPackage
 
 
@@ -58,9 +57,8 @@ def _paragraph_text(paragraph: ET.Element) -> str:
     return text
 
 
-def _notes_markdown(root: ET.Element, hidden_shapes: list[ET.Element]) -> str:
+def _notes_markdown(root: ET.Element) -> str:
     blocks: list[str] = []
-    parents = {child: parent for parent in root.iter() for child in parent}
     for shape in root.findall(".//p:sp", NS):
         placeholder = shape.find("p:nvSpPr/p:nvPr/p:ph", NS)
         placeholder_type = placeholder.get("type") if placeholder is not None else None
@@ -75,22 +73,11 @@ def _notes_markdown(root: ET.Element, hidden_shapes: list[ET.Element]) -> str:
             if (text := _paragraph_text(paragraph))
         ]
         if paragraphs:
-            ancestor = shape
-            while ancestor is not None:
-                properties = ancestor.find("./*/p:cNvPr", NS)
-                if properties is not None and ooxml_bool(properties.get("hidden")):
-                    hidden_shapes.append(shape)
-                    break
-                ancestor = parents.get(ancestor)
-            else:
-                blocks.append("\n".join(paragraphs))
+            blocks.append("\n".join(paragraphs))
     return "\n\n".join(blocks).strip()
 
 
-def import_speaker_notes(
-    pkg: OoxmlPackage,
-    diagnostics: list[ImportDiagnostic] | None = None,
-) -> tuple[ImportedSpeakerNote, ...]:
+def import_speaker_notes(pkg: OoxmlPackage) -> tuple[ImportedSpeakerNote, ...]:
     """Return every non-empty source speaker note in presentation order."""
     notes: list[ImportedSpeakerNote] = []
     for slide in pkg.iter_slides():
@@ -112,21 +99,7 @@ def import_speaker_notes(
             root = ET.fromstring(payload)
         except ET.ParseError:
             continue
-        hidden_shapes: list[ET.Element] = []
-        markdown = _notes_markdown(root, hidden_shapes)
-        if diagnostics is not None:
-            for shape in hidden_shapes:
-                properties = shape.find("p:nvSpPr/p:cNvPr", NS)
-                append_diagnostic(diagnostics, ImportDiagnostic(
-                    code="hidden-notes-content",
-                    message="Author-hidden speaker-note text was excluded from Markdown",
-                    fallback="retain hidden source XML on untouched round-trip notes",
-                    part_path=source_part,
-                    slide_index=slide.index,
-                    shape_id=properties.get("id", "") if properties is not None else "",
-                    shape_name=properties.get("name", "") if properties is not None else "",
-                    shape_kind="notes-shape",
-                ))
+        markdown = _notes_markdown(root)
         if not markdown:
             continue
         notes.append(ImportedSpeakerNote(

@@ -101,16 +101,11 @@ def format_coordinate(value: str | float) -> str:
     return "0" if compact in {"", "-0"} else compact
 
 
-def _compact_coordinate_quad(value: str, *, preserve_nonzero_extent: bool = False) -> str:
+def _compact_coordinate_quad(value: str) -> str:
     tokens = _number_tokens(value)
     if tokens is None or len(tokens) != 4:
         return value
-    compacted = [format_coordinate(token) for token in tokens]
-    if preserve_nonzero_extent:
-        for axis in (2, 3):
-            if float(tokens[axis]) > 0 and compacted[axis] == "0":
-                compacted[axis] = tokens[axis]
-    return " ".join(compacted)
+    return " ".join(format_coordinate(token) for token in tokens)
 
 
 def _compact_transform(value: str) -> str:
@@ -152,9 +147,7 @@ def _compact_attribute_value(
     if name == "data-pptx-frame":
         return _compact_coordinate_quad(value) if compact_native_frames else value
     if name == "data-pptx-bounds":
-        return _compact_coordinate_quad(
-            value, preserve_nonzero_extent=not compact_native_frames,
-        )
+        return _compact_coordinate_quad(value)
     if name == "transform":
         return _compact_transform(value)
     return value

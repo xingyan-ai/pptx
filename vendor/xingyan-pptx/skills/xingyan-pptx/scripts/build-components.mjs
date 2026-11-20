@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import { readJsonFile } from './lib/json.mjs';
 /**
  * Build the component layer for every theme.
  *
@@ -29,7 +28,7 @@ const OVERRIDES = path.join(ROOT, 'themes', 'components.overrides.json');
 
 const checkOnly = process.argv.includes('--check');
 
-const readJson = (file) => readJsonFile(file);
+const readJson = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 
 function merge(base, patch) {
   if (!patch || typeof patch !== 'object' || Array.isArray(patch)) return patch;

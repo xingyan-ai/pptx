@@ -1,4 +1,3 @@
-import { readJsonFile } from './json.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { normalizeLanguage } from './outline.mjs';
@@ -13,7 +12,7 @@ export function readProjectLanguage(project) {
   const outlinePath = path.join(project, 'outline.json');
   if (fs.existsSync(outlinePath)) {
     try {
-      const outline = readJsonFile(outlinePath);
+      const outline = JSON.parse(fs.readFileSync(outlinePath, 'utf8'));
       const normalized = normalizeLanguage(outline.contract?.primaryLanguage);
       if (normalized) return normalized;
     } catch {

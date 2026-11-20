@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import { readJsonFile } from './lib/json.mjs';
 /**
  * Build the decoration layer for every theme.
  *
@@ -30,7 +29,7 @@ const OVERRIDES = path.join(ROOT, 'themes', 'decorations.overrides.json');
 const checkOnly = process.argv.includes('--check');
 
 function readJson(file) {
-  return readJsonFile(file);
+  return JSON.parse(fs.readFileSync(file, 'utf8'));
 }
 
 function merge(base, patch) {

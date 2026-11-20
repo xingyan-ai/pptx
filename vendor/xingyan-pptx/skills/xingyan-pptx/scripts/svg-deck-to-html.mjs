@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-import { expandUserPath } from './lib/paths.mjs';
-import { readJsonFile } from './lib/json.mjs';
 /**
  * Render a project's SVG pages as a single-file HTML deck.
  *
@@ -18,8 +16,6 @@ import { readJsonFile } from './lib/json.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-
-import { exportFileName } from './lib/deck-name.mjs';
 import { embedFonts } from './lib/fonts.mjs';
 import { readProjectLanguage } from './lib/language.mjs';
 
@@ -304,7 +300,7 @@ function escapeHtml(text) {
 
 function main() {
   const args = parseArgs(process.argv.slice(2));
-  const project = path.resolve(expandUserPath(args._[0] || ''));
+  const project = path.resolve(args._[0] || '');
   if (!project || !fs.existsSync(project)) {
     console.error('Usage: svg-deck-to-html.mjs <project> [--out deck.html] [--theme tokens.json] [--theme-name name]');
     process.exit(1);
@@ -324,7 +320,7 @@ function main() {
     console.error('External SVG references are not allowed: ' + [...new Set(external)].slice(0, 10).join(', '));
     process.exit(1);
   }
-  const theme = args.theme ? readJsonFile(path.resolve(args.theme)) : null;
+  const theme = args.theme ? JSON.parse(fs.readFileSync(path.resolve(args.theme), 'utf8')) : null;
   const themeName = args['theme-name'] || (theme ? theme.name : '');
   const html = buildHtml({
     title: args.title || readTitle(project),
@@ -335,8 +331,8 @@ function main() {
     lang: readProjectLanguage(project),
   });
   const out = args.out
-    ? path.resolve(expandUserPath(args.out))
-    : exportFileName(project, 'html');
+    ? path.resolve(args.out)
+    : path.join(project, 'exports', `${path.basename(project)}_${new Date().toISOString().replace(/\D/g, '').slice(0, 14)}.html`);
   fs.mkdirSync(path.dirname(out), { recursive: true });
 
   let finalHtml = html;

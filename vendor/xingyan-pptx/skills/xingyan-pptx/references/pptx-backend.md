@@ -1,10 +1,6 @@
 # PPTX 后端契约
 
-> 仅服务端部署参考。客户端已改用宿主注入的 Python 本地导出，不调用这个 endpoint；不要主动建议用户配置它。
-
-> 本文只作**服务端部署参考**。客户端现在用宿主注入的 Python 直接导出，不再需要这个 endpoint；不要主动建议用户配置它。
-
-执行内核以源码形式内置在 `runtime/engine/`，后端用同一份子树把自包含 SVG 编译成原生 DrawingML。
+客户端不运行 Python，不打包 Python 解释器、PyMuPDF、ebooklib。执行内核以源码形式内置在 `runtime/engine/`，客户端只读文档和模板；PPTX 由后端用同一份子树把自包含 SVG 编译成原生 DrawingML。
 
 ## 1. 请求
 

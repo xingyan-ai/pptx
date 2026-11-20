@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-import { expandUserPath } from './lib/paths.mjs';
-import { readJsonFile } from './lib/json.mjs';
 /**
  * Render a theme's decoration system as a 1280×720 SVG sample page.
  *
@@ -53,7 +51,7 @@ function loadToken(id) {
     console.error(`[BLOCK] unknown theme: ${id}`);
     process.exit(1);
   }
-  return readJsonFile(file);
+  return JSON.parse(fs.readFileSync(file, 'utf8'));
 }
 
 function color(colors, value, fallback) {
@@ -315,7 +313,7 @@ ${cards}
   console.log(`[OK] ${ids.length} theme sample(s) -> ${dir}`);
 } else {
   const svg = render(loadToken(themeId));
-  const out = typeof args.out === 'string' ? path.resolve(expandUserPath(args.out)) : null;
+  const out = typeof args.out === 'string' ? path.resolve(args.out) : null;
   if (out) {
     fs.mkdirSync(path.dirname(out), { recursive: true });
     fs.writeFileSync(out, svg, 'utf8');

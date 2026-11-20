@@ -1045,9 +1045,12 @@ window.__ModuleLoader__.load({
         const slides = item.slides || []
         STORE.built = { slides: slides }
         STORE.result = { ok: true, project: item.project }
+        const outlineForExport = { contract: { projectName: item.title, themeId: item.themeId || '' }, slides: slides }
+        STORE.outline = outlineForExport
         STORE.phase = 'result'
         setResultFrom('works')
         setBuilt({ slides: slides })
+        setOutline(outlineForExport)
         setResult({ ok: true, project: item.project })
         setPhase('result')
       }

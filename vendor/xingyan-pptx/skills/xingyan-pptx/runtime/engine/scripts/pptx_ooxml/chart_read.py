@@ -9,7 +9,7 @@ from __future__ import annotations
 from typing import Any
 from xml.etree import ElementTree as ET
 
-from .ooxml import NS, _paragraph_texts
+from .ooxml import NS
 
 
 def empty_chart_data() -> dict[str, Any]:
@@ -19,7 +19,6 @@ def empty_chart_data() -> dict[str, Any]:
         "series_count": 0,
         "categories": [],
         "series": [],
-        "title": "",
     }
 
 
@@ -75,18 +74,10 @@ def _series_name(series: ET.Element, fallback: str) -> str:
 
 
 def read_chart_data(chart_root: ET.Element) -> dict[str, Any]:
-    """Return the chart title, type, categories, series, and values."""
-    title_node = chart_root.find("c:chart/c:title/c:tx", NS)
-    title = ""
-    if title_node is not None:
-        rich = title_node.find("c:rich", NS)
-        title = (
-            "\n".join(_paragraph_texts(rich))
-            if rich is not None else "\n".join(map(str, _cache_values(title_node)))
-        )
+    """Return a compact summary of chart type, categories, series, and values."""
     chart_types = _chart_types_with_series(chart_root)
     if not chart_types:
-        return {**empty_chart_data(), "title": title}
+        return empty_chart_data()
 
     first_series = chart_types[0].find("c:ser", NS)
     categories = _cache_values(first_series.find("c:cat", NS)) if first_series is not None else []
@@ -115,5 +106,4 @@ def read_chart_data(chart_root: ET.Element) -> dict[str, Any]:
         "series_count": len(series_payload),
         "categories": categories,
         "series": series_payload,
-        "title": title,
     }

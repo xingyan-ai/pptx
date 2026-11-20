@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import { expandUserPath } from './lib/paths.mjs';
 /**
  * Project a confirmed outline into the engine design contract.
  *
@@ -119,7 +118,7 @@ function ensureLine(text, label, line, afterLabel) {
 }
 
 const args = parseArgs(process.argv.slice(2));
-const project = path.resolve(expandUserPath(args._[0] || ''));
+const project = path.resolve(args._[0] || '');
 if (!project) {
   console.error('Usage: outline-to-spec.mjs <project> [--check] [--force]');
   process.exit(2);

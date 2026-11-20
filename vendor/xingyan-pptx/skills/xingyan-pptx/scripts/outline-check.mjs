@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-import { expandUserPath } from './lib/paths.mjs';
-import { readJsonFile } from './lib/json.mjs';
 /**
  * Validate an outline before it is confirmed or projected.
  *
@@ -53,7 +51,7 @@ function parseArgs(argv) {
 }
 
 const args = parseArgs(process.argv.slice(2));
-const project = path.resolve(expandUserPath(args._[0] || ''));
+const project = path.resolve(args._[0] || '');
 if (!project) {
   console.error('Usage: outline-check.mjs <project> [--json]');
   process.exit(2);
@@ -67,7 +65,7 @@ if (!fs.existsSync(outlinePath)) {
 
 let outline;
 try {
-  outline = readJsonFile(outlinePath);
+  outline = JSON.parse(fs.readFileSync(outlinePath, 'utf8'));
 } catch (error) {
   console.error(`[BLOCK] outline.json is not valid JSON: ${error.message}`);
   process.exit(1);
@@ -172,19 +170,6 @@ if (!slides.length) {
   }
   if (pageRange && slides.length > pageRange[1]) {
     warnings.push(`outline has ${slides.length} slides; ${pageBudget ? `pageBudget="${pageBudget}"` : `scene "${sceneInfo.key}"`} suggests ${pageRange[0]}–${pageRange[1]}; page count stays the user's call`);
-  }
-
-  // build-toc places one entry per section at 32px in a 552px slot
-  // (CHAR_AT_32 = 34 => 16 CJK units). Warn now instead of blocking the whole
-  // build at build-toc after the pages are already composed.
-  const TOC_FIT = Math.floor(552 / 34);
-  for (const slide of slides) {
-    if (['cover', 'toc', 'ending'].includes(slide.role)) continue;
-    const title = String(slide.title || '');
-    const units = [...title].reduce((sum, ch) => sum + (/[\x00-\x7F]/.test(ch) ? 0.5 : 1), 0);
-    if (units > TOC_FIT) {
-      warnings.push(`title "${title}" is ~${units} TOC units; the slots fit ${TOC_FIT} — build-toc will block. Shorten the title or merge sections.`);
-    }
   }
 
   const seen = new Set();

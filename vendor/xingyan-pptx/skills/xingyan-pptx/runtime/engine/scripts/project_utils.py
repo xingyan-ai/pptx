@@ -8,7 +8,6 @@ reusable by other tools.
 
 import argparse
 import re
-import xml.etree.ElementTree as ET
 from pathlib import Path
 from datetime import datetime
 from typing import Dict, List, Optional, Tuple
@@ -517,14 +516,12 @@ def _outline_hyperlink_lines(design_text: str) -> Dict[int, str | None]:
 def _svg_hyperlink_targets(svg_file: Path) -> Tuple[set, set] | None:
     """Return (same-deck slide numbers, external hrefs) of an SVG's anchors, or None if unreadable."""
     try:
-        root = ET.parse(svg_file).getroot()
-    except (OSError, ET.ParseError):
+        text = svg_file.read_text(encoding='utf-8')
+    except OSError:
         return None
     slides, externals = set(), set()
-    for anchor in root.iter():
-        if anchor.tag not in ('a', '{http://www.w3.org/2000/svg}a'):
-            continue
-        href = anchor.get('href', anchor.get('{http://www.w3.org/1999/xlink}href', '')).strip()
+    for match in re.finditer(r'<a\b[^>]*?\s(?:xlink:)?href=["\']([^"\']*)["\']', text):
+        href = match.group(1).strip()
         jump = _SLIDE_JUMP_RE.fullmatch(href)
         if jump:
             slides.add(int(jump.group(1)))

@@ -2,7 +2,7 @@
 
 `runtime/engine/` 是随包内置的执行内核 6.7.2 只读副本，提供设计方法、模板和图标参考。**它是参考，不是客户端的执行手册。**
 
-这份文档解决一件事：引擎自带的 `SKILL.md`、`workflows/`、`scripts/` 是按「引擎自己跑完整流水线」写的，而客户端只通过 `scripts/pptx-export.mjs` 调用引擎的导出两步（质量检查 + SVG→PPTX），解释器由宿主注入；引擎的整条流水线不执行。两边冲突时，以本 skill 的 `SKILL.md` 和 `references/` 为准。
+这份文档解决一件事：引擎自带的 `SKILL.md`、`workflows/`、`scripts/` 是按「引擎自己跑完整流水线」写的，而客户端不跑 Python、PPTX 走后端。两边冲突时，以本 skill 的 `SKILL.md` 和 `references/` 为准。
 
 ## 1. 谁负责什么
 
@@ -89,8 +89,7 @@
 | 读 `workflows/routing.md` 选路 | 不选；流程按 `SKILL.md` 的大纲优先主流程 |
 | 跑 `project_manager.py validate` | 跑 `outline-check.mjs` + `check-design-spec.mjs` |
 | 跑 `text_measure.py calibrate --outline` | 不跑；文本预算由执行层按 §IX 内容自行控制 |
-| 跑 `svg_quality_checker.py` / `finalize_svg.py` / `svg_to_pptx.py` | 不在会话里手跑；导出由 `build-deck.mjs` / `pptx-export.mjs` 内部调用 |
-| 跑 `visual_review.py` / `workflows/stages/visual-review.md`（playwright + chromium 截图） | 不跑；客户端不做视觉自检，不起浏览器，页面效果由用户在宿主预览里确认 |
+| 跑 `svg_quality_checker.py` / `finalize_svg.py` / `svg_to_pptx.py` | 不跑；页面检查用 `check-theme-fidelity.mjs` / `check-fonts.mjs`，PPTX 走 `pptx-backend-client.mjs` |
 | 用 `simple-icons` / `chunk-filled` / brands / sounds | 不用；只用三个实际存在的图标库 |
 | 用旧工作区路径（`skills/...`） | 用 `ENGINE_DIR/...` |
 
