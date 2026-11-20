@@ -706,18 +706,8 @@ window.__ModuleLoader__.load({
 
     function ResultView(props) {
       const [page, setPage] = useState(1)
-      const frame = useRef(null)
       const slides = props.slides || []
-      const src = IMG + 'deck?project=' + encodeURIComponent(props.project)
-
-      useEffect(function () {
-        const win = frame.current && frame.current.contentWindow
-        if (!win) return undefined
-        const timer = setTimeout(function () {
-          try { win.postMessage({ __deckPage: page }, '*') } catch (error) {}
-        }, 300)
-        return function () { clearTimeout(timer) }
-      }, [page, src])
+      const src = IMG + 'slide?project=' + encodeURIComponent(props.project) + '&n=' + page
 
       return h('div', null,
         h('div', { className: 'res' },
@@ -732,17 +722,8 @@ window.__ModuleLoader__.load({
                 h('span', { className: 'res-t' }, slide.title))
             })),
           h('div', null,
-            h('div', { className: 'res-frame' }, h('iframe', { ref: frame, src: src, title: 'deck' })),
-            h('div', { className: 'res-tip' }, '左侧点页码跳转；预览里也能用方向键翻页。'))),
-        props.steps
-          ? h('div', { className: 'log' },
-              props.steps.map(function (item, index) {
-                return h('div', { key: index, className: 'log-row', 'data-ok': item.ok ? '1' : '0' },
-                  h('i', null, item.ok ? '✓' : '✕'),
-                  h('b', null, item.label),
-                  h('span', null, (item.ok ? item.out : item.err || '').slice(-200)))
-              }))
-          : null)
+            h('div', { className: 'res-frame' }, h('img', { src: src, alt: '', style: { width: '100%', display: 'block' } })),
+            h('div', { className: 'res-tip' }, '左侧点页码翻页。')))
     }
 
     function ExportModal(props) {
@@ -1194,7 +1175,7 @@ window.__ModuleLoader__.load({
             h('p', { className: 'pk-sub' }, '成品预览')),
           h('button', {
             type: 'button', className: 'pk-btn pk-btn-ghost',
-            onClick: function () { window.open(IMG + 'deck?project=' + encodeURIComponent(result.project), '_blank') },
+            onClick: function () { window.open(IMG + 'slide?project=' + encodeURIComponent(result.project) + '&n=1', '_blank') },
           }, '浏览器'),
           h('button', {
             type: 'button', className: 'pk-btn pk-btn-primary',
