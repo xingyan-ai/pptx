@@ -68,3 +68,6 @@ vendor/xingyan-pptx    第三方内核快照（见 NOTICE.md）
 ## 许可
 
 插件自身代码 MIT。`vendor/xingyan-pptx/` 是第三方快照，署名与分发条件见 [NOTICE.md](NOTICE.md)。
+
+# 本地开发提示：客户端本地安装是复制而非软链，改完要同步
+# rsync -a --delete --exclude .git --exclude decks --exclude node_modules ./ ~/.dsh/profiles/desktop/node_modules/dsh-plugin-xingyan-pptx/
