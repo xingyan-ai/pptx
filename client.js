@@ -1192,7 +1192,7 @@ window.__ModuleLoader__.load({
           h('button', {
             type: 'button', className: 'pk-btn pk-btn-ghost',
             onClick: function () { window.open(IMG + 'deck?project=' + encodeURIComponent(result.project), '_blank') },
-          }, '新窗口'),
+          }, '浏览器'),
           h('button', {
             type: 'button', className: 'pk-btn pk-btn-primary',
             onClick: function () { setExportOpen(true) },

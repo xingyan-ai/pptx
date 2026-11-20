@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugin-xingyan-pptx",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "星彦 PPT 工作台：选主题、写需求、出大纲、逐页生成版式稿，可导出 PPTX/PDF。",
   "type": "module",
   "exports": {
