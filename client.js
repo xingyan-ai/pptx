@@ -5,7 +5,7 @@
  * 视觉与动效对齐「自媒体工作台」：弹簧缓动、卡片错峰入场、参差瀑布流。
  */
 window.__ModuleLoader__.load({
-  id: 'dsh-xingyan-pptx',
+  id: 'dsh-plugin-xingyan-pptx',
   factory(require) {
     const React = require('react')
     const h = React.createElement
@@ -1117,7 +1117,7 @@ window.__ModuleLoader__.load({
 
         ctx.slots.inject('main', () => ctx.slots.register({ name: 'main', key: PANEL_ID }, Page))
         ctx.slots.inject('sidebar.panellist', () =>
-          ctx.slots.register({ name: 'sidebar.panellist', id: PANEL_ID, order: 6, label: () => t('panel') }, PanelIcon))
+          ctx.slots.register({ name: 'sidebar.panellist', id: PANEL_ID, order: 2, label: () => t('panel') }, PanelIcon))
       },
     }
   },
