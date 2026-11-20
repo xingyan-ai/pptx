@@ -715,6 +715,7 @@ async function fillTypography(project, card) {
   }
   block('components', card && card.components)
   block('decoration', card && card.decoration)
+  text = text.replace(/(## pptx_structure\n- mode: )flat/, '$1structured')
   await writeFile(file, text)
   return true
 }
@@ -835,6 +836,11 @@ async function buildDeck(ctx, skillDir, workDir, body) {
 
   // 版式：presentation_core 的 20 个中性版式，作为每页的骨架参考
   try {
+    const install = await runIn(skillDir, python, [
+      join(skillDir, 'runtime', 'engine', 'scripts', 'apply_template.py'), project,
+      '--root', join(skillDir, 'runtime', 'engine', 'templates', 'layouts', 'presentation_core'),
+    ], 'apply-template')
+    steps.push(install)
     const coreDir = join(skillDir, 'runtime', 'engine', 'templates', 'layouts', 'presentation_core', 'templates')
     await mkdir(join(project, 'templates'), { recursive: true })
     for (const name of await readdir(coreDir)) {
@@ -1336,8 +1342,18 @@ function pagePrompt(slide, brief, colors, index, total) {
   const points = capped.points
   const evidence = capped.evidence.join('；')
   const lines = [
-    '版式区域：',
+    '下面是这一页的版式骨架（SVG 原文）。你的任务是在它上面填内容，不是重画：',
+    '```svg',
     brief,
+    '```',
+    '',
+    '骨架规则（几何门禁会逐条检查）：',
+    '- 保留所有 <g>、data-pptx-bounds、data-pptx-placeholder、rect、line 的原样，不要移动、不要改宽高',
+    '- 只改 <text> 的文字内容；需要换行时在同一个 <text> 里用 tspan，不要新增兄弟 text',
+    '- 不要新增或删除根级 <g>；骨架里没有的模块就不要加',
+    '- 字号只用骨架里已有的值；不够就用同一 <g> 里最小的那个',
+    '- 所有数值必须是有限数字，不要写算式',
+    '',
     '',
     '调色板：背景 ' + colors.bg + '，正文 ' + colors.text + '，强调 ' + colors.accent,
     '',
@@ -1489,7 +1505,7 @@ async function authorPages(ctx, project, outline, colors, onProgress, options) {
     let svg = null
     try {
       onProgress && onProgress(index, slides.length, 'drawing')
-      const text = await callPageModel(ctx, PAGE_SYSTEM + (lockExcerpt ? '\n\n# 本项目的 spec_lock 契约\n' + lockExcerpt : ''), pagePrompt(slide, layoutBrief(layoutSvg), colors, index, slides.length), options.sessionId)
+      const text = await callPageModel(ctx, PAGE_SYSTEM + (lockExcerpt ? '\n\n# 本项目的 spec_lock 契约\n' + lockExcerpt : ''), pagePrompt(slide, layoutSvg, colors, index, slides.length), options.sessionId)
       svg = validSvg(text)
       if (svg) authored += 1
       else errors.push('P' + (index + 1) + ' 返回的不是合法 SVG')
