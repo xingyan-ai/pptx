@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "template_id": "chrome-future",
+  "template_name": "Chrome Future 银铬未来",
+  "template_version": "1.0.0",
+  "canvas": {
+    "width": 1280,
+    "height": 720
+  },
+  "source": "scaffold.html",
+  "layout_registry": "layout-registry.json",
+  "deck_schema": "deck.schema.json",
+  "targets": [
+    "html",
+    "pptx"
+  ],
+  "editable_kinds": [
+    "text",
+    "image",
+    "shape",
+    "line"
+  ],
+  "object_id_contract": "<slide-id>::<slot-id>",
+  "recommended_pages": [
+    8,
+    11
+  ],
+  "adaptive_composition": true,
+  "signature_compositions": [
+    "stencilled-manual-cover",
+    "material-rubbing-board",
+    "survey-coordinate-map"
+  ],
+  "page_role_roster": [
+    "stencilled-manual-cover",
+    "site-instructions",
+    "material-rubbing-board",
+    "survey-coordinate-map",
+    "signage-taxonomy",
+    "wall-layer-cutaway",
+    "field-measure-grid",
+    "capture-workflow",
+    "archive-index",
+    "repair-principles",
+    "inspection-stamp-close"
+  ],
+  "theme": {
+    "background": "#F7F9FA",
+    "foreground": "#13171A",
+    "accent": "#2677FF",
+    "secondary": "#A4FF42"
+  },
+  "themeTokens": {
+    "primary": "#2677FF",
+    "accent2": "#A4FF42",
+    "rule": "#C5C7C9",
+    "fontTitle": "Inter, \"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "fontBody": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif"
+  },
+  "derivedFrom": "stencil-tablet"
+}

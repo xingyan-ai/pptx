@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "template_id": "pixel-pop",
+  "template_name": "Pixel Pop 像素波普",
+  "template_version": "1.0.0",
+  "canvas": {
+    "width": 1280,
+    "height": 720
+  },
+  "source": "scaffold.html",
+  "layout_registry": "layout-registry.json",
+  "deck_schema": "deck.schema.json",
+  "targets": [
+    "html",
+    "pptx"
+  ],
+  "editable_kinds": [
+    "text",
+    "image",
+    "shape",
+    "line"
+  ],
+  "object_id_contract": "<slide-id>::<slot-id>",
+  "recommended_pages": [
+    8,
+    10
+  ],
+  "adaptive_composition": true,
+  "signature_compositions": [
+    "arcade-festival-poster",
+    "lineup-marquee",
+    "city-quest-map",
+    "arcade-scoreboard"
+  ],
+  "page_role_roster": [
+    "arcade-festival-poster",
+    "lineup-marquee",
+    "zone-select",
+    "festival-timetable",
+    "artist-cartridges",
+    "ticket-battle",
+    "city-quest-map",
+    "crowd-scoreboard",
+    "insert-coin-close",
+    "high-score-wall"
+  ],
+  "theme": {
+    "background": "#FFFFFF",
+    "foreground": "#000000",
+    "accent": "#E8A715",
+    "secondary": "#00D2AE"
+  },
+  "themeTokens": {
+    "primary": "#805C0C",
+    "accent2": "#00D2AE",
+    "rule": "#C7C7C7",
+    "fontTitle": "Inter, \"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "fontBody": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif"
+  },
+  "derivedFrom": "pixel-pop"
+}

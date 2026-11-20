@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "id": "financial-bluegreen-modern",
+  "name": "冷蓝青绿月报",
+  "description": "冷蓝与青绿强调的经营分析风，适合月报、复盘和决策汇报",
+  "palette": {
+    "background": "#F5F7FB",
+    "text": "#08194A",
+    "accent": "#4A66AC",
+    "accentSecondary": "#84BB1E",
+    "rule": "#D8DEE8"
+  },
+  "typography": {
+    "heading": {
+      "family": "Microsoft YaHei",
+      "weight": 700,
+      "sizePx": 38
+    },
+    "body": {
+      "family": "PingFang SC",
+      "weight": 400,
+      "sizePx": 20,
+      "lineHeight": 1.35
+    }
+  },
+  "mood": [
+    "审慎",
+    "稳健",
+    "效率优先"
+  ],
+  "visualVocabulary": [
+    "冷蓝底与青绿绩效色",
+    "规则化指标带",
+    "建筑摄影作尺度锚点"
+  ],
+  "taboos": [
+    "避免卡片墙平均用力",
+    "绿色只表示正向/行动",
+    "数据必须标时间与口径"
+  ],
+  "coverStructure": "photographic scale cue plus one KPI/decision anchor",
+  "sectionStructure": "chapters use calm review cadence and explicit takeaway",
+  "titleTreatment": "compact executive title with blue band/green status cue",
+  "decorativeLanguage": "architectural crop, metric rule and small line icon",
+  "bodyCompositionBias": "data blocks are unequal: conclusion and variance lead",
+  "density": {
+    "default": "dense",
+    "guidance": "信息可较密，但每页仍保留一个主判断和清晰证据路径"
+  },
+  "tocStructure": "calm contents ledger: chapter, page range, one-line takeaway",
+  "heroStructure": "one KPI figure with a single sentence of context and a thin rule"
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "template_id": "glass-tech-system",
+  "template_name": "Glass Tech System 玻璃科技",
+  "template_version": "1.0.0",
+  "canvas": {
+    "width": 1280,
+    "height": 720
+  },
+  "source": "scaffold.html",
+  "layout_registry": "layout-registry.json",
+  "deck_schema": "deck.schema.json",
+  "targets": [
+    "html",
+    "pptx"
+  ],
+  "editable_kinds": [
+    "text",
+    "image",
+    "shape",
+    "line"
+  ],
+  "object_id_contract": "<slide-id>::<slot-id>",
+  "recommended_pages": [
+    8,
+    11
+  ],
+  "adaptive_composition": true,
+  "signature_compositions": [
+    "glass-orbit-cover",
+    "layered-system-stack",
+    "regional-globe"
+  ],
+  "page_role_roster": [
+    "glass-orbit-cover",
+    "platform-thesis",
+    "layered-system-stack",
+    "agent-constellation",
+    "regional-globe",
+    "workflow-ribbon",
+    "model-routing",
+    "experience-window",
+    "performance-prisms",
+    "deployment-choice",
+    "glass-horizon-close"
+  ],
+  "theme": {
+    "background": "#000000",
+    "foreground": "#FFFFFF",
+    "accent": "#E8A715",
+    "secondary": "#00D2AE"
+  },
+  "themeTokens": {
+    "primary": "#E8A715",
+    "accent2": "#00D2AE",
+    "rule": "#383838",
+    "fontTitle": "Inter, \"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "fontBody": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif"
+  },
+  "derivedFrom": "glass-tech-system"
+}

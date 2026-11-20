@@ -1,0 +1,460 @@
+{
+  "schemaVersion": 1,
+  "note": "按主题 id 覆盖 components.profiles.json 的字段；只写要改的部分，其余继承家族默认值。改完运行 node scripts/build-components.mjs。当前只为用户已选中的 21 套主题补了组件级修正。",
+  "overrides": {
+    "brutalist-acid": {
+      "tag": {
+        "case": "upper",
+        "weight": 800
+      },
+      "kpi": {
+        "fill": "surface",
+        "border": 3,
+        "borderColor": "text",
+        "shadow": "hard",
+        "radius": 0,
+        "numberScale": 1.05,
+        "labelCase": "upper"
+      },
+      "table": {
+        "headerFill": "text",
+        "headerText": "background",
+        "border": 3,
+        "borderColor": "text",
+        "rowRule": 3,
+        "rowRuleColor": "text",
+        "zebra": null,
+        "cellPadX": 16,
+        "cellPadY": 11,
+        "radius": 0
+      },
+      "chart": {
+        "barHeight": 22,
+        "barStroke": 3,
+        "barFill": [
+          "accent",
+          "surfaceAlt"
+        ],
+        "axisRule": 2,
+        "axisColor": "text",
+        "gridlines": 0,
+        "valueSize": 16,
+        "valueWeight": 800,
+        "labelSize": 18
+      },
+      "line": {
+        "stroke": 5,
+        "dot": 8,
+        "dotFill": "background",
+        "dotStroke": 2,
+        "area": false
+      },
+      "callout": {
+        "fill": "accent",
+        "text": "onAccent",
+        "border": 3,
+        "borderColor": "text",
+        "shadow": "hard",
+        "barWidth": 0,
+        "radius": 0
+      },
+      "list": {
+        "marker": "square",
+        "markerSize": 12,
+        "markerStroke": 2,
+        "markerFill": "accent"
+      }
+    },
+    "neon-green-wireframe": {
+      "kpi": {
+        "fill": "surface",
+        "border": 1,
+        "borderColor": "accent",
+        "shadow": "none",
+        "radius": 2
+      },
+      "table": {
+        "headerFill": "accent",
+        "headerText": "onAccent",
+        "border": 1,
+        "borderColor": "accent",
+        "rowRule": 1,
+        "zebra": null
+      },
+      "chart": {
+        "barHeight": 14,
+        "barStroke": 1,
+        "axisRule": 1,
+        "axisColor": "accent",
+        "gridlines": 4
+      },
+      "callout": {
+        "fill": null,
+        "border": 1,
+        "borderColor": "accent",
+        "shadow": "none",
+        "barWidth": 0
+      }
+    },
+    "cyber-purple-genz": {
+      "kpi": {
+        "fill": "surface",
+        "border": 1,
+        "borderColor": "accent2",
+        "shadow": "soft",
+        "radius": 12
+      },
+      "table": {
+        "headerFill": "accent",
+        "headerText": "onAccent",
+        "zebra": "surface",
+        "rowRule": 1
+      },
+      "callout": {
+        "fill": "accent2",
+        "text": "onAccent",
+        "border": 1,
+        "borderColor": "accent",
+        "shadow": "soft",
+        "radius": 12
+      }
+    },
+    "neon-3d": {
+      "kpi": {
+        "fill": "surface",
+        "border": 1,
+        "borderColor": "accent",
+        "shadow": "none",
+        "radius": 10
+      },
+      "chart": {
+        "barHeight": 16,
+        "barStroke": 0
+      },
+      "callout": {
+        "fill": "surfaceAlt",
+        "border": 1,
+        "borderColor": "accent2",
+        "barWidth": 4
+      }
+    },
+    "financial-bluegreen-modern": {
+      "kpi": {
+        "fill": "surface",
+        "border": 0,
+        "shadow": "none"
+      },
+      "table": {
+        "headerFill": "primary",
+        "headerText": "onPrimary",
+        "rowRule": 1,
+        "zebra": "surfaceAlt"
+      },
+      "chart": {
+        "barHeight": 14,
+        "barStroke": 0,
+        "barFill": [
+          "primary",
+          "accent"
+        ],
+        "gridlines": 3
+      }
+    },
+    "global-capital-data-journalism": {
+      "table": {
+        "headerFill": "text",
+        "headerText": "background",
+        "rowRule": 1,
+        "zebra": null
+      },
+      "chart": {
+        "barHeight": 14,
+        "barStroke": 0,
+        "gridlines": 4,
+        "valueWeight": 700
+      },
+      "callout": {
+        "fill": null,
+        "barWidth": 4,
+        "barColor": "primary"
+      }
+    },
+    "scientific-atlas": {
+      "table": {
+        "headerFill": "primary",
+        "headerText": "onPrimary",
+        "border": 1,
+        "rowRule": 1,
+        "zebra": "surfaceAlt"
+      },
+      "chart": {
+        "gridlines": 4,
+        "axisRule": 1,
+        "barHeight": 14
+      },
+      "list": {
+        "marker": "square",
+        "markerSize": 7
+      }
+    },
+    "portfolio-redgreen": {
+      "kpi": {
+        "fill": null,
+        "border": 0,
+        "shadow": "none"
+      },
+      "table": {
+        "headerFill": null,
+        "headerText": "text",
+        "border": 0,
+        "rowRule": 1,
+        "zebra": null
+      },
+      "callout": {
+        "fill": null,
+        "barWidth": 3,
+        "barColor": "accent"
+      }
+    },
+    "rural-green": {
+      "kpi": {
+        "fill": "surface",
+        "border": 0,
+        "shadow": "none"
+      },
+      "table": {
+        "rowRule": 1,
+        "headerFill": null
+      },
+      "chart": {
+        "barHeight": 12,
+        "gridlines": 0
+      }
+    },
+    "chrome-future": {
+      "kpi": {
+        "fill": "surface",
+        "border": 1,
+        "borderColor": "rule",
+        "shadow": "soft",
+        "radius": 16
+      },
+      "table": {
+        "headerFill": "surfaceAlt",
+        "border": 1,
+        "radius": 14
+      },
+      "chart": {
+        "gridlines": 2,
+        "barHeight": 14
+      }
+    },
+    "glass-tech-system": {
+      "kpi": {
+        "fill": "surface",
+        "border": 1,
+        "borderColor": "accent2",
+        "shadow": "soft",
+        "radius": 16
+      },
+      "table": {
+        "headerFill": "surfaceAlt",
+        "border": 1,
+        "radius": 14,
+        "zebra": null
+      },
+      "chart": {
+        "gridlines": 2,
+        "barFill": [
+          "accent",
+          "accent2"
+        ]
+      }
+    },
+    "japanese-paper": {
+      "table": {
+        "headerFill": null,
+        "border": 0,
+        "rowRule": 1,
+        "zebra": null
+      },
+      "list": {
+        "marker": "circle",
+        "markerSize": 6,
+        "markerStroke": 1
+      },
+      "callout": {
+        "fill": null,
+        "barWidth": 2,
+        "barColor": "accent"
+      }
+    },
+    "ink-bamboo": {
+      "callout": {
+        "fill": null,
+        "barWidth": 2,
+        "barColor": "accent"
+      },
+      "chart": {
+        "barHeight": 12,
+        "barFill": [
+          "accent",
+          "textMuted"
+        ],
+        "gridlines": 0
+      },
+      "table": {
+        "headerFill": null,
+        "rowRule": 1,
+        "zebra": null
+      }
+    },
+    "minimal-ink": {
+      "callout": {
+        "fill": null,
+        "barWidth": 2,
+        "barColor": "accent"
+      },
+      "table": {
+        "headerFill": null,
+        "border": 0,
+        "rowRule": 1
+      },
+      "list": {
+        "marker": "dot",
+        "markerSize": 5
+      }
+    },
+    "memphis-motion": {
+      "kpi": {
+        "border": 3,
+        "radius": 12,
+        "shadow": "hard"
+      },
+      "table": {
+        "headerFill": "accent",
+        "border": 2,
+        "radius": 8
+      },
+      "list": {
+        "marker": "circle",
+        "markerSize": 9,
+        "markerStroke": 2
+      }
+    },
+    "8-bit-orbit": {
+      "table": {
+        "headerFill": "accent",
+        "headerText": "onAccent",
+        "border": 2,
+        "rowRule": 2,
+        "zebra": "surfaceAlt"
+      },
+      "chart": {
+        "barHeight": 18,
+        "barStroke": 2
+      },
+      "kpi": {
+        "border": 2,
+        "shadow": "hard"
+      }
+    },
+    "pixel-pop": {
+      "table": {
+        "headerFill": "accent",
+        "headerText": "onAccent",
+        "border": 2,
+        "rowRule": 2,
+        "zebra": null
+      },
+      "chart": {
+        "barHeight": 18,
+        "barStroke": 2,
+        "gridlines": 0
+      },
+      "list": {
+        "marker": "square",
+        "markerSize": 10
+      }
+    },
+    "coral-3d": {
+      "kpi": {
+        "fill": "surface",
+        "border": 0,
+        "shadow": "soft",
+        "radius": 16
+      },
+      "table": {
+        "headerFill": "surfaceAlt",
+        "border": 0,
+        "radius": 14
+      },
+      "callout": {
+        "fill": "accent",
+        "text": "onAccent",
+        "shadow": "soft",
+        "radius": 16
+      }
+    },
+    "zen-stone": {
+      "kpi": {
+        "fill": "surface",
+        "border": 0,
+        "shadow": "soft",
+        "radius": 8
+      },
+      "table": {
+        "headerFill": "surfaceAlt",
+        "border": 0,
+        "radius": 8,
+        "rowRule": 1
+      },
+      "chart": {
+        "barHeight": 12,
+        "gridlines": 0,
+        "barFill": [
+          "accent",
+          "textMuted"
+        ]
+      }
+    },
+    "electric-studio": {
+      "kpi": {
+        "fill": null,
+        "border": 0,
+        "shadow": "none"
+      },
+      "table": {
+        "headerFill": null,
+        "border": 0,
+        "rowRule": 1
+      },
+      "chart": {
+        "barHeight": 13,
+        "barFill": [
+          "primary"
+        ],
+        "gridlines": 0
+      }
+    },
+    "scatterbrain": {
+      "table": {
+        "headerFill": "accent",
+        "headerText": "onAccent",
+        "border": 2,
+        "rowRule": 1,
+        "zebra": null
+      },
+      "callout": {
+        "fill": "accent2",
+        "text": "onAccent",
+        "shadow": "hard"
+      },
+      "list": {
+        "marker": "square",
+        "markerSize": 10,
+        "markerStroke": 2
+      }
+    }
+  }
+}

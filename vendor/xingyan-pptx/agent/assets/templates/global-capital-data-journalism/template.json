@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "template_id": "global-capital-data-journalism",
+  "template_name": "Capital Journal 全球资本新闻",
+  "template_version": "1.0.0",
+  "canvas": {
+    "width": 1280,
+    "height": 720
+  },
+  "source": "scaffold.html",
+  "layout_registry": "layout-registry.json",
+  "deck_schema": "deck.schema.json",
+  "targets": [
+    "html",
+    "pptx"
+  ],
+  "editable_kinds": [
+    "text",
+    "image",
+    "shape",
+    "line"
+  ],
+  "object_id_contract": "<slide-id>::<slot-id>",
+  "recommended_pages": [
+    8,
+    13
+  ],
+  "adaptive_composition": true,
+  "signature_compositions": [
+    "newspaper-masthead-cover",
+    "capital-flow-map",
+    "market-ticker-close"
+  ],
+  "page_role_roster": [
+    "newspaper-masthead-cover",
+    "executive-lede",
+    "capital-flow-map",
+    "regional-ranking",
+    "sector-treemap",
+    "deal-timeline",
+    "risk-scatter",
+    "project-profile",
+    "policy-sidebar",
+    "investor-quote",
+    "methodology-note",
+    "outlook-columns",
+    "market-ticker-close"
+  ],
+  "theme": {
+    "background": "#EFE9D8",
+    "foreground": "#181B1D",
+    "accent": "#224E75",
+    "secondary": "#B52326"
+  },
+  "themeTokens": {
+    "primary": "#224E75",
+    "accent2": "#B52326",
+    "rule": "#C0BCAF",
+    "fontTitle": "Georgia, \"Noto Serif SC\", \"Songti SC\", serif",
+    "fontBody": "\"Noto Serif SC\", \"Songti SC\", \"SimSun\", serif"
+  },
+  "derivedFrom": "global-capital-data-journalism"
+}

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "id": "neon-3d",
+  "name": "Neon 3D 霓虹立体",
+  "description": "透视舞台、悬浮物件、信号轨、错位平台与电影式大图",
+  "palette": {
+    "background": "#050507",
+    "text": "#FFFFFF",
+    "accent": "#31F7E5",
+    "accentSecondary": "#FF4F78",
+    "rule": "#3C3C3E"
+  },
+  "typography": {
+    "heading": {
+      "family": "Inter",
+      "weight": 800,
+      "sizePx": 42
+    },
+    "body": {
+      "family": "PingFang SC",
+      "weight": 400,
+      "sizePx": 21,
+      "lineHeight": 1.35
+    }
+  },
+  "mood": [
+    "沉浸",
+    "未来",
+    "戏剧化"
+  ],
+  "visualVocabulary": [
+    "透视舞台",
+    "青粉霓虹边",
+    "悬浮物与景深"
+  ],
+  "taboos": [
+    "避免每页都用3D物件",
+    "霓虹字须有对比底",
+    "不要遮挡主体图片"
+  ],
+  "coverStructure": "immersive focal object with a restrained title plane",
+  "sectionStructure": "chapters are cinematic reveals with breathing transitions",
+  "titleTreatment": "short high-contrast title with neon edge cue",
+  "decorativeLanguage": "perspective grid, glow rim and floating object",
+  "bodyCompositionBias": "image/object dominant; text stays in a clean safe field",
+  "density": {
+    "default": "standard",
+    "guidance": "保持中等信息量，让主判断、证据和行动层级拉开"
+  },
+  "tocStructure": "cinematic index with numbered reels and depth spacing",
+  "heroStructure": "one glowing object in perspective with a single line of copy"
+}

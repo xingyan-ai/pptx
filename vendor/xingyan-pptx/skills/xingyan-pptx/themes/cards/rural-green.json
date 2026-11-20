@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "id": "rural-green",
+  "name": "田园政企绿色",
+  "description": "绿色主调与田园实景结合的公共叙事风，适合政企工作与区域项目汇报",
+  "palette": {
+    "background": "#F7FAF7",
+    "text": "#173F2A",
+    "accent": "#DE0000",
+    "accentSecondary": "#E3F2E8",
+    "rule": "#C6D1CA"
+  },
+  "typography": {
+    "heading": {
+      "family": "Noto Sans SC",
+      "weight": 700,
+      "sizePx": 42
+    },
+    "body": {
+      "family": "PingFang SC",
+      "weight": 400,
+      "sizePx": 21,
+      "lineHeight": 1.35
+    }
+  },
+  "mood": [
+    "亲和",
+    "务实",
+    "公共叙事"
+  ],
+  "visualVocabulary": [
+    "绿色主调",
+    "田园实景蒙层",
+    "红色小面积重点"
+  ],
+  "taboos": [
+    "避免空泛风景图",
+    "红色只标重点/风险",
+    "照片不能遮正文"
+  ],
+  "coverStructure": "landscape/scene establishes context, then a clear action title",
+  "sectionStructure": "chapters follow situation, progress, work and significance",
+  "titleTreatment": "upright title with green navigation and small red emphasis",
+  "decorativeLanguage": "photo wash, green band and restrained civic icon",
+  "bodyCompositionBias": "photo supports context; work items stay in explicit groups",
+  "density": {
+    "default": "standard",
+    "guidance": "保持中等信息量，让主判断、证据和行动层级拉开"
+  },
+  "tocStructure": "itinerary-style index: stage, place, outcome",
+  "heroStructure": "full-width landscape or one field number with a civic caption"
+}

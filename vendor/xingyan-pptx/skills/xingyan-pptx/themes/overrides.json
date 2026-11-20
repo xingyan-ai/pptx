@@ -1,0 +1,64 @@
+{
+  "art-deepgreen-wine": {
+    "palette": {
+      "accentSecondary": "#8C3A4A"
+    },
+    "note": "原卡 accent 与 accentSecondary 相同；补酒红作为第二强调色，保留深绿主色。"
+  },
+  "classical-gold-academic": {
+    "palette": {
+      "accentSecondary": "#3E4A59"
+    },
+    "note": "原卡两个强调色相同；补墨蓝灰用于次级数据，金色只做学术强调。"
+  },
+  "cyber-purple-genz": {
+    "palette": {
+      "primary": "#6B4EFF",
+      "accent": "#FF5DA2",
+      "accentSecondary": "#DAEFF0"
+    },
+    "note": "原卡只有一层浅青，和“紫粉青”描述不符；补紫色主色、粉色强调，浅青保留为块面。"
+  },
+  "forest-academic": {
+    "palette": {
+      "accentSecondary": "#1F5C3A"
+    },
+    "note": "原卡两个强调色相同；补松柏绿用于次级结构，红色只做结论强调。"
+  },
+  "neon-green-wireframe": {
+    "palette": {
+      "accentSecondary": "#7A5CFF"
+    },
+    "note": "原卡两个强调色相同；补紫色作为线框次级信号。"
+  },
+  "plura-photo": {
+    "palette": {
+      "accentSecondary": "#3B3B3B"
+    },
+    "note": "原卡两个强调色相同；补炭黑用于摄影说明与分隔。"
+  },
+  "portfolio-redgreen": {
+    "palette": {
+      "accentSecondary": "#1F5C3A"
+    },
+    "note": "原卡两个强调色相同；补深绿形成红绿对照。"
+  },
+  "brutalist-acid": {
+    "palette": {
+      "accentSecondary": "#2FF3E0"
+    },
+    "note": "酸性黄只做填充，文字强调改用推导出的深橄榄 primary；青色作为第二块面。"
+  },
+  "coral-3d": {
+    "palette": {
+      "accentSecondary": "#3B3B3B"
+    },
+    "note": "珊瑚粉只做大面积块面，文字强调使用 primary；炭黑作为第二结构色。"
+  },
+  "mono-console": {
+    "palette": {
+      "accentSecondary": "#425848"
+    },
+    "note": "荧光绿只作终端高亮，文字强调使用推导出的深绿 primary；深灰绿作为第二结构色。"
+  }
+}

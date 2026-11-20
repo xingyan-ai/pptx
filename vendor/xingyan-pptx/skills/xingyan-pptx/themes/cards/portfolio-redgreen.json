@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "id": "portfolio-redgreen",
+  "name": "红绿创意作品集",
+  "description": "朱红与草绿撞色的创意作品集方向",
+  "palette": {
+    "background": "#F7F5F0",
+    "text": "#23251F",
+    "accent": "#CE544D",
+    "accentSecondary": "#CE544D",
+    "rule": "#C8C7C2"
+  },
+  "typography": {
+    "heading": {
+      "family": "PingFang SC",
+      "weight": 700,
+      "sizePx": 44
+    },
+    "body": {
+      "family": "PingFang SC",
+      "weight": 400,
+      "sizePx": 22,
+      "lineHeight": 1.35
+    }
+  },
+  "mood": [
+    "大胆",
+    "艺术",
+    "鲜活"
+  ],
+  "visualVocabulary": [
+    "朱红草绿对撞",
+    "作品图大留白",
+    "手工感标题标记"
+  ],
+  "taboos": [
+    "避免红绿同时抢主位",
+    "图片不能只作背景",
+    "避免节庆化配色"
+  ],
+  "coverStructure": "bold title against an image or color field",
+  "sectionStructure": "chapters change color temperature with each case beat",
+  "titleTreatment": "expressive title with red/green emphasis used sparingly",
+  "decorativeLanguage": "collage crop, hand mark and color edge",
+  "bodyCompositionBias": "visual evidence leads; text wraps around its story",
+  "density": {
+    "default": "spacious",
+    "guidance": "优先单一主视觉与呼吸留白，次要信息退居背景"
+  },
+  "tocStructure": "case index with color-temperature chips and hand-marked numbers",
+  "heroStructure": "one case image or figure against a bold color field"
+}

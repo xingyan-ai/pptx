@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 1,
+  "id": "japanese-paper",
+  "name": "Japanese Paper 和纸秩序",
+  "description": "和纸留白与朱红印记的克制编辑风，适合文化、品牌与叙事汇报",
+  "source": "ClawHive-authored style card; no external vendor assets included.",
+  "density": "spacious",
+  "visualStyle": "ink-notes",
+  "pptFidelity": "approximate",
+  "pptFallback": "纸纹烘焙为背景，规则线和文字原生",
+  "audited": false,
+  "overrideNote": "",
+  "colors": {
+    "background": "#F5F1E7",
+    "surface": "#F9F6F0",
+    "surfaceAlt": "#EDE8DC",
+    "text": "#1E1C19",
+    "textMuted": "#706D67",
+    "primary": "#B8322B",
+    "accent": "#B8322B",
+    "accent2": "#C9BDA8",
+    "textAccent": "#B8322B",
+    "rule": "#C6C2BA",
+    "onAccent": "#FFFFFF",
+    "onPrimary": "#FFFFFF",
+    "chart": [
+      "#B8322B",
+      "#C9BDA8",
+      "#B8322B",
+      "#7D2A24",
+      "#888072",
+      "#C6C2BA"
+    ]
+  },
+  "typography": {
+    "display": 57,
+    "title": 44,
+    "metric": 37,
+    "subtitle": 25,
+    "body": 22,
+    "annotation": 13,
+    "heading_weight": 700,
+    "body_weight": 400,
+    "body_line_height": 1.35,
+    "title_stack": "Inter, \"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "body_stack": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "title_stack_ppt": "Arial, \"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "body_stack_ppt": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "title_family": "Inter",
+    "body_family": "PingFang SC"
+  },
+  "spacing": {
+    "margin": 72,
+    "gap": 32,
+    "gutter": 32,
+    "radius": 8,
+    "leading": 1.6
+  },
+  "behavior": "气质：细腻、节制、编辑感；视觉语汇：和纸纹理语气、朱红印章色、不对称留白与细线；装饰：fine ink rule, paper edge and tiny vermilion mark；构图：asymmetric breathing room; avoid equal columns",
+  "taboos": [
+    "避免泛化为旅游风",
+    "朱红不做大面积正文底",
+    "不使用廉价纹理"
+  ],
+  "mood": [
+    "细腻",
+    "节制",
+    "编辑感"
+  ],
+  "visualVocabulary": [
+    "和纸纹理语气",
+    "朱红印章色",
+    "不对称留白与细线"
+  ],
+  "coverStructure": "calm asymmetry: title island and one tactile image",
+  "sectionStructure": "chapters separated by a quiet red seal/number",
+  "titleTreatment": "serif title with compact vertical-feeling label",
+  "decorativeLanguage": "fine ink rule, paper edge and tiny vermilion mark",
+  "bodyCompositionBias": "asymmetric breathing room; avoid equal columns",
+  "fontWarnings": [],
+  "contrast": {
+    "body_contrast": 15.07,
+    "muted_contrast": 4.57,
+    "primary_contrast": 5.28,
+    "accent_contrast": 5.28,
+    "text_accent_contrast": 5.28
+  },
+  "warnings": [],
+  "decoration": {
+    "stroke": {
+      "width": 1,
+      "heavy": 2,
+      "hairline": 1,
+      "color": "rule"
+    },
+    "shadow": {
+      "dx": 0,
+      "dy": 0,
+      "color": "rule",
+      "opacity": 0
+    },
+    "tag": null,
+    "rule": {
+      "thickness": 1,
+      "color": "rule"
+    },
+    "marker": {
+      "size": 4,
+      "stroke": 0,
+      "fill": "text"
+    },
+    "bands": {
+      "footer": false,
+      "footerFill": "text",
+      "footerText": "background"
+    },
+    "chart": {
+      "barHeight": 10,
+      "barStroke": 0,
+      "fills": [
+        "text",
+        "textMuted"
+      ],
+      "valueSize": 13
+    },
+    "radius": 0,
+    "furniture": [
+      "rule",
+      "marker"
+    ]
+  },
+  "components": {
+    "tag": {
+      "case": "none",
+      "weight": 600
+    },
+    "kpi": {
+      "fill": null,
+      "border": 0,
+      "borderColor": "rule",
+      "shadow": "none",
+      "radius": 0,
+      "numberScale": 1,
+      "labelCase": "none"
+    },
+    "table": {
+      "headerFill": null,
+      "headerText": "text",
+      "border": 0,
+      "borderColor": "rule",
+      "rowRule": 1,
+      "rowRuleColor": "rule",
+      "zebra": null,
+      "cellPadX": 12,
+      "cellPadY": 10,
+      "radius": 0
+    },
+    "chart": {
+      "barHeight": 12,
+      "barStroke": 0,
+      "barFill": [
+        "accent",
+        "textMuted"
+      ],
+      "axisRule": 1,
+      "axisColor": "rule",
+      "gridlines": 0,
+      "gridColor": "rule",
+      "valueSize": 14,
+      "valueWeight": 400,
+      "labelSize": 17
+    },
+    "line": {
+      "stroke": 2,
+      "dot": 4,
+      "dotFill": "background",
+      "dotStroke": 1,
+      "area": false,
+      "areaOpacity": 0
+    },
+    "callout": {
+      "fill": null,
+      "text": "text",
+      "border": 0,
+      "borderColor": "rule",
+      "shadow": "none",
+      "barWidth": 2,
+      "barColor": "accent",
+      "radius": 0
+    },
+    "list": {
+      "marker": "circle",
+      "markerSize": 6,
+      "markerStroke": 1,
+      "markerFill": "accent"
+    }
+  },
+  "tocStructure": "asymmetric index with seal-style numbers and generous margin",
+  "heroStructure": "one object or phrase isolated on paper texture with a red seal"
+}

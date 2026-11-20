@@ -1,0 +1,561 @@
+---
+name: zhongtai-pptx
+description: 大纲优先的 16:9 演示稿 skill。用户先提交主题、场景、语言和页面密度，agent 出大纲，用户确认后脚本把它投影成故事契约，再由执行内核完成设计与页面。支持从零新建、美化已有演示稿、定向改稿三种方式。主题只覆盖视觉，不改版式和内容量。本地导出单文件 HTML；可编辑 PPTX 用宿主注入的 Python 本地导出，失败自动降级。
+metadata:
+  version: "72.5.2"
+  short-description: 大纲确认 → 故事契约 → 视觉主题（不改版式）→ SVG 页面 → HTML / PPTX
+  compatibility: Node.js 18+；执行内核的 Python 工具链只在后端执行
+---
+
+# ClawHive PPTX
+
+## 自包含
+
+这个包解压出来就能独立工作，不依赖市场、CLI、其他 skill、网络或本机已有字体：
+
+| 自带 | 说明 |
+|---|---|
+| 执行内核 | `runtime/engine/` 内置子树：设计参考、模板、脚手架与图标库（已裁 `brands` / `sounds` / `simple-icons` / `chunk-filled`） |
+| 主题 | 21 套 token、组件、装饰、场景表 |
+| 字体 | 10 个 OFL woff2，HTML 导出时内联，不依赖用户装没装 |
+| 图标 | 5100+ Tabler / 1500+ Phosphor，随包提供 |
+| 脚本 | 只用 Node 内置模块，无 `node_modules` |
+
+自检（含一次离线端到端出稿）：
+
+```bash
+node scripts/self-check.mjs --smoke
+```
+
+PPTX 是唯一需要 Python 的环节：客户端用宿主注入的解释器跑 `pptx-export.mjs`（质量检查 + SVG→PPTX 两步）。除此之外，大纲、契约、主题、页面和 HTML 全部在本地完成。
+
+安装时把包解压到技能的扫描目录即可，不经过市场：
+
+```bash
+unzip -q zhongtai-pptx-<版本>.skill -d <skills-root>/
+```
+
+这个 skill 分三层：
+
+| 层 | 是什么 | 谁负责 |
+|---|---|---|
+| 流程层 | 收输入、出大纲、确认、投影、门禁、导出 | 本 skill 的脚本和你的编排 |
+| 数据层 | `outline.json` 是故事事实源；`design_spec.md` §IX 是它的投影 | 用户编辑大纲，脚本投影 |
+| 执行内核 | 设计契约与页面执行的设计参考；Python 工具链只在后端 | `runtime/engine/`，只读 |
+
+两条边界先记住：
+
+- **故事是数据，不是散文。** 页序、标题、每页核心信息和内容来自 `outline.json`，§IX 由脚本投影生成，agent 不重写。
+- **主题是视觉覆盖，不是版式覆盖。** 配色、字体字号、组件画法、装饰随主题走；页边距、块间距、构图倾向、内容量跟内容和用户走。
+
+## 执行内核在哪
+
+```text
+ENGINE_DIR = runtime/engine/
+```
+
+它随包提供，用户不需要单独安装，也不需要知道它的来源。规则只有四条：
+
+- 把 `ENGINE_DIR/SKILL.md` 当设计参考，**不当执行手册**。它的加载顺序、路由选择和 Step 1/6/7 是给引擎/后端的，客户端不执行；其中写的 `SKILL_DIR` 一律指 `ENGINE_DIR`。
+- 只按 `references/engine-usage.md` 的允许清单读 `ENGINE_DIR/references/` 和 `ENGINE_DIR/templates/`，用来写 `design_spec.md` §II–§VIII、§X 和页面。`ENGINE_DIR/workflows/` 默认不读。
+- `ENGINE_DIR` 内部只读。`runtime/engine/` 必须保持两级深度（`runtime/engine`），内核用 `SKILL_DIR.parent.parent` 推默认项目目录，再深一层就会算错。完整性校验（打包/CI 跑，客户端不跑）：`python3 runtime/engine/scripts/attribution_guard.py`。
+- 引擎参考里与外壳冲突的规则，以本 `SKILL.md` 和 `references/` 为准。
+
+客户端的 Node 脚本不照抄引擎的 Step 1–7，只按需调用导出两步（`svg_quality_checker.py`、`svg_to_pptx.py`）；引擎其余 Python 工具链不执行。
+
+### 执行环境（跨平台）
+
+宿主在 Windows 上用 **Windows PowerShell 5.1**，在 macOS 上用 bash/zsh。照抄命令前先确认写法：
+
+- 环境变量：Windows 写 `$env:NAME`，macOS 写 `$NAME`；不要用 `${NAME:-default}`
+- 不要用 `&&`、`grep`、`sed`、`head`、`tail`、`unzip`；过滤用 `Select-String`，解压用 `Expand-Archive`/`tar`
+- 路径含空格或中文时一律加引号；示例里的 `<project>` 是占位符，执行前替换，不要原样粘贴
+- 临时文件写项目内（`validation/`），不要用 `/tmp`
+- 优先跑 `node scripts/*.mjs`；不要在会话里手写 `python`/`python3` 导出命令
+
+### 引擎参考的边界
+
+加载哪些、跳过哪些、哪些资产已裁掉，见 `references/engine-usage.md`。一句话：**引擎是设计参考，不是客户端执行手册。**
+
+## 三种工作方式
+
+提交时先确定 `contract.workMode`。它决定大纲从哪来、哪些页会被重写，不改变后面的投影和导出。
+
+| workMode | 什么时候用 | 大纲从哪来 | 硬约束 |
+|---|---|---|---|
+| `create`（默认） | 只有主题、材料或想法 | 按沟通契约起草 | 正常流程 |
+| `beautify` | 已有演示稿，只想换视觉 | 一页对一页抽原稿，标题与正文逐字保留 | 页数等于原稿；`mode` 固定 `briefing`；`contentDivergence` 固定逐字；只重做视觉 |
+| `edit` | 已有演示稿，有明确改动点 | 抽出大纲，标出要改的页 | 至少一页标 `changed`；改动页必须写 `changeNote`；未改页沿用原稿 |
+
+### create：从零新建
+
+1. 收产品侧已选项：场景、语言、篇幅（主题和页面密度可选）；不足时只补一个最关键的问题
+2. 不足时用 AskHuman 只补最影响结果的一个问题；`mode` 以提案呈现，不要做成五选一
+3. 出大纲草稿（`status: "draft"`）
+4. 用户在宿主大纲页或对话里确认
+5. 投影 → 写契约 → 门禁 → 应用视觉主题 → 写页面
+
+### beautify：美化已有稿
+
+输入是 `sources/` 里的演示稿。做的是**保真换装**，不是重讲一遍。
+
+1. 逐页抽取：一页原稿 = 一个 outline 页，`title`、`coreMessage`、`points` 逐字来自原稿
+2. `contract.workMode = "beautify"`，`mode = "briefing"`，`contentDivergence` 写明保持原稿逐字
+3. `contract.sourceSlideCount` 填原稿页数；大纲页数必须相等，否则门禁阻断
+4. 用户在确认前可以改标题和内容，但这会破坏保真——确认页要提示这一点
+5. 投影后只应用 `visual` scope，版式和页序保持原稿
+
+### edit：定向改稿
+
+1. 抽出大纲，每页标 `changed: true|false`，改动页写 `changeNote`（改什么、为什么）
+2. `editScope` 记录改动页的 `id`
+3. 只重写改动页；其余页沿用原稿，视觉一致性由同一套主题保证
+4. 门禁会检查：`edit` 模式至少一页 `changed`，且每个改动页都有 `changeNote`
+
+## 页面类型
+
+大纲的 `role` 决定这页在稿子里的位置，投影时写进 §IX 的 `Page role`，执行层直接用它作为 `data-pptx-page-role`。
+
+| role | 是什么 | 页面角色 | 节奏 |
+|---|---|---|---|
+| `cover` | 封面 | `cover` | `anchor` |
+| `toc` | 目录 | `toc` | `anchor` |
+| `section` | 章节页 | `section` | `anchor` |
+| `hero` | 单句、单图或单数字的冲击页 | `content`（带 hero moment） | `breathing` |
+| `content` | 常规内容页 | `content` | `dense`，密度精简时为 `breathing` |
+| `ending` | 结尾 | `ending` | `anchor` |
+
+规则：
+
+- 封面必备；目录和章节按内容需要，不是每份稿子都要。
+- 目录页的 `points` 可以留空，执行层用章节标题推导条目。
+- hero 页只放一句判断或一个大数字，超过 3 条内容会告警。
+- 目录出现在内容页之后会告警，通常它紧跟封面。
+
+## 主流程
+
+```text
+① 建项目 → ② 收输入 → ③ 出大纲草稿 → ④ 用户编辑并确认
+   → ⑤ 投影 §IX → ⑥ 写设计契约 → ⑦ 门禁 → ⑧ 应用视觉主题
+   → ⑨ 逐页 SVG → ⑩ 导出
+```
+
+### ① 建项目
+
+```bash
+node scripts/init-project.mjs <project> --name "Deck title"
+node scripts/check-inputs.mjs <project>      # 拒绝 PDF / EPUB
+```
+
+### ② 收输入：下拉框优先，AskHuman 兜底
+
+**源文件先跑 `extract-source.mjs`，不要现场写 PDF/DOCX 解析器。**
+
+```bash
+node scripts/extract-source.mjs <file> --project <project>
+node scripts/extract-source.mjs <file> --out <project>/validation/source.txt --json
+```
+
+- 商业默认 `pypdf`（BSD-3）；可选 `pdfplumber`（MIT）；29 页白皮书约 0.3–0.5 秒。
+- 引擎的 `pdf_to_md.py` 本身是 MIT，但依赖 **PyMuPDF（AGPL-3.0）**；分发给客户的客户端不要启用。只有后端/自托管并显式加 `--allow-agpl` 时才走这条结构化路径。DOCX / PPTX 有 stdlib fallback。
+- 输出 `<project>/sources/<name>.txt`，PDF 保留 `===== PAGE N =====` 标记，便于按页读。
+- 支持 PDF / DOCX / PPTX / HTML / Markdown / TXT；不支持 EPUB，先转换。
+- 不要再尝试 `strings`、自写 zlib/ToUnicode parser、`pymupdf` 反复 pip 安装；这一步失败就用 `--json` 报告里的错误直接定位。
+
+产品侧可能已经选了场景、语言和篇幅；主题和页面密度不一定有独立下拉。不要再问一遍，只补最影响结果的一个问题：
+
+| 输入 | 写入 | 用途 |
+|---|---|---|
+| 主题 | `contract.themeId` | 产品侧提供时只记录；没有就按场景的主题候选推荐。到 ⑧ 才以 `visual` 应用 |
+| 场景 | `contract.scene` | 填 `intent` / `delivery_context` / `artifact_afterlife` / `readingMode` 默认值，并建议 `mode`；不锁死 |
+| 语言 | `contract.primaryLanguage` | 必须 BCP-47 全称（`zh-CN`，不是 `zh`） |
+| 篇幅 | `contract.pageBudget` | `compact` / `standard` / `detailed`，只作页数提示 |
+| 页面内容密度 | `contract.densityDefault` | skill 的起草默认值，不要求用户先选；也喂给主题推荐 |
+
+**场景是默认值，不是 mode 锁。** 场景填的是引擎的 `communication_intent` / `delivery_context` / `artifact_afterlife` / `readingMode`，并给一个 `mode` 建议；agent 读完材料后可以改。
+
+| 场景 | 默认 `readingMode` | `mode` 建议 | 主题候选 | 页数窄范围 |
+|---|---|---|---|---|
+| 通用汇报 | `balanced` | `briefing`（要决策时 `pyramid`） | financial-bluegreen-modern / global-capital-data-journalism / scientific-atlas | 8–12 |
+| 竞品调研 | `text` | `pyramid`（纯对比时 `briefing`） | global-capital-data-journalism / scientific-atlas / brutalist-acid / memphis-motion | 12–20 |
+| 销售汇报 | `text` | `pyramid` | financial-bluegreen-modern / global-capital-data-journalism | 10–15 |
+| 客户方案 | `balanced` | `narrative` | electric-studio / glass-tech-system / coral-3d / brutalist-acid / memphis-motion | 10–15 |
+| 行业洞察 | `text` | `pyramid`（纯资料时 `briefing`） | global-capital-data-journalism / scientific-atlas / financial-bluegreen-modern | 12–20 |
+| 经营复盘 | `text` | `pyramid`（只同步数字时 `briefing`） | financial-bluegreen-modern / global-capital-data-journalism | 10–15 |
+| 培训赋能 | `text` | `instructional`（大教室时 `presentation`） | scientific-atlas / 8-bit-orbit / scatterbrain / rural-green | 10–16 |
+| 产品发布 | `presentation` | `showcase`（技术细节多时 `balanced`） | chrome-future / neon-3d / glass-tech-system / brutalist-acid | 6–10 |
+| 客户案例 | `balanced` | `narrative` | coral-3d / portfolio-redgreen / financial-bluegreen-modern | 8–12 |
+
+- **`mode` 不是分类器**：工作汇报只同步状态就用 `briefing`，要资源就用 `pyramid`；研究分析有结论用 `pyramid`，纯资料用 `briefing`。
+- **`readingMode` 跟交付方式走**：会后只读/留档用 `text`，现场讲用 `balanced`，大场/发布/录制用 `presentation`。
+- **页数是窄范围，不是硬档位**：`contract.pageBudget` 只是提示（compact 5–8 / standard 9–15 / detailed 16–24），最终页数由用户和材料量决定。
+- **语言必须是 BCP-47**：`zh-CN` / `en-US`；`zh` / `en` 会归一化并告警，UI 标签（“中文（简体）”“English”）不能直接写入。
+
+### ③ 出大纲草稿
+
+写 `<project>/outline.json`，`status: "draft"`。**写之前先 `read` 已有文件**（存在时直接 `write` 会被拒绝；不存在则直接 `write`）。字段以 `references/outline-contract.md` 为准，**不要读完整 `schemas/outline.schema.json`**；只有 contract 没覆盖的字段再按需查 schema 片段。同一阶段要看的多个文件一次批量读。
+
+- `id` 稳定且 kebab-case，调序不变；**页面编号不写进文件**，它由数组顺序派生。
+- `points` 是这一页真正要说的话，不是标题的复述。**每条写完整判断或短段落，不写关键词。**
+- 内容页按「结论 → 证据 → 含义 → 动作」起草：`points` 写结论，`evidence` 写数字/事实/引语，`soWhat` 写含义，`action` 写下一步。有量化内容的页面必须带 `source`。
+- `standard` 内容页目标 3–6 条、合计 180 字以上；`rich` 目标 5–8 条、280 字以上；`lean` / `hero` 才允许一句话或一个数字。
+- **内容页必须至少有一个视觉组件**：卡片、表格、条形图、分层色块、矩阵任选其一；整页只有段落文字视为不合格。并列 3–4 项用卡片，行×列事实用表格，数值比较用条形图，层级关系用结构图页。
+- **卡片不是禁用项**：`rich` 页可以用 3 张卡承载三条并列结论；段落与卡片可以同页共存（左文右卡、上图下结论）。装不下时按执行内核的顺序：扩区 → 换表达 → 删限定语 → 拆页；不缩字号、不叠文字。
+- 不允许用「具体动作」「具体能力点」「若干」「等等」「待补充」「待定」占位；`confirmed` 前必须换成真正的内容。
+- 只有主题、没有材料时，先用宿主可用的研究/检索能力补事实和来源；外部数字在 `evidence` 里带口径，在 `source` 里带来源，不要凭记忆编数。
+- 空页写 `draftState: "needs-draft"`，不要假装写完了。
+
+### ④ 用户编辑大纲
+
+大纲的编辑和确认由宿主产品负责：宿主的大纲页渲染 `outline.json`，增页、删页、调序、改每页标题和内容、改密度；页面写回时把 `status` 置为 `confirmed`、`source` 置为 `user`、`revision` 加一。**本 skill 不提供、也不启动本地大纲编辑器。**
+
+没有宿主页面时，在对话里呈现大纲，让用户明确确认：**页序部分必须用 Markdown 表格**（列固定为 `页 | 标题 | 核心信息`，品牌稿再加 `版式`），不要用编号列表；制作参数用列表即可。确认结果由宿主或调用方写回 `outline.json`。agent 不自行把 `status` 改成 `confirmed`。
+
+**大纲是用户的地盘。** agent 在 `confirmed` 之后不得静默重写；用户再改一版，页面或调用方会把 `revision` 再加一。
+
+### ⑤ 投影 §IX
+
+```bash
+node scripts/outline-to-spec.mjs <project>
+```
+
+这是 `design_spec.md` §IX 的**唯一写入者**，做的是确定性投影：
+
+| `outline.json` | `design_spec.md` |
+|---|---|
+| 数组顺序 | `#### Slide 01…NN`（每次重排都重新编号） |
+| `title` / `coreMessage` / `audienceMove` / `points` | 同名字段，逐字写入 |
+| `slides.length` | §I `Page Count` |
+| `role` + `density` | `spec_lock.md` 的 `page_rhythm`（`anchor` / `dense` / `breathing`） |
+| 契约字段 | §I 的受众、意图、结果、核心信息、场合、去向、阅读模式、工作方式 |
+
+同时在 §IX 开头写一行 `<!-- outline-rev: N sha:… -->`，门禁用它和页序指纹判断 §IX 有没有被手改。
+
+`design_spec.md` 不存在时，从内核 scaffold 生成，并补上 scaffold 缺的 §VII 和 §V `Spacing anchors` 行。
+
+### ⑥ 写设计契约
+
+按内核的 Strategist 方法补 §II–§VIII 和 §X：画布边距、配色（未选主题时）、字体字号、图标、可视化引用、图片资源、备注设置。
+
+- **§IX 的用户字段只读。** `Title`、`Core message`、`Content`、页数、页序都由 ⑤ 决定；可以在每页补 `Relationships`、`Composition`、`Visualization` 这类派生行，不能改用户那五个字段。
+- 写完不得留 `[fill]` 或 `{{…}}` 占位符，门禁会阻断。
+
+### ⑦ 门禁
+
+```bash
+node scripts/outline-check.mjs <project>
+node scripts/check-design-spec.mjs <project>
+```
+
+阻断项见下方「门禁」。过了门禁才允许写第一页。
+
+### ⑧ 应用视觉主题
+
+用户选过主题时才执行。**默认用 `visual`**：
+
+```bash
+node scripts/apply-theme.mjs <project> --theme scientific-atlas --scope visual
+```
+
+`visual` 写完会打印 `§V spacing / composition / continuity untouched`，`theme_overlay.json` 里 `layoutFieldsTouched` 为空、`layout.changed` 为 `false`。这两项是"主题没碰版式"的自证。
+
+### ⑨ 页面执行
+
+**品牌母版稿先用 `compose-deck.mjs` 合成，不要逐页手写。** 它从 `outline.json` 读取每页的 `template` 和内容字段，复制整页原型并只往 `content-proxy` 画布写入卡片 / 表格 / 指标 / 对比；所有 `data-pptx-*` 原子保持原样，结构化导出的 placeholder 契约天然一致。
+
+```bash
+node scripts/compose-deck.mjs <project> --check   # 只校验，不写文件
+node scripts/compose-deck.mjs <project>           # 写 svg_output/P01..PNN.svg
+node scripts/compose-deck.mjs <project> --only P07 # 门禁失败后只重生成失败页
+```
+
+大纲里每页写 `template`（`cards-3` / `table` / `metrics-4` / `metrics-compare` / `table-metrics` / `content-rich` / `summary` / `structure` / `two-content`），并按形态补数据：`cards`、`metrics`、`table`、`compare`、`layers`、`takeaway`。字段见 `references/page-patterns.md` §0.2 和 `schemas/outline.schema.json`。缺省时合成器按 role 和内容形态推断（例如表格数据 → `table`，指标 → `metrics-4`，其余 → `cards-3`）。
+
+目录页仍由 `build-toc.mjs` 生成；合成器会跳过 `toc` 页。标准顺序：`compose-deck → build-toc → gen-spec-lock → check-pages → pptx-export`。
+
+**只有 `content-rich` 的自定义构图才逐页手写**；即使是自定义页，也先复制 `04c_contentrich.svg` 再往 `content-proxy` 里画，不要改 `content` 的文字槽。
+
+按内核 executor 的约定逐页写 `svg_output/P01.svg …`，页数和页序与 §IX 对齐。页面只用 `spec_lock.md` 里的 token；主题覆盖后以覆盖后的 token、`## components` 和 `## decoration` 为准。
+
+内容页按 `Content` / `Evidence` / `So what` / `Action` 组织信息，但**这不是版式模板**。同样四层内容可以做成排名图、时间轴、矩阵、定位图、对比页、流程页、单一大数字或反色页；一套 deck 至少出现 3 种宏观构图，连续两页不要复用同一种左右分栏。只有 `hero` 和 `density: "lean"` 的页面才用「大数字 / 一句话」；也不要把每个内容页都做成三张 KPI 卡加大留白。
+
+**内容页不许整页只有文字。** 每一页先按 `references/page-patterns.md` 的「内容长什么样 → 用哪个形态」选一种视觉结构（卡片 / 表格 / 指标条 / 结构块 / 矩阵 / 流程 / 对比），再往里填 `points`。编号要点只允许出现在 `density: "lean"` 的页，一套稿最多一页。写完页面先自检：
+
+```bash
+node scripts/check-pages.mjs <project>
+```
+
+它按页检查：内容页视觉构件数量（standard ≥4、rich ≥5）、目录有没有空行、目录条目有没有超宽。报错就改对应那一页的形态，不要靠加装饰线凑数。
+
+- `beautify` 与 `edit` 模式只重写需要重写的页，其余页沿用。
+- 内容装不下时回到大纲（宿主页面或对话）拆页，不要在执行层删内容或缩字号。
+
+```bash
+node scripts/check-theme-fidelity.mjs <project>   # 装饰与组件是否真的用上了
+node scripts/check-fonts.mjs --theme <id>         # 字体最终渲染成什么
+```
+
+### 品牌母版模板
+
+除 21 套视觉主题外，可选**品牌母版模板**（如中泰证券 V5）。与主题不同，它连底图、标题条位置和安全区一起锁定：
+
+- 模板管形式，不管骨架：章节顺序由场景决定（立项 / 汇报 / 客户提案三种骨架见 `templates/brand/<id>/template.json`）
+- **固定页只换字**：封面（不叠任何文字）、项目名页、目录、结尾页沿用模板原样，不重新设计
+- 目录固定为「左侧红色目录 + CONTENTS，右侧竖线 + 32px 条目」，但**条目数必须等于章节数**；用脚本生成，不要复制 10 槽模板后空着九、十
+  ```bash
+  node scripts/build-toc.mjs <project>        # 从 outline.json 推导章节，自动排版
+  node scripts/build-toc.mjs <project> --items "产品概述,项目必要性,…"
+  ```
+  最多 10 条；序号、行距、槽位宽度按实际条数重算，超过 10 条或条目超宽直接报错（让大纲合并章节）
+- 结尾页是红底白字，只允许改致谢语
+- 表格与系统架构图放在安全区内，底边不越过 y=576，不压底部红曲线
+- 结构层锁死（安全区、禁区、标题条、字号档），常量层可替换（颜色、字体、底图）
+- 内容页用 proxy 版式：`cards-3` / `table` / `metrics-4` / `metrics-compare` / `table-metrics` / `content-rich`，对应 `templates/04c_*.svg`；不要改成 proxy 还沿用 `content` 的 key，结构化导出会降级 flat
+- 当前品牌母版共 **15 种页面版式**：cover / title / toc / section / content / two_content / summary / structure / ending + 上面 6 个 proxy 内容版式；`build-toc.mjs` 还会按章节数生成 `toc-<n>`
+- 内容页优先 `node scripts/compose-deck.mjs <project>` 确定性合成；大纲确认后，页面生成不再逐页调用模型
+- 页面第一层放满版底图，标题条固定在 x=204 避让 logo，页脚页码白字压红区
+- 细则见 `references/brand-template.md`
+
+
+### 品牌-core：中泰品牌框架 + PPT Master 内容版式
+
+品牌元素（logo、底图、封面、项目名页、目录、结束页、标题条、页码）保持不变；
+只把**内容页**换成 PPT Master 的内容构图（`core-*` 版式）。
+
+```bash
+node scripts/prepare-core-project.mjs <project>
+node scripts/build-deck.mjs <project> --layout-system core --format <pptx|html> --python <python>
+```
+
+- 固定页沿用中泰：`01_cover` / `02_title` / `03_toc`（`build-toc`）/ `04s_section` / `05_ending`
+- 内容版式：`core-three-card` / `core-four-card` / `core-kpi-evidence` /
+  `core-comparison` / `core-timeline` / `core-data-story`
+- 背景图、logo、标题条、安全区、页码都来自中泰模板；内容版式只是把 PPT Master 的构图搬进安全区
+- 映射：3 卡 → `core-three-card`，4 卡 → `core-four-card`，metrics-4 → `core-kpi-evidence`，
+  metrics-compare → `core-comparison`，structure → `core-timeline`，
+  table / table-metrics / content-rich → `core-data-story`
+- 表格页当前用 `core-data-story` 的文本表格；原生 `table_summary` 是后续 pass
+- 这一模式不改中泰配色，也不套 21 主题；21 主题仍用于非品牌主题稿
+
+### ⑩ 导出
+
+配图由首页「配图」字段决定：不生成 / 自动配图。自动配图只给封面、章节页、结尾出图，最多 6 张，走宿主工具 `openai/we-imageGen`，细节见 `references/image-path.md`。
+
+门禁分级：致命错误（XML、外部图片引用）会停；结构或内容问题不阻断——版式补不齐会自动降级 flat 导出，并在 `validation/export-brief.txt` 里列出问题。
+
+写作阶段两条硬规则：
+
+- 门禁报错后**只重新生成失败的那一页**，不要重写整个生成脚本
+- 模板路径用 `apply_template` 装出来的 `<project>/templates/`，不要写 skill-store 的绝对路径
+
+导出格式在制作参数里选，两种。**按选定的那一种产出**：选 PPTX 就只出 PPTX，不再附带 HTML；选 HTML 才出 HTML；只有用户明确要两种才都要。
+
+```bash
+# HTML 单文件（默认）：配图由 build-deck 用同一个解释器在内部内联
+node scripts/build-deck.mjs <project> --format html
+node scripts/svg-deck-to-html.mjs <project>   # 纯 Node，仅用于已经自包含的 svg_output
+
+# PPTX 可编辑：解释器由脚本自己解析，不用手配
+node scripts/pptx-export.mjs <project>   # 自动落 exports/<大纲名>_<时间戳>.pptx
+```
+
+`pptx-export.mjs` 自己解析解释器：`--python` → `CLAWHIVE_PPTX_PYTHON` → `CLAWHIVE_PYTHON_EXECUTABLE`（客户端注入）→ ClawHive 运行时（Windows 在 `runtimes/python-win/`）→ 本机 `python` / `python3`。探测只要 `pptx, PIL, lxml`，不要求 PyYAML。
+
+**导出不许中断问人**。失败按顺序自动降级：
+
+1. structured（有 `templates/` 和 `data-pptx-layout`）→ 直接导
+2. 版式补不齐 → 自动 `--flat` 重试（母版/版式丢失，但能出 PPTX）
+3. flat 仍失败 → 只交付 HTML，回复里说明一句；明细在 `validation/export-brief.txt`
+
+导出成功后读一次 `validation/export-brief.txt`：里面有内容问题或纯文字页就在回复里点一句，不要当成"完全正常"。
+
+不要为导出弹 AskHuman。"换品牌母版重做""配后端端点"都不是选项：客户端没有配置后端 endpoint，`references/pptx-backend.md` 只作服务端部署参考。
+
+## 门禁
+
+### `outline-check.mjs` 拦什么
+
+- 没有封面页；`id` 重复或不是 kebab-case
+- `confirmed` 时缺 `title` 或 `coreMessage`；内容页没有 `points`
+- `readingMode` 非法；缺省时给出场景建议，场景与阅读模式冲突时告警
+- `mode` 缺省时给出场景建议；与场景建议不一致时告警，但不阻断
+- `pageBudget` 非法；页数超出场景窄范围或 `pageBudget` 时告警，不阻断
+- create 稿的内容页正文 <80 字，或使用占位词；<180 字、`points` <3 条告警
+- 还有 `draftState: "needs-draft"`
+- `primaryLanguage` 不是 BCP-47；`zh` / `en` 会归一化并告警；`themeId` 不在包内
+- `beautify`：`mode` 不是 `briefing`，或页数与 `sourceSlideCount` 不符
+- `edit`：没有任何 `changed` 页，或改动页缺 `changeNote`
+
+### `check-design-spec.mjs` 拦什么
+
+- 缺 §I–§X 任一章节；`[fill]` / `{{…}}` 占位符未清
+- §I Page Count 与 §IX 数量不符；Slide 编号不连续
+- §IX 的用户字段或页序与 `outline.json` 不一致，或 `revision` / `sha` 过期
+- `outline.json` 还是 `draft` 却已经有页面
+- `svg_output/` 页面数与契约不符或编号不连续
+- 主题 overlay：scope 非法、视觉 scope 带了版式字段、或改了 §V 版式行
+
+### `check-pages.mjs` 拦什么
+
+这是构图门禁：内容对了但页面难看的稿子，在这里停。
+
+- 目录页有空白条目（序号在、文字没有）、残留 `{{TOC_ITEM_n}}`、序号没有对应条目、条目文字超出槽位宽度
+- 内容页整页只有文字：母版层以外的视觉构件少于要求（standard <4、rich <5）；`hero` 与 `density: "lean"` 豁免
+
+HTML 交付前必须跑一次；PPTX 导出前 `pptx-export.mjs` 会再跑一次。
+
+## 常见失败与处置
+
+| 现象 | 原因 | 处置 |
+|---|---|---|
+| `§IX page titles, messages or content do not match outline.json` | 有人手改了 §IX | 回到大纲（宿主页面或对话）改，重跑 `outline-to-spec.mjs` |
+| `outline.json status=draft; confirm the outline before authoring pages` | 没确认就写了页面 | 让用户在大纲页或对话里确认 |
+| `design_spec.md still has scaffold placeholders` | 契约没写完 | 补 §II–§VIII、§X |
+| `theme overlay scope=visual touched layout field(s)` | 用错了 scope 或手改了 overlay | 重新 `apply-theme --scope visual`；确需版式用 `layout` |
+| `§V has no place to write Spacing anchors` | 契约的 §V 结构不完整 | 补 `Spacing posture` 或 `Cross-page continuity` 行 |
+| 页面文件数与契约不符 | 调序后没重投影，或手工增删了页 | 重跑 `outline-to-spec.mjs`，再按新页序生成 |
+| `beautify` 页数不符 | 抽页时漏了或合并了原稿页 | 回到大纲，按原稿逐页补 |
+| 目录页出现「九、」「十、」后面没字 | 复制了 10 槽模板，只填了 8 条 | 跑 `build-toc.mjs` 按章节数重生成，不要手删空行 |
+| 目录条目压到竖线或溢出 | 槽位按 10 条设计、宽度 300 不够 | 用 `build-toc.mjs`；条目文字收紧到 16 字内 |
+| 一页只有编号要点 | 没有选版式，直接把 `points` 写成了段落 | 按 `references/page-patterns.md` 换成卡片 / 表格 / 指标条 / 结构块 |
+
+## 快速命令
+
+```bash
+# 自检
+node scripts/self-check.mjs --smoke
+
+# 源文件（PDF / DOCX / PPTX / HTML）
+node scripts/extract-source.mjs <file> --project <project>
+
+# 项目
+node scripts/init-project.mjs <project> --name "Deck title"
+node scripts/check-inputs.mjs <project>
+
+# 故事
+node scripts/outline-check.mjs <project>
+node scripts/outline-to-spec.mjs <project>
+node scripts/outline-to-spec.mjs <project> --check   # 只校验，不写入
+node scripts/check-design-spec.mjs <project>
+
+# 一条命令构建（大纲确认后默认走这个）
+node scripts/build-deck.mjs <project> --format <pptx|html> --python <python>
+
+# 品牌-core（中泰品牌框架 + PPT Master 内容版式）
+node scripts/prepare-core-project.mjs <project> --theme <theme-id>
+node scripts/build-deck.mjs <project> --layout-system core --format <pptx|html> --python <python>
+
+# 页面（品牌母版）
+node scripts/compose-deck.mjs <project> --check    # 校验大纲与容量，不写文件
+node scripts/compose-deck.mjs <project>            # 确定性合成页面 SVG
+node scripts/compose-deck.mjs <project> --only P07 # 只重生成失败页
+node scripts/build-toc.mjs <project>               # 目录按章节数生成
+node scripts/check-pages.mjs <project>             # 目录空行 / 全文字页
+
+# 主题
+node scripts/theme-select.mjs recommend --brief validation/brief.json --limit 5   # 把 brief 写成文件，别用内联 JSON
+node scripts/theme-select.mjs choose --theme scientific-atlas --source user --out <project>/theme_selection.json
+node scripts/theme-furniture.mjs scientific-atlas --out <project>/validation/scientific-atlas.svg
+node scripts/apply-theme.mjs <project> --theme scientific-atlas --scope visual
+node scripts/check-theme-fidelity.mjs <project>
+node scripts/check-fonts.mjs --theme scientific-atlas
+
+# 导出
+node scripts/build-deck.mjs <project> --format <pptx|html>   # 配图内联、门禁、导出一条命令
+node scripts/svg-deck-to-html.mjs <project>                  # 纯 Node，已自包含的稿子才这样单跑
+```
+
+## 硬规则
+
+- **包内自包含**：不引入 `node_modules`、不调用外部命令、不引用包外路径；新增脚本必须能通过 `self-check.mjs`。
+- **引擎手册不是客户端执行手册**：不跑引擎路由、Step 1/6/7；除导出两步外不调用引擎的 Python 脚本。只按 `references/engine-usage.md` 读设计参考。
+- **故事是数据**：`outline.json` 定稿前不写 §IX；§IX 由 `outline-to-spec.mjs` 投影，不手写、不重排、不润色。
+- **大纲确认是硬门禁**：`status` 不是 `confirmed` 时不得开始写页面；`confirmed` 只能来自用户的确认，agent 不得自行写入。未收到确认时，本轮以 `draft` 结束并请用户确认。
+- **密度来自内容和用户，不来自主题**：主题的 `density` 字段只用于推荐打分，从不写进契约。页面的内容量由 `points` 和 `density` 决定。
+- **内容深度写在大纲层**：`points` 写结论，`evidence` 写证据，`soWhat` 写含义，`action` 写下一步。执行层不补事实、不补论点；内容不够就回大纲加证据或拆页。
+- **内容结构不等于版式模板**：`points` / `evidence` / `soWhat` / `action` 是每页要装的内容，不是固定四段式。按页面任务选构图，连续两页不要同构；同一套 deck 至少出现 3 种宏观构图。
+- **主题只走视觉轴**：一次主题应用不得改 §V 的三行版式字段；真需要时显式用 `layout`。
+- **内容装不下就回大纲拆页**：主题的字号决定一页的物理上限，内容和用户决定目标量。超过上限时执行层不许删内容、不许缩字号。
+- **§IX 用户字段只读**：`Title`、`Core message`、`Content`、页数、页序不得改；`Relationships`、`Composition` 等派生行可以补。
+- **页面文件名跟 §IX 对齐**：`P01.svg` 对应 `Slide 01`，不允许跳号或改序。
+- **品牌母版页面走合成器**：大纲确认后先 `compose-deck --check`，再写页面；品牌内容页禁止逐页手写，只有 `content-rich` 自定义构图例外。门禁失败只 `--only` 重生成失败页，不要重写生成脚本。
+- **导出不许中断问人**：PPTX 走 structured → 自动 flat → 只交付 HTML；不要为导出弹 AskHuman。
+- **一套 deck 只用一套主题**：不要混用两套主题的颜色或字体。
+- **不碰浏览器**：不起本地 HTTP 服务（`http.server` / `serve` / `vite preview` / 主题选择器 5055），不调用 `browser`、Playwright、截图类工具，不打开浏览器看效果。写稿期间不为预览渲染任何页面；用户明确要求"打开看看"时，用系统默认应用打开交付文件即可，不要用浏览器自动化工具。
+- **自检只有三个脚本**：`check-pages.mjs`（每套稿都跑）、`check-theme-fidelity.mjs`（只在应用了 21 套主题的稿子跑；品牌母版稿没有 `theme_overlay.json`，跑它必然 `[BLOCK] no theme`）、`check-fonts.mjs`（只读报告，不带 `--theme` 报全部）。它们查结构与 token，不判断视觉效果；页面效果交用户在宿主预览里确认。
+- **只有已存在的图片才用 `read_image`**：配图产物、用户提供的截图可以读；不要为了自检去渲染或截图。
+- **美化不改内容**：`beautify` 模式下标题和正文逐字保留，改内容要用户明确同意并切到 `edit`。
+- **对用户不提内核来源**：回复和交付物里不写内核来源、仓库地址或第三方项目名；合规信息统一在 `THIRD_PARTY_NOTICES.md`。
+- **HTML 字体自己带**：默认内嵌可内嵌的 OFL 字体，厂商字体用近似体替换；`--no-embed-fonts` 可关。
+- **PPT 字体栈安全**：PPTX 必须用 `*_stack_ppt`；Inter / Poppins 会落到 Arial，中文落到 PingFang / 微软雅黑 / 宋体。
+- **不打包系统字体，也不打包 CJK**：随包只放 OFL latin 子集，许可证见 `assets/fonts/OFL-NOTICE.md`。
+- **图标只用 Tabler / Phosphor**：`chunk-filled` 和 `simple-icons` 已裁掉，不要引用。
+- **客户端不处理 PDF / EPUB**：先转 Markdown / HTML。
+- **PPTX 由宿主注入的解释器本地导出**：客户端自带 Python 运行时；后端接口只作服务端部署参考，客户端不调用。
+- **项目路径必须显式传**：所有命令都带 `<project>`，避免写进 skill 安装目录。
+
+## 项目结构
+
+```text
+<project>/
+├── sources/                 # Markdown / HTML / DOCX / PPTX / XLSX / CSV
+├── outline.json             # 故事事实源，用户编辑并确认
+├── design_spec.md           # §IX 由 outline.json 投影，其余由 agent 写
+├── spec_lock.md             # 执行锁：颜色、字体、图标、page_rhythm、组件、装饰
+├── theme_selection.json     # 可选：主题选择结果
+├── theme_overlay.json       # 可选：主题覆盖了哪些字段、有没有碰版式
+├── svg_output/P01.svg …     # 页面源
+├── svg_final/               # 自包含预览
+├── notes/                   # 可选演讲备注
+├── validation/              # 质检与导出报告
+└── exports/                 # HTML / PPTX
+```
+
+## 主题结构
+
+```text
+themes/
+├── catalog.json               # 21 套主题索引
+├── cards/                     # 原始主题卡：palette / typography / mood / density
+├── tokens/                    # 展开后的 PPT-safe token（含 components 与 decoration）
+├── packages/<id>/             # 契约片段、组件与装饰片段 + theme.css
+├── overrides.json             # 人工审阅后的颜色/降级修正
+├── decorations.profiles.json  # 按 visualStyle 家族的装饰默认值
+├── decorations.overrides.json # 按主题的装饰修正
+├── components.profiles.json   # 按家族的组件默认值
+├── components.overrides.json  # 按主题的组件修正
+├── scenarios.json             # 场景与意图表：适合什么、不适合什么
+└── fonts.map.json             # 字体策略：内嵌 / 替代 / 系统
+```
+
+## §V 的归属
+
+| 位置 | 归属 | 谁能写 |
+|---|---|---|
+| `### Deck-wide Direction` 的三个 bullet（Spacing anchors / Composition tendency / Cross-page continuity） | 版式轴 | 内容和用户；主题只在 `layout` scope 下写 |
+| `### Component System`、`### Decoration System` | 视觉轴 | 主题的 `components` / `decoration` / `visual` |
+
+## 参考
+
+- `references/engine-usage.md`：引擎参考的允许清单、不执行的命令与失效资产
+- `references/work-modes.md`：三种工作方式的具体规则
+- `references/outline-contract.md`：大纲的字段、编辑操作、写回协议
+- `schemas/outline.schema.json`：给宿主大纲页/调用方的机器契约
+- `references/design-contract.md`：项目目录、§I–§X 契约、§IX 投影与门禁
+- `references/page-patterns.md`：内容页版式食谱（卡片 / 表格 / 指标条 / 结构块 / 矩阵 / 流程 / 对比的坐标与写法）
+- `references/stage1-theme-selection.md`：主题选择、场景推荐、scope 与轴
+- `references/html-output.md`：HTML deck 的行为和打印
+- `references/pptx-backend.md`：后端 API 契约
+- `references/commercial-boundary.md`：商用边界、字体、图标、许可证
+- `references/fonts.md`：字体内嵌与替换策略
+- `ENGINE.md`：内核版本、只读边界、完整性校验和升级步骤
+- `ENGINE_DIR/SKILL.md`：内核参考手册（不是客户端执行手册），只按 `references/engine-usage.md` 读；`SKILL_DIR` = `ENGINE_DIR`
+
+## 交付约定
+
+- 故事事实源：`<project>/outline.json`
+- 故事契约：`<project>/design_spec.md` §IX（投影产物）
+- 页面源：`<project>/svg_output/`
+- HTML：`<project>/exports/<name>_<timestamp>.html`
+- PPTX：由后端返回，保存到 `<project>/exports/<name>_<timestamp>.pptx`
+- 主题覆盖记录：`<project>/theme_overlay.json`

@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 1,
+  "id": "minimal-ink",
+  "name": "极简水墨",
+  "description": "黑白灰墨迹与深绿锚点的极简艺术风，适合研究、文化与作品展示",
+  "source": "ClawHive-authored style card; no external vendor assets included.",
+  "density": "spacious",
+  "visualStyle": "ink-wash",
+  "pptFidelity": "approximate",
+  "pptFallback": "复杂 CSS 效果改为静态填充、渐变或烘焙背景，文字和形状保持原生",
+  "audited": false,
+  "overrideNote": "",
+  "colors": {
+    "background": "#F5F5F5",
+    "surface": "#F9F9F9",
+    "surfaceAlt": "#F7F7F7",
+    "text": "#111111",
+    "textMuted": "#686868",
+    "primary": "#244842",
+    "accent": "#244842",
+    "accent2": "#FFFFFF",
+    "textAccent": "#244842",
+    "rule": "#C3C3C3",
+    "onAccent": "#FFFFFF",
+    "onPrimary": "#FFFFFF",
+    "chart": [
+      "#244842",
+      "#FFFFFF",
+      "#244842",
+      "#1D332F",
+      "#A5A5A5",
+      "#C3C3C3"
+    ]
+  },
+  "typography": {
+    "display": 57,
+    "title": 44,
+    "metric": 37,
+    "subtitle": 25,
+    "body": 22,
+    "annotation": 13,
+    "heading_weight": 700,
+    "body_weight": 400,
+    "body_line_height": 1.35,
+    "title_stack": "\"Noto Serif SC\", \"Songti SC\", \"SimSun\", serif",
+    "body_stack": "\"Songti SC\", \"Noto Serif SC\", \"SimSun\", serif",
+    "title_stack_ppt": "\"Songti SC\", SimSun, \"Noto Serif SC\", serif",
+    "body_stack_ppt": "\"Songti SC\", \"Noto Serif SC\", \"SimSun\", serif",
+    "title_family": "Noto Serif SC",
+    "body_family": "Songti SC"
+  },
+  "spacing": {
+    "margin": 72,
+    "gap": 32,
+    "gutter": 32,
+    "radius": 8,
+    "leading": 1.6
+  },
+  "behavior": "气质：极简、留白、艺术；视觉语汇：黑白灰墨迹、单一深绿锚点、微小几何标记；装饰：ink texture, hairline geometry and deliberate empty space；构图：one object or relationship per page; text remains crisp",
+  "taboos": [
+    "避免把水墨当背景贴图",
+    "保持单一主视觉",
+    "正文不使用浅灰低对比"
+  ],
+  "mood": [
+    "极简",
+    "留白",
+    "艺术"
+  ],
+  "visualVocabulary": [
+    "黑白灰墨迹",
+    "单一深绿锚点",
+    "微小几何标记"
+  ],
+  "coverStructure": "small title and one ink mark occupy a large calm field",
+  "sectionStructure": "chapters are quiet pauses with occasional dense evidence",
+  "titleTreatment": "black/gray title with a single deep-green cue",
+  "decorativeLanguage": "ink texture, hairline geometry and deliberate empty space",
+  "bodyCompositionBias": "one object or relationship per page; text remains crisp",
+  "fontWarnings": [],
+  "contrast": {
+    "body_contrast": 17.32,
+    "muted_contrast": 5.11,
+    "primary_contrast": 9.26,
+    "accent_contrast": 9.26,
+    "text_accent_contrast": 9.26
+  },
+  "warnings": [],
+  "decoration": {
+    "stroke": {
+      "width": 0,
+      "heavy": 0,
+      "hairline": 1,
+      "color": "text"
+    },
+    "shadow": {
+      "dx": 0,
+      "dy": 0,
+      "color": "text",
+      "opacity": 0
+    },
+    "tag": null,
+    "rule": {
+      "thickness": 1,
+      "color": "text"
+    },
+    "marker": {
+      "size": 4,
+      "stroke": 0,
+      "fill": "text"
+    },
+    "bands": {
+      "footer": false,
+      "footerFill": "text",
+      "footerText": "background"
+    },
+    "chart": {
+      "barHeight": 10,
+      "barStroke": 0,
+      "fills": [
+        "text",
+        "textMuted"
+      ],
+      "valueSize": 13
+    },
+    "radius": 0,
+    "furniture": [
+      "rule",
+      "marker"
+    ]
+  },
+  "components": {
+    "tag": {
+      "case": "none",
+      "weight": 600
+    },
+    "kpi": {
+      "fill": null,
+      "border": 0,
+      "borderColor": "rule",
+      "shadow": "none",
+      "radius": 0,
+      "numberScale": 1,
+      "labelCase": "none"
+    },
+    "table": {
+      "headerFill": null,
+      "headerText": "text",
+      "border": 0,
+      "borderColor": "rule",
+      "rowRule": 1,
+      "rowRuleColor": "rule",
+      "zebra": null,
+      "cellPadX": 12,
+      "cellPadY": 10,
+      "radius": 0
+    },
+    "chart": {
+      "barHeight": 12,
+      "barStroke": 0,
+      "barFill": [
+        "accent",
+        "textMuted"
+      ],
+      "axisRule": 1,
+      "axisColor": "rule",
+      "gridlines": 0,
+      "gridColor": "rule",
+      "valueSize": 14,
+      "valueWeight": 400,
+      "labelSize": 17
+    },
+    "line": {
+      "stroke": 2,
+      "dot": 4,
+      "dotFill": "background",
+      "dotStroke": 1,
+      "area": false,
+      "areaOpacity": 0
+    },
+    "callout": {
+      "fill": null,
+      "text": "text",
+      "border": 0,
+      "borderColor": "rule",
+      "shadow": "none",
+      "barWidth": 2,
+      "barColor": "accent",
+      "radius": 0
+    },
+    "list": {
+      "marker": "dot",
+      "markerSize": 5,
+      "markerStroke": 0,
+      "markerFill": "accent"
+    }
+  },
+  "tocStructure": "sparse list with hairline rules and one ink dot per chapter",
+  "heroStructure": "one mark or short sentence centered in a large calm field"
+}

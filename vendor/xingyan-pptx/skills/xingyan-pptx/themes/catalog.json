@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "count": 21,
+  "source": "ClawHive-authored style cards; no external vendor assets included.",
+  "selection": "User choice wins. When no choice is given, rank cards from brief tone, audience, scene and density; a card changes visual language only and never selects page geometry.",
+  "cards": [
+    {
+      "id": "brutalist-acid",
+      "name": "Brutalist Acid 酸性粗野主义",
+      "description": "超大文字、酸性撞色、粗黑边与硬投影",
+      "density": "standard",
+      "path": "cards/brutalist-acid.json"
+    },
+    {
+      "id": "ink-bamboo",
+      "name": "Ink Bamboo 青绿水墨竹韵",
+      "description": "全幅水墨竹画、宣纸画板、朱砂印章与宋体层级",
+      "density": "spacious",
+      "path": "cards/ink-bamboo.json"
+    },
+    {
+      "id": "global-capital-data-journalism",
+      "name": "Capital Journal 全球资本新闻",
+      "description": "news visual system with adaptive composition",
+      "density": "dense",
+      "path": "cards/global-capital-data-journalism.json"
+    },
+    {
+      "id": "zen-stone",
+      "name": "Zen Stone 静石留白空间",
+      "description": "章节编号、单图观察、材料矩阵、留白结语",
+      "density": "spacious",
+      "path": "cards/zen-stone.json"
+    },
+    {
+      "id": "electric-studio",
+      "name": "Electric Studio 电气工作室",
+      "description": "暖底与电气青强调的实验型视觉，适合创意提案与概念发布",
+      "density": "standard",
+      "path": "cards/electric-studio.json"
+    },
+    {
+      "id": "japanese-paper",
+      "name": "Japanese Paper 和纸秩序",
+      "description": "和纸留白与朱红印记的克制编辑风，适合文化、品牌与叙事汇报",
+      "density": "spacious",
+      "path": "cards/japanese-paper.json"
+    },
+    {
+      "id": "chrome-future",
+      "name": "Chrome Future 银铬未来",
+      "description": "银铬冷白与电蓝信号的未来感科技风，适合产品与技术发布",
+      "density": "standard",
+      "path": "cards/chrome-future.json"
+    },
+    {
+      "id": "memphis-motion",
+      "name": "Memphis Motion 孟菲斯节奏",
+      "description": "孟菲斯几何与粉青跳色的轻快视觉，适合活动、营销与创意内容",
+      "density": "standard",
+      "path": "cards/memphis-motion.json"
+    },
+    {
+      "id": "scientific-atlas",
+      "name": "Scientific Atlas 科学图谱",
+      "description": "图谱标注与青绿蓝编码的严谨科学风，适合研究、实验与技术解释",
+      "density": "dense",
+      "path": "cards/scientific-atlas.json"
+    },
+    {
+      "id": "neon-3d",
+      "name": "Neon 3D 霓虹立体",
+      "description": "透视舞台、悬浮物件、信号轨、错位平台与电影式大图",
+      "density": "standard",
+      "path": "cards/neon-3d.json"
+    },
+    {
+      "id": "8-bit-orbit",
+      "name": "8-Bit Orbit 像素轨道",
+      "description": "任务地图、关卡门、Boss 判断、道具栏、技能树与像素场景",
+      "density": "standard",
+      "path": "cards/8-bit-orbit.json"
+    },
+    {
+      "id": "pixel-pop",
+      "name": "Pixel Pop 像素波普",
+      "description": "pixelpop visual system",
+      "density": "standard",
+      "path": "cards/pixel-pop.json"
+    },
+    {
+      "id": "scatterbrain",
+      "name": "Scatterbrain 便利贴工作坊",
+      "description": "sticky visual system",
+      "density": "standard",
+      "path": "cards/scatterbrain.json"
+    },
+    {
+      "id": "glass-tech-system",
+      "name": "Glass Tech System 玻璃科技",
+      "description": "glass visual system",
+      "density": "standard",
+      "path": "cards/glass-tech-system.json"
+    },
+    {
+      "id": "financial-bluegreen-modern",
+      "name": "冷蓝青绿月报",
+      "description": "冷蓝与青绿强调的经营分析风，适合月报、复盘和决策汇报",
+      "density": "dense",
+      "path": "cards/financial-bluegreen-modern.json"
+    },
+    {
+      "id": "portfolio-redgreen",
+      "name": "红绿创意作品集",
+      "description": "朱红与草绿撞色的创意作品集方向",
+      "density": "spacious",
+      "path": "cards/portfolio-redgreen.json"
+    },
+    {
+      "id": "cyber-purple-genz",
+      "name": "赛博紫青年",
+      "description": "紫粉青色块与粗黑标题的青年潮流风，适合校园、社媒和轻量传播",
+      "density": "standard",
+      "path": "cards/cyber-purple-genz.json"
+    },
+    {
+      "id": "rural-green",
+      "name": "田园政企绿色",
+      "description": "绿色主调与田园实景结合的公共叙事风，适合政企工作与区域项目汇报",
+      "density": "standard",
+      "path": "cards/rural-green.json"
+    },
+    {
+      "id": "neon-green-wireframe",
+      "name": "荧光绿线框",
+      "description": "荧光绿线框与黑底叠层的轻量实验风，适合作品集与创意演示",
+      "density": "spacious",
+      "path": "cards/neon-green-wireframe.json"
+    },
+    {
+      "id": "minimal-ink",
+      "name": "极简水墨",
+      "description": "黑白灰墨迹与深绿锚点的极简艺术风，适合研究、文化与作品展示",
+      "density": "spacious",
+      "path": "cards/minimal-ink.json"
+    },
+    {
+      "id": "coral-3d",
+      "name": "珊瑚三维",
+      "description": "珊瑚粉渐变 + 3D 几何悬浮装饰的轻商务作品集风格——冷钢灰文字与黑白图片压舱，柔粉色块承担情绪表达",
+      "density": "spacious",
+      "path": "cards/coral-3d.json"
+    }
+  ]
+}

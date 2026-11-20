@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "id": "ink-bamboo",
+  "name": "Ink Bamboo 青绿水墨竹韵",
+  "description": "全幅水墨竹画、宣纸画板、朱砂印章与宋体层级",
+  "palette": {
+    "background": "#EEF0E7",
+    "text": "#18352D",
+    "accent": "#2C6654",
+    "accentSecondary": "#CFDDC6",
+    "rule": "#BFC7BE"
+  },
+  "typography": {
+    "heading": {
+      "family": "Songti SC",
+      "weight": 700,
+      "sizePx": 44
+    },
+    "body": {
+      "family": "Noto Serif SC",
+      "weight": 400,
+      "sizePx": 22,
+      "lineHeight": 1.35
+    }
+  },
+  "mood": [
+    "克制",
+    "东方",
+    "沉静"
+  ],
+  "visualVocabulary": [
+    "宣纸留白",
+    "青绿墨色与朱砂印记",
+    "书卷式细线"
+  ],
+  "taboos": [
+    "避免满页水墨装饰",
+    "朱砂只作提示",
+    "不牺牲正文可读性"
+  ],
+  "coverStructure": "quiet title field balanced by one tall/organic visual",
+  "sectionStructure": "chapter pages breathe like a scroll pause",
+  "titleTreatment": "serif title with restrained seal-like emphasis",
+  "decorativeLanguage": "ink wash, fine rules and sparse vermilion mark",
+  "bodyCompositionBias": "single focus with generous negative space",
+  "density": {
+    "default": "spacious",
+    "guidance": "优先单一主视觉与呼吸留白，次要信息退居背景"
+  },
+  "tocStructure": "vertical scroll-like column of chapter names with one ink mark",
+  "heroStructure": "one large brushed character or number in an empty field"
+}

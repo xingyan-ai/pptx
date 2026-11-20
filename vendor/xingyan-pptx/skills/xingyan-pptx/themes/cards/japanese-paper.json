@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "id": "japanese-paper",
+  "name": "Japanese Paper 和纸秩序",
+  "description": "和纸留白与朱红印记的克制编辑风，适合文化、品牌与叙事汇报",
+  "palette": {
+    "background": "#F5F1E7",
+    "text": "#1E1C19",
+    "accent": "#B8322B",
+    "accentSecondary": "#C9BDA8",
+    "rule": "#C6C2BA"
+  },
+  "typography": {
+    "heading": {
+      "family": "Inter",
+      "weight": 700,
+      "sizePx": 44
+    },
+    "body": {
+      "family": "PingFang SC",
+      "weight": 400,
+      "sizePx": 22,
+      "lineHeight": 1.35
+    }
+  },
+  "mood": [
+    "细腻",
+    "节制",
+    "编辑感"
+  ],
+  "visualVocabulary": [
+    "和纸纹理语气",
+    "朱红印章色",
+    "不对称留白与细线"
+  ],
+  "taboos": [
+    "避免泛化为旅游风",
+    "朱红不做大面积正文底",
+    "不使用廉价纹理"
+  ],
+  "coverStructure": "calm asymmetry: title island and one tactile image",
+  "sectionStructure": "chapters separated by a quiet red seal/number",
+  "titleTreatment": "serif title with compact vertical-feeling label",
+  "decorativeLanguage": "fine ink rule, paper edge and tiny vermilion mark",
+  "bodyCompositionBias": "asymmetric breathing room; avoid equal columns",
+  "density": {
+    "default": "spacious",
+    "guidance": "优先单一主视觉与呼吸留白，次要信息退居背景"
+  },
+  "tocStructure": "asymmetric index with seal-style numbers and generous margin",
+  "heroStructure": "one object or phrase isolated on paper texture with a red seal"
+}

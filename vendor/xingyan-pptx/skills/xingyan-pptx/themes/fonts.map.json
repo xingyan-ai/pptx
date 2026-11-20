@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "note": "字体策略表。render=embed 的字体随包携带 woff2，HTML 里以 data URI 内嵌，不再依赖用户装没装；render=system 表示只走系统栈（中文字体目前都走这条）；render=substitute 表示用一个可内嵌的近似字体替代厂商字体。PPTX 一律走 tokens 里的 *_stack_ppt，不在这里处理。",
+  "licenseNote": "随包的 8 个 woff2 均来自 Google Fonts 的 OFL-1.1 字体（Inter / Archivo Black / Poppins / Carlito / Roboto Condensed）。字体许可原文见 assets/fonts/OFL-NOTICE.md。",
+  "families": {
+    "Inter": {
+      "render": "embed",
+      "files": [
+        {
+          "weight": 400,
+          "file": "inter-400.woff2"
+        },
+        {
+          "weight": 600,
+          "file": "inter-600.woff2"
+        },
+        {
+          "weight": 700,
+          "file": "inter-700.woff2"
+        }
+      ],
+      "license": "OFL-1.1",
+      "source": "Google Fonts",
+      "covers": "latin"
+    },
+    "Poppins": {
+      "render": "embed",
+      "files": [
+        {
+          "weight": 400,
+          "file": "poppins-400.woff2"
+        },
+        {
+          "weight": 600,
+          "file": "poppins-600.woff2"
+        },
+        {
+          "weight": 700,
+          "file": "poppins-700.woff2"
+        }
+      ],
+      "license": "OFL-1.1",
+      "source": "Google Fonts",
+      "covers": "latin"
+    },
+    "Arial Black": {
+      "render": "substitute",
+      "substitute": "Archivo Black",
+      "files": [
+        {
+          "weight": 400,
+          "file": "archivo-black-400.woff2"
+        }
+      ],
+      "license": "OFL-1.1",
+      "source": "Google Fonts",
+      "covers": "latin",
+      "note": "Arial Black 是厂商字体，不能随包；Archivo Black 是同类超粗无衬线，标题观感最接近。"
+    },
+    "Calibri": {
+      "render": "substitute",
+      "substitute": "Carlito",
+      "files": [
+        {
+          "weight": 400,
+          "file": "carlito-400.woff2"
+        },
+        {
+          "weight": 700,
+          "file": "carlito-700.woff2"
+        }
+      ],
+      "license": "OFL-1.1",
+      "source": "Google Fonts",
+      "covers": "latin",
+      "note": "Carlito 与 Calibri 字宽兼容，替换后行宽基本不变。"
+    },
+    "Arial Narrow": {
+      "render": "substitute",
+      "substitute": "Roboto Condensed",
+      "files": [
+        {
+          "weight": 700,
+          "file": "roboto-condensed-700.woff2"
+        }
+      ],
+      "license": "OFL-1.1",
+      "source": "Google Fonts",
+      "covers": "latin",
+      "note": "窄体替换，只覆盖标题常用的粗体。"
+    },
+    "Helvetica Neue": {
+      "render": "system",
+      "fallbackAfter": "Inter",
+      "note": "macOS 自带；Windows 缺失时用后一位 Inter。"
+    },
+    "Arial": {
+      "render": "system",
+      "note": "macOS / Windows 都有，作为通用兜底。"
+    },
+    "Georgia": {
+      "render": "system",
+      "note": "macOS / Windows 都有。"
+    },
+    "DengXian": {
+      "render": "system",
+      "note": "Windows 自带；macOS 缺失时顺序回落到 微软雅黑 → PingFang SC。",
+      "cjk": true
+    },
+    "PingFang SC": {
+      "render": "system",
+      "note": "macOS 自带的中文无衬线，CJK 首选。",
+      "cjk": true
+    },
+    "Microsoft YaHei": {
+      "render": "system",
+      "note": "Windows 自带的中文无衬线。",
+      "cjk": true
+    },
+    "Noto Sans SC": {
+      "render": "system",
+      "note": "CJK 字体，整套内嵌体积过大，不随包；缺失时按栈回落到 PingFang SC / 微软雅黑。",
+      "cjk": true
+    },
+    "Noto Serif SC": {
+      "render": "system",
+      "note": "CJK 衬线，不随包；缺失时回落到 Songti SC / SimSun。",
+      "cjk": true
+    },
+    "Songti SC": {
+      "render": "system",
+      "note": "macOS 自带中文衬线。",
+      "cjk": true
+    },
+    "SimSun": {
+      "render": "system",
+      "note": "Windows 自带中文衬线（宋体）。",
+      "cjk": true
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "id": "electric-studio",
+  "name": "Electric Studio 电气工作室",
+  "description": "暖底与电气青强调的实验型视觉，适合创意提案与概念发布",
+  "palette": {
+    "background": "#F4F1E8",
+    "text": "#101113",
+    "accent": "#FF7759",
+    "accentSecondary": "#54F2D2",
+    "rule": "#C2C0B9"
+  },
+  "typography": {
+    "heading": {
+      "family": "Inter",
+      "weight": 700,
+      "sizePx": 42
+    },
+    "body": {
+      "family": "PingFang SC",
+      "weight": 400,
+      "sizePx": 21,
+      "lineHeight": 1.35
+    }
+  },
+  "mood": [
+    "实验",
+    "明快",
+    "创意"
+  ],
+  "visualVocabulary": [
+    "电气青强调线",
+    "海报式标题",
+    "暖底与冷色碰撞"
+  ],
+  "taboos": [
+    "避免双色平均分配",
+    "不让背景抢主判断",
+    "保持投影可读性"
+  ],
+  "coverStructure": "poster headline and a bright electric counterform",
+  "sectionStructure": "chapters switch between statement and experiment",
+  "titleTreatment": "large editorial title with one cyan phrase",
+  "decorativeLanguage": "electric lines, registration marks and poster cutouts",
+  "bodyCompositionBias": "diagonal/offset grouping is welcome when hierarchy stays clear",
+  "density": {
+    "default": "standard",
+    "guidance": "保持中等信息量，让主判断、证据和行动层级拉开"
+  },
+  "tocStructure": "poster index with oversized type and registration marks",
+  "heroStructure": "poster-scale word or number with an electric counterform"
+}

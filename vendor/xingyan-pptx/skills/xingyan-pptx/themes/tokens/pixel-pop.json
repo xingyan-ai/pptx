@@ -1,0 +1,210 @@
+{
+  "schemaVersion": 1,
+  "id": "pixel-pop",
+  "name": "Pixel Pop 像素波普",
+  "description": "pixelpop visual system",
+  "source": "ClawHive-authored style card; no external vendor assets included.",
+  "density": "standard",
+  "visualStyle": "pixel-art",
+  "pptFidelity": "native",
+  "pptFallback": "复杂 CSS 效果改为静态填充、渐变或烘焙背景，文字和形状保持原生",
+  "audited": true,
+  "overrideNote": "",
+  "colors": {
+    "background": "#FFFFFF",
+    "surface": "#FFFFFF",
+    "surfaceAlt": "#D1F7F0",
+    "text": "#000000",
+    "textMuted": "#616161",
+    "primary": "#805C0C",
+    "accent": "#E8A715",
+    "accent2": "#00D2AE",
+    "textAccent": "#805C0C",
+    "rule": "#C7C7C7",
+    "onAccent": "#000000",
+    "onPrimary": "#FFFFFF",
+    "chart": [
+      "#E8A715",
+      "#00D2AE",
+      "#805C0C",
+      "#90680D",
+      "#00826C",
+      "#C7C7C7"
+    ]
+  },
+  "typography": {
+    "display": 55,
+    "title": 42,
+    "metric": 36,
+    "subtitle": 24,
+    "body": 21,
+    "annotation": 12,
+    "heading_weight": 800,
+    "body_weight": 400,
+    "body_line_height": 1.35,
+    "title_stack": "Inter, \"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "body_stack": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "title_stack_ppt": "Arial, \"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "body_stack_ppt": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "title_family": "Inter",
+    "body_family": "PingFang SC"
+  },
+  "spacing": {
+    "margin": 64,
+    "gap": 24,
+    "gutter": 28,
+    "radius": 6,
+    "leading": 1.5
+  },
+  "behavior": "气质：轻快、复古、社交；视觉语汇：像素边框、黄青撞色、低分辨率图形；装饰：pixel frame, tiny sprite and stepped divider；构图：short blocks and clear adjacency; no sprite wall",
+  "taboos": [
+    "避免像素纹理干扰小字",
+    "不使用过多颜色",
+    "内容关系仍须清楚"
+  ],
+  "mood": [
+    "轻快",
+    "复古",
+    "社交"
+  ],
+  "visualVocabulary": [
+    "像素边框",
+    "黄青撞色",
+    "低分辨率图形"
+  ],
+  "coverStructure": "simple pixel title paired with one pop-color sprite",
+  "sectionStructure": "chapters punctuated by color or sprite changes",
+  "titleTreatment": "chunky pixel label with neutral explanatory title",
+  "decorativeLanguage": "pixel frame, tiny sprite and stepped divider",
+  "bodyCompositionBias": "short blocks and clear adjacency; no sprite wall",
+  "fontWarnings": [],
+  "contrast": {
+    "body_contrast": 21,
+    "muted_contrast": 6.19,
+    "primary_contrast": 6.08,
+    "accent_contrast": 2.11,
+    "text_accent_contrast": 6.08
+  },
+  "warnings": [],
+  "decoration": {
+    "stroke": {
+      "width": 2,
+      "heavy": 4,
+      "hairline": 1,
+      "color": "text"
+    },
+    "shadow": {
+      "dx": 4,
+      "dy": 4,
+      "color": "text",
+      "opacity": 1
+    },
+    "tag": {
+      "fill": "accent",
+      "text": "onAccent",
+      "stroke": 2,
+      "height": 30,
+      "fontSize": 13,
+      "weight": 700,
+      "paddingX": 12
+    },
+    "rule": {
+      "thickness": 4,
+      "color": "text"
+    },
+    "marker": {
+      "size": 8,
+      "stroke": 2,
+      "fill": "accent2"
+    },
+    "bands": {
+      "footer": false,
+      "footerFill": "text",
+      "footerText": "background"
+    },
+    "chart": {
+      "barHeight": 16,
+      "barStroke": 2,
+      "fills": [
+        "accent",
+        "accent2"
+      ],
+      "valueSize": 14
+    },
+    "radius": 0,
+    "furniture": [
+      "tag",
+      "rule",
+      "marker",
+      "hardShadow"
+    ]
+  },
+  "components": {
+    "tag": {
+      "case": "upper",
+      "weight": 800
+    },
+    "kpi": {
+      "fill": "surface",
+      "border": 2,
+      "borderColor": "text",
+      "shadow": "hard",
+      "radius": 0,
+      "numberScale": 1,
+      "labelCase": "upper"
+    },
+    "table": {
+      "headerFill": "accent",
+      "headerText": "onAccent",
+      "border": 2,
+      "borderColor": "text",
+      "rowRule": 2,
+      "rowRuleColor": "text",
+      "zebra": null,
+      "cellPadX": 12,
+      "cellPadY": 9,
+      "radius": 0
+    },
+    "chart": {
+      "barHeight": 18,
+      "barStroke": 2,
+      "barFill": [
+        "accent",
+        "accent2"
+      ],
+      "axisRule": 2,
+      "axisColor": "text",
+      "gridlines": 0,
+      "gridColor": "rule",
+      "valueSize": 15,
+      "valueWeight": 700,
+      "labelSize": 17
+    },
+    "line": {
+      "stroke": 3,
+      "dot": 6,
+      "dotFill": "background",
+      "dotStroke": 2,
+      "area": false,
+      "areaOpacity": 0
+    },
+    "callout": {
+      "fill": "surfaceAlt",
+      "text": "text",
+      "border": 2,
+      "borderColor": "text",
+      "shadow": "hard",
+      "barWidth": 0,
+      "barColor": "accent",
+      "radius": 0
+    },
+    "list": {
+      "marker": "square",
+      "markerSize": 10,
+      "markerStroke": 2,
+      "markerFill": "accent"
+    }
+  },
+  "tocStructure": "grid of pixel tiles with stepped numbering and pop-color markers",
+  "heroStructure": "one big pixel numeral or sprite with a short blocky caption"
+}

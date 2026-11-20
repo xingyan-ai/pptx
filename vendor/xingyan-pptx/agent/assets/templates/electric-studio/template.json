@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "template_id": "electric-studio",
+  "template_name": "Electric Studio 电气工作室",
+  "template_version": "1.0.0",
+  "canvas": {
+    "width": 1280,
+    "height": 720
+  },
+  "source": "scaffold.html",
+  "layout_registry": "layout-registry.json",
+  "deck_schema": "deck.schema.json",
+  "targets": [
+    "html",
+    "pptx"
+  ],
+  "editable_kinds": [
+    "text",
+    "image",
+    "shape",
+    "line"
+  ],
+  "object_id_contract": "<slide-id>::<slot-id>",
+  "recommended_pages": [
+    8,
+    11
+  ],
+  "adaptive_composition": true,
+  "signature_compositions": [
+    "dot-matrix-product-cover",
+    "exploded-module-view",
+    "signal-path-board"
+  ],
+  "page_role_roster": [
+    "dot-matrix-product-cover",
+    "product-belief",
+    "exploded-module-view",
+    "feature-led-array",
+    "signal-path-board",
+    "device-interface",
+    "privacy-boundary",
+    "lab-readout",
+    "variant-lineup",
+    "setup-sequence",
+    "red-dot-close"
+  ],
+  "theme": {
+    "background": "#F4F1E8",
+    "foreground": "#101113",
+    "accent": "#FF7759",
+    "secondary": "#54F2D2"
+  },
+  "themeTokens": {
+    "primary": "#93493A",
+    "accent2": "#54F2D2",
+    "rule": "#C2C0B9",
+    "fontTitle": "Inter, \"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "fontBody": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif"
+  },
+  "derivedFrom": "nothing-design-dark"
+}

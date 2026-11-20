@@ -1,0 +1,5 @@
+# 星彦 PPT：Host 侧读内置主题、生成大纲、逐页出稿。
+# 主题与版式随包内置在 vendor/xingyan-pptx/，不需要外部路径。
+- insert:
+    - id: xingyan-pptx
+      name: 'dsh-xingyan-pptx'

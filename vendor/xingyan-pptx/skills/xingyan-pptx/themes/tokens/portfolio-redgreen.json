@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 1,
+  "id": "portfolio-redgreen",
+  "name": "红绿创意作品集",
+  "description": "朱红与草绿撞色的创意作品集方向",
+  "source": "ClawHive-authored style card; no external vendor assets included.",
+  "density": "spacious",
+  "visualStyle": "editorial",
+  "pptFidelity": "approximate",
+  "pptFallback": "复杂 CSS 效果改为静态填充、渐变或烘焙背景，文字和形状保持原生",
+  "audited": false,
+  "overrideNote": "原卡两个强调色相同；补深绿形成红绿对照。",
+  "colors": {
+    "background": "#F7F5F0",
+    "surface": "#FAF9F6",
+    "surfaceAlt": "#D0D9CF",
+    "text": "#23251F",
+    "textMuted": "#74746E",
+    "primary": "#CE544D",
+    "accent": "#CE544D",
+    "accent2": "#1F5C3A",
+    "textAccent": "#CE544D",
+    "rule": "#C8C7C2",
+    "onAccent": "#000000",
+    "onPrimary": "#000000",
+    "chart": [
+      "#CE544D",
+      "#1F5C3A",
+      "#CE544D",
+      "#8D423C",
+      "#214730",
+      "#C8C7C2"
+    ]
+  },
+  "typography": {
+    "display": 57,
+    "title": 44,
+    "metric": 37,
+    "subtitle": 25,
+    "body": 22,
+    "annotation": 13,
+    "heading_weight": 700,
+    "body_weight": 400,
+    "body_line_height": 1.35,
+    "title_stack": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "body_stack": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "title_stack_ppt": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "body_stack_ppt": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "title_family": "PingFang SC",
+    "body_family": "PingFang SC"
+  },
+  "spacing": {
+    "margin": 72,
+    "gap": 32,
+    "gutter": 32,
+    "radius": 8,
+    "leading": 1.6
+  },
+  "behavior": "气质：大胆、艺术、鲜活；视觉语汇：朱红草绿对撞、作品图大留白、手工感标题标记；装饰：collage crop, hand mark and color edge；构图：visual evidence leads; text wraps around its story",
+  "taboos": [
+    "避免红绿同时抢主位",
+    "图片不能只作背景",
+    "避免节庆化配色"
+  ],
+  "mood": [
+    "大胆",
+    "艺术",
+    "鲜活"
+  ],
+  "visualVocabulary": [
+    "朱红草绿对撞",
+    "作品图大留白",
+    "手工感标题标记"
+  ],
+  "coverStructure": "bold title against an image or color field",
+  "sectionStructure": "chapters change color temperature with each case beat",
+  "titleTreatment": "expressive title with red/green emphasis used sparingly",
+  "decorativeLanguage": "collage crop, hand mark and color edge",
+  "bodyCompositionBias": "visual evidence leads; text wraps around its story",
+  "fontWarnings": [],
+  "contrast": {
+    "body_contrast": 14.22,
+    "muted_contrast": 4.32,
+    "primary_contrast": 3.86,
+    "accent_contrast": 3.86,
+    "text_accent_contrast": 3.86
+  },
+  "warnings": [],
+  "decoration": {
+    "stroke": {
+      "width": 0,
+      "heavy": 0,
+      "hairline": 1,
+      "color": "rule"
+    },
+    "shadow": {
+      "dx": 0,
+      "dy": 0,
+      "color": "rule",
+      "opacity": 0
+    },
+    "tag": null,
+    "rule": {
+      "thickness": 1,
+      "color": "rule"
+    },
+    "marker": {
+      "size": 6,
+      "stroke": 0,
+      "fill": "accent"
+    },
+    "bands": {
+      "footer": false,
+      "footerFill": "text",
+      "footerText": "background"
+    },
+    "chart": {
+      "barHeight": 12,
+      "barStroke": 0,
+      "fills": [
+        "accent",
+        "textMuted"
+      ],
+      "valueSize": 14
+    },
+    "radius": 0,
+    "furniture": [
+      "rule",
+      "marker"
+    ]
+  },
+  "components": {
+    "tag": {
+      "case": "upper",
+      "weight": 600
+    },
+    "kpi": {
+      "fill": null,
+      "border": 0,
+      "borderColor": "rule",
+      "shadow": "none",
+      "radius": 0,
+      "numberScale": 1,
+      "labelCase": "none"
+    },
+    "table": {
+      "headerFill": null,
+      "headerText": "text",
+      "border": 0,
+      "borderColor": "rule",
+      "rowRule": 1,
+      "rowRuleColor": "rule",
+      "zebra": null,
+      "cellPadX": 12,
+      "cellPadY": 10,
+      "radius": 0
+    },
+    "chart": {
+      "barHeight": 12,
+      "barStroke": 0,
+      "barFill": [
+        "accent",
+        "textMuted"
+      ],
+      "axisRule": 1,
+      "axisColor": "rule",
+      "gridlines": 0,
+      "gridColor": "rule",
+      "valueSize": 14,
+      "valueWeight": 400,
+      "labelSize": 17
+    },
+    "line": {
+      "stroke": 2,
+      "dot": 5,
+      "dotFill": "background",
+      "dotStroke": 1.5,
+      "area": false,
+      "areaOpacity": 0
+    },
+    "callout": {
+      "fill": null,
+      "text": "text",
+      "border": 0,
+      "borderColor": "rule",
+      "shadow": "none",
+      "barWidth": 3,
+      "barColor": "accent",
+      "radius": 0
+    },
+    "list": {
+      "marker": "dot",
+      "markerSize": 6,
+      "markerStroke": 0,
+      "markerFill": "accent"
+    }
+  },
+  "tocStructure": "case index with color-temperature chips and hand-marked numbers",
+  "heroStructure": "one case image or figure against a bold color field"
+}

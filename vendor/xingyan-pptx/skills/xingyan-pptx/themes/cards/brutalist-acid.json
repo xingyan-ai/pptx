@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "id": "brutalist-acid",
+  "name": "Brutalist Acid 酸性粗野主义",
+  "description": "超大文字、酸性撞色、粗黑边与硬投影",
+  "palette": {
+    "background": "#F4F1E8",
+    "text": "#090909",
+    "accent": "#D7FF00",
+    "accentSecondary": "#2FF3E0",
+    "rule": "#C0BEB7"
+  },
+  "typography": {
+    "heading": {
+      "family": "Arial Black",
+      "weight": 800,
+      "sizePx": 42
+    },
+    "body": {
+      "family": "PingFang SC",
+      "weight": 400,
+      "sizePx": 21,
+      "lineHeight": 1.35
+    }
+  },
+  "mood": [
+    "大胆",
+    "挑衅",
+    "年轻"
+  ],
+  "visualVocabulary": [
+    "酸性色块",
+    "粗黑描边",
+    "硬投影与超大字"
+  ],
+  "taboos": [
+    "不要把每页都做成海报",
+    "避免低对比荧光字",
+    "装饰不能替代关系"
+  ],
+  "coverStructure": "single dominant statement with an offset visual counterpoint",
+  "sectionStructure": "hard chapter breaks with a short provocation",
+  "titleTreatment": "oversized black title with one acid word",
+  "decorativeLanguage": "bold borders, cutout blocks and one hard shadow",
+  "bodyCompositionBias": "asymmetric text-to-evidence scale; let one object dominate",
+  "density": {
+    "default": "standard",
+    "guidance": "保持中等信息量，让主判断、证据和行动层级拉开"
+  },
+  "tocStructure": "stacked index slabs with oversized numerals and one acid highlight",
+  "heroStructure": "one huge statement block with a hard shadow and a single counterweight shape"
+}

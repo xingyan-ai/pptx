@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "template_id": "financial-bluegreen-modern",
+  "template_name": "冷蓝青绿月报",
+  "template_version": "1.0.0",
+  "canvas": {
+    "width": 1280,
+    "height": 720
+  },
+  "source": "scaffold.html",
+  "layout_registry": "layout-registry.json",
+  "deck_schema": "deck.schema.json",
+  "targets": [
+    "html",
+    "pptx"
+  ],
+  "editable_kinds": [
+    "text",
+    "image",
+    "shape",
+    "line"
+  ],
+  "object_id_contract": "<slide-id>::<slot-id>",
+  "recommended_pages": [
+    8,
+    15
+  ],
+  "adaptive_composition": true,
+  "signature_compositions": [],
+  "page_role_roster": [
+    "cover",
+    "agenda",
+    "section",
+    "executive-summary",
+    "context-problem",
+    "statement",
+    "cards-list",
+    "comparison",
+    "process-timeline",
+    "architecture",
+    "data-kpi",
+    "chart",
+    "table-matrix",
+    "image-case",
+    "closing-cta"
+  ],
+  "theme": {
+    "background": "#F5F7FB",
+    "foreground": "#08194A",
+    "accent": "#4A66AC",
+    "secondary": "#84BB1E"
+  },
+  "themeTokens": {
+    "primary": "#4A66AC",
+    "accent2": "#84BB1E",
+    "rule": "#D8DEE8",
+    "fontTitle": "\"Microsoft YaHei\", \"PingFang SC\", \"Noto Sans SC\", sans-serif",
+    "fontBody": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif"
+  },
+  "derivedFrom": "verdant-journal"
+}

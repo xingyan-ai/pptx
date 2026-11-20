@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "template_id": "coral-3d",
+  "template_name": "珊瑚三维",
+  "template_version": "1.0.0",
+  "canvas": {
+    "width": 1280,
+    "height": 720
+  },
+  "source": "scaffold.html",
+  "layout_registry": "layout-registry.json",
+  "deck_schema": "deck.schema.json",
+  "targets": [
+    "html",
+    "pptx"
+  ],
+  "editable_kinds": [
+    "text",
+    "image",
+    "shape",
+    "line"
+  ],
+  "object_id_contract": "<slide-id>::<slot-id>",
+  "recommended_pages": [
+    8,
+    10
+  ],
+  "adaptive_composition": true,
+  "signature_compositions": [
+    "sky-statement",
+    "floating-product-stage",
+    "gentle-choice-table",
+    "sky-route-arc",
+    "sky-observation-note"
+  ],
+  "page_role_roster": [
+    "sky-statement",
+    "three-service-clouds",
+    "floating-product-stage",
+    "gentle-choice-table",
+    "three-step-breeze",
+    "customer-memory",
+    "clear-promise",
+    "open-sky-close",
+    "migration-arc",
+    "field-note"
+  ],
+  "theme": {
+    "background": "#FFFFFF",
+    "foreground": "#3B3B3B",
+    "accent": "#FAD0C4",
+    "secondary": "#3B3B3B"
+  },
+  "themeTokens": {
+    "primary": "#A48D86",
+    "accent2": "#3B3B3B",
+    "rule": "#D4D4D4",
+    "fontTitle": "Calibri, Arial, \"PingFang SC\", sans-serif",
+    "fontBody": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif"
+  },
+  "derivedFrom": "soft-sky"
+}

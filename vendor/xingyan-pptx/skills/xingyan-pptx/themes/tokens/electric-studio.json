@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "id": "electric-studio",
+  "name": "Electric Studio 电气工作室",
+  "description": "暖底与电气青强调的实验型视觉，适合创意提案与概念发布",
+  "source": "ClawHive-authored style card; no external vendor assets included.",
+  "density": "standard",
+  "visualStyle": "swiss-minimal",
+  "pptFidelity": "approximate",
+  "pptFallback": "复杂 CSS 效果改为静态填充、渐变或烘焙背景，文字和形状保持原生",
+  "audited": false,
+  "overrideNote": "",
+  "colors": {
+    "background": "#F4F1E8",
+    "surface": "#F8F6F1",
+    "surfaceAlt": "#D7F1E4",
+    "text": "#101113",
+    "textMuted": "#676664",
+    "primary": "#93493A",
+    "accent": "#FF7759",
+    "accent2": "#54F2D2",
+    "textAccent": "#93493A",
+    "rule": "#C2C0B9",
+    "onAccent": "#000000",
+    "onPrimary": "#FFFFFF",
+    "chart": [
+      "#FF7759",
+      "#54F2D2",
+      "#93493A",
+      "#A4503E",
+      "#3A9C89",
+      "#C2C0B9"
+    ]
+  },
+  "typography": {
+    "display": 55,
+    "title": 42,
+    "metric": 36,
+    "subtitle": 24,
+    "body": 21,
+    "annotation": 12,
+    "heading_weight": 700,
+    "body_weight": 400,
+    "body_line_height": 1.35,
+    "title_stack": "Inter, \"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "body_stack": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "title_stack_ppt": "Arial, \"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "body_stack_ppt": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "title_family": "Inter",
+    "body_family": "PingFang SC"
+  },
+  "spacing": {
+    "margin": 64,
+    "gap": 24,
+    "gutter": 28,
+    "radius": 6,
+    "leading": 1.5
+  },
+  "behavior": "气质：实验、明快、创意；视觉语汇：电气青强调线、海报式标题、暖底与冷色碰撞；装饰：electric lines, registration marks and poster cutouts；构图：diagonal/offset grouping is welcome when hierarchy stays clear",
+  "taboos": [
+    "避免双色平均分配",
+    "不让背景抢主判断",
+    "保持投影可读性"
+  ],
+  "mood": [
+    "实验",
+    "明快",
+    "创意"
+  ],
+  "visualVocabulary": [
+    "电气青强调线",
+    "海报式标题",
+    "暖底与冷色碰撞"
+  ],
+  "coverStructure": "poster headline and a bright electric counterform",
+  "sectionStructure": "chapters switch between statement and experiment",
+  "titleTreatment": "large editorial title with one cyan phrase",
+  "decorativeLanguage": "electric lines, registration marks and poster cutouts",
+  "bodyCompositionBias": "diagonal/offset grouping is welcome when hierarchy stays clear",
+  "fontWarnings": [],
+  "contrast": {
+    "body_contrast": 16.73,
+    "muted_contrast": 5.08,
+    "primary_contrast": 5.71,
+    "accent_contrast": 2.31,
+    "text_accent_contrast": 5.71
+  },
+  "warnings": [],
+  "decoration": {
+    "stroke": {
+      "width": 0,
+      "heavy": 0,
+      "hairline": 1,
+      "color": "rule"
+    },
+    "shadow": {
+      "dx": 0,
+      "dy": 0,
+      "color": "rule",
+      "opacity": 0
+    },
+    "tag": null,
+    "rule": {
+      "thickness": 2,
+      "color": "text"
+    },
+    "marker": {
+      "size": 4,
+      "stroke": 0,
+      "fill": "accent"
+    },
+    "bands": {
+      "footer": false,
+      "footerFill": "text",
+      "footerText": "background"
+    },
+    "chart": {
+      "barHeight": 12,
+      "barStroke": 0,
+      "fills": [
+        "accent",
+        "text"
+      ],
+      "valueSize": 14
+    },
+    "radius": 0,
+    "furniture": [
+      "rule",
+      "marker"
+    ]
+  },
+  "components": {
+    "tag": {
+      "case": "upper",
+      "weight": 600
+    },
+    "kpi": {
+      "fill": null,
+      "border": 0,
+      "borderColor": "rule",
+      "shadow": "none",
+      "radius": 0,
+      "numberScale": 1,
+      "labelCase": "none"
+    },
+    "table": {
+      "headerFill": null,
+      "headerText": "text",
+      "border": 0,
+      "borderColor": "rule",
+      "rowRule": 1,
+      "rowRuleColor": "rule",
+      "zebra": null,
+      "cellPadX": 12,
+      "cellPadY": 10,
+      "radius": 0
+    },
+    "chart": {
+      "barHeight": 13,
+      "barStroke": 0,
+      "barFill": [
+        "primary"
+      ],
+      "axisRule": 1,
+      "axisColor": "rule",
+      "gridlines": 0,
+      "gridColor": "rule",
+      "valueSize": 14,
+      "valueWeight": 500,
+      "labelSize": 17
+    },
+    "line": {
+      "stroke": 2,
+      "dot": 0,
+      "dotFill": "primary",
+      "dotStroke": 0,
+      "area": false,
+      "areaOpacity": 0
+    },
+    "callout": {
+      "fill": null,
+      "text": "text",
+      "border": 0,
+      "borderColor": "rule",
+      "shadow": "none",
+      "barWidth": 4,
+      "barColor": "primary",
+      "radius": 0
+    },
+    "list": {
+      "marker": "square",
+      "markerSize": 6,
+      "markerStroke": 0,
+      "markerFill": "primary"
+    }
+  },
+  "tocStructure": "poster index with oversized type and registration marks",
+  "heroStructure": "poster-scale word or number with an electric counterform"
+}

@@ -1,0 +1,52 @@
+{
+  "stroke": {
+    "width": 1,
+    "heavy": 2,
+    "hairline": 1,
+    "color": "accent2"
+  },
+  "shadow": {
+    "dx": 0,
+    "dy": 0,
+    "color": "accent2",
+    "opacity": 0
+  },
+  "tag": {
+    "fill": "accent2",
+    "text": "background",
+    "stroke": 0,
+    "height": 26,
+    "fontSize": 12,
+    "weight": 600,
+    "paddingX": 10
+  },
+  "rule": {
+    "thickness": 1,
+    "color": "accent2"
+  },
+  "marker": {
+    "size": 6,
+    "stroke": 0,
+    "fill": "accent"
+  },
+  "bands": {
+    "footer": false,
+    "footerFill": "text",
+    "footerText": "background"
+  },
+  "chart": {
+    "barHeight": 10,
+    "barStroke": 1,
+    "fills": [
+      "accent",
+      "accent2"
+    ],
+    "valueSize": 13
+  },
+  "radius": 0,
+  "furniture": [
+    "tag",
+    "rule",
+    "marker"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "template_id": "neon-3d",
+  "template_name": "Neon 3D 霓虹立体",
+  "template_version": "1.0.0",
+  "canvas": {
+    "width": 1280,
+    "height": 720
+  },
+  "source": "scaffold.html",
+  "layout_registry": "layout-registry.json",
+  "deck_schema": "deck.schema.json",
+  "targets": [
+    "html",
+    "pptx"
+  ],
+  "editable_kinds": [
+    "text",
+    "image",
+    "shape",
+    "line"
+  ],
+  "object_id_contract": "<slide-id>::<slot-id>",
+  "recommended_pages": [
+    8,
+    12
+  ],
+  "adaptive_composition": true,
+  "signature_compositions": [],
+  "page_role_roster": [
+    "cover",
+    "signal-agenda",
+    "portal-section",
+    "giant-statement",
+    "object-story",
+    "feature-orbits",
+    "split-comparison",
+    "launch-sequence",
+    "stack-architecture",
+    "pulse-data",
+    "cinematic-case",
+    "terminal-closing"
+  ],
+  "theme": {
+    "background": "#050507",
+    "foreground": "#FFFFFF",
+    "accent": "#31F7E5",
+    "secondary": "#FF4F78"
+  },
+  "themeTokens": {
+    "primary": "#31F7E5",
+    "accent2": "#FF4F78",
+    "rule": "#3C3C3E",
+    "fontTitle": "Inter, \"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "fontBody": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif"
+  },
+  "derivedFrom": "neon-3d"
+}

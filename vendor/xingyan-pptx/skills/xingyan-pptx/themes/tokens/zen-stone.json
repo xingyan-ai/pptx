@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "id": "zen-stone",
+  "name": "Zen Stone 静石留白空间",
+  "description": "章节编号、单图观察、材料矩阵、留白结语",
+  "source": "ClawHive-authored style card; no external vendor assets included.",
+  "density": "spacious",
+  "visualStyle": "soft-rounded",
+  "pptFidelity": "native",
+  "pptFallback": "复杂 CSS 效果改为静态填充、渐变或烘焙背景，文字和形状保持原生",
+  "audited": true,
+  "overrideNote": "",
+  "colors": {
+    "background": "#292825",
+    "surface": "#3A3936",
+    "surfaceAlt": "#3A3731",
+    "text": "#F3F1EC",
+    "textMuted": "#A6A5A0",
+    "primary": "#9E927F",
+    "accent": "#9E927F",
+    "accent2": "#766C5C",
+    "textAccent": "#9E927F",
+    "rule": "#555451",
+    "onAccent": "#000000",
+    "onPrimary": "#000000",
+    "chart": [
+      "#9E927F",
+      "#766C5C",
+      "#9E927F",
+      "#BEB6A8",
+      "#A69F93",
+      "#555451"
+    ]
+  },
+  "typography": {
+    "display": 57,
+    "title": 44,
+    "metric": 37,
+    "subtitle": 25,
+    "body": 22,
+    "annotation": 13,
+    "heading_weight": 700,
+    "body_weight": 400,
+    "body_line_height": 1.35,
+    "title_stack": "Inter, \"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "body_stack": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "title_stack_ppt": "Arial, \"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "body_stack_ppt": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "title_family": "Inter",
+    "body_family": "PingFang SC"
+  },
+  "spacing": {
+    "margin": 72,
+    "gap": 32,
+    "gutter": 32,
+    "radius": 8,
+    "leading": 1.6
+  },
+  "behavior": "气质：安静、平衡、冥想；视觉语汇：石色底与细边框、单一主视觉、大块呼吸留白；装饰：stone-toned frame, tiny number and no ornamental clutter；构图：single-focus composition; secondary detail recedes",
+  "taboos": [
+    "避免为了填空堆内容",
+    "不要使用高饱和色",
+    "图片必须有观察价值"
+  ],
+  "mood": [
+    "安静",
+    "平衡",
+    "冥想"
+  ],
+  "visualVocabulary": [
+    "石色底与细边框",
+    "单一主视觉",
+    "大块呼吸留白"
+  ],
+  "coverStructure": "one object or sentence floating in a calm field",
+  "sectionStructure": "slow chapter cadence with a pause page when needed",
+  "titleTreatment": "small index plus generous serif/sans title",
+  "decorativeLanguage": "stone-toned frame, tiny number and no ornamental clutter",
+  "bodyCompositionBias": "single-focus composition; secondary detail recedes",
+  "fontWarnings": [],
+  "contrast": {
+    "body_contrast": 13.06,
+    "muted_contrast": 5.97,
+    "primary_contrast": 4.82,
+    "accent_contrast": 4.82,
+    "text_accent_contrast": 4.82
+  },
+  "warnings": [],
+  "decoration": {
+    "stroke": {
+      "width": 0,
+      "heavy": 0,
+      "hairline": 1,
+      "color": "rule"
+    },
+    "shadow": {
+      "dx": 0,
+      "dy": 6,
+      "color": "text",
+      "opacity": 0.12
+    },
+    "tag": {
+      "fill": "accent2",
+      "text": "onAccent",
+      "stroke": 0,
+      "height": 30,
+      "fontSize": 13,
+      "weight": 700,
+      "paddingX": 14
+    },
+    "rule": {
+      "thickness": 0,
+      "color": "rule"
+    },
+    "marker": {
+      "size": 8,
+      "stroke": 0,
+      "fill": "accent"
+    },
+    "bands": {
+      "footer": false,
+      "footerFill": "text",
+      "footerText": "background"
+    },
+    "chart": {
+      "barHeight": 14,
+      "barStroke": 0,
+      "fills": [
+        "accent",
+        "accent2"
+      ],
+      "valueSize": 14
+    },
+    "radius": 20,
+    "furniture": [
+      "tag",
+      "softShadow",
+      "marker"
+    ]
+  },
+  "components": {
+    "tag": {
+      "case": "none",
+      "weight": 600
+    },
+    "kpi": {
+      "fill": "surface",
+      "border": 0,
+      "borderColor": "rule",
+      "shadow": "soft",
+      "radius": 8,
+      "numberScale": 1,
+      "labelCase": "none"
+    },
+    "table": {
+      "headerFill": "surfaceAlt",
+      "headerText": "text",
+      "border": 0,
+      "borderColor": "rule",
+      "rowRule": 1,
+      "rowRuleColor": "rule",
+      "zebra": null,
+      "cellPadX": 14,
+      "cellPadY": 10,
+      "radius": 8
+    },
+    "chart": {
+      "barHeight": 12,
+      "barStroke": 0,
+      "barFill": [
+        "accent",
+        "textMuted"
+      ],
+      "axisRule": 1,
+      "axisColor": "rule",
+      "gridlines": 0,
+      "gridColor": "rule",
+      "valueSize": 14,
+      "valueWeight": 600,
+      "labelSize": 17
+    },
+    "line": {
+      "stroke": 3,
+      "dot": 6,
+      "dotFill": "background",
+      "dotStroke": 2,
+      "area": true,
+      "areaOpacity": 0.14
+    },
+    "callout": {
+      "fill": "accent",
+      "text": "onAccent",
+      "border": 0,
+      "borderColor": "rule",
+      "shadow": "soft",
+      "barWidth": 0,
+      "barColor": "accent",
+      "radius": 14
+    },
+    "list": {
+      "marker": "circle",
+      "markerSize": 8,
+      "markerStroke": 0,
+      "markerFill": "accent"
+    }
+  },
+  "tocStructure": "quiet vertical index with tiny numerals and wide spacing",
+  "heroStructure": "one stone, object or sentence in a still field"
+}

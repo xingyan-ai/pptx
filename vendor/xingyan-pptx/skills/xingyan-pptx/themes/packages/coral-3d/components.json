@@ -1,0 +1,66 @@
+{
+  "tag": {
+    "case": "none",
+    "weight": 600
+  },
+  "kpi": {
+    "fill": "surface",
+    "border": 0,
+    "borderColor": "rule",
+    "shadow": "soft",
+    "radius": 16,
+    "numberScale": 1,
+    "labelCase": "none"
+  },
+  "table": {
+    "headerFill": "surfaceAlt",
+    "headerText": "text",
+    "border": 0,
+    "borderColor": "rule",
+    "rowRule": 1,
+    "rowRuleColor": "rule",
+    "zebra": null,
+    "cellPadX": 14,
+    "cellPadY": 10,
+    "radius": 14
+  },
+  "chart": {
+    "barHeight": 14,
+    "barStroke": 0,
+    "barFill": [
+      "accent",
+      "surfaceAlt"
+    ],
+    "axisRule": 1,
+    "axisColor": "rule",
+    "gridlines": 0,
+    "gridColor": "rule",
+    "valueSize": 14,
+    "valueWeight": 600,
+    "labelSize": 17
+  },
+  "line": {
+    "stroke": 3,
+    "dot": 6,
+    "dotFill": "background",
+    "dotStroke": 2,
+    "area": true,
+    "areaOpacity": 0.14
+  },
+  "callout": {
+    "fill": "accent",
+    "text": "onAccent",
+    "border": 0,
+    "borderColor": "rule",
+    "shadow": "soft",
+    "barWidth": 0,
+    "barColor": "accent",
+    "radius": 16
+  },
+  "list": {
+    "marker": "circle",
+    "markerSize": 8,
+    "markerStroke": 0,
+    "markerFill": "accent"
+  }
+}

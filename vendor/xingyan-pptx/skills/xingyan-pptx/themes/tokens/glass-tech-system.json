@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "id": "glass-tech-system",
+  "name": "Glass Tech System 玻璃科技",
+  "description": "glass visual system",
+  "source": "ClawHive-authored style card; no external vendor assets included.",
+  "density": "standard",
+  "visualStyle": "glassmorphism",
+  "pptFidelity": "approximate",
+  "pptFallback": "玻璃模糊改为半透明填充 + 细边框，不使用 backdrop-filter",
+  "audited": true,
+  "overrideNote": "",
+  "colors": {
+    "background": "#000000",
+    "surface": "#141414",
+    "surfaceAlt": "#002E26",
+    "text": "#FFFFFF",
+    "textMuted": "#9E9E9E",
+    "primary": "#E8A715",
+    "accent": "#E8A715",
+    "accent2": "#00D2AE",
+    "textAccent": "#E8A715",
+    "rule": "#383838",
+    "onAccent": "#000000",
+    "onPrimary": "#000000",
+    "chart": [
+      "#E8A715",
+      "#00D2AE",
+      "#E8A715",
+      "#F1C86E",
+      "#61E3CD",
+      "#383838"
+    ]
+  },
+  "typography": {
+    "display": 55,
+    "title": 42,
+    "metric": 36,
+    "subtitle": 24,
+    "body": 21,
+    "annotation": 12,
+    "heading_weight": 700,
+    "body_weight": 400,
+    "body_line_height": 1.35,
+    "title_stack": "Inter, \"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "body_stack": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "title_stack_ppt": "Arial, \"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "body_stack_ppt": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "title_family": "Inter",
+    "body_family": "PingFang SC"
+  },
+  "spacing": {
+    "margin": 64,
+    "gap": 24,
+    "gutter": 28,
+    "radius": 6,
+    "leading": 1.5
+  },
+  "behavior": "气质：透明、冷静、系统化；视觉语汇：玻璃半透明面、细边框与模糊层、高亮蓝黄点；装饰：glass panels, blur edge and sparse luminous accents；构图：layering supports hierarchy; keep text surfaces opaque enough",
+  "taboos": [
+    "避免透明导致对比不足",
+    "不在每层叠加阴影",
+    "不可用玻璃替代层级"
+  ],
+  "mood": [
+    "透明",
+    "冷静",
+    "系统化"
+  ],
+  "visualVocabulary": [
+    "玻璃半透明面",
+    "细边框与模糊层",
+    "高亮蓝黄点"
+  ],
+  "coverStructure": "translucent title layer over a single system signal",
+  "sectionStructure": "chapters expose layers or states progressively",
+  "titleTreatment": "thin modern title with one bright status word",
+  "decorativeLanguage": "glass panels, blur edge and sparse luminous accents",
+  "bodyCompositionBias": "layering supports hierarchy; keep text surfaces opaque enough",
+  "fontWarnings": [],
+  "contrast": {
+    "body_contrast": 21,
+    "muted_contrast": 7.84,
+    "primary_contrast": 9.97,
+    "accent_contrast": 9.97,
+    "text_accent_contrast": 9.97
+  },
+  "warnings": [],
+  "decoration": {
+    "stroke": {
+      "width": 1,
+      "heavy": 2,
+      "hairline": 1,
+      "color": "rule"
+    },
+    "shadow": {
+      "dx": 0,
+      "dy": 0,
+      "color": "accent2",
+      "opacity": 0
+    },
+    "tag": {
+      "fill": "surfaceAlt",
+      "text": "text",
+      "stroke": 1,
+      "height": 28,
+      "fontSize": 12,
+      "weight": 600,
+      "paddingX": 12
+    },
+    "rule": {
+      "thickness": 1,
+      "color": "rule"
+    },
+    "marker": {
+      "size": 6,
+      "stroke": 0,
+      "fill": "accent"
+    },
+    "bands": {
+      "footer": false,
+      "footerFill": "text",
+      "footerText": "background"
+    },
+    "chart": {
+      "barHeight": 12,
+      "barStroke": 0,
+      "fills": [
+        "accent",
+        "accent2"
+      ],
+      "valueSize": 13
+    },
+    "radius": 16,
+    "furniture": [
+      "tag",
+      "rule",
+      "marker"
+    ]
+  },
+  "components": {
+    "tag": {
+      "case": "upper",
+      "weight": 600
+    },
+    "kpi": {
+      "fill": "surface",
+      "border": 1,
+      "borderColor": "accent2",
+      "shadow": "soft",
+      "radius": 16,
+      "numberScale": 1,
+      "labelCase": "none"
+    },
+    "table": {
+      "headerFill": "surfaceAlt",
+      "headerText": "text",
+      "border": 1,
+      "borderColor": "rule",
+      "rowRule": 1,
+      "rowRuleColor": "rule",
+      "zebra": null,
+      "cellPadX": 12,
+      "cellPadY": 9,
+      "radius": 14
+    },
+    "chart": {
+      "barHeight": 14,
+      "barStroke": 0,
+      "barFill": [
+        "accent",
+        "accent2"
+      ],
+      "axisRule": 1,
+      "axisColor": "rule",
+      "gridlines": 2,
+      "gridColor": "rule",
+      "valueSize": 14,
+      "valueWeight": 600,
+      "labelSize": 17
+    },
+    "line": {
+      "stroke": 2.5,
+      "dot": 6,
+      "dotFill": "background",
+      "dotStroke": 2,
+      "area": true,
+      "areaOpacity": 0.2
+    },
+    "callout": {
+      "fill": "surfaceAlt",
+      "text": "text",
+      "border": 1,
+      "borderColor": "rule",
+      "shadow": "soft",
+      "barWidth": 0,
+      "barColor": "accent",
+      "radius": 12
+    },
+    "list": {
+      "marker": "dot",
+      "markerSize": 7,
+      "markerStroke": 0,
+      "markerFill": "accent"
+    }
+  },
+  "tocStructure": "layered translucent rows that stack by depth into sections",
+  "heroStructure": "one translucent panel over a system signal with minimal copy"
+}

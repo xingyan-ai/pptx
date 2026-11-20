@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "template_id": "ink-bamboo",
+  "template_name": "Ink Bamboo 青绿水墨竹韵",
+  "template_version": "1.0.0",
+  "canvas": {
+    "width": 1280,
+    "height": 720
+  },
+  "source": "scaffold.html",
+  "layout_registry": "layout-registry.json",
+  "deck_schema": "deck.schema.json",
+  "targets": [
+    "html",
+    "pptx"
+  ],
+  "editable_kinds": [
+    "text",
+    "image",
+    "shape",
+    "line"
+  ],
+  "object_id_contract": "<slide-id>::<slot-id>",
+  "recommended_pages": [
+    8,
+    10
+  ],
+  "adaptive_composition": true,
+  "signature_compositions": [
+    "bamboo-negative-space-cover",
+    "vermilion-margin-judgement",
+    "scroll-photo-and-colophon",
+    "mountain-tier-stack"
+  ],
+  "page_role_roster": [
+    "cover",
+    "stats",
+    "cards",
+    "matrix",
+    "ink-statement",
+    "bamboo-process",
+    "image-scroll",
+    "ink-architecture",
+    "ink-quote",
+    "ink-closing"
+  ],
+  "theme": {
+    "background": "#EEF0E7",
+    "foreground": "#18352D",
+    "accent": "#2C6654",
+    "secondary": "#CFDDC6"
+  },
+  "themeTokens": {
+    "primary": "#2C6654",
+    "accent2": "#CFDDC6",
+    "rule": "#BFC7BE",
+    "fontTitle": "\"Songti SC\", \"Noto Serif SC\", \"SimSun\", serif",
+    "fontBody": "\"Noto Serif SC\", \"Songti SC\", \"SimSun\", serif"
+  },
+  "derivedFrom": "ink-bamboo"
+}

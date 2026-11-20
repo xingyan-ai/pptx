@@ -1,0 +1,27 @@
+:root {
+  --theme-bg: #F7FAF7;
+  --theme-surface: #FAFCFA;
+  --theme-surface-alt: #F3F9F4;
+  --theme-text: #173F2A;
+  --theme-text-muted: #6C8678;
+  --theme-primary: #DE0000;
+  --theme-accent: #DE0000;
+  --theme-text-accent: #DE0000;
+  --theme-accent-2: #E3F2E8;
+  --theme-rule: #C6D1CA;
+  --theme-on-accent: #FFFFFF;
+  --theme-on-primary: #FFFFFF;
+  --theme-font-title: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --theme-font-body: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  --theme-display: 55px;
+  --theme-title: 42px;
+  --theme-metric: 36px;
+  --theme-subtitle: 24px;
+  --theme-body: 21px;
+  --theme-annotation: 12px;
+  --theme-margin: 64px;
+  --theme-gap: 24px;
+  --theme-gutter: 28px;
+  --theme-radius: 6px;
+  --theme-leading: 1.5;
+}

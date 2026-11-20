@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "note": "按主题 id 覆盖 decorations.profiles.json 的字段；只写要改的部分，其余继承家族默认值。改完运行 node scripts/build-decorations.mjs。",
+  "overrides": {
+    "brutalist-acid": {
+      "chart": { "barHeight": 22, "barStroke": 3, "fills": ["accent", "surfaceAlt"], "valueSize": 16 },
+      "tag": { "fill": "accent", "text": "onAccent", "stroke": 3, "height": 32, "fontSize": 14, "weight": 800, "paddingX": 16 },
+      "rule": { "thickness": 4, "color": "text" },
+      "shadow": { "dx": 8, "dy": 8, "color": "text", "opacity": 1 },
+      "marker": { "size": 12, "stroke": 2, "fill": "accent" }
+    }
+  }
+}

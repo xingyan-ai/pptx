@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "template_id": "scatterbrain",
+  "template_name": "Scatterbrain 便利贴工作坊",
+  "template_version": "1.0.0",
+  "canvas": {
+    "width": 1280,
+    "height": 720
+  },
+  "source": "scaffold.html",
+  "layout_registry": "layout-registry.json",
+  "deck_schema": "deck.schema.json",
+  "targets": [
+    "html",
+    "pptx"
+  ],
+  "editable_kinds": [
+    "text",
+    "image",
+    "shape",
+    "line"
+  ],
+  "object_id_contract": "<slide-id>::<slot-id>",
+  "recommended_pages": [
+    8,
+    10
+  ],
+  "adaptive_composition": true,
+  "signature_compositions": [
+    "messy-desk-cover",
+    "affinity-wall",
+    "decision-dot-vote"
+  ],
+  "page_role_roster": [
+    "messy-desk-cover",
+    "workshop-question",
+    "raw-note-cloud",
+    "affinity-wall",
+    "journey-string",
+    "persona-polaroids",
+    "decision-dot-vote",
+    "prototype-strip",
+    "learning-board",
+    "next-session-card"
+  ],
+  "theme": {
+    "background": "#FFFFFF",
+    "foreground": "#000000",
+    "accent": "#E8A715",
+    "secondary": "#00D2AE"
+  },
+  "themeTokens": {
+    "primary": "#805C0C",
+    "accent2": "#00D2AE",
+    "rule": "#C7C7C7",
+    "fontTitle": "Inter, \"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "fontBody": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif"
+  },
+  "derivedFrom": "scatterbrain"
+}

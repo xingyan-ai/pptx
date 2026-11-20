@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "template_id": "portfolio-redgreen",
+  "template_name": "红绿创意作品集",
+  "template_version": "1.0.0",
+  "canvas": {
+    "width": 1280,
+    "height": 720
+  },
+  "source": "scaffold.html",
+  "layout_registry": "layout-registry.json",
+  "deck_schema": "deck.schema.json",
+  "targets": [
+    "html",
+    "pptx"
+  ],
+  "editable_kinds": [
+    "text",
+    "image",
+    "shape",
+    "line"
+  ],
+  "object_id_contract": "<slide-id>::<slot-id>",
+  "recommended_pages": [
+    8,
+    11
+  ],
+  "adaptive_composition": true,
+  "signature_compositions": [
+    "architectural-monograph-cover",
+    "section-drawing-spread",
+    "material-detail-grid"
+  ],
+  "page_role_roster": [
+    "architectural-monograph-cover",
+    "project-index",
+    "site-aerial",
+    "section-drawing-spread",
+    "plan-and-program",
+    "material-detail-grid",
+    "human-scale-photo",
+    "before-after-site",
+    "environmental-performance",
+    "architect-essay",
+    "project-credits"
+  ],
+  "theme": {
+    "background": "#F7F5F0",
+    "foreground": "#23251F",
+    "accent": "#CE544D",
+    "secondary": "#1F5C3A"
+  },
+  "themeTokens": {
+    "primary": "#CE544D",
+    "accent2": "#1F5C3A",
+    "rule": "#C8C7C2",
+    "fontTitle": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "fontBody": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif"
+  },
+  "derivedFrom": "pritzker-editorial"
+}

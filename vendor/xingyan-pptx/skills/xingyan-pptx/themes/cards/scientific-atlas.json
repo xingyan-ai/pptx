@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "id": "scientific-atlas",
+  "name": "Scientific Atlas 科学图谱",
+  "description": "图谱标注与青绿蓝编码的严谨科学风，适合研究、实验与技术解释",
+  "palette": {
+    "background": "#F4F6F3",
+    "text": "#172A31",
+    "accent": "#15A47A",
+    "accentSecondary": "#4978D1",
+    "rule": "#C3C9C8"
+  },
+  "typography": {
+    "heading": {
+      "family": "Inter",
+      "weight": 700,
+      "sizePx": 38
+    },
+    "body": {
+      "family": "PingFang SC",
+      "weight": 400,
+      "sizePx": 20,
+      "lineHeight": 1.35
+    }
+  },
+  "mood": [
+    "严谨",
+    "探索",
+    "可验证"
+  ],
+  "visualVocabulary": [
+    "图谱式标注",
+    "青绿与蓝色编码",
+    "坐标/刻度视觉"
+  ],
+  "taboos": [
+    "不可伪造实验数据",
+    "图表必须有单位",
+    "不要用线框替代解释"
+  ],
+  "coverStructure": "title plus a labeled specimen/chart anchor",
+  "sectionStructure": "chapters move from question to method to finding",
+  "titleTreatment": "precise sans title with figure-style numbering",
+  "decorativeLanguage": "ticks, callouts, coordinates and measured lines",
+  "bodyCompositionBias": "diagram or data should carry the page, prose explains it",
+  "density": {
+    "default": "dense",
+    "guidance": "信息可较密，但每页仍保留一个主判断和清晰证据路径"
+  },
+  "tocStructure": "labeled contents plate with specimen numbering and coordinates",
+  "heroStructure": "one measured figure or specimen with callouts and a scale bar"
+}

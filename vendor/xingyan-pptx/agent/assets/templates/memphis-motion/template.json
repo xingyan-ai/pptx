@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "template_id": "memphis-motion",
+  "template_name": "Memphis Motion 孟菲斯节奏",
+  "template_version": "1.0.0",
+  "canvas": {
+    "width": 1280,
+    "height": 720
+  },
+  "source": "scaffold.html",
+  "layout_registry": "layout-registry.json",
+  "deck_schema": "deck.schema.json",
+  "targets": [
+    "html",
+    "pptx"
+  ],
+  "editable_kinds": [
+    "text",
+    "image",
+    "shape",
+    "line"
+  ],
+  "object_id_contract": "<slide-id>::<slot-id>",
+  "recommended_pages": [
+    8,
+    10
+  ],
+  "adaptive_composition": true,
+  "signature_compositions": [
+    "fruit-sticker-cover",
+    "flavour-color-wall",
+    "pop-up-city-map"
+  ],
+  "page_role_roster": [
+    "fruit-sticker-cover",
+    "flavour-color-wall",
+    "four-can-lineup",
+    "taste-radar",
+    "pop-up-city-map",
+    "social-sticker-board",
+    "channel-blocks",
+    "launch-calendar",
+    "trial-score",
+    "summer-toast-close"
+  ],
+  "theme": {
+    "background": "#FFF4D8",
+    "foreground": "#1E1B35",
+    "accent": "#FF4F70",
+    "secondary": "#2DB9B0"
+  },
+  "themeTokens": {
+    "primary": "#9A3855",
+    "accent2": "#2DB9B0",
+    "rule": "#CEC4B4",
+    "fontTitle": "Inter, \"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "fontBody": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif"
+  },
+  "derivedFrom": "summer-dopamine"
+}

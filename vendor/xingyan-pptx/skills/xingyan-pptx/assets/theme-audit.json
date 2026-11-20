@@ -1,0 +1,350 @@
+{
+  "count": 21,
+  "passed": 21,
+  "review": [],
+  "manualReviewed": [
+    "brutalist-acid",
+    "coral-3d",
+    "cyber-purple-genz",
+    "neon-green-wireframe",
+    "portfolio-redgreen"
+  ],
+  "themes": [
+    {
+      "id": "8-bit-orbit",
+      "name": "8-Bit Orbit 像素轨道",
+      "status": "pass",
+      "issues": [],
+      "overrideNote": "",
+      "pptFidelity": "approximate",
+      "visualStyle": "pixel-art",
+      "contrast": {
+        "body_contrast": 19.31,
+        "muted_contrast": 7.64,
+        "primary_contrast": 12.81,
+        "accent_contrast": 12.81,
+        "text_accent_contrast": 12.81
+      }
+    },
+    {
+      "id": "brutalist-acid",
+      "name": "Brutalist Acid 酸性粗野主义",
+      "status": "pass",
+      "issues": [],
+      "overrideNote": "酸性黄只做填充，文字强调改用推导出的深橄榄 primary；青色作为第二块面。",
+      "pptFidelity": "native",
+      "visualStyle": "brutalist",
+      "contrast": {
+        "body_contrast": 17.63,
+        "muted_contrast": 5.48,
+        "primary_contrast": 3.2,
+        "accent_contrast": 1.02,
+        "text_accent_contrast": 3.2
+      }
+    },
+    {
+      "id": "chrome-future",
+      "name": "Chrome Future 银铬未来",
+      "status": "pass",
+      "issues": [],
+      "overrideNote": "",
+      "pptFidelity": "approximate",
+      "visualStyle": "glassmorphism",
+      "contrast": {
+        "body_contrast": 17.07,
+        "muted_contrast": 4.93,
+        "primary_contrast": 3.85,
+        "accent_contrast": 3.85,
+        "text_accent_contrast": 3.85
+      }
+    },
+    {
+      "id": "coral-3d",
+      "name": "珊瑚三维",
+      "status": "pass",
+      "issues": [],
+      "overrideNote": "珊瑚粉只做大面积块面，文字强调使用 primary；炭黑作为第二结构色。",
+      "pptFidelity": "approximate",
+      "visualStyle": "soft-rounded",
+      "contrast": {
+        "body_contrast": 11.2,
+        "muted_contrast": 3.69,
+        "primary_contrast": 3.12,
+        "accent_contrast": 1.41,
+        "text_accent_contrast": 3.12
+      }
+    },
+    {
+      "id": "cyber-purple-genz",
+      "name": "赛博紫青年",
+      "status": "pass",
+      "issues": [],
+      "overrideNote": "原卡只有一层浅青，和“紫粉青”描述不符；补紫色主色、粉色强调，浅青保留为块面。",
+      "pptFidelity": "approximate",
+      "visualStyle": "dark-tech",
+      "contrast": {
+        "body_contrast": 16.01,
+        "muted_contrast": 4.67,
+        "primary_contrast": 4.86,
+        "accent_contrast": 2.75,
+        "text_accent_contrast": 4.86
+      }
+    },
+    {
+      "id": "electric-studio",
+      "name": "Electric Studio 电气工作室",
+      "status": "pass",
+      "issues": [],
+      "overrideNote": "",
+      "pptFidelity": "approximate",
+      "visualStyle": "swiss-minimal",
+      "contrast": {
+        "body_contrast": 16.73,
+        "muted_contrast": 5.08,
+        "primary_contrast": 5.71,
+        "accent_contrast": 2.31,
+        "text_accent_contrast": 5.71
+      }
+    },
+    {
+      "id": "financial-bluegreen-modern",
+      "name": "冷蓝青绿月报",
+      "status": "pass",
+      "issues": [],
+      "overrideNote": "",
+      "pptFidelity": "approximate",
+      "visualStyle": "data-journalism",
+      "contrast": {
+        "body_contrast": 15.69,
+        "muted_contrast": 4.79,
+        "primary_contrast": 5.17,
+        "accent_contrast": 5.17,
+        "text_accent_contrast": 5.17
+      }
+    },
+    {
+      "id": "glass-tech-system",
+      "name": "Glass Tech System 玻璃科技",
+      "status": "pass",
+      "issues": [],
+      "overrideNote": "",
+      "pptFidelity": "approximate",
+      "visualStyle": "glassmorphism",
+      "contrast": {
+        "body_contrast": 21,
+        "muted_contrast": 7.84,
+        "primary_contrast": 9.97,
+        "accent_contrast": 9.97,
+        "text_accent_contrast": 9.97
+      }
+    },
+    {
+      "id": "global-capital-data-journalism",
+      "name": "Capital Journal 全球资本新闻",
+      "status": "pass",
+      "issues": [],
+      "overrideNote": "",
+      "pptFidelity": "native",
+      "visualStyle": "data-journalism",
+      "contrast": {
+        "body_contrast": 14.27,
+        "muted_contrast": 4.54,
+        "primary_contrast": 7.17,
+        "accent_contrast": 7.17,
+        "text_accent_contrast": 7.17
+      }
+    },
+    {
+      "id": "ink-bamboo",
+      "name": "Ink Bamboo 青绿水墨竹韵",
+      "status": "pass",
+      "issues": [],
+      "overrideNote": "",
+      "pptFidelity": "native",
+      "visualStyle": "ink-wash",
+      "contrast": {
+        "body_contrast": 11.51,
+        "muted_contrast": 3.85,
+        "primary_contrast": 5.82,
+        "accent_contrast": 5.82,
+        "text_accent_contrast": 5.82
+      }
+    },
+    {
+      "id": "japanese-paper",
+      "name": "Japanese Paper 和纸秩序",
+      "status": "pass",
+      "issues": [],
+      "overrideNote": "",
+      "pptFidelity": "approximate",
+      "visualStyle": "ink-notes",
+      "contrast": {
+        "body_contrast": 15.07,
+        "muted_contrast": 4.57,
+        "primary_contrast": 5.28,
+        "accent_contrast": 5.28,
+        "text_accent_contrast": 5.28
+      }
+    },
+    {
+      "id": "memphis-motion",
+      "name": "Memphis Motion 孟菲斯节奏",
+      "status": "pass",
+      "issues": [],
+      "overrideNote": "",
+      "pptFidelity": "approximate",
+      "visualStyle": "memphis",
+      "contrast": {
+        "body_contrast": 15.18,
+        "muted_contrast": 4.59,
+        "primary_contrast": 6.25,
+        "accent_contrast": 2.9,
+        "text_accent_contrast": 6.25
+      }
+    },
+    {
+      "id": "minimal-ink",
+      "name": "极简水墨",
+      "status": "pass",
+      "issues": [],
+      "overrideNote": "",
+      "pptFidelity": "approximate",
+      "visualStyle": "ink-wash",
+      "contrast": {
+        "body_contrast": 17.32,
+        "muted_contrast": 5.11,
+        "primary_contrast": 9.26,
+        "accent_contrast": 9.26,
+        "text_accent_contrast": 9.26
+      }
+    },
+    {
+      "id": "neon-3d",
+      "name": "Neon 3D 霓虹立体",
+      "status": "pass",
+      "issues": [],
+      "overrideNote": "",
+      "pptFidelity": "approximate",
+      "visualStyle": "dark-tech",
+      "contrast": {
+        "body_contrast": 20.36,
+        "muted_contrast": 7.79,
+        "primary_contrast": 15.09,
+        "accent_contrast": 15.09,
+        "text_accent_contrast": 15.09
+      }
+    },
+    {
+      "id": "neon-green-wireframe",
+      "name": "荧光绿线框",
+      "status": "pass",
+      "issues": [],
+      "overrideNote": "原卡两个强调色相同；补紫色作为线框次级信号。",
+      "pptFidelity": "approximate",
+      "visualStyle": "blueprint",
+      "contrast": {
+        "body_contrast": 17.99,
+        "muted_contrast": 5.23,
+        "primary_contrast": 5.94,
+        "accent_contrast": 2.35,
+        "text_accent_contrast": 5.94
+      }
+    },
+    {
+      "id": "pixel-pop",
+      "name": "Pixel Pop 像素波普",
+      "status": "pass",
+      "issues": [],
+      "overrideNote": "",
+      "pptFidelity": "native",
+      "visualStyle": "pixel-art",
+      "contrast": {
+        "body_contrast": 21,
+        "muted_contrast": 6.19,
+        "primary_contrast": 6.08,
+        "accent_contrast": 2.11,
+        "text_accent_contrast": 6.08
+      }
+    },
+    {
+      "id": "portfolio-redgreen",
+      "name": "红绿创意作品集",
+      "status": "pass",
+      "issues": [],
+      "overrideNote": "原卡两个强调色相同；补深绿形成红绿对照。",
+      "pptFidelity": "approximate",
+      "visualStyle": "editorial",
+      "contrast": {
+        "body_contrast": 14.22,
+        "muted_contrast": 4.32,
+        "primary_contrast": 3.86,
+        "accent_contrast": 3.86,
+        "text_accent_contrast": 3.86
+      }
+    },
+    {
+      "id": "rural-green",
+      "name": "田园政企绿色",
+      "status": "pass",
+      "issues": [],
+      "overrideNote": "",
+      "pptFidelity": "approximate",
+      "visualStyle": "editorial",
+      "contrast": {
+        "body_contrast": 11.21,
+        "muted_contrast": 3.75,
+        "primary_contrast": 4.86,
+        "accent_contrast": 4.86,
+        "text_accent_contrast": 4.86
+      }
+    },
+    {
+      "id": "scatterbrain",
+      "name": "Scatterbrain 便利贴工作坊",
+      "status": "pass",
+      "issues": [],
+      "overrideNote": "",
+      "pptFidelity": "approximate",
+      "visualStyle": "zine",
+      "contrast": {
+        "body_contrast": 21,
+        "muted_contrast": 6.19,
+        "primary_contrast": 6.08,
+        "accent_contrast": 2.11,
+        "text_accent_contrast": 6.08
+      }
+    },
+    {
+      "id": "scientific-atlas",
+      "name": "Scientific Atlas 科学图谱",
+      "status": "pass",
+      "issues": [],
+      "overrideNote": "",
+      "pptFidelity": "approximate",
+      "visualStyle": "data-journalism",
+      "contrast": {
+        "body_contrast": 13.69,
+        "muted_contrast": 4.2,
+        "primary_contrast": 5.74,
+        "accent_contrast": 2.92,
+        "text_accent_contrast": 5.74
+      }
+    },
+    {
+      "id": "zen-stone",
+      "name": "Zen Stone 静石留白空间",
+      "status": "pass",
+      "issues": [],
+      "overrideNote": "",
+      "pptFidelity": "native",
+      "visualStyle": "soft-rounded",
+      "contrast": {
+        "body_contrast": 13.06,
+        "muted_contrast": 5.97,
+        "primary_contrast": 4.82,
+        "accent_contrast": 4.82,
+        "text_accent_contrast": 4.82
+      }
+    }
+  ]
+}

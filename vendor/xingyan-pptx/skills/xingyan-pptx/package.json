@@ -1,0 +1,37 @@
+{
+  "name": "zhongtai-pptx",
+  "version": "1.0.38",
+  "private": true,
+  "type": "module",
+  "description": "Outline-first HTML / PPTX deck workflow for ClawHive: a user-editable outline drives the story, a bundled engine renders it, and theme overlays are visual-only. Supports create, beautify and edit.",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "self:check": "node scripts/self-check.mjs --smoke",
+    "outline:check": "node scripts/outline-check.mjs",
+    "outline:project": "node scripts/outline-to-spec.mjs",
+    "theme:recommend": "node scripts/theme-select.mjs recommend",
+    "theme:choose": "node scripts/theme-select.mjs choose",
+    "theme:pick": "node scripts/theme-picker-server.mjs",
+    "theme:apply": "node scripts/apply-theme.mjs",
+    "theme:decorations": "node scripts/build-decorations.mjs",
+    "theme:furniture": "node scripts/theme-furniture.mjs",
+    "check:spec": "node scripts/check-design-spec.mjs",
+    "check:fidelity": "node scripts/check-theme-fidelity.mjs",
+    "html": "node scripts/svg-deck-to-html.mjs",
+    "pptx": "node scripts/pptx-backend-client.mjs",
+    "audit": "node scripts/audit-themes.mjs",
+    "check:inputs": "node scripts/check-inputs.mjs",
+    "init": "node scripts/init-project.mjs",
+    "theme:components": "node scripts/build-components.mjs",
+    "fonts:check": "node scripts/check-fonts.mjs",
+    "compose": "node scripts/compose-deck.mjs",
+    "compose:check": "node scripts/compose-deck.mjs --check",
+    "source:extract": "node scripts/extract-source.mjs",
+    "build": "node scripts/build-deck.mjs",
+    "fill:brand": "node scripts/fill-brand-contract.mjs",
+    "core:prepare": "node scripts/prepare-core-project.mjs",
+    "core:compose": "node scripts/compose-core.mjs"
+  }
+}

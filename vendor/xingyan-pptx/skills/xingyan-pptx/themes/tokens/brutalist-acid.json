@@ -1,0 +1,211 @@
+{
+  "schemaVersion": 1,
+  "id": "brutalist-acid",
+  "name": "Brutalist Acid 酸性粗野主义",
+  "description": "超大文字、酸性撞色、粗黑边与硬投影",
+  "source": "ClawHive-authored style card; no external vendor assets included.",
+  "density": "standard",
+  "visualStyle": "brutalist",
+  "pptFidelity": "native",
+  "pptFallback": "复杂 CSS 效果改为静态填充、渐变或烘焙背景，文字和形状保持原生",
+  "audited": true,
+  "overrideNote": "酸性黄只做填充，文字强调改用推导出的深橄榄 primary；青色作为第二块面。",
+  "colors": {
+    "background": "#F4F1E8",
+    "surface": "#F8F6F1",
+    "surfaceAlt": "#D1F1E7",
+    "text": "#090909",
+    "textMuted": "#62615E",
+    "primary": "#7A9004",
+    "accent": "#D7FF00",
+    "accent2": "#2FF3E0",
+    "textAccent": "#7A9004",
+    "rule": "#C0BEB7",
+    "onAccent": "#000000",
+    "onPrimary": "#000000",
+    "chart": [
+      "#D7FF00",
+      "#2FF3E0",
+      "#7A9004",
+      "#89A203",
+      "#219A8E",
+      "#C0BEB7"
+    ]
+  },
+  "typography": {
+    "display": 55,
+    "title": 42,
+    "metric": 36,
+    "subtitle": 24,
+    "body": 21,
+    "annotation": 12,
+    "heading_weight": 800,
+    "body_weight": 400,
+    "body_line_height": 1.35,
+    "title_stack": "\"Arial Black\", Arial, \"PingFang SC\", sans-serif",
+    "body_stack": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "title_stack_ppt": "\"Arial Black\", Arial, \"PingFang SC\", sans-serif",
+    "body_stack_ppt": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "title_family": "Arial Black",
+    "body_family": "PingFang SC"
+  },
+  "spacing": {
+    "margin": 64,
+    "gap": 24,
+    "gutter": 28,
+    "radius": 6,
+    "leading": 1.5
+  },
+  "behavior": "气质：大胆、挑衅、年轻；视觉语汇：酸性色块、粗黑描边、硬投影与超大字；装饰：bold borders, cutout blocks and one hard shadow；构图：asymmetric text-to-evidence scale; let one object dominate",
+  "taboos": [
+    "不要把每页都做成海报",
+    "避免低对比荧光字",
+    "装饰不能替代关系"
+  ],
+  "mood": [
+    "大胆",
+    "挑衅",
+    "年轻"
+  ],
+  "visualVocabulary": [
+    "酸性色块",
+    "粗黑描边",
+    "硬投影与超大字"
+  ],
+  "coverStructure": "single dominant statement with an offset visual counterpoint",
+  "sectionStructure": "hard chapter breaks with a short provocation",
+  "titleTreatment": "oversized black title with one acid word",
+  "decorativeLanguage": "bold borders, cutout blocks and one hard shadow",
+  "bodyCompositionBias": "asymmetric text-to-evidence scale; let one object dominate",
+  "fontWarnings": [],
+  "contrast": {
+    "body_contrast": 17.63,
+    "muted_contrast": 5.48,
+    "primary_contrast": 3.2,
+    "accent_contrast": 1.02,
+    "text_accent_contrast": 3.2
+  },
+  "warnings": [],
+  "decoration": {
+    "stroke": {
+      "width": 3,
+      "heavy": 6,
+      "hairline": 1,
+      "color": "text"
+    },
+    "shadow": {
+      "dx": 8,
+      "dy": 8,
+      "color": "text",
+      "opacity": 1
+    },
+    "tag": {
+      "fill": "accent",
+      "text": "onAccent",
+      "stroke": 3,
+      "height": 32,
+      "fontSize": 14,
+      "weight": 800,
+      "paddingX": 16
+    },
+    "rule": {
+      "thickness": 4,
+      "color": "text"
+    },
+    "marker": {
+      "size": 12,
+      "stroke": 2,
+      "fill": "accent"
+    },
+    "bands": {
+      "footer": false,
+      "footerFill": "text",
+      "footerText": "background"
+    },
+    "chart": {
+      "barHeight": 22,
+      "barStroke": 3,
+      "fills": [
+        "accent",
+        "surfaceAlt"
+      ],
+      "valueSize": 16
+    },
+    "radius": 0,
+    "furniture": [
+      "tag",
+      "rule",
+      "marker",
+      "hardShadow",
+      "offsetBlock"
+    ]
+  },
+  "components": {
+    "tag": {
+      "case": "upper",
+      "weight": 800
+    },
+    "kpi": {
+      "fill": "surface",
+      "border": 3,
+      "borderColor": "text",
+      "shadow": "hard",
+      "radius": 0,
+      "numberScale": 1.05,
+      "labelCase": "upper"
+    },
+    "table": {
+      "headerFill": "text",
+      "headerText": "background",
+      "border": 3,
+      "borderColor": "text",
+      "rowRule": 3,
+      "rowRuleColor": "text",
+      "zebra": null,
+      "cellPadX": 16,
+      "cellPadY": 11,
+      "radius": 0
+    },
+    "chart": {
+      "barHeight": 22,
+      "barStroke": 3,
+      "barFill": [
+        "accent",
+        "surfaceAlt"
+      ],
+      "axisRule": 2,
+      "axisColor": "text",
+      "gridlines": 0,
+      "gridColor": "rule",
+      "valueSize": 16,
+      "valueWeight": 800,
+      "labelSize": 18
+    },
+    "line": {
+      "stroke": 5,
+      "dot": 8,
+      "dotFill": "background",
+      "dotStroke": 2,
+      "area": false,
+      "areaOpacity": 0
+    },
+    "callout": {
+      "fill": "accent",
+      "text": "onAccent",
+      "border": 3,
+      "borderColor": "text",
+      "shadow": "hard",
+      "barWidth": 0,
+      "barColor": "accent",
+      "radius": 0
+    },
+    "list": {
+      "marker": "square",
+      "markerSize": 12,
+      "markerStroke": 2,
+      "markerFill": "accent"
+    }
+  },
+  "tocStructure": "stacked index slabs with oversized numerals and one acid highlight",
+  "heroStructure": "one huge statement block with a hard shadow and a single counterweight shape"
+}

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "id": "minimal-ink",
+  "name": "极简水墨",
+  "description": "黑白灰墨迹与深绿锚点的极简艺术风，适合研究、文化与作品展示",
+  "palette": {
+    "background": "#F5F5F5",
+    "text": "#111111",
+    "accent": "#244842",
+    "accentSecondary": "#FFFFFF",
+    "rule": "#C3C3C3"
+  },
+  "typography": {
+    "heading": {
+      "family": "Noto Serif SC",
+      "weight": 700,
+      "sizePx": 44
+    },
+    "body": {
+      "family": "Songti SC",
+      "weight": 400,
+      "sizePx": 22,
+      "lineHeight": 1.35
+    }
+  },
+  "mood": [
+    "极简",
+    "留白",
+    "艺术"
+  ],
+  "visualVocabulary": [
+    "黑白灰墨迹",
+    "单一深绿锚点",
+    "微小几何标记"
+  ],
+  "taboos": [
+    "避免把水墨当背景贴图",
+    "保持单一主视觉",
+    "正文不使用浅灰低对比"
+  ],
+  "coverStructure": "small title and one ink mark occupy a large calm field",
+  "sectionStructure": "chapters are quiet pauses with occasional dense evidence",
+  "titleTreatment": "black/gray title with a single deep-green cue",
+  "decorativeLanguage": "ink texture, hairline geometry and deliberate empty space",
+  "bodyCompositionBias": "one object or relationship per page; text remains crisp",
+  "density": {
+    "default": "spacious",
+    "guidance": "优先单一主视觉与呼吸留白，次要信息退居背景"
+  },
+  "tocStructure": "sparse list with hairline rules and one ink dot per chapter",
+  "heroStructure": "one mark or short sentence centered in a large calm field"
+}

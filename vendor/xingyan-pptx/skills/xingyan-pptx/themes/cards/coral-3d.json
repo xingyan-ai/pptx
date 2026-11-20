@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "id": "coral-3d",
+  "name": "珊瑚三维",
+  "description": "珊瑚粉渐变 + 3D 几何悬浮装饰的轻商务作品集风格——冷钢灰文字与黑白图片压舱，柔粉色块承担情绪表达",
+  "palette": {
+    "background": "#FFFFFF",
+    "text": "#3B3B3B",
+    "accent": "#FAD0C4",
+    "accentSecondary": "#3B3B3B",
+    "rule": "#D4D4D4"
+  },
+  "typography": {
+    "heading": {
+      "family": "Calibri",
+      "weight": 700,
+      "sizePx": 44
+    },
+    "body": {
+      "family": "PingFang SC",
+      "weight": 400,
+      "sizePx": 22,
+      "lineHeight": 1.35
+    }
+  },
+  "mood": [
+    "温和",
+    "现代",
+    "轻商务"
+  ],
+  "visualVocabulary": [
+    "珊瑚渐变",
+    "冷灰压舱文字",
+    "少量悬浮几何"
+  ],
+  "taboos": [
+    "避免粉色覆盖整页",
+    "3D装饰需让出数据",
+    "不要使用廉价高光"
+  ],
+  "coverStructure": "soft coral title plane with one floating dimensional cue",
+  "sectionStructure": "chapters move through warm visual beats and cool evidence",
+  "titleTreatment": "friendly sans title with coral highlight",
+  "decorativeLanguage": "rounded gradient shape, shadowed geometry and steel-gray line",
+  "bodyCompositionBias": "3D cue is secondary; content relationship leads",
+  "density": {
+    "default": "spacious",
+    "guidance": "优先单一主视觉与呼吸留白，次要信息退居背景"
+  },
+  "tocStructure": "floating rounded index cards in two columns, warm to cool by chapter",
+  "heroStructure": "one soft dimensional object carrying a single oversized figure"
+}

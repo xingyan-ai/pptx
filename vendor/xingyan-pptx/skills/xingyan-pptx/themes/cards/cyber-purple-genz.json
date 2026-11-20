@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "id": "cyber-purple-genz",
+  "name": "赛博紫青年",
+  "description": "紫粉青色块与粗黑标题的青年潮流风，适合校园、社媒和轻量传播",
+  "palette": {
+    "background": "#FBFAFF",
+    "text": "#23183A",
+    "accent": "#DAEFF0",
+    "accentSecondary": "#DAEFF0",
+    "rule": "#CBC8D4"
+  },
+  "typography": {
+    "heading": {
+      "family": "Noto Sans SC",
+      "weight": 700,
+      "sizePx": 42
+    },
+    "body": {
+      "family": "PingFang SC",
+      "weight": 400,
+      "sizePx": 21,
+      "lineHeight": 1.35
+    }
+  },
+  "mood": [
+    "潮流",
+    "社交",
+    "轻快"
+  ],
+  "visualVocabulary": [
+    "紫粉青色块",
+    "粗重黑标题",
+    "贴纸式短标签"
+  ],
+  "taboos": [
+    "避免把每页变成社媒海报",
+    "荧光字需有白/黑底",
+    "不要使用无关表情符号"
+  ],
+  "coverStructure": "social-first title sticker plus one bold content visual",
+  "sectionStructure": "chapters change sticker/color rhythm around key moments",
+  "titleTreatment": "heavy black title with purple/pink label",
+  "decorativeLanguage": "soft gradient blocks, sticker outline and micro-caption",
+  "bodyCompositionBias": "short, scannable groups; preserve a calm reading column",
+  "density": {
+    "default": "standard",
+    "guidance": "保持中等信息量，让主判断、证据和行动层级拉开"
+  },
+  "tocStructure": "sticker-tagged index cards with color-coded chapters and micro captions",
+  "heroStructure": "one bold sticker statement over a gradient block, tiny caption below"
+}

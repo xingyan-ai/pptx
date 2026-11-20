@@ -1,0 +1,476 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clawhive/zhongtai-pptx/outline.schema.json",
+  "title": "ClawHive Deck Studio Outline",
+  "description": "The editable story of a deck. ClawHive renders and edits this file; zhongtai-pptx projects it into design_spec.md §IX verbatim.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schemaVersion",
+    "revision",
+    "status",
+    "contract",
+    "slides"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "confirmed"
+      ]
+    },
+    "source": {
+      "enum": [
+        "agent",
+        "user"
+      ],
+      "description": "Who last wrote this file. The client page writes 'user'."
+    },
+    "confirmedAt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "contract": {
+      "type": "object",
+      "required": [
+        "primaryLanguage",
+        "canvas"
+      ],
+      "properties": {
+        "projectName": {
+          "type": "string"
+        },
+        "workMode": {
+          "enum": [
+            "create",
+            "beautify",
+            "edit"
+          ],
+          "default": "create",
+          "description": "Where the outline comes from and which pages get rewritten. create = from scratch; beautify = 1:1 from an existing deck, verbatim; edit = existing deck plus marked changes."
+        },
+        "sourceSlideCount": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "beautify only: slide count of the source deck. The outline must match it exactly."
+        },
+        "editScope": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "edit only: ids of the pages that change. Must match the slides marked changed."
+        },
+        "primaryLanguage": {
+          "type": "string",
+          "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})+$",
+          "description": "Canonical BCP-47 with script or region. 'zh-CN', never 'zh'."
+        },
+        "scene": {
+          "type": "string",
+          "description": "Product-level scene preset. Canonical values: 通用汇报 / 竞品调研 / 销售汇报 / 客户方案 / 行业洞察 / 经营复盘 / 培训赋能 / 产品发布 / 客户案例. Old labels (工作汇报, 方案提案, 研究分析, 培训讲解, 发布介绍) are normalized to them. A scene fills contract defaults and suggests a mode; it never locks mode or readingMode."
+        },
+        "audience": {
+          "type": "string"
+        },
+        "communicationIntent": {
+          "type": "string"
+        },
+        "audienceOutcome": {
+          "type": "string"
+        },
+        "coreMessage": {
+          "type": "string"
+        },
+        "deliveryContext": {
+          "type": "string"
+        },
+        "artifactAfterlife": {
+          "type": "string"
+        },
+        "contentDivergence": {
+          "type": "string",
+          "description": "Free text: how far the deck may reshape the source. Blank means balanced."
+        },
+        "mode": {
+          "enum": [
+            "pyramid",
+            "narrative",
+            "instructional",
+            "showcase",
+            "briefing"
+          ],
+          "description": "Narrative skeleton, one per deck. The scene preset recommends one; the agent may override when the communication intent or audience outcome calls for a different argument strategy."
+        },
+        "modeBehavior": {
+          "type": "string"
+        },
+        "readingMode": {
+          "enum": [
+            "text",
+            "balanced",
+            "presentation"
+          ],
+          "description": "How the deck carries information. text = read without a presenter (reports, reviews, research); balanced = business review with a presenter; presentation = stage/launch. When omitted, the scene preset supplies the default. An explicit value wins, but the checker warns when it differs from the scene default."
+        },
+        "pageBudget": {
+          "enum": [
+            "compact",
+            "standard",
+            "detailed"
+          ],
+          "description": "Optional product-level length hint: compact 5–8 pages, standard 9–15, detailed 16–24. It is a hint, not a hard gate; the engine still treats page count as the user's call."
+        },
+        "canvas": {
+          "type": "string",
+          "default": "ppt169"
+        },
+        "densityDefault": {
+          "enum": [
+            "rich",
+            "standard",
+            "lean"
+          ],
+          "default": "standard",
+          "description": "Drafting default used for pages that do not set their own density."
+        },
+        "themeId": {
+          "type": "string",
+          "description": "Chosen up front, applied as a visual overlay only after §IX is locked."
+        },
+        "speakerNotes": {
+          "enum": [
+            "enabled",
+            "disabled"
+          ],
+          "description": "Whether speaker notes are part of the deliverable. The projection writes this into §I; keep §X consistent."
+        }
+      }
+    },
+    "slides": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "role",
+          "title",
+          "coreMessage"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$",
+            "description": "Stable across reordering. Page numbers are derived, never stored."
+          },
+          "role": {
+            "enum": [
+              "cover",
+              "toc",
+              "section",
+              "hero",
+              "content",
+              "ending"
+            ],
+            "description": "cover = title page; toc = table of contents; section = chapter divider; hero = single-message impact page (projects to content with a hero moment); content = regular page; ending = closing."
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "coreMessage": {
+            "type": "string"
+          },
+          "audienceMove": {
+            "type": "string"
+          },
+          "points": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "What the page actually says. Each item is a full claim or short paragraph, not a keyword; long strings are allowed. This is the user's content, not the agent's."
+          },
+          "evidence": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            ],
+            "description": "The facts, numbers, quotes or observations that support the page's claims. One item per piece of evidence."
+          },
+          "soWhat": {
+            "type": "string",
+            "description": "What the evidence means for the reader: the implication, tension or judgment. Not a restatement of the claim."
+          },
+          "action": {
+            "type": "string",
+            "description": "What the audience should do next because of this page, when the page asks for a decision or action."
+          },
+          "source": {
+            "type": "string",
+            "description": "Visible provenance line: source, date and definition/measurement basis. Every quantitative page should carry one."
+          },
+          "relationships": {
+            "type": "string",
+            "description": "Optional semantic units and how they relate; 'none' when the page has no relationship to draw."
+          },
+          "composition": {
+            "type": "string",
+            "description": "Optional macro composition direction. Non-binding: the executor may adapt or replace it."
+          },
+          "density": {
+            "enum": [
+              "rich",
+              "standard",
+              "lean"
+            ],
+            "description": "How much this page carries. Drives the drafting length, not the type size."
+          },
+          "rhythm": {
+            "enum": [
+              "anchor",
+              "dense",
+              "breathing"
+            ],
+            "readOnly": true,
+            "description": "Derived from role and density. Written to spec_lock.md page_rhythm."
+          },
+          "draftState": {
+            "enum": [
+              "ready",
+              "needs-draft"
+            ]
+          },
+          "changed": {
+            "type": "boolean",
+            "description": "edit only: true when this page is rewritten. Unchanged pages keep the source deck."
+          },
+          "changeNote": {
+            "type": "string",
+            "description": "edit only: what changes on this page and why. Required on every changed page."
+          },
+          "sourceRefs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "template": {
+            "enum": [
+              "cover",
+              "title",
+              "toc",
+              "section",
+              "ending",
+              "content",
+              "two_content",
+              "summary",
+              "structure",
+              "cards-3",
+              "table",
+              "metrics-4",
+              "metrics-compare",
+              "table-metrics",
+              "content-rich"
+            ],
+            "description": "Optional layout key. compose-deck.mjs uses it to pick the brand prototype; omitted means auto-infer from role and content shape."
+          },
+          "cards": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 4,
+            "items": {
+              "type": "object",
+              "required": [
+                "head",
+                "body"
+              ],
+              "properties": {
+                "head": {
+                  "type": "string",
+                  "description": "Card heading, <=10 visible chars."
+                },
+                "body": {
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  ],
+                  "description": "2-4 lines; compose wraps to the card width."
+                },
+                "footer": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "cards-3 / content-rich: structured card content. Omit to derive 3 cards from points."
+          },
+          "metrics": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 4,
+            "items": {
+              "type": "object",
+              "required": [
+                "value",
+                "label"
+              ],
+              "properties": {
+                "value": {
+                  "type": "string",
+                  "description": "<=5 visible chars; numeric values render at 60px."
+                },
+                "unit": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string",
+                  "description": "Source or measurement basis, one short line."
+                }
+              }
+            },
+            "description": "metrics-4 / metrics-compare / table-metrics: KPI tiles. Omit to derive from numbers in points/evidence."
+          },
+          "table": {
+            "type": "object",
+            "required": [
+              "columns",
+              "rows"
+            ],
+            "properties": {
+              "columns": {
+                "type": "array",
+                "minItems": 2,
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "label"
+                  ],
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "width": {
+                      "type": "number",
+                      "description": "Optional px width; widths must sum <=1145."
+                    }
+                  }
+                }
+              },
+              "rows": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "description": "table / table-metrics: native table data; max 8 rows at y=140, 9 at y=120."
+          },
+          "compare": {
+            "type": "object",
+            "properties": {
+              "left": {
+                "type": "object",
+                "properties": {
+                  "head": {
+                    "type": "string"
+                  },
+                  "lines": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "right": {
+                "type": "object",
+                "properties": {
+                  "head": {
+                    "type": "string"
+                  },
+                  "lines": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "metrics-compare / two-content: two-column comparison. Omit to split points in half."
+          },
+          "layers": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 4,
+            "items": {
+              "type": "object",
+              "required": [
+                "name",
+                "text"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "structure: stacked layer diagram. Omit to keep the prototype's three default layers."
+          },
+          "takeaway": {
+            "type": "string",
+            "description": "Optional conclusion bar shown under cards/table/metrics."
+          },
+          "projectNo": {
+            "type": "string",
+            "description": "Title page: project number line."
+          },
+          "department": {
+            "type": "string",
+            "description": "Title page: department line."
+          },
+          "date": {
+            "type": "string",
+            "description": "Title page: date line."
+          }
+        }
+      }
+    }
+  }
+}

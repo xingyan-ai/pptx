@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "template_id": "minimal-ink",
+  "template_name": "极简水墨",
+  "template_version": "1.0.0",
+  "canvas": {
+    "width": 1280,
+    "height": 720
+  },
+  "source": "scaffold.html",
+  "layout_registry": "layout-registry.json",
+  "deck_schema": "deck.schema.json",
+  "targets": [
+    "html",
+    "pptx"
+  ],
+  "editable_kinds": [
+    "text",
+    "image",
+    "shape",
+    "line"
+  ],
+  "object_id_contract": "<slide-id>::<slot-id>",
+  "recommended_pages": [
+    8,
+    10
+  ],
+  "adaptive_composition": true,
+  "signature_compositions": [
+    "full-bleed-photo-cover",
+    "contact-sheet",
+    "architectural-sequence",
+    "photo-contact-sheet"
+  ],
+  "page_role_roster": [
+    "full-bleed-photo-cover",
+    "curator-note",
+    "contact-sheet",
+    "single-frame-caption",
+    "light-shadow-diptych",
+    "architectural-sequence",
+    "photo-metadata",
+    "critical-quote",
+    "darkroom-close",
+    "four-distance-contact-sheet"
+  ],
+  "theme": {
+    "background": "#F5F5F5",
+    "foreground": "#111111",
+    "accent": "#244842",
+    "secondary": "#FFFFFF"
+  },
+  "themeTokens": {
+    "primary": "#244842",
+    "accent2": "#FFFFFF",
+    "rule": "#C3C3C3",
+    "fontTitle": "\"Noto Serif SC\", \"Songti SC\", \"SimSun\", serif",
+    "fontBody": "\"Songti SC\", \"Noto Serif SC\", \"SimSun\", serif"
+  },
+  "derivedFrom": "monochrome-photo"
+}

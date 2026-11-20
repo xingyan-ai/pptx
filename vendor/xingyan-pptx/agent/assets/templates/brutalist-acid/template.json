@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "template_id": "brutalist-acid",
+  "template_name": "Brutalist Acid 酸性粗野主义",
+  "template_version": "1.0.0",
+  "canvas": {
+    "width": 1280,
+    "height": 720
+  },
+  "source": "scaffold.html",
+  "layout_registry": "layout-registry.json",
+  "deck_schema": "deck.schema.json",
+  "targets": [
+    "html",
+    "pptx"
+  ],
+  "editable_kinds": [
+    "text",
+    "image",
+    "shape",
+    "line"
+  ],
+  "object_id_contract": "<slide-id>::<slot-id>",
+  "recommended_pages": [
+    8,
+    10
+  ],
+  "adaptive_composition": true,
+  "signature_compositions": [
+    "acid-diagonal-cover",
+    "full-canvas-manifesto",
+    "versus-arena",
+    "black-field-meganumber"
+  ],
+  "page_role_roster": [
+    "cover",
+    "transition",
+    "number-cards",
+    "giant-statement",
+    "poster-list",
+    "comparison-ring",
+    "timeline-strip",
+    "data-punch",
+    "image-manifesto",
+    "poster-close"
+  ],
+  "theme": {
+    "background": "#F4F1E8",
+    "foreground": "#090909",
+    "accent": "#D7FF00",
+    "secondary": "#2FF3E0"
+  },
+  "themeTokens": {
+    "primary": "#7A9004",
+    "accent2": "#2FF3E0",
+    "rule": "#C0BEB7",
+    "fontTitle": "\"Arial Black\", Arial, \"PingFang SC\", sans-serif",
+    "fontBody": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif"
+  },
+  "derivedFrom": "brutalist-acid"
+}

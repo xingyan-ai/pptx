@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "template_id": "cyber-purple-genz",
+  "template_name": "赛博紫青年",
+  "template_version": "1.0.0",
+  "canvas": {
+    "width": 1280,
+    "height": 720
+  },
+  "source": "scaffold.html",
+  "layout_registry": "layout-registry.json",
+  "deck_schema": "deck.schema.json",
+  "targets": [
+    "html",
+    "pptx"
+  ],
+  "editable_kinds": [
+    "text",
+    "image",
+    "shape",
+    "line"
+  ],
+  "object_id_contract": "<slide-id>::<slot-id>",
+  "recommended_pages": [
+    8,
+    10
+  ],
+  "adaptive_composition": true,
+  "signature_compositions": [
+    "field-equation-cover",
+    "lattice-diagram",
+    "measurement-pulse",
+    "wave-hypothesis"
+  ],
+  "page_role_roster": [
+    "field-equation-cover",
+    "research-question",
+    "lattice-diagram",
+    "experiment-pipeline",
+    "measurement-pulse",
+    "finding-pair",
+    "lab-constellation",
+    "milestone-orbit",
+    "open-question-close",
+    "hypothesis-field"
+  ],
+  "theme": {
+    "background": "#FBFAFF",
+    "foreground": "#23183A",
+    "accent": "#FF5DA2",
+    "secondary": "#DAEFF0"
+  },
+  "themeTokens": {
+    "primary": "#6B4EFF",
+    "accent2": "#DAEFF0",
+    "rule": "#CBC8D4",
+    "fontTitle": "\"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+    "fontBody": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif"
+  },
+  "derivedFrom": "quantum-pulse"
+}

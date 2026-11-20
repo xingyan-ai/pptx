@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "template_id": "neon-green-wireframe",
+  "template_name": "荧光绿线框",
+  "template_version": "1.0.0",
+  "canvas": {
+    "width": 1280,
+    "height": 720
+  },
+  "source": "scaffold.html",
+  "layout_registry": "layout-registry.json",
+  "deck_schema": "deck.schema.json",
+  "targets": [
+    "html",
+    "pptx"
+  ],
+  "editable_kinds": [
+    "text",
+    "image",
+    "shape",
+    "line"
+  ],
+  "object_id_contract": "<slide-id>::<slot-id>",
+  "recommended_pages": [
+    8,
+    12
+  ],
+  "adaptive_composition": true,
+  "signature_compositions": [
+    "command-center-cover",
+    "threat-radar",
+    "audit-tape"
+  ],
+  "page_role_roster": [
+    "command-center-cover",
+    "live-threat-feed",
+    "threat-radar",
+    "incident-swimlane",
+    "network-topology",
+    "risk-score",
+    "evidence-case",
+    "audit-tape",
+    "regional-nodes",
+    "control-matrix",
+    "response-checklist",
+    "system-secure-close"
+  ],
+  "theme": {
+    "background": "#F8F9FB",
+    "foreground": "#0A1020",
+    "accent": "#02BF31",
+    "secondary": "#7A5CFF"
+  },
+  "themeTokens": {
+    "primary": "#067029",
+    "accent2": "#7A5CFF",
+    "rule": "#BAC2CE",
+    "fontTitle": "\"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+    "fontBody": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif"
+  },
+  "derivedFrom": "obsidian-cyan"
+}

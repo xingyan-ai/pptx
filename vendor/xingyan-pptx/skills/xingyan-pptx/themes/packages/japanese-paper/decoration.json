@@ -1,0 +1,43 @@
+{
+  "stroke": {
+    "width": 1,
+    "heavy": 2,
+    "hairline": 1,
+    "color": "rule"
+  },
+  "shadow": {
+    "dx": 0,
+    "dy": 0,
+    "color": "rule",
+    "opacity": 0
+  },
+  "tag": null,
+  "rule": {
+    "thickness": 1,
+    "color": "rule"
+  },
+  "marker": {
+    "size": 4,
+    "stroke": 0,
+    "fill": "text"
+  },
+  "bands": {
+    "footer": false,
+    "footerFill": "text",
+    "footerText": "background"
+  },
+  "chart": {
+    "barHeight": 10,
+    "barStroke": 0,
+    "fills": [
+      "text",
+      "textMuted"
+    ],
+    "valueSize": 13
+  },
+  "radius": 0,
+  "furniture": [
+    "rule",
+    "marker"
+  ]
+}

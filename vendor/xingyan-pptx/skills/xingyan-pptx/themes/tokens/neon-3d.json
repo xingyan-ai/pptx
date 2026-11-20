@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "id": "neon-3d",
+  "name": "Neon 3D 霓虹立体",
+  "description": "透视舞台、悬浮物件、信号轨、错位平台与电影式大图",
+  "source": "ClawHive-authored style card; no external vendor assets included.",
+  "density": "standard",
+  "visualStyle": "dark-tech",
+  "pptFidelity": "approximate",
+  "pptFallback": "霓虹发光改为静态渐变与描边，不使用混合模式",
+  "audited": false,
+  "overrideNote": "",
+  "colors": {
+    "background": "#050507",
+    "surface": "#19191B",
+    "surfaceAlt": "#3C1520",
+    "text": "#FFFFFF",
+    "textMuted": "#A0A0A1",
+    "primary": "#31F7E5",
+    "accent": "#31F7E5",
+    "accent2": "#FF4F78",
+    "textAccent": "#31F7E5",
+    "rule": "#3C3C3E",
+    "onAccent": "#000000",
+    "onPrimary": "#000000",
+    "chart": [
+      "#31F7E5",
+      "#FF4F78",
+      "#31F7E5",
+      "#7FFAEF",
+      "#FF92AB",
+      "#3C3C3E"
+    ]
+  },
+  "typography": {
+    "display": 55,
+    "title": 42,
+    "metric": 36,
+    "subtitle": 24,
+    "body": 21,
+    "annotation": 12,
+    "heading_weight": 800,
+    "body_weight": 400,
+    "body_line_height": 1.35,
+    "title_stack": "Inter, \"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "body_stack": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "title_stack_ppt": "Arial, \"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "body_stack_ppt": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "title_family": "Inter",
+    "body_family": "PingFang SC"
+  },
+  "spacing": {
+    "margin": 64,
+    "gap": 24,
+    "gutter": 28,
+    "radius": 6,
+    "leading": 1.5
+  },
+  "behavior": "气质：沉浸、未来、戏剧化；视觉语汇：透视舞台、青粉霓虹边、悬浮物与景深；装饰：perspective grid, glow rim and floating object；构图：image/object dominant; text stays in a clean safe field",
+  "taboos": [
+    "避免每页都用3D物件",
+    "霓虹字须有对比底",
+    "不要遮挡主体图片"
+  ],
+  "mood": [
+    "沉浸",
+    "未来",
+    "戏剧化"
+  ],
+  "visualVocabulary": [
+    "透视舞台",
+    "青粉霓虹边",
+    "悬浮物与景深"
+  ],
+  "coverStructure": "immersive focal object with a restrained title plane",
+  "sectionStructure": "chapters are cinematic reveals with breathing transitions",
+  "titleTreatment": "short high-contrast title with neon edge cue",
+  "decorativeLanguage": "perspective grid, glow rim and floating object",
+  "bodyCompositionBias": "image/object dominant; text stays in a clean safe field",
+  "fontWarnings": [],
+  "contrast": {
+    "body_contrast": 20.36,
+    "muted_contrast": 7.79,
+    "primary_contrast": 15.09,
+    "accent_contrast": 15.09,
+    "text_accent_contrast": 15.09
+  },
+  "warnings": [],
+  "decoration": {
+    "stroke": {
+      "width": 1,
+      "heavy": 3,
+      "hairline": 1,
+      "color": "accent2"
+    },
+    "shadow": {
+      "dx": 0,
+      "dy": 0,
+      "color": "accent2",
+      "opacity": 0
+    },
+    "tag": {
+      "fill": "accent",
+      "text": "onAccent",
+      "stroke": 0,
+      "height": 28,
+      "fontSize": 12,
+      "weight": 700,
+      "paddingX": 12
+    },
+    "rule": {
+      "thickness": 2,
+      "color": "accent"
+    },
+    "marker": {
+      "size": 6,
+      "stroke": 0,
+      "fill": "accent2"
+    },
+    "bands": {
+      "footer": true,
+      "footerFill": "surface",
+      "footerText": "text"
+    },
+    "chart": {
+      "barHeight": 14,
+      "barStroke": 0,
+      "fills": [
+        "accent",
+        "accent2"
+      ],
+      "valueSize": 14
+    },
+    "radius": 8,
+    "furniture": [
+      "tag",
+      "rule",
+      "marker"
+    ]
+  },
+  "components": {
+    "tag": {
+      "case": "upper",
+      "weight": 700
+    },
+    "kpi": {
+      "fill": "surface",
+      "border": 1,
+      "borderColor": "accent",
+      "shadow": "none",
+      "radius": 10,
+      "numberScale": 1,
+      "labelCase": "none"
+    },
+    "table": {
+      "headerFill": "accent",
+      "headerText": "onAccent",
+      "border": 1,
+      "borderColor": "accent2",
+      "rowRule": 1,
+      "rowRuleColor": "rule",
+      "zebra": "surface",
+      "cellPadX": 12,
+      "cellPadY": 9,
+      "radius": 8
+    },
+    "chart": {
+      "barHeight": 16,
+      "barStroke": 0,
+      "barFill": [
+        "accent",
+        "accent2"
+      ],
+      "axisRule": 1,
+      "axisColor": "accent2",
+      "gridlines": 3,
+      "gridColor": "rule",
+      "valueSize": 14,
+      "valueWeight": 600,
+      "labelSize": 17
+    },
+    "line": {
+      "stroke": 2.5,
+      "dot": 6,
+      "dotFill": "background",
+      "dotStroke": 2,
+      "area": true,
+      "areaOpacity": 0.18
+    },
+    "callout": {
+      "fill": "surfaceAlt",
+      "text": "text",
+      "border": 1,
+      "borderColor": "accent2",
+      "shadow": "none",
+      "barWidth": 4,
+      "barColor": "accent",
+      "radius": 8
+    },
+    "list": {
+      "marker": "square",
+      "markerSize": 6,
+      "markerStroke": 0,
+      "markerFill": "accent2"
+    }
+  },
+  "tocStructure": "cinematic index with numbered reels and depth spacing",
+  "heroStructure": "one glowing object in perspective with a single line of copy"
+}

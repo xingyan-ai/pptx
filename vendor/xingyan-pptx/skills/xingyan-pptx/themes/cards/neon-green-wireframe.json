@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "id": "neon-green-wireframe",
+  "name": "荧光绿线框",
+  "description": "荧光绿线框与黑底叠层的轻量实验风，适合作品集与创意演示",
+  "palette": {
+    "background": "#F8F9FB",
+    "text": "#0A1020",
+    "accent": "#02BF31",
+    "accentSecondary": "#02BF31",
+    "rule": "#BAC2CE"
+  },
+  "typography": {
+    "heading": {
+      "family": "Noto Sans SC",
+      "weight": 700,
+      "sizePx": 44
+    },
+    "body": {
+      "family": "PingFang SC",
+      "weight": 400,
+      "sizePx": 22,
+      "lineHeight": 1.35
+    }
+  },
+  "mood": [
+    "清新",
+    "实验",
+    "轻量"
+  ],
+  "visualVocabulary": [
+    "荧光绿线框",
+    "黑底倾斜卡片",
+    "极细连接线"
+  ],
+  "taboos": [
+    "避免线框成为噪声",
+    "荧光绿不用于大段正文",
+    "不使用无意义透视"
+  ],
+  "coverStructure": "black field with a neon outline around one idea",
+  "sectionStructure": "chapters use wireframe state changes",
+  "titleTreatment": "lean sans title with neon underline",
+  "decorativeLanguage": "fine perspective lines, angled frame and one bright block",
+  "bodyCompositionBias": "network/sequence grouping preferred over repeated cards",
+  "density": {
+    "default": "spacious",
+    "guidance": "优先单一主视觉与呼吸留白，次要信息退居背景"
+  },
+  "tocStructure": "wireframe index nodes connected by thin perspective lines",
+  "heroStructure": "one neon outline of an idea in a black field"
+}

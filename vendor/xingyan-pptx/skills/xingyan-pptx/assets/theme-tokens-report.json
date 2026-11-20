@@ -1,0 +1,614 @@
+{
+  "count": 38,
+  "warnings": [],
+  "themes": [
+    {
+      "id": "8-bit-orbit",
+      "name": "8-Bit Orbit 像素轨道",
+      "density": "standard",
+      "visualStyle": "pixel-art",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 19.31,
+        "muted_contrast": 7.64,
+        "primary_contrast": 12.81,
+        "accent_contrast": 12.81,
+        "text_accent_contrast": 12.81
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "art-deepgreen-wine",
+      "name": "深绿酒红艺术",
+      "density": "spacious",
+      "visualStyle": "editorial",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 10.49,
+        "muted_contrast": 3.66,
+        "primary_contrast": 4.81,
+        "accent_contrast": 4.81,
+        "text_accent_contrast": 4.81
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "bauhaus-blocks",
+      "name": "Bauhaus Blocks 包豪斯积木",
+      "density": "standard",
+      "visualStyle": "custom",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 15.08,
+        "muted_contrast": 6.41,
+        "primary_contrast": 10.79,
+        "accent_contrast": 10.79,
+        "text_accent_contrast": 10.79
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "brutalist-acid",
+      "name": "Brutalist Acid 酸性粗野主义",
+      "density": "standard",
+      "visualStyle": "brutalist",
+      "pptFidelity": "native",
+      "contrast": {
+        "body_contrast": 17.63,
+        "muted_contrast": 5.48,
+        "primary_contrast": 3.2,
+        "accent_contrast": 1.02,
+        "text_accent_contrast": 3.2
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "chrome-future",
+      "name": "Chrome Future 银铬未来",
+      "density": "standard",
+      "visualStyle": "glassmorphism",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 17.07,
+        "muted_contrast": 4.93,
+        "primary_contrast": 3.85,
+        "accent_contrast": 3.85,
+        "text_accent_contrast": 3.85
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "classical-gold-academic",
+      "name": "古典金棕学术",
+      "density": "dense",
+      "visualStyle": "editorial",
+      "pptFidelity": "native",
+      "contrast": {
+        "body_contrast": 10.22,
+        "muted_contrast": 3.58,
+        "primary_contrast": 4.27,
+        "accent_contrast": 2.29,
+        "text_accent_contrast": 4.27
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "coral-3d",
+      "name": "珊瑚三维",
+      "density": "spacious",
+      "visualStyle": "soft-rounded",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 11.2,
+        "muted_contrast": 3.69,
+        "primary_contrast": 3.12,
+        "accent_contrast": 1.41,
+        "text_accent_contrast": 3.12
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "cream-inkblue-editorial",
+      "name": "奶油墨蓝编辑",
+      "density": "spacious",
+      "visualStyle": "editorial",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 16.68,
+        "muted_contrast": 5.08,
+        "primary_contrast": 10.71,
+        "accent_contrast": 10.71,
+        "text_accent_contrast": 10.71
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "creative-dark-tricolor",
+      "name": "暗场三色创意",
+      "density": "spacious",
+      "visualStyle": "dark-tech",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 15.02,
+        "muted_contrast": 6.53,
+        "primary_contrast": 4.4,
+        "accent_contrast": 4.4,
+        "text_accent_contrast": 4.4
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "cyber-purple-genz",
+      "name": "赛博紫青年",
+      "density": "standard",
+      "visualStyle": "dark-tech",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 16.01,
+        "muted_contrast": 4.67,
+        "primary_contrast": 4.86,
+        "accent_contrast": 2.75,
+        "text_accent_contrast": 4.86
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "electric-studio",
+      "name": "Electric Studio 电气工作室",
+      "density": "standard",
+      "visualStyle": "swiss-minimal",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 16.73,
+        "muted_contrast": 5.08,
+        "primary_contrast": 5.71,
+        "accent_contrast": 2.31,
+        "text_accent_contrast": 5.71
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "financial-bluegreen-modern",
+      "name": "冷蓝青绿月报",
+      "density": "dense",
+      "visualStyle": "data-journalism",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 15.69,
+        "muted_contrast": 4.79,
+        "primary_contrast": 5.17,
+        "accent_contrast": 5.17,
+        "text_accent_contrast": 5.17
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "forest-academic",
+      "name": "松柏绿学术",
+      "density": "dense",
+      "visualStyle": "editorial",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 11.8,
+        "muted_contrast": 3.85,
+        "primary_contrast": 6.3,
+        "accent_contrast": 6.3,
+        "text_accent_contrast": 6.3
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "glass-tech-system",
+      "name": "Glass Tech System 玻璃科技",
+      "density": "standard",
+      "visualStyle": "glassmorphism",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 21.0,
+        "muted_contrast": 7.84,
+        "primary_contrast": 9.97,
+        "accent_contrast": 9.97,
+        "text_accent_contrast": 9.97
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "global-capital-data-journalism",
+      "name": "Capital Journal 全球资本新闻",
+      "density": "dense",
+      "visualStyle": "data-journalism",
+      "pptFidelity": "native",
+      "contrast": {
+        "body_contrast": 14.27,
+        "muted_contrast": 4.54,
+        "primary_contrast": 7.17,
+        "accent_contrast": 7.17,
+        "text_accent_contrast": 7.17
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "industrial-dark",
+      "name": "Industrial Dark 工业暗场",
+      "density": "standard",
+      "visualStyle": "dark-tech",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 15.26,
+        "muted_contrast": 6.48,
+        "primary_contrast": 9.96,
+        "accent_contrast": 9.96,
+        "text_accent_contrast": 9.96
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "ink-bamboo",
+      "name": "Ink Bamboo 青绿水墨竹韵",
+      "density": "spacious",
+      "visualStyle": "ink-wash",
+      "pptFidelity": "native",
+      "contrast": {
+        "body_contrast": 11.51,
+        "muted_contrast": 3.85,
+        "primary_contrast": 5.82,
+        "accent_contrast": 5.82,
+        "text_accent_contrast": 5.82
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "japanese-paper",
+      "name": "Japanese Paper 和纸秩序",
+      "density": "spacious",
+      "visualStyle": "ink-notes",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 15.07,
+        "muted_contrast": 4.57,
+        "primary_contrast": 5.28,
+        "accent_contrast": 5.28,
+        "text_accent_contrast": 5.28
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "marketing-blue",
+      "name": "亮蓝营销提案",
+      "density": "standard",
+      "visualStyle": "soft-rounded",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 13.86,
+        "muted_contrast": 4.34,
+        "primary_contrast": 3.85,
+        "accent_contrast": 3.85,
+        "text_accent_contrast": 3.85
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "memphis-motion",
+      "name": "Memphis Motion 孟菲斯节奏",
+      "density": "standard",
+      "visualStyle": "memphis",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 15.18,
+        "muted_contrast": 4.59,
+        "primary_contrast": 6.25,
+        "accent_contrast": 2.9,
+        "text_accent_contrast": 6.25
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "midnight-launch",
+      "name": "Midnight Launch 暗夜发布",
+      "density": "standard",
+      "visualStyle": "dark-tech",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 16.77,
+        "muted_contrast": 6.94,
+        "primary_contrast": 11.28,
+        "accent_contrast": 11.28,
+        "text_accent_contrast": 11.28
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "minimal-ink",
+      "name": "极简水墨",
+      "density": "spacious",
+      "visualStyle": "ink-wash",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 17.32,
+        "muted_contrast": 5.11,
+        "primary_contrast": 9.26,
+        "accent_contrast": 9.26,
+        "text_accent_contrast": 9.26
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "mono-console",
+      "name": "Mono Console 单色终端",
+      "density": "standard",
+      "visualStyle": "blueprint",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 16.38,
+        "muted_contrast": 4.98,
+        "primary_contrast": 3.45,
+        "accent_contrast": 1.22,
+        "text_accent_contrast": 3.45
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "neon-3d",
+      "name": "Neon 3D 霓虹立体",
+      "density": "standard",
+      "visualStyle": "dark-tech",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 20.36,
+        "muted_contrast": 7.79,
+        "primary_contrast": 15.09,
+        "accent_contrast": 15.09,
+        "text_accent_contrast": 15.09
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "neon-green-wireframe",
+      "name": "荧光绿线框",
+      "density": "spacious",
+      "visualStyle": "blueprint",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 17.99,
+        "muted_contrast": 5.23,
+        "primary_contrast": 5.94,
+        "accent_contrast": 2.35,
+        "text_accent_contrast": 5.94
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "paper-collage",
+      "name": "Paper Collage 纸张拼贴",
+      "density": "standard",
+      "visualStyle": "paper-cut",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 12.87,
+        "muted_contrast": 4.17,
+        "primary_contrast": 5.15,
+        "accent_contrast": 2.47,
+        "text_accent_contrast": 5.15
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "pixel-pop",
+      "name": "Pixel Pop 像素波普",
+      "density": "standard",
+      "visualStyle": "pixel-art",
+      "pptFidelity": "native",
+      "contrast": {
+        "body_contrast": 21.0,
+        "muted_contrast": 6.19,
+        "primary_contrast": 6.08,
+        "accent_contrast": 2.11,
+        "text_accent_contrast": 6.08
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "plura-photo",
+      "name": "暗金摄影作品集",
+      "density": "spacious",
+      "visualStyle": "photo-editorial",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 12.2,
+        "muted_contrast": 4.11,
+        "primary_contrast": 4.45,
+        "accent_contrast": 2.09,
+        "text_accent_contrast": 4.45
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "portfolio-bluegold",
+      "name": "蓝金商务作品集",
+      "density": "spacious",
+      "visualStyle": "editorial",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 9.22,
+        "muted_contrast": 3.52,
+        "primary_contrast": 7.49,
+        "accent_contrast": 7.49,
+        "text_accent_contrast": 7.49
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "portfolio-redgreen",
+      "name": "红绿创意作品集",
+      "density": "spacious",
+      "visualStyle": "editorial",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 14.22,
+        "muted_contrast": 4.32,
+        "primary_contrast": 3.86,
+        "accent_contrast": 3.86,
+        "text_accent_contrast": 3.86
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "poster-bright-yellow",
+      "name": "亮黄平面海报",
+      "density": "standard",
+      "visualStyle": "swiss-minimal",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 20.65,
+        "muted_contrast": 6.04,
+        "primary_contrast": 7.28,
+        "accent_contrast": 7.28,
+        "text_accent_contrast": 7.28
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "purple-scrapbook",
+      "name": "紫色影集",
+      "density": "standard",
+      "visualStyle": "zine",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 17.23,
+        "muted_contrast": 7.14,
+        "primary_contrast": 6.16,
+        "accent_contrast": 6.16,
+        "text_accent_contrast": 6.16
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "research-deepblue",
+      "name": "深蓝科研答辩",
+      "density": "dense",
+      "visualStyle": "data-journalism",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 12.86,
+        "muted_contrast": 4.08,
+        "primary_contrast": 7.32,
+        "accent_contrast": 7.32,
+        "text_accent_contrast": 7.32
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "rural-green",
+      "name": "田园政企绿色",
+      "density": "standard",
+      "visualStyle": "editorial",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 11.21,
+        "muted_contrast": 3.75,
+        "primary_contrast": 4.86,
+        "accent_contrast": 4.86,
+        "text_accent_contrast": 4.86
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "scatterbrain",
+      "name": "Scatterbrain 便利贴工作坊",
+      "density": "standard",
+      "visualStyle": "zine",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 21.0,
+        "muted_contrast": 6.19,
+        "primary_contrast": 6.08,
+        "accent_contrast": 2.11,
+        "text_accent_contrast": 6.08
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "scientific-atlas",
+      "name": "Scientific Atlas 科学图谱",
+      "density": "dense",
+      "visualStyle": "data-journalism",
+      "pptFidelity": "approximate",
+      "contrast": {
+        "body_contrast": 13.69,
+        "muted_contrast": 4.2,
+        "primary_contrast": 5.74,
+        "accent_contrast": 2.92,
+        "text_accent_contrast": 5.74
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "swiss-signal",
+      "name": "Swiss Signal 瑞士信号",
+      "density": "standard",
+      "visualStyle": "swiss-minimal",
+      "pptFidelity": "native",
+      "contrast": {
+        "body_contrast": 17.15,
+        "muted_contrast": 5.13,
+        "primary_contrast": 6.02,
+        "accent_contrast": 6.02,
+        "text_accent_contrast": 6.02
+      },
+      "warnings": [],
+      "fontWarnings": []
+    },
+    {
+      "id": "zen-stone",
+      "name": "Zen Stone 静石留白空间",
+      "density": "spacious",
+      "visualStyle": "soft-rounded",
+      "pptFidelity": "native",
+      "contrast": {
+        "body_contrast": 13.06,
+        "muted_contrast": 5.97,
+        "primary_contrast": 4.82,
+        "accent_contrast": 4.82,
+        "text_accent_contrast": 4.82
+      },
+      "warnings": [],
+      "fontWarnings": []
+    }
+  ]
+}

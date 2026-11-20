@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "template_id": "rural-green",
+  "template_name": "田园政企绿色",
+  "template_version": "1.0.0",
+  "canvas": {
+    "width": 1280,
+    "height": 720
+  },
+  "source": "scaffold.html",
+  "layout_registry": "layout-registry.json",
+  "deck_schema": "deck.schema.json",
+  "targets": [
+    "html",
+    "pptx"
+  ],
+  "editable_kinds": [
+    "text",
+    "image",
+    "shape",
+    "line"
+  ],
+  "object_id_contract": "<slide-id>::<slot-id>",
+  "recommended_pages": [
+    8,
+    12
+  ],
+  "adaptive_composition": true,
+  "signature_compositions": [],
+  "page_role_roster": [
+    "cover",
+    "mandate-index",
+    "chapter-divider",
+    "policy-statement",
+    "responsibility-matrix",
+    "baseline-comparison",
+    "governance-process",
+    "command-architecture",
+    "compliance-data",
+    "site-case",
+    "decision-register",
+    "signoff-closing"
+  ],
+  "theme": {
+    "background": "#F7FAF7",
+    "foreground": "#173F2A",
+    "accent": "#DE0000",
+    "secondary": "#E3F2E8"
+  },
+  "themeTokens": {
+    "primary": "#DE0000",
+    "accent2": "#E3F2E8",
+    "rule": "#C6D1CA",
+    "fontTitle": "\"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+    "fontBody": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif"
+  },
+  "derivedFrom": "state-governance"
+}

@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "note": "组件层按 visualStyle 家族给默认值：KPI、表格、条形图、折线、引用块、列表、标签。颜色字段写 token.colors 的角色名，不写 hex。单个主题的修正写到 components.overrides.json，改完运行 node scripts/build-components.mjs。",
+  "profiles": {
+    "brutalist": {
+      "tag": { "case": "upper", "weight": 800 },
+      "kpi": { "fill": "surface", "border": 3, "borderColor": "text", "shadow": "hard", "radius": 0, "numberScale": 1.0, "labelCase": "none" },
+      "table": { "headerFill": "text", "headerText": "background", "border": 3, "borderColor": "text", "rowRule": 2, "rowRuleColor": "text", "zebra": null, "cellPadX": 16, "cellPadY": 11, "radius": 0 },
+      "chart": { "barHeight": 22, "barStroke": 3, "barFill": ["accent", "surfaceAlt"], "axisRule": 2, "axisColor": "text", "gridlines": 0, "gridColor": "rule", "valueSize": 16, "valueWeight": 700, "labelSize": 18 },
+      "line": { "stroke": 4, "dot": 7, "dotFill": "background", "dotStroke": 2, "area": false, "areaOpacity": 0 },
+      "callout": { "fill": "accent", "text": "onAccent", "border": 3, "borderColor": "text", "shadow": "hard", "barWidth": 0, "barColor": "accent", "radius": 0 },
+      "list": { "marker": "square", "markerSize": 12, "markerStroke": 2, "markerFill": "accent" }
+    },
+    "editorial": {
+      "tag": { "case": "upper", "weight": 600 },
+      "kpi": { "fill": null, "border": 0, "borderColor": "rule", "shadow": "none", "radius": 0, "numberScale": 1.0, "labelCase": "none" },
+      "table": { "headerFill": null, "headerText": "text", "border": 0, "borderColor": "rule", "rowRule": 1, "rowRuleColor": "rule", "zebra": null, "cellPadX": 12, "cellPadY": 10, "radius": 0 },
+      "chart": { "barHeight": 12, "barStroke": 0, "barFill": ["accent", "textMuted"], "axisRule": 1, "axisColor": "rule", "gridlines": 0, "gridColor": "rule", "valueSize": 14, "valueWeight": 400, "labelSize": 17 },
+      "line": { "stroke": 2, "dot": 5, "dotFill": "background", "dotStroke": 1.5, "area": false, "areaOpacity": 0 },
+      "callout": { "fill": null, "text": "text", "border": 0, "borderColor": "rule", "shadow": "none", "barWidth": 3, "barColor": "accent", "radius": 0 },
+      "list": { "marker": "dot", "markerSize": 6, "markerStroke": 0, "markerFill": "accent" }
+    },
+    "data-journalism": {
+      "tag": { "case": "none", "weight": 700 },
+      "kpi": { "fill": "surface", "border": 0, "borderColor": "rule", "shadow": "none", "radius": 0, "numberScale": 1.0, "labelCase": "none" },
+      "table": { "headerFill": "primary", "headerText": "onPrimary", "border": 1, "borderColor": "rule", "rowRule": 1, "rowRuleColor": "rule", "zebra": "surfaceAlt", "cellPadX": 12, "cellPadY": 9, "radius": 0 },
+      "chart": { "barHeight": 14, "barStroke": 0, "barFill": ["primary", "accent2"], "axisRule": 1, "axisColor": "text", "gridlines": 4, "gridColor": "rule", "valueSize": 14, "valueWeight": 600, "labelSize": 17 },
+      "line": { "stroke": 3, "dot": 6, "dotFill": "background", "dotStroke": 2, "area": true, "areaOpacity": 0.12 },
+      "callout": { "fill": "surfaceAlt", "text": "text", "border": 0, "borderColor": "rule", "shadow": "none", "barWidth": 4, "barColor": "primary", "radius": 0 },
+      "list": { "marker": "square", "markerSize": 8, "markerStroke": 0, "markerFill": "primary" }
+    },
+    "dark-tech": {
+      "tag": { "case": "upper", "weight": 700 },
+      "kpi": { "fill": "surface", "border": 1, "borderColor": "accent2", "shadow": "none", "radius": 8, "numberScale": 1.0, "labelCase": "none" },
+      "table": { "headerFill": "accent", "headerText": "onAccent", "border": 1, "borderColor": "accent2", "rowRule": 1, "rowRuleColor": "rule", "zebra": "surface", "cellPadX": 12, "cellPadY": 9, "radius": 8 },
+      "chart": { "barHeight": 14, "barStroke": 0, "barFill": ["accent", "accent2"], "axisRule": 1, "axisColor": "accent2", "gridlines": 3, "gridColor": "rule", "valueSize": 14, "valueWeight": 600, "labelSize": 17 },
+      "line": { "stroke": 2.5, "dot": 6, "dotFill": "background", "dotStroke": 2, "area": true, "areaOpacity": 0.18 },
+      "callout": { "fill": "surface", "text": "text", "border": 1, "borderColor": "accent", "shadow": "none", "barWidth": 4, "barColor": "accent", "radius": 8 },
+      "list": { "marker": "square", "markerSize": 6, "markerStroke": 0, "markerFill": "accent2" }
+    },
+    "swiss-minimal": {
+      "tag": { "case": "upper", "weight": 600 },
+      "kpi": { "fill": null, "border": 0, "borderColor": "rule", "shadow": "none", "radius": 0, "numberScale": 1.0, "labelCase": "none" },
+      "table": { "headerFill": null, "headerText": "text", "border": 0, "borderColor": "rule", "rowRule": 1, "rowRuleColor": "rule", "zebra": null, "cellPadX": 12, "cellPadY": 10, "radius": 0 },
+      "chart": { "barHeight": 13, "barStroke": 0, "barFill": ["primary"], "axisRule": 1, "axisColor": "rule", "gridlines": 0, "gridColor": "rule", "valueSize": 14, "valueWeight": 500, "labelSize": 17 },
+      "line": { "stroke": 2, "dot": 0, "dotFill": "primary", "dotStroke": 0, "area": false, "areaOpacity": 0 },
+      "callout": { "fill": null, "text": "text", "border": 0, "borderColor": "rule", "shadow": "none", "barWidth": 4, "barColor": "primary", "radius": 0 },
+      "list": { "marker": "square", "markerSize": 6, "markerStroke": 0, "markerFill": "primary" }
+    },
+    "blueprint": {
+      "tag": { "case": "upper", "weight": 700 },
+      "kpi": { "fill": "surface", "border": 1, "borderColor": "accent2", "shadow": "none", "radius": 4, "numberScale": 1.0, "labelCase": "upper" },
+      "table": { "headerFill": "accent", "headerText": "onAccent", "border": 1, "borderColor": "accent2", "rowRule": 1, "rowRuleColor": "rule", "zebra": null, "cellPadX": 12, "cellPadY": 9, "radius": 4 },
+      "chart": { "barHeight": 14, "barStroke": 1, "barFill": ["accent", "accent2"], "axisRule": 1, "axisColor": "accent2", "gridlines": 4, "gridColor": "rule", "valueSize": 14, "valueWeight": 600, "labelSize": 17 },
+      "line": { "stroke": 2, "dot": 5, "dotFill": "background", "dotStroke": 1.5, "area": false, "areaOpacity": 0 },
+      "callout": { "fill": "surface", "text": "text", "border": 1, "borderColor": "accent", "shadow": "none", "barWidth": 4, "barColor": "accent", "radius": 4 },
+      "list": { "marker": "square", "markerSize": 7, "markerStroke": 1, "markerFill": "accent" }
+    },
+    "glassmorphism": {
+      "tag": { "case": "upper", "weight": 600 },
+      "kpi": { "fill": "surface", "border": 1, "borderColor": "rule", "shadow": "soft", "radius": 14, "numberScale": 1.0, "labelCase": "none" },
+      "table": { "headerFill": "surfaceAlt", "headerText": "text", "border": 1, "borderColor": "rule", "rowRule": 1, "rowRuleColor": "rule", "zebra": null, "cellPadX": 12, "cellPadY": 9, "radius": 12 },
+      "chart": { "barHeight": 14, "barStroke": 0, "barFill": ["accent", "accent2"], "axisRule": 1, "axisColor": "rule", "gridlines": 2, "gridColor": "rule", "valueSize": 14, "valueWeight": 600, "labelSize": 17 },
+      "line": { "stroke": 2.5, "dot": 6, "dotFill": "background", "dotStroke": 2, "area": true, "areaOpacity": 0.2 },
+      "callout": { "fill": "surfaceAlt", "text": "text", "border": 1, "borderColor": "rule", "shadow": "soft", "barWidth": 0, "barColor": "accent", "radius": 12 },
+      "list": { "marker": "dot", "markerSize": 7, "markerStroke": 0, "markerFill": "accent" }
+    },
+    "ink-wash": {
+      "tag": { "case": "none", "weight": 600 },
+      "kpi": { "fill": null, "border": 0, "borderColor": "rule", "shadow": "none", "radius": 0, "numberScale": 1.0, "labelCase": "none" },
+      "table": { "headerFill": null, "headerText": "text", "border": 0, "borderColor": "rule", "rowRule": 1, "rowRuleColor": "rule", "zebra": null, "cellPadX": 12, "cellPadY": 10, "radius": 0 },
+      "chart": { "barHeight": 12, "barStroke": 0, "barFill": ["accent", "textMuted"], "axisRule": 1, "axisColor": "rule", "gridlines": 0, "gridColor": "rule", "valueSize": 14, "valueWeight": 400, "labelSize": 17 },
+      "line": { "stroke": 2, "dot": 4, "dotFill": "background", "dotStroke": 1, "area": false, "areaOpacity": 0 },
+      "callout": { "fill": null, "text": "text", "border": 0, "borderColor": "rule", "shadow": "none", "barWidth": 2, "barColor": "accent", "radius": 0 },
+      "list": { "marker": "dot", "markerSize": 6, "markerStroke": 0, "markerFill": "accent" }
+    },
+    "ink-notes": {
+      "tag": { "case": "none", "weight": 600 },
+      "kpi": { "fill": null, "border": 0, "borderColor": "rule", "shadow": "none", "radius": 0, "numberScale": 1.0, "labelCase": "none" },
+      "table": { "headerFill": null, "headerText": "text", "border": 0, "borderColor": "rule", "rowRule": 1, "rowRuleColor": "rule", "zebra": null, "cellPadX": 12, "cellPadY": 10, "radius": 0 },
+      "chart": { "barHeight": 12, "barStroke": 0, "barFill": ["accent", "textMuted"], "axisRule": 1, "axisColor": "rule", "gridlines": 0, "gridColor": "rule", "valueSize": 14, "valueWeight": 400, "labelSize": 17 },
+      "line": { "stroke": 2, "dot": 4, "dotFill": "background", "dotStroke": 1, "area": false, "areaOpacity": 0 },
+      "callout": { "fill": null, "text": "text", "border": 0, "borderColor": "rule", "shadow": "none", "barWidth": 2, "barColor": "accent", "radius": 0 },
+      "list": { "marker": "circle", "markerSize": 7, "markerStroke": 1, "markerFill": "accent" }
+    },
+    "pixel-art": {
+      "tag": { "case": "upper", "weight": 800 },
+      "kpi": { "fill": "surface", "border": 2, "borderColor": "text", "shadow": "hard", "radius": 0, "numberScale": 1.0, "labelCase": "upper" },
+      "table": { "headerFill": "accent", "headerText": "onAccent", "border": 2, "borderColor": "text", "rowRule": 2, "rowRuleColor": "text", "zebra": "surfaceAlt", "cellPadX": 12, "cellPadY": 9, "radius": 0 },
+      "chart": { "barHeight": 18, "barStroke": 2, "barFill": ["accent", "accent2"], "axisRule": 2, "axisColor": "text", "gridlines": 0, "gridColor": "rule", "valueSize": 15, "valueWeight": 700, "labelSize": 17 },
+      "line": { "stroke": 3, "dot": 6, "dotFill": "background", "dotStroke": 2, "area": false, "areaOpacity": 0 },
+      "callout": { "fill": "surfaceAlt", "text": "text", "border": 2, "borderColor": "text", "shadow": "hard", "barWidth": 0, "barColor": "accent", "radius": 0 },
+      "list": { "marker": "square", "markerSize": 10, "markerStroke": 2, "markerFill": "accent" }
+    },
+    "zine": {
+      "tag": { "case": "upper", "weight": 800 },
+      "kpi": { "fill": "surfaceAlt", "border": 2, "borderColor": "text", "shadow": "hard", "radius": 0, "numberScale": 1.05, "labelCase": "none" },
+      "table": { "headerFill": "text", "headerText": "background", "border": 2, "borderColor": "text", "rowRule": 1, "rowRuleColor": "text", "zebra": null, "cellPadX": 12, "cellPadY": 9, "radius": 0 },
+      "chart": { "barHeight": 16, "barStroke": 2, "barFill": ["accent", "accent2"], "axisRule": 2, "axisColor": "text", "gridlines": 0, "gridColor": "rule", "valueSize": 15, "valueWeight": 700, "labelSize": 17 },
+      "line": { "stroke": 3, "dot": 6, "dotFill": "background", "dotStroke": 2, "area": false, "areaOpacity": 0 },
+      "callout": { "fill": "accent", "text": "onAccent", "border": 2, "borderColor": "text", "shadow": "hard", "barWidth": 0, "barColor": "accent", "radius": 0 },
+      "list": { "marker": "square", "markerSize": 10, "markerStroke": 2, "markerFill": "accent2" }
+    },
+    "memphis": {
+      "tag": { "case": "upper", "weight": 800 },
+      "kpi": { "fill": "surface", "border": 3, "borderColor": "text", "shadow": "hard", "radius": 10, "numberScale": 1.0, "labelCase": "none" },
+      "table": { "headerFill": "accent", "headerText": "onAccent", "border": 2, "borderColor": "text", "rowRule": 2, "rowRuleColor": "text", "zebra": null, "cellPadX": 12, "cellPadY": 10, "radius": 8 },
+      "chart": { "barHeight": 16, "barStroke": 2, "barFill": ["accent", "accent2"], "axisRule": 2, "axisColor": "text", "gridlines": 0, "gridColor": "rule", "valueSize": 15, "valueWeight": 700, "labelSize": 17 },
+      "line": { "stroke": 3, "dot": 7, "dotFill": "background", "dotStroke": 2, "area": false, "areaOpacity": 0 },
+      "callout": { "fill": "accent2", "text": "onAccent", "border": 2, "borderColor": "text", "shadow": "hard", "barWidth": 0, "barColor": "accent", "radius": 10 },
+      "list": { "marker": "circle", "markerSize": 9, "markerStroke": 2, "markerFill": "accent" }
+    },
+    "paper-cut": {
+      "tag": { "case": "none", "weight": 700 },
+      "kpi": { "fill": "surface", "border": 0, "borderColor": "rule", "shadow": "soft", "radius": 8, "numberScale": 1.0, "labelCase": "none" },
+      "table": { "headerFill": "surfaceAlt", "headerText": "text", "border": 0, "borderColor": "rule", "rowRule": 1, "rowRuleColor": "rule", "zebra": null, "cellPadX": 12, "cellPadY": 10, "radius": 6 },
+      "chart": { "barHeight": 14, "barStroke": 0, "barFill": ["accent", "accent2"], "axisRule": 1, "axisColor": "rule", "gridlines": 0, "gridColor": "rule", "valueSize": 14, "valueWeight": 600, "labelSize": 17 },
+      "line": { "stroke": 2.5, "dot": 5, "dotFill": "background", "dotStroke": 1.5, "area": false, "areaOpacity": 0 },
+      "callout": { "fill": "surfaceAlt", "text": "text", "border": 0, "borderColor": "rule", "shadow": "soft", "barWidth": 3, "barColor": "accent", "radius": 8 },
+      "list": { "marker": "dot", "markerSize": 7, "markerStroke": 0, "markerFill": "accent" }
+    },
+    "photo-editorial": {
+      "tag": { "case": "upper", "weight": 600 },
+      "kpi": { "fill": null, "border": 0, "borderColor": "rule", "shadow": "none", "radius": 0, "numberScale": 1.0, "labelCase": "none" },
+      "table": { "headerFill": null, "headerText": "text", "border": 0, "borderColor": "rule", "rowRule": 1, "rowRuleColor": "rule", "zebra": null, "cellPadX": 12, "cellPadY": 10, "radius": 0 },
+      "chart": { "barHeight": 12, "barStroke": 0, "barFill": ["accent", "textMuted"], "axisRule": 1, "axisColor": "rule", "gridlines": 0, "gridColor": "rule", "valueSize": 14, "valueWeight": 500, "labelSize": 17 },
+      "line": { "stroke": 2, "dot": 0, "dotFill": "accent", "dotStroke": 0, "area": false, "areaOpacity": 0 },
+      "callout": { "fill": null, "text": "text", "border": 0, "borderColor": "rule", "shadow": "none", "barWidth": 3, "barColor": "accent", "radius": 0 },
+      "list": { "marker": "dot", "markerSize": 6, "markerStroke": 0, "markerFill": "accent" }
+    },
+    "soft-rounded": {
+      "tag": { "case": "none", "weight": 600 },
+      "kpi": { "fill": "surface", "border": 0, "borderColor": "rule", "shadow": "soft", "radius": 14, "numberScale": 1.0, "labelCase": "none" },
+      "table": { "headerFill": "surfaceAlt", "headerText": "text", "border": 0, "borderColor": "rule", "rowRule": 1, "rowRuleColor": "rule", "zebra": null, "cellPadX": 14, "cellPadY": 10, "radius": 12 },
+      "chart": { "barHeight": 14, "barStroke": 0, "barFill": ["accent", "surfaceAlt"], "axisRule": 1, "axisColor": "rule", "gridlines": 0, "gridColor": "rule", "valueSize": 14, "valueWeight": 600, "labelSize": 17 },
+      "line": { "stroke": 3, "dot": 6, "dotFill": "background", "dotStroke": 2, "area": true, "areaOpacity": 0.14 },
+      "callout": { "fill": "accent", "text": "onAccent", "border": 0, "borderColor": "rule", "shadow": "soft", "barWidth": 0, "barColor": "accent", "radius": 14 },
+      "list": { "marker": "circle", "markerSize": 8, "markerStroke": 0, "markerFill": "accent" }
+    },
+    "custom": {
+      "tag": { "case": "upper", "weight": 800 },
+      "kpi": { "fill": "surface", "border": 2, "borderColor": "text", "shadow": "hard", "radius": 0, "numberScale": 1.0, "labelCase": "upper" },
+      "table": { "headerFill": "text", "headerText": "background", "border": 2, "borderColor": "text", "rowRule": 2, "rowRuleColor": "text", "zebra": null, "cellPadX": 12, "cellPadY": 10, "radius": 0 },
+      "chart": { "barHeight": 18, "barStroke": 2, "barFill": ["accent", "accent2"], "axisRule": 2, "axisColor": "text", "gridlines": 0, "gridColor": "rule", "valueSize": 15, "valueWeight": 700, "labelSize": 17 },
+      "line": { "stroke": 3, "dot": 6, "dotFill": "background", "dotStroke": 2, "area": false, "areaOpacity": 0 },
+      "callout": { "fill": "accent", "text": "onAccent", "border": 2, "borderColor": "text", "shadow": "hard", "barWidth": 0, "barColor": "accent", "radius": 0 },
+      "list": { "marker": "square", "markerSize": 10, "markerStroke": 2, "markerFill": "accent" }
+    }
+  }
+}

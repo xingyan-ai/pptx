@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "id": "chrome-future",
+  "name": "Chrome Future 银铬未来",
+  "description": "银铬冷白与电蓝信号的未来感科技风，适合产品与技术发布",
+  "palette": {
+    "background": "#F7F9FA",
+    "text": "#13171A",
+    "accent": "#2677FF",
+    "accentSecondary": "#A4FF42",
+    "rule": "#C5C7C9"
+  },
+  "typography": {
+    "heading": {
+      "family": "Inter",
+      "weight": 700,
+      "sizePx": 42
+    },
+    "body": {
+      "family": "PingFang SC",
+      "weight": 400,
+      "sizePx": 21,
+      "lineHeight": 1.35
+    }
+  },
+  "mood": [
+    "冷峻",
+    "前卫",
+    "科技"
+  ],
+  "visualVocabulary": [
+    "金属渐变暗示",
+    "电蓝信号",
+    "留白中的细框"
+  ],
+  "taboos": [
+    "避免把所有东西做成金属",
+    "渐变不用于长文本底",
+    "不使用赛博噪声覆盖信息"
+  ],
+  "coverStructure": "cool title field and one crisp reflective object",
+  "sectionStructure": "chapters progress through material/feature reveals",
+  "titleTreatment": "thin geometric sans with blue signal word",
+  "decorativeLanguage": "chrome edge, hairline frame and small neon dot",
+  "bodyCompositionBias": "airy split between claim and proof, no glossy overload",
+  "density": {
+    "default": "standard",
+    "guidance": "保持中等信息量，让主判断、证据和行动层级拉开"
+  },
+  "tocStructure": "thin framed index rows with a reflective edge and one luminous current marker",
+  "heroStructure": "a single chrome object or word suspended in a dark reflective field"
+}

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "id": "glass-tech-system",
+  "name": "Glass Tech System 玻璃科技",
+  "description": "glass visual system",
+  "palette": {
+    "background": "#000000",
+    "text": "#FFFFFF",
+    "accent": "#E8A715",
+    "accentSecondary": "#00D2AE",
+    "rule": "#383838"
+  },
+  "typography": {
+    "heading": {
+      "family": "Inter",
+      "weight": 700,
+      "sizePx": 42
+    },
+    "body": {
+      "family": "PingFang SC",
+      "weight": 400,
+      "sizePx": 21,
+      "lineHeight": 1.35
+    }
+  },
+  "mood": [
+    "透明",
+    "冷静",
+    "系统化"
+  ],
+  "visualVocabulary": [
+    "玻璃半透明面",
+    "细边框与模糊层",
+    "高亮蓝黄点"
+  ],
+  "taboos": [
+    "避免透明导致对比不足",
+    "不在每层叠加阴影",
+    "不可用玻璃替代层级"
+  ],
+  "coverStructure": "translucent title layer over a single system signal",
+  "sectionStructure": "chapters expose layers or states progressively",
+  "titleTreatment": "thin modern title with one bright status word",
+  "decorativeLanguage": "glass panels, blur edge and sparse luminous accents",
+  "bodyCompositionBias": "layering supports hierarchy; keep text surfaces opaque enough",
+  "density": {
+    "default": "standard",
+    "guidance": "保持中等信息量，让主判断、证据和行动层级拉开"
+  },
+  "tocStructure": "layered translucent rows that stack by depth into sections",
+  "heroStructure": "one translucent panel over a system signal with minimal copy"
+}

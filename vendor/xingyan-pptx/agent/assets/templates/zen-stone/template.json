@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "template_id": "zen-stone",
+  "template_name": "Zen Stone 静石留白空间",
+  "template_version": "1.0.0",
+  "canvas": {
+    "width": 1280,
+    "height": 720
+  },
+  "source": "scaffold.html",
+  "layout_registry": "layout-registry.json",
+  "deck_schema": "deck.schema.json",
+  "targets": [
+    "html",
+    "pptx"
+  ],
+  "editable_kinds": [
+    "text",
+    "image",
+    "shape",
+    "line"
+  ],
+  "object_id_contract": "<slide-id>::<slot-id>",
+  "recommended_pages": [
+    8,
+    10
+  ],
+  "adaptive_composition": true,
+  "signature_compositions": [
+    "airborne-editorial-cover",
+    "quiet-hours-ribbon",
+    "future-principles-spread"
+  ],
+  "page_role_roster": [
+    "airborne-editorial-cover",
+    "single-thesis",
+    "three-living-scenes",
+    "quiet-hours-ribbon",
+    "mode-diptych",
+    "spatial-orbit-map",
+    "research-quote",
+    "evidence-columns",
+    "future-principles-spread",
+    "soft-horizon-close"
+  ],
+  "theme": {
+    "background": "#292825",
+    "foreground": "#F3F1EC",
+    "accent": "#9E927F",
+    "secondary": "#766C5C"
+  },
+  "themeTokens": {
+    "primary": "#9E927F",
+    "accent2": "#766C5C",
+    "rule": "#555451",
+    "fontTitle": "Inter, \"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "fontBody": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif"
+  },
+  "derivedFrom": "soft-editorial-future"
+}

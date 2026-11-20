@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "template_id": "scientific-atlas",
+  "template_name": "Scientific Atlas 科学图谱",
+  "template_version": "1.0.0",
+  "canvas": {
+    "width": 1280,
+    "height": 720
+  },
+  "source": "scaffold.html",
+  "layout_registry": "layout-registry.json",
+  "deck_schema": "deck.schema.json",
+  "targets": [
+    "html",
+    "pptx"
+  ],
+  "editable_kinds": [
+    "text",
+    "image",
+    "shape",
+    "line"
+  ],
+  "object_id_contract": "<slide-id>::<slot-id>",
+  "recommended_pages": [
+    8,
+    10
+  ],
+  "adaptive_composition": true,
+  "signature_compositions": [
+    "white-grid-cover",
+    "replaceable-module-tray",
+    "family-privacy-orbit",
+    "exploded-components"
+  ],
+  "page_role_roster": [
+    "white-grid-cover",
+    "replaceable-module-tray",
+    "daily-rhythm",
+    "family-privacy-orbit",
+    "profile-dials",
+    "sensor-strip",
+    "care-path",
+    "specification-ledger",
+    "quiet-device-close",
+    "component-exploded-view"
+  ],
+  "theme": {
+    "background": "#F4F6F3",
+    "foreground": "#172A31",
+    "accent": "#15A47A",
+    "secondary": "#4978D1"
+  },
+  "themeTokens": {
+    "primary": "#166D59",
+    "accent2": "#4978D1",
+    "rule": "#C3C9C8",
+    "fontTitle": "Inter, \"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "fontBody": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif"
+  },
+  "derivedFrom": "nothing-design-light"
+}

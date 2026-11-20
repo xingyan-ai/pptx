@@ -1,0 +1,27 @@
+:root {
+  --theme-bg: #EFE9D8;
+  --theme-surface: #F5F1E7;
+  --theme-surface-alt: #E5C5B8;
+  --theme-text: #181B1D;
+  --theme-text-muted: #6A6964;
+  --theme-primary: #224E75;
+  --theme-accent: #224E75;
+  --theme-text-accent: #224E75;
+  --theme-accent-2: #B52326;
+  --theme-rule: #C0BCAF;
+  --theme-on-accent: #FFFFFF;
+  --theme-on-primary: #FFFFFF;
+  --theme-font-title: Georgia, "Noto Serif SC", "Songti SC", serif;
+  --theme-font-body: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  --theme-display: 49px;
+  --theme-title: 38px;
+  --theme-metric: 34px;
+  --theme-subtitle: 23px;
+  --theme-body: 20px;
+  --theme-annotation: 12px;
+  --theme-margin: 56px;
+  --theme-gap: 18px;
+  --theme-gutter: 24px;
+  --theme-radius: 4px;
+  --theme-leading: 1.4;
+}

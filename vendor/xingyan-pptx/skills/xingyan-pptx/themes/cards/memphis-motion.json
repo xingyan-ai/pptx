@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "id": "memphis-motion",
+  "name": "Memphis Motion 孟菲斯节奏",
+  "description": "孟菲斯几何与粉青跳色的轻快视觉，适合活动、营销与创意内容",
+  "palette": {
+    "background": "#FFF4D8",
+    "text": "#1E1B35",
+    "accent": "#FF4F70",
+    "accentSecondary": "#2DB9B0",
+    "rule": "#CEC4B4"
+  },
+  "typography": {
+    "heading": {
+      "family": "Inter",
+      "weight": 700,
+      "sizePx": 42
+    },
+    "body": {
+      "family": "PingFang SC",
+      "weight": 400,
+      "sizePx": 21,
+      "lineHeight": 1.35
+    }
+  },
+  "mood": [
+    "俏皮",
+    "动感",
+    "乐观"
+  ],
+  "visualVocabulary": [
+    "孟菲斯曲线",
+    "粉红与青绿跳色",
+    "大小不一的几何贴纸"
+  ],
+  "taboos": [
+    "避免图案铺满内容区",
+    "强调色一次只突出一个判断",
+    "避免幼稚图标墙"
+  ],
+  "coverStructure": "playful title cluster with one directional shape",
+  "sectionStructure": "chapters use rhythm changes rather than uniform panels",
+  "titleTreatment": "bold rounded title with a short sticker label",
+  "decorativeLanguage": "squiggles, dots, arcs and offset geometric tokens",
+  "bodyCompositionBias": "varied grouping and scale; preserve an obvious reading path",
+  "density": {
+    "default": "standard",
+    "guidance": "保持中等信息量，让主判断、证据和行动层级拉开"
+  },
+  "tocStructure": "playful index cluster with offset numbers and directional shapes",
+  "heroStructure": "one oversized number surrounded by a few floating geometric tokens"
+}

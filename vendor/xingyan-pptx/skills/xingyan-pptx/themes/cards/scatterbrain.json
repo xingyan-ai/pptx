@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "id": "scatterbrain",
+  "name": "Scatterbrain 便利贴工作坊",
+  "description": "sticky visual system",
+  "palette": {
+    "background": "#FFFFFF",
+    "text": "#000000",
+    "accent": "#E8A715",
+    "accentSecondary": "#00D2AE",
+    "rule": "#C7C7C7"
+  },
+  "typography": {
+    "heading": {
+      "family": "Inter",
+      "weight": 700,
+      "sizePx": 42
+    },
+    "body": {
+      "family": "PingFang SC",
+      "weight": 400,
+      "sizePx": 21,
+      "lineHeight": 1.35
+    }
+  },
+  "mood": [
+    "随性",
+    "发散",
+    "工作坊感"
+  ],
+  "visualVocabulary": [
+    "便利贴层叠",
+    "手写箭头",
+    "黑白底上单色标记"
+  ],
+  "taboos": [
+    "避免看起来像未整理草稿",
+    "关键结论不能手写难辨",
+    "不要让贴纸遮住来源"
+  ],
+  "coverStructure": "messy cluster resolves around one central question",
+  "sectionStructure": "chapters pin a decision, then clean up the notes",
+  "titleTreatment": "marker-like title with a tidy conclusion line",
+  "decorativeLanguage": "sticky notes, hand arrows and loose underlines",
+  "bodyCompositionBias": "associative grouping allowed; final claim must align cleanly",
+  "density": {
+    "default": "standard",
+    "guidance": "保持中等信息量，让主判断、证据和行动层级拉开"
+  },
+  "tocStructure": "wall of pinned notes that resolve into a numbered route",
+  "heroStructure": "one central question surrounded by a few loose notes"
+}

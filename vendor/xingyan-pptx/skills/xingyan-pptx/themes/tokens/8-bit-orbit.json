@@ -1,0 +1,210 @@
+{
+  "schemaVersion": 1,
+  "id": "8-bit-orbit",
+  "name": "8-Bit Orbit 像素轨道",
+  "description": "任务地图、关卡门、Boss 判断、道具栏、技能树与像素场景",
+  "source": "ClawHive-authored style card; no external vendor assets included.",
+  "density": "standard",
+  "visualStyle": "pixel-art",
+  "pptFidelity": "approximate",
+  "pptFallback": "复杂 CSS 效果改为静态填充、渐变或烘焙背景，文字和形状保持原生",
+  "audited": false,
+  "overrideNote": "",
+  "colors": {
+    "background": "#090B26",
+    "surface": "#1D1F37",
+    "surfaceAlt": "#1B1556",
+    "text": "#FFFFFF",
+    "textMuted": "#A2A2AD",
+    "primary": "#FFCC31",
+    "accent": "#FFCC31",
+    "accent2": "#5B39FF",
+    "textAccent": "#FFCC31",
+    "rule": "#3F4156",
+    "onAccent": "#000000",
+    "onPrimary": "#000000",
+    "chart": [
+      "#FFCC31",
+      "#5B39FF",
+      "#FFCC31",
+      "#FFDF7F",
+      "#9984FF",
+      "#3F4156"
+    ]
+  },
+  "typography": {
+    "display": 55,
+    "title": 42,
+    "metric": 36,
+    "subtitle": 24,
+    "body": 21,
+    "annotation": 12,
+    "heading_weight": 800,
+    "body_weight": 400,
+    "body_line_height": 1.35,
+    "title_stack": "Inter, \"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "body_stack": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "title_stack_ppt": "Arial, \"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "body_stack_ppt": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "title_family": "Inter",
+    "body_family": "PingFang SC"
+  },
+  "spacing": {
+    "margin": 64,
+    "gap": 24,
+    "gutter": 28,
+    "radius": 6,
+    "leading": 1.5
+  },
+  "behavior": "气质：游戏化、冒险、进取；视觉语汇：像素颗粒、任务地图节点、黄紫道具栏；装饰：nodes, gates, item bars and small pixel stars；构图：sequence and decision path over decorative game UI",
+  "taboos": [
+    "避免把严肃结论游戏化",
+    "像素字体只用于短标签",
+    "不堆叠无意义道具"
+  ],
+  "mood": [
+    "游戏化",
+    "冒险",
+    "进取"
+  ],
+  "visualVocabulary": [
+    "像素颗粒",
+    "任务地图节点",
+    "黄紫道具栏"
+  ],
+  "coverStructure": "pixel title with one quest/map anchor",
+  "sectionStructure": "chapters behave as levels with clear progress marker",
+  "titleTreatment": "pixel display title plus plain readable subtitle",
+  "decorativeLanguage": "nodes, gates, item bars and small pixel stars",
+  "bodyCompositionBias": "sequence and decision path over decorative game UI",
+  "fontWarnings": [],
+  "contrast": {
+    "body_contrast": 19.31,
+    "muted_contrast": 7.64,
+    "primary_contrast": 12.81,
+    "accent_contrast": 12.81,
+    "text_accent_contrast": 12.81
+  },
+  "warnings": [],
+  "decoration": {
+    "stroke": {
+      "width": 2,
+      "heavy": 4,
+      "hairline": 1,
+      "color": "text"
+    },
+    "shadow": {
+      "dx": 4,
+      "dy": 4,
+      "color": "text",
+      "opacity": 1
+    },
+    "tag": {
+      "fill": "accent",
+      "text": "onAccent",
+      "stroke": 2,
+      "height": 30,
+      "fontSize": 13,
+      "weight": 700,
+      "paddingX": 12
+    },
+    "rule": {
+      "thickness": 4,
+      "color": "text"
+    },
+    "marker": {
+      "size": 8,
+      "stroke": 2,
+      "fill": "accent2"
+    },
+    "bands": {
+      "footer": false,
+      "footerFill": "text",
+      "footerText": "background"
+    },
+    "chart": {
+      "barHeight": 16,
+      "barStroke": 2,
+      "fills": [
+        "accent",
+        "accent2"
+      ],
+      "valueSize": 14
+    },
+    "radius": 0,
+    "furniture": [
+      "tag",
+      "rule",
+      "marker",
+      "hardShadow"
+    ]
+  },
+  "components": {
+    "tag": {
+      "case": "upper",
+      "weight": 800
+    },
+    "kpi": {
+      "fill": "surface",
+      "border": 2,
+      "borderColor": "text",
+      "shadow": "hard",
+      "radius": 0,
+      "numberScale": 1,
+      "labelCase": "upper"
+    },
+    "table": {
+      "headerFill": "accent",
+      "headerText": "onAccent",
+      "border": 2,
+      "borderColor": "text",
+      "rowRule": 2,
+      "rowRuleColor": "text",
+      "zebra": "surfaceAlt",
+      "cellPadX": 12,
+      "cellPadY": 9,
+      "radius": 0
+    },
+    "chart": {
+      "barHeight": 18,
+      "barStroke": 2,
+      "barFill": [
+        "accent",
+        "accent2"
+      ],
+      "axisRule": 2,
+      "axisColor": "text",
+      "gridlines": 0,
+      "gridColor": "rule",
+      "valueSize": 15,
+      "valueWeight": 700,
+      "labelSize": 17
+    },
+    "line": {
+      "stroke": 3,
+      "dot": 6,
+      "dotFill": "background",
+      "dotStroke": 2,
+      "area": false,
+      "areaOpacity": 0
+    },
+    "callout": {
+      "fill": "surfaceAlt",
+      "text": "text",
+      "border": 2,
+      "borderColor": "text",
+      "shadow": "hard",
+      "barWidth": 0,
+      "barColor": "accent",
+      "radius": 0
+    },
+    "list": {
+      "marker": "square",
+      "markerSize": 10,
+      "markerStroke": 2,
+      "markerFill": "accent"
+    }
+  },
+  "tocStructure": "level-select screen: numbered world tiles with a small quest/progress marker",
+  "heroStructure": "one oversized pixel numeral or boss-level statement on a starfield"
+}

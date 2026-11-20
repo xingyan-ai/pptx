@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "note": "装饰系统按 visualStyle 家族给默认值；颜色字段写 token.colors 的角色名，不是 hex。单个主题的修正写到 decorations.overrides.json。",
+  "profiles": {
+    "brutalist": {
+      "stroke": { "width": 3, "heavy": 6, "hairline": 1, "color": "text" },
+      "shadow": { "dx": 8, "dy": 8, "color": "text", "opacity": 1 },
+      "tag": { "fill": "accent", "text": "onAccent", "stroke": 3, "height": 32, "fontSize": 14, "weight": 800, "paddingX": 16 },
+      "rule": { "thickness": 4, "color": "text" },
+      "marker": { "size": 12, "stroke": 2, "fill": "accent" },
+      "bands": { "footer": false, "footerFill": "text", "footerText": "background" },
+      "chart": { "barHeight": 22, "barStroke": 3, "fills": ["accent", "surfaceAlt"], "valueSize": 16 },
+      "radius": 0,
+      "furniture": ["tag", "rule", "marker", "hardShadow", "offsetBlock"]
+    },
+    "editorial": {
+      "stroke": { "width": 0, "heavy": 0, "hairline": 1, "color": "rule" },
+      "shadow": { "dx": 0, "dy": 0, "color": "rule", "opacity": 0 },
+      "tag": null,
+      "rule": { "thickness": 1, "color": "rule" },
+      "marker": { "size": 6, "stroke": 0, "fill": "accent" },
+      "bands": { "footer": false, "footerFill": "text", "footerText": "background" },
+      "chart": { "barHeight": 12, "barStroke": 0, "fills": ["accent", "textMuted"], "valueSize": 14 },
+      "radius": 0,
+      "furniture": ["rule", "marker"]
+    },
+    "data-journalism": {
+      "stroke": { "width": 1, "heavy": 2, "hairline": 1, "color": "rule" },
+      "shadow": { "dx": 0, "dy": 0, "color": "rule", "opacity": 0 },
+      "tag": { "fill": "primary", "text": "onPrimary", "stroke": 0, "height": 28, "fontSize": 13, "weight": 700, "paddingX": 12 },
+      "rule": { "thickness": 2, "color": "text" },
+      "marker": { "size": 8, "stroke": 0, "fill": "accent" },
+      "bands": { "footer": false, "footerFill": "text", "footerText": "background" },
+      "chart": { "barHeight": 14, "barStroke": 0, "fills": ["primary", "accent2"], "valueSize": 14 },
+      "radius": 0,
+      "furniture": ["tag", "rule", "marker"]
+    },
+    "dark-tech": {
+      "stroke": { "width": 1, "heavy": 3, "hairline": 1, "color": "accent2" },
+      "shadow": { "dx": 0, "dy": 0, "color": "accent2", "opacity": 0 },
+      "tag": { "fill": "accent", "text": "onAccent", "stroke": 0, "height": 28, "fontSize": 12, "weight": 700, "paddingX": 12 },
+      "rule": { "thickness": 2, "color": "accent" },
+      "marker": { "size": 6, "stroke": 0, "fill": "accent2" },
+      "bands": { "footer": true, "footerFill": "surface", "footerText": "text" },
+      "chart": { "barHeight": 14, "barStroke": 0, "fills": ["accent", "accent2"], "valueSize": 14 },
+      "radius": 8,
+      "furniture": ["tag", "rule", "marker"]
+    },
+    "soft-rounded": {
+      "stroke": { "width": 0, "heavy": 0, "hairline": 1, "color": "rule" },
+      "shadow": { "dx": 0, "dy": 6, "color": "text", "opacity": 0.12 },
+      "tag": { "fill": "accent2", "text": "onAccent", "stroke": 0, "height": 30, "fontSize": 13, "weight": 700, "paddingX": 14 },
+      "rule": { "thickness": 0, "color": "rule" },
+      "marker": { "size": 8, "stroke": 0, "fill": "accent" },
+      "bands": { "footer": false, "footerFill": "text", "footerText": "background" },
+      "chart": { "barHeight": 14, "barStroke": 0, "fills": ["accent", "accent2"], "valueSize": 14 },
+      "radius": 20,
+      "furniture": ["tag", "softShadow", "marker"]
+    },
+    "swiss-minimal": {
+      "stroke": { "width": 0, "heavy": 0, "hairline": 1, "color": "rule" },
+      "shadow": { "dx": 0, "dy": 0, "color": "rule", "opacity": 0 },
+      "tag": null,
+      "rule": { "thickness": 2, "color": "text" },
+      "marker": { "size": 4, "stroke": 0, "fill": "accent" },
+      "bands": { "footer": false, "footerFill": "text", "footerText": "background" },
+      "chart": { "barHeight": 12, "barStroke": 0, "fills": ["accent", "text"], "valueSize": 14 },
+      "radius": 0,
+      "furniture": ["rule", "marker"]
+    },
+    "pixel-art": {
+      "stroke": { "width": 2, "heavy": 4, "hairline": 1, "color": "text" },
+      "shadow": { "dx": 4, "dy": 4, "color": "text", "opacity": 1 },
+      "tag": { "fill": "accent", "text": "onAccent", "stroke": 2, "height": 30, "fontSize": 13, "weight": 700, "paddingX": 12 },
+      "rule": { "thickness": 4, "color": "text" },
+      "marker": { "size": 8, "stroke": 2, "fill": "accent2" },
+      "bands": { "footer": false, "footerFill": "text", "footerText": "background" },
+      "chart": { "barHeight": 16, "barStroke": 2, "fills": ["accent", "accent2"], "valueSize": 14 },
+      "radius": 0,
+      "furniture": ["tag", "rule", "marker", "hardShadow"]
+    },
+    "glassmorphism": {
+      "stroke": { "width": 1, "heavy": 2, "hairline": 1, "color": "rule" },
+      "shadow": { "dx": 0, "dy": 0, "color": "accent2", "opacity": 0 },
+      "tag": { "fill": "surfaceAlt", "text": "text", "stroke": 1, "height": 28, "fontSize": 12, "weight": 600, "paddingX": 12 },
+      "rule": { "thickness": 1, "color": "rule" },
+      "marker": { "size": 6, "stroke": 0, "fill": "accent" },
+      "bands": { "footer": false, "footerFill": "text", "footerText": "background" },
+      "chart": { "barHeight": 12, "barStroke": 0, "fills": ["accent", "accent2"], "valueSize": 13 },
+      "radius": 16,
+      "furniture": ["tag", "rule", "marker"]
+    },
+    "ink-wash": {
+      "stroke": { "width": 0, "heavy": 0, "hairline": 1, "color": "text" },
+      "shadow": { "dx": 0, "dy": 0, "color": "text", "opacity": 0 },
+      "tag": null,
+      "rule": { "thickness": 1, "color": "text" },
+      "marker": { "size": 4, "stroke": 0, "fill": "text" },
+      "bands": { "footer": false, "footerFill": "text", "footerText": "background" },
+      "chart": { "barHeight": 10, "barStroke": 0, "fills": ["text", "textMuted"], "valueSize": 13 },
+      "radius": 0,
+      "furniture": ["rule", "marker"]
+    },
+    "blueprint": {
+      "stroke": { "width": 1, "heavy": 2, "hairline": 1, "color": "accent2" },
+      "shadow": { "dx": 0, "dy": 0, "color": "accent2", "opacity": 0 },
+      "tag": { "fill": "accent2", "text": "background", "stroke": 0, "height": 26, "fontSize": 12, "weight": 600, "paddingX": 10 },
+      "rule": { "thickness": 1, "color": "accent2" },
+      "marker": { "size": 6, "stroke": 0, "fill": "accent" },
+      "bands": { "footer": false, "footerFill": "text", "footerText": "background" },
+      "chart": { "barHeight": 10, "barStroke": 1, "fills": ["accent", "accent2"], "valueSize": 13 },
+      "radius": 0,
+      "furniture": ["tag", "rule", "marker"]
+    },
+    "zine": {
+      "stroke": { "width": 2, "heavy": 4, "hairline": 1, "color": "text" },
+      "shadow": { "dx": 6, "dy": 6, "color": "text", "opacity": 1 },
+      "tag": { "fill": "accent2", "text": "onAccent", "stroke": 2, "height": 30, "fontSize": 13, "weight": 700, "paddingX": 12 },
+      "rule": { "thickness": 3, "color": "text" },
+      "marker": { "size": 10, "stroke": 2, "fill": "accent" },
+      "bands": { "footer": false, "footerFill": "text", "footerText": "background" },
+      "chart": { "barHeight": 16, "barStroke": 2, "fills": ["accent", "accent2"], "valueSize": 14 },
+      "radius": 0,
+      "furniture": ["tag", "rule", "marker", "hardShadow"]
+    },
+    "custom": {
+      "stroke": { "width": 4, "heavy": 6, "hairline": 1, "color": "text" },
+      "shadow": { "dx": 8, "dy": 8, "color": "text", "opacity": 1 },
+      "tag": { "fill": "primary", "text": "onPrimary", "stroke": 4, "height": 32, "fontSize": 14, "weight": 800, "paddingX": 16 },
+      "rule": { "thickness": 6, "color": "text" },
+      "marker": { "size": 12, "stroke": 0, "fill": "primary" },
+      "bands": { "footer": false, "footerFill": "text", "footerText": "background" },
+      "chart": { "barHeight": 20, "barStroke": 0, "fills": ["primary", "accent"], "valueSize": 15 },
+      "radius": 0,
+      "furniture": ["tag", "rule", "marker", "hardShadow"]
+    },
+    "ink-notes": {
+      "stroke": { "width": 1, "heavy": 2, "hairline": 1, "color": "rule" },
+      "shadow": { "dx": 0, "dy": 0, "color": "rule", "opacity": 0 },
+      "tag": null,
+      "rule": { "thickness": 1, "color": "rule" },
+      "marker": { "size": 4, "stroke": 0, "fill": "text" },
+      "bands": { "footer": false, "footerFill": "text", "footerText": "background" },
+      "chart": { "barHeight": 10, "barStroke": 0, "fills": ["text", "textMuted"], "valueSize": 13 },
+      "radius": 0,
+      "furniture": ["rule", "marker"]
+    },
+    "memphis": {
+      "stroke": { "width": 3, "heavy": 6, "hairline": 1, "color": "text" },
+      "shadow": { "dx": 8, "dy": 8, "color": "text", "opacity": 1 },
+      "tag": { "fill": "accent", "text": "onAccent", "stroke": 3, "height": 30, "fontSize": 13, "weight": 700, "paddingX": 14 },
+      "rule": { "thickness": 4, "color": "text" },
+      "marker": { "size": 12, "stroke": 2, "fill": "accent2" },
+      "bands": { "footer": false, "footerFill": "text", "footerText": "background" },
+      "chart": { "barHeight": 18, "barStroke": 2, "fills": ["accent", "accent2"], "valueSize": 14 },
+      "radius": 0,
+      "furniture": ["tag", "rule", "marker", "hardShadow"]
+    },
+    "paper-cut": {
+      "stroke": { "width": 0, "heavy": 0, "hairline": 1, "color": "rule" },
+      "shadow": { "dx": 10, "dy": 10, "color": "text", "opacity": 0.15 },
+      "tag": { "fill": "accent", "text": "onAccent", "stroke": 0, "height": 30, "fontSize": 13, "weight": 600, "paddingX": 14 },
+      "rule": { "thickness": 2, "color": "text" },
+      "marker": { "size": 8, "stroke": 0, "fill": "accent" },
+      "bands": { "footer": false, "footerFill": "text", "footerText": "background" },
+      "chart": { "barHeight": 14, "barStroke": 0, "fills": ["accent", "accent2"], "valueSize": 14 },
+      "radius": 0,
+      "furniture": ["tag", "rule", "softShadow", "marker"]
+    },
+    "photo-editorial": {
+      "stroke": { "width": 0, "heavy": 0, "hairline": 1, "color": "text" },
+      "shadow": { "dx": 0, "dy": 0, "color": "text", "opacity": 0 },
+      "tag": null,
+      "rule": { "thickness": 1, "color": "text" },
+      "marker": { "size": 6, "stroke": 0, "fill": "accent" },
+      "bands": { "footer": true, "footerFill": "text", "footerText": "background" },
+      "chart": { "barHeight": 12, "barStroke": 0, "fills": ["accent", "textMuted"], "valueSize": 13 },
+      "radius": 0,
+      "furniture": ["rule", "marker"]
+    }
+  }
+}

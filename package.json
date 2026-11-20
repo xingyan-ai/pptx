@@ -1,0 +1,50 @@
+{
+  "name": "dsh-xingyan-pptx",
+  "version": "0.1.0",
+  "description": "星彦 PPT 工作台：选主题、写需求、出大纲、逐页生成版式稿，可导出 PPTX/PDF。",
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./package.json": "./package.json",
+    "./cordis.patch.yml": "./cordis.patch.yml"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "README.md",
+    "NOTICE.md",
+    "LICENSE",
+    "vendor"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": []
+    }
+  },
+  "engines": {
+    "node": ">=20",
+    "dsh": ">=0.2.1-rc.5 <0.3.0"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "pptx",
+    "slides"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xingyan-ai/pptx.git"
+  },
+  "homepage": "https://github.com/xingyan-ai/pptx"
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "template_id": "8-bit-orbit",
+  "template_name": "8-Bit Orbit 像素轨道",
+  "template_version": "1.0.0",
+  "canvas": {
+    "width": 1280,
+    "height": 720
+  },
+  "source": "scaffold.html",
+  "layout_registry": "layout-registry.json",
+  "deck_schema": "deck.schema.json",
+  "targets": [
+    "html",
+    "pptx"
+  ],
+  "editable_kinds": [
+    "text",
+    "image",
+    "shape",
+    "line"
+  ],
+  "object_id_contract": "<slide-id>::<slot-id>",
+  "recommended_pages": [
+    8,
+    10
+  ],
+  "adaptive_composition": true,
+  "signature_compositions": [
+    "crystal-title-screen",
+    "isometric-world-map",
+    "boss-encounter",
+    "pixel-save-point"
+  ],
+  "page_role_roster": [
+    "crystal-title-screen",
+    "quest-select",
+    "isometric-world-map",
+    "faction-roster",
+    "crystal-stat-board",
+    "level-path",
+    "inventory-grid",
+    "boss-encounter",
+    "credits-screen",
+    "save-point-briefing"
+  ],
+  "theme": {
+    "background": "#090B26",
+    "foreground": "#FFFFFF",
+    "accent": "#FFCC31",
+    "secondary": "#5B39FF"
+  },
+  "themeTokens": {
+    "primary": "#FFCC31",
+    "accent2": "#5B39FF",
+    "rule": "#3F4156",
+    "fontTitle": "Inter, \"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif",
+    "fontBody": "\"PingFang SC\", \"Microsoft YaHei\", \"Noto Sans SC\", sans-serif"
+  },
+  "derivedFrom": "pixel-crystal"
+}

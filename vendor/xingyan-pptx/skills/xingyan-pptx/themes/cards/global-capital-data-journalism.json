@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "id": "global-capital-data-journalism",
+  "name": "Capital Journal 全球资本新闻",
+  "description": "news visual system with adaptive composition",
+  "palette": {
+    "background": "#EFE9D8",
+    "text": "#181B1D",
+    "accent": "#224E75",
+    "accentSecondary": "#B52326",
+    "rule": "#C0BCAF"
+  },
+  "typography": {
+    "heading": {
+      "family": "Georgia",
+      "weight": 700,
+      "sizePx": 38
+    },
+    "body": {
+      "family": "Noto Serif SC",
+      "weight": 400,
+      "sizePx": 20,
+      "lineHeight": 1.35
+    }
+  },
+  "mood": [
+    "审慎",
+    "权威",
+    "调查感"
+  ],
+  "visualVocabulary": [
+    "报纸式分栏",
+    "红蓝标记线",
+    "数字与注释并置"
+  ],
+  "taboos": [
+    "避免新闻标题堆叠",
+    "红色仅用于风险/重点",
+    "不伪造来源或数据"
+  ],
+  "coverStructure": "editorial title block beside a reporting image or data",
+  "sectionStructure": "section opener states a question before evidence",
+  "titleTreatment": "newspaper headline plus short deck",
+  "decorativeLanguage": "hairlines, datelines and selective red/blue highlights",
+  "bodyCompositionBias": "multi-column reading allowed, but one conclusion leads",
+  "density": {
+    "default": "dense",
+    "guidance": "信息可较密，但每页仍保留一个主判断和清晰证据路径"
+  },
+  "tocStructure": "newspaper-style contents column with dateline and section numbers",
+  "heroStructure": "one reporting image or figure with an editorial caption block"
+}
