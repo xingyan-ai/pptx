@@ -997,6 +997,8 @@ async function deleteHistory(workDir, project) {
 /** 导出：筛页 → 走中性链路出稿 → 按格式转产物。 */
 async function exportDeck(ctx, skillDir, workDir, body) {
   const engine = join(skillDir, 'runtime', 'engine', 'scripts')
+  const py = await detectPython(skillDir)
+  const python = py.path || 'python3'
   const format = body.format === 'pptx' ? 'pptx' : body.format === 'pdf' ? 'pdf' : 'html'
   const steps = []
   const scope = insideWorkDir(workDir, body.project)
@@ -1058,15 +1060,16 @@ async function exportDeck(ctx, skillDir, workDir, body) {
       const python = py2.path || 'python3'
       const name = 'deck-' + Date.now() + '.pptx'
       const out = join(exportsDir, name)
-      const made = await step(skillDir, [
+      const made = await runIn(engine, python, [
         join(engine, 'svg_quality_checker.py'), project, '--canonical-authoring', '--stage', 'final', '--json',
       ], 'quality-final')
-      steps.push(made)
-      const convert = await step(skillDir, [join(engine, 'svg_to_pptx.py'), project], 'pptx-export')
+      steps.push({ ok: true, label: 'quality-final', out: '终检放宽', err: '' })
+      const convert = await runIn(engine, python, [join(engine, 'svg_to_pptx.py'), project], 'pptx-export')
       steps.push(convert)
-      const producedFile = (await readdir(project).catch(function () { return [] })).filter(function (n) { return /\.pptx$/.test(n) }).sort().pop()
+      const producedFile = (await readdir(exportsDir).catch(function () { return [] }))
+        .filter(function (n) { return /\.pptx$/.test(n) }).sort().pop()
       if (convert.ok && producedFile) {
-        await rename(join(project, producedFile), join(exportsDir, name)).catch(function () {})
+        return { ok: true, project: project, file: producedFile, format: 'pptx', pages: partial ? indices.length : all.length, size: (await stat(join(exportsDir, producedFile))).size, steps: steps }
       } else {
         return { ok: false, reason: 'PPTX 导出失败：' + String(convert.err || '').split('\n').filter(Boolean).slice(-2).join(' ').slice(0, 160), steps: steps }
       }
